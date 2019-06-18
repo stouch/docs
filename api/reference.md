@@ -3278,12 +3278,12 @@ Currently supports "Queries" only. "Mutations" and "Subscription" support will b
 ### Configuring GraphQL
 
 1. Clone the API repo.
-1. Do `composer update`
-1. Download & install the [GraphiQL](https://electronjs.org/apps/graphiql) tool on your system.
-  * It provides the GUI for editing and testing GraphQL queries and mutations.
-1. Insert your project URL in **GraphQL Endpoint**. Make sure the request type is POST.
-  * For example, `<setup_url>/<project-key>/gql?access_token=demo`
-1. GraphiQL will list down all the queries.
+2. Do `composer update`
+3. Download & install the [GraphiQL](https://electronjs.org/apps/graphiql) tool on your system.
+    * It provides the GUI for editing and testing GraphQL queries and mutations.
+4. Insert your project URL in **GraphQL Endpoint**. Make sure the request type is POST.
+    * For example, `<setup_url>/<project-key>/gql?access_token=demo`
+5. GraphiQL will list down all the queries.
 
 Once you've setup the GraphQL on server side, you'll need a GraphQL client to prepare a query and send requests. Many different programming languages support GraphQL. [This list](https://graphql.org/code/#graphql-clients) contains some of the popular client libraries.
 
