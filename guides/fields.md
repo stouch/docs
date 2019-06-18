@@ -55,7 +55,7 @@ Initially, Directus fields mirror the order of their respective database columns
 
 You can also adjust the width of each field within the Directus Item Detail form. Certain width options wrap differently, so form placement may also be affected (in combination with the field's sort value). The width options are explained visually below.
 
-[INSERT IMAGE]
+![Field sizes](/img/directus-field-layout.png)
 
 ## Deleting Fields
 
