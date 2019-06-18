@@ -61,7 +61,7 @@ module.exports = {
       { text: "Demo", link: "https://directus.app" }
     ],
     sidebarDepth: 1,
-    // 🧠 📡 🤖 ✨ 💥 🔥 🌈 ⭐️ 🍄 🍹 🎱 🎨 🏆 🚨 🚀 💡 ⚙️ 🔮 🛠 🔑 🎁 🎈 🎀 ❤️ 💯
+    // 💎 🧠 📡 🤖 ✨ 💥 🔥 🌈 ⭐️ 🍄 🍹 🎱 🎨 🏆 🚨 🚀 💡 ⚙️ 🔮 🛠 🔑 🎁 🎈 🎀 ❤️ 💯
     sidebar: [
       {
         title: "🐰 Getting Started",
@@ -105,17 +105,6 @@ module.exports = {
         title: "🚀 API Reference",
         collapsable: true,
         children: [["/api/reference", "Reference"]]
-      },
-      {
-        title: "💎 GraphQL",
-        collapsable: true,
-        children: [
-          ["/graphql/configure", "Configuring"],
-          "/graphql/how-to-use",
-          "/graphql/listing-items",
-          "/graphql/filters",
-          "/graphql/item-details"
-        ]
       },
       {
         title: "⚡️ SDKs",

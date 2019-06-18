@@ -665,7 +665,7 @@ GET /items/projects?filter[contributors][all]=1,2,3
 
 The example above will return all projects that have the user with ID 1, 2, and 3 as collaborator.
 
-Using `has` will return items that has at least the mininum number given as related items. 
+Using `has` will return items with at least that mininum number of related items.
 
 Example of requesting projects with at least one contributor:
 
@@ -3266,6 +3266,234 @@ A list of all system objects expected or returned by Directus endpoints.
 | `id`   | `integer`         |                    |
 | `user` | `integer`, `User` | The ID of the User |
 | `role` | `integer`, `Role` | The ID of the Role |
+
+## GraphQL
+
+The Directus REST API offers the same powerful and granular options as GraphQL. However, some users may want to use the specific GraphQL specification for requests and responses. For that reason, Directus offers a GraphQL endpoint as a wrapper of the REST API.
+
+::: warning Limited Support
+Currently supports "Queries" only. "Mutations" and "Subscription" support will be added soon.
+:::
+
+### Configuring GraphQL
+
+1. Clone the API repo.
+1. Do `composer update`
+1. Download & install the [GraphiQL](https://electronjs.org/apps/graphiql) tool on your system.
+  * It provides the GUI for editing and testing GraphQL queries and mutations.
+1. Insert your project URL in **GraphQL Endpoint**. Make sure the request type is POST.
+  * For example, `<setup_url>/<project-key>/gql?access_token=demo`
+1. GraphiQL will list down all the queries.
+
+Once you've setup the GraphQL on server side, you'll need a GraphQL client to prepare a query and send requests. Many different programming languages support GraphQL. [This list](https://graphql.org/code/#graphql-clients) contains some of the popular client libraries.
+
+### Filters
+
+To apply filters on a list of items, you can use the `filter` argument. Filter fields can be defined as `<field-name>_<operator>:<value>`. A list of available filters can be found [here](/api/reference.html#filtering)
+
+For example, to only return "horror" movies from a `movies` collection, we can apply a filter like this:
+
+```
+{
+  movies(limit: 10, filter: {genre_contains: "horror"}) {
+    data {
+      name
+    }
+  }
+}
+```
+
+### How To Use
+
+[Here is the list](https://graphql.org/code/#javascript-1) of JavaScript libraries available for using GraphQL client side. We'll be using [Vue-Apollo](https://vue-apollo.netlify.com/guide/) which integrates [Apollo](https://www.apollographql.com/) in your Vue components with declarative queries.
+
+Vue-Apollo is recommended because:
+
+1. Can be installed via Vue CLI as a plugin.
+2. Jump start the development without lengthy configuration.
+
+#### 1. Install & Setup Vue Apollo
+
+```
+npm install --save vue-apollo graphql apollo-boost
+```
+
+```javascript
+import Vue from "vue";
+import VueApollo from "vue-apollo";
+
+Vue.use(VueApollo);
+```
+
+Follow [this link](https://vue-apollo.netlify.com/guide/installation.html) for more info on Vue-Apollo setup.
+
+#### 2. Create Apollo Client & Provider
+
+Generally this should be added into entry file of the project. In most cases it would be `main.js` or `app.js`
+
+```javascript
+import ApolloClient from "apollo-boost";
+
+const apolloClient = new ApolloClient({
+  // Add absolute project URL here:
+  // If your setup has multiple projects, use respective key else default should be '_'
+  // More info: https://docs.directus.io/api/reference.html#project-prefix
+  uri:
+    "http://localhost:8888/directus/api/public/<project-key>/gql?access_token=demo"
+});
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient
+});
+```
+
+#### 3. Register Apollo Provider to Vue
+
+```javascript
+new Vue({
+  el: "#app",
+  apolloProvider,
+  render: h => h(App)
+});
+```
+
+You are now ready to use Apollo in your components!
+
+#### 4. Query the data
+
+```vue
+<template>
+  <div class v-html="about.about_us"></div>
+</template>
+
+<script>
+import gql from "graphql-tag";
+
+export default {
+  apollo: {
+    about: gql`
+      query {
+        about(id: 1) {
+          about_us
+        }
+      }
+    `
+  }
+};
+</script>
+```
+
+[Read more](https://vue-apollo.netlify.com/guide/apollo/) about how to form the query and request data from GraphQL.
+
+### Item Details
+
+When you want a specific item based on a primary key, you can pass an `id` argument. For example, if you want to get details of id `1` from `movies` collection:
+
+```
+movies(id: 1) {
+  data {
+    name
+    genre
+    status
+  }
+}
+```
+
+::: tip
+When you're requesting an item based on primary key, obviously you'll always get a single item. But the response you'll get will always be an array with a single item. This is because how GraphQL & Directus is designed. The GraphQL expects a predefined `types` of a field. So in our case, an **item** or **list of items** will always be an `array`.
+:::
+
+A complete example to get details of an item from the `movies` collection:
+
+```vue
+<template>
+  <div id="app">
+    <!-- You should always select `0th` item when you're requesting an item based on primary key -->
+    <h1>{{ movies.data[0].name }}</h1>
+  </div>
+</template>
+
+<script>
+import gql from "graphql-tag";
+
+export default {
+  apollo: {
+    movies: gql`
+      query {
+        movies(id: 1) {
+          data {
+            name
+            genre
+            status
+          }
+        }
+      }
+    `
+  }
+};
+</script>
+```
+
+### Listing Items
+
+You can get a set of items from a particular collection. For example, if you want to list items from the `movies` collection, the query would be:
+
+```
+movies(limit:10) {
+  data {
+    name
+  }
+  meta {
+    result_count
+    total_count
+  }
+}
+```
+
+Here the `data` is an array containing all the items while `meta` includes all metadata about the items. The response format is same as the REST API so you can use queries in GraphQL or the REST API interchangably. Read more about meta [here.](/api/reference.html#metadata)
+
+#### Arguments
+
+Collection supports following 3 arguments.
+
+- limit: Limits the number of items per page.
+- offset: To skip the number of items multiplied by limit from start.
+- filter: To list specific items based on their values. [Read More](./filters.html)
+- id: To get a specific item with primary key. [Read More](./item-details.html).
+
+A complete example to list down items from the `movies` collection:
+
+```vue
+<template>
+  <div id="app">
+    <ul>
+      <li v-for="item in movies.data">{{ item.name }}</li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import gql from "graphql-tag";
+
+export default {
+  apollo: {
+    movies: gql`
+      query {
+        movies(limit: 10) {
+          data {
+            name
+          }
+          meta {
+            result_count
+            total_count
+          }
+        }
+      }
+    `
+  }
+};
+</script>
+```
 
 ## SCIM
 
