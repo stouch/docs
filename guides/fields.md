@@ -37,15 +37,25 @@ This step only appears if you selected a relational interface, such as _Many to 
 
 ### 4. Interface Options
 
-Interfaces are highly customizable with options that allow you to tailor them to individual uses. These vary depending on interface complexity, with less-common options hidden within an "Advanced" accordion.
+Interfaces are highly customizable with options that allow you to tailor them to individual uses. These vary depending on interface complexity, with less-common options hidden within an "Advanced" accordion. In addition to an interface's custom options, _every_ field has a system option for its width. Learn more about this within the Field Layout section below.
 
 ## Field Layout
 
-You can change the order, size, position, and grouping of fields on the Item Detail page to create tailored forms for each collection. A unified interface is in development to modify all of these options at once.
+You can change the layout of fields on the Item Detail page to create tailored forms for each collection. Layout is configured through the following settings:
 
-## Column Order
+### Field Order
 
-Directus fields completely mirror their respective database columns, however the specific order of columns in the database can be used to optimize query performance. Therefore Directus allows you to manage column order and field layout separately. Use the drag handles on the left of each field to update their order in the database.
+You can use the drag handles on the left of each field to update their order within Directus.
+
+::: tip
+Initially, Directus fields mirror the order of their respective database columns. However Directus allows you to manage column order and field order _separately_, since the specific order of columns in the database can be used to optimize query performance.
+:::
+
+### Field Width
+
+You can also adjust the width of each field within the Directus Item Detail form. Certain width options wrap differently, so form placement may also be affected (in combination with the field's sort value). The width options are explained visually below.
+
+[INSERT IMAGE]
 
 ## Deleting Fields
 
