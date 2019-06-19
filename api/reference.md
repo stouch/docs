@@ -3277,15 +3277,15 @@ Currently supports "Queries" only. "Mutations" and "Subscription" support will b
 
 ### GraphQL Endpoint
 
+GraphQL comes included with each instance of the Directus API, so there is nothing to install of configure. You will, however, need a [GraphQL client](https://graphql.org/code/#graphql-clients) to prepare queries and send requests. It may also help to have a GUI (such as [GraphiQL](https://electronjs.org/apps/graphiql)) for editing and testing GraphQL queries and mutations.
+
 ```http
 POST /[project]/gql?access_token={admin_access_token}
 ```
 
+:::tip
 This endpoint requires admin access token as a query parameter.
-
-Download & use the [GraphiQL](https://electronjs.org/apps/graphiql) tool to list down all the queries.
-
-Once you've setup the GraphQL on server side, you'll need a GraphQL client to prepare a query and send requests. Many different programming languages support GraphQL. [This list](https://graphql.org/code/#graphql-clients) contains some of the popular client libraries.
+:::
 
 ### Filters
 
@@ -3305,12 +3305,12 @@ For example, to only return "horror" movies from a `movies` collection, we can a
 
 ### How To Use
 
-[Here is the list](https://graphql.org/code/#javascript-1) of JavaScript libraries available for using GraphQL client side. We'll be using [Vue-Apollo](https://vue-apollo.netlify.com/guide/) which integrates [Apollo](https://www.apollographql.com/) in your Vue components with declarative queries.
+[Here is a list](https://graphql.org/code/#javascript-1) of JavaScript libraries available for using GraphQL client side. We'll be using [Vue-Apollo](https://vue-apollo.netlify.com/guide/) which integrates [Apollo](https://www.apollographql.com/) in your Vue components with declarative queries.
 
 Vue-Apollo is recommended because:
 
-1. Can be installed via Vue CLI as a plugin.
-2. Jump start the development without lengthy configuration.
+1. Can be installed via Vue CLI as a plugin
+2. Jump begin development without lengthy configuration
 
 #### 1. Install & Setup Vue Apollo
 
