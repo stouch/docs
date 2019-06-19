@@ -3458,8 +3458,8 @@ Collection supports following 3 arguments.
 
 - limit: Limits the number of items per page.
 - offset: To skip the number of items multiplied by limit from start.
-- filter: To list specific items based on their values. [Read More](./filters.html)
-- id: To get a specific item with primary key. [Read More](./item-details.html).
+- filter: To list specific items based on their values.
+- id: To get a specific item with primary key.
 
 A complete example to list down items from the `movies` collection:
 

@@ -34,7 +34,7 @@ Alternatively, you can choose from one of these other installation methods.
 :::
 
 ::: tip
-If you are using Apache, make sure `mod_rewrite` and `AllowOverride` are enabled. [Read more](../advanced/server-setup.md#apache)
+If you are using Apache, make sure `mod_rewrite` and `AllowOverride` are enabled. [Read more](/advanced/server-setup.md#apache)
 :::
 
 ::: tip
