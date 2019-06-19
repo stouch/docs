@@ -1,6 +1,6 @@
 # Custom Endpoints
 
-> In addition to the [core endpoints](../api-reference/reference.md), you can add completely custom endpoints. Custom endpoints are easy to create files that return an array with the endpoint path, method, and handler. All custom endpoints are scoped within `/custom` to avoid conflicts with the Core functionality.
+> In addition to the [core endpoints](../api/reference.md), you can add completely custom endpoints. Custom endpoints are easy to create files that return an array with the endpoint path, method, and handler. All custom endpoints are scoped within `/custom` to avoid conflicts with the Core functionality.
 
 ## Creating Custom Endpoints
 
