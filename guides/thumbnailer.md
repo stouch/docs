@@ -108,8 +108,7 @@ This image will be used when trying to generate a thumbnail with invalid options
 
 Based on the configuration above, below are a few examples that show the output of the Thumbnailer.
 
-// commented out as site is set up to think "original.jpg" is a path
-// [Original File Used Below](../img/thumbnailer/original.jpg) — 602KB and 1800x1200
+![Original File Used Below](../img/thumbnailer/original.jpg) — 602KB and 1800x1200
 
 ### Crop Better 200x200
 
