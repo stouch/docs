@@ -6,7 +6,7 @@ sidebarDepth: 2
 
 ## Introduction
 
-The Directus API is a quick and easy way to add a RESTful API layer to a new or existing SQL database. It perfectly mirrors the database architecture, providing dynamic endpoints even when changing the schema or data directly. Below is a comprehensive reference of each endpoint and paramater alongside helpful examples that showcase typical request and response formats.
+The Directus API is a quick and easy way to add a RESTful API layer to a new or existing SQL database. It perfectly mirrors the database architecture which allows for flexible content modeling and dynamic endpoints even when changing the schema or data directly. Below is a comprehensive reference of each endpoint and parameter alongside helpful examples that showcase typical request and response formats.
 
 [Get the latest version of the Directus API here](https://github.com/directus/api/releases)
 
@@ -18,16 +18,28 @@ The Directus API uses [SemVer](https://semver.org/) for version labeling within 
 
 All endpoints are prefixed with a project key based on the configuration file name. The API will attempt to find a configuration file that matches the provided project key and use its settings. The underscore (`_`) is reserved as the _default_ project key.
 
-Below are few examples of API requests when your API is located in an `/api` sub-directory:
+Below are few examples of API requests when your API is located in the root directory:
 
-*   `/api/_/collections` (uses the default config file `api.php`)
-*   `/api/prod/items/projects` (uses "prod" config file `api.prod.php`)
+```
+# API
+https://example.com/server/ping
 
-::: tip NOTE
+# Default Project — uses the default config file: api.php
+https://example.com/_/collections
+
+# Custom Project — uses "prod" config file: api.prod.php
+https://example.com/prod/collections
+```
+
+::: tip App Location
+For the combined build the Directus App would be located at: `https://example.com/admin`
+:::
+
+::: tip Project Config File
 The naming format of the configuration file is `api.<project-key>.php`
 :::
 
-::: warning
+::: warning Default Config File
 A default API project (`api.php`) is required for the API to function properly.
 :::
 
@@ -90,6 +102,8 @@ The API uses numeric codes to avoid the need for translated error messages based
 - `0017` - Invalid Configuration Path (422)
 - `0018` - Project Name Already Exists (409)
 - `0018` - Unauthorized Location Access (401)
+- `0019` - Installation Invalid database information (400)
+- `0020` - Missing Storage Configuration (500)
 
 #### Authentication Error Codes
 
@@ -114,11 +128,14 @@ The API uses numeric codes to avoid the need for translated error messages based
 - `0206` - Field Not Managed by Directus
 - `0207` - Revision Not Found (404)
 - `0208` - Revision Has Invalid Delta
-- `0209` - Field Invalid (400) - _Trying to use a field that doesn't exists for actions such as filtering and sorting_
+- `0209` - Field Invalid (400) - _A field that doesn't exist for an action such as filtering and sorting_
 - `0210` - Can Not Create Comment for Item
 - `0211` - Can Not Update Comment for Item
 - `0212` - Can Not Delete Comment from Item
 - `0213` - Field does not allow object or array as value (422)
+- `0214` - Unknown Filter (422)
+- `0215` - Unable to access data from a related collection (403)
+- `0216` - Delete/Disable last admin is forbidden (403)
 
 #### Collections Error Codes
 
@@ -137,6 +154,8 @@ The API uses numeric codes to avoid the need for translated error messages based
 
 - `0400` - Unknown Error (500)
 - `0401` - Unknown Data Type (400)
+- `0402` - Field Type Missing Length (422)
+- `0403` - Field Type Do Not Support Length (422)
 
 #### Mail Error Codes
 
@@ -165,7 +184,7 @@ The API uses numeric codes to avoid the need for translated error messages based
 The API performs two types of validation on submitted data:
 
 *   **Data Type** – The API checks the submitted value's type against the Directus or database's field type. For example, a String submitted for an INT field will result in an error.
-*   **RegEx** – The API checks the submitted value against its column's `directus_fields.validation` RegEx. If the value doesn't match then an error will be returned.
+*   **RegEx** – The API checks the submitted value against its column's `directus_fields.validation` PCRE RegEx pattern (must include delimiters). If the value doesn't match then an error will be returned. Read more about [PCRE patterns](http://php.net/manual/en/pcre.pattern.php) and [delimiters](http://php.net/manual/en/regexp.reference.delimiters.php).
 
 ## Authentication
 
@@ -175,19 +194,29 @@ Most endpoints are checked against permissions. If a user is not authenticated o
 
 To gain access to protected data, you must include an access token with every request. There are two types of tokens.
 
-#### Static Tokens
-
-These optional tokens never expire and can be assigned to specific Directus users within `directus_users.token`.
-
-#### Temporary Tokens
+#### JWT Access Tokens
 
 These tokens are generated upon the user's request and follow the [JWT spec](https://jwt.io).
 
-The JWT token payload contains the user ID, type of token (`auth`), and an expiration date, which is signed with a secret key using the `HS256` hashing algorithm.
+The JWT token payload contains the user ID, type of token (`auth`), and an expiration date, which is signed with a secret key using the `HS256` hashing algorithm. You can generate one of these tokens using the _Get Auth Token_ below.
 
-There are several ways to include this access token:
+#### Static Tokens
 
-#### 1. Bearer Token in Authorization Header
+The JWT access tokens are the safest way to authenticate into Directus. However, the tokens expire really quickly and you need to login using a users credentials to retrieve it. This is not the most convenient when using Directus on the server side.
+
+You can assign a static token to any user by adding a value to the `token` column in the `directus_users` table in the database directly. As of right now, it's not (yet) possible to set this token from the admin application, as it's rather easy to create a huge security leak for unexperienced users.
+
+The token will never expire and should be considered top secret.
+
+::: danger
+This token doesn't expire and doesn't auto refresh. Only use this feature if you know what you're doing.
+:::
+
+#### Sending the token
+
+There are several ways to include the access token in a request:
+
+##### 1. Bearer Token in Authorization Header
 
 ```
 curl -H "Authorization: Bearer Py8Rumu.LD7HE5j.uFrOR5" https://example.com/api/
@@ -195,10 +224,10 @@ curl -H "Authorization: Bearer staticToken" https://example.com/api/
 ```
 
 ::: warning NOTE
-For security reasons Apache hides the Authorization header to prevent other scripts from seeing the credentials used to access the server. Make sure your Apache is passing the `Authentication` header. [Read more](https://httpd.apache.org/docs/2.4/en/mod/core.html#cgipassauth)
+For security reasons certain Apache installations hide the Authorization header to prevent other scripts from seeing the credentials used to access the server. Make sure your Apache is passing the `Authentication` header. [Read more](https://httpd.apache.org/docs/2.4/en/mod/core.html#cgipassauth)
 :::
 
-#### 2. HTTP Basic Auth
+##### 2. HTTP Basic Auth
 
 ```
 curl -u Py8Ru.muLD7HE.5juFrOR5: https://example.com/api/
@@ -207,7 +236,7 @@ curl -u staticToken: https://example.com/api/
 
 Notice that the token is `Py8Ru.muLD7HE.5juFrOR5` and has a colon `:` at the end. Using Basic auth, the auth user is the token and the auth password should be either blank or the same token.
 
-#### 3. Query Parameter
+##### 3. Query Parameter
 
 ```
 curl https://example.com/api/?access_token=Py8RumuLD.7HE5j.uFrOR5
@@ -257,7 +286,7 @@ The access token that is returned through this endpoint must be used with any su
 | `/[project]/relations`           | **Yes**
 | `/[project]/revisions`           | **Yes**
 | `/[project]/roles`               | **Yes**
-| `/[project]/scim`/v2             | **Yes**
+| `/[project]/scim/v2`             | **Yes**
 | `/[project]/settings`            | **Yes**
 | `/[project]/users`               | **Yes**
 | `/[project]/utils`               | **Yes**
@@ -268,6 +297,20 @@ The access token that is returned through this endpoint must be used with any su
 | `/pages`                         | **Yes**
 | `/server/ping`                   | No
 | `/types`                         | **Yes**
+
+The proctected endpoints that doesn't starts with `/[project]`, requires the user to send the project name via HTTP header or query string when using static tokens. JWT tokens already has this information in their payloads.
+
+#### Project via Query String
+
+```
+curl https://example.com/api/types?access_token=staticToken&project=_
+```
+
+#### Project via Header
+
+```
+curl -H "Authorization: Bearer staticToken" -H "X-Directus-Project: _" https://example.com/api/
+```
 
 ### Refresh Auth Token
 
@@ -413,7 +456,8 @@ The API has a set of query parameters that can be used for specific actions, suc
 | `lang`        | Include translation information
 | `q`           | Search for items that matches the given string in any of their fields*
 | `groups`      | Groups the items by one or more fields
-| `joins`       | Joins the result with another collection using SQL Joins
+| `activity_skip` | Disable activity logging for the request
+| `comment`     | An activity message to explain the reason of an action.
 
 ### Metadata
 
@@ -470,7 +514,7 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
 
 ### Limit
 
-Using `limit` can be set the maximum number of items that will be returned. You can also use `-1` to rturn all items, bypassing the default limits.
+Using `limit` can be set the maximum number of items that will be returned. You can also use `-1` to return all items, bypassing the default limits.
 
 #### Examples
 
@@ -534,7 +578,16 @@ Instead of returning a list, the result data will be a single object representin
 
 ### Status
 
-@TODO
+This parameter is useful for filtering items by their status value. It is only used when the collection has a field with the `status` type. The value should be a CSV.
+
+By default all statuses are included except those marked as `soft_delete`. To include statuses marked as `soft_delete`, they should be explicitly requested or an asterisk wildcard (`*`) should be used.
+
+Example:
+
+```
+/_/items/projects?status=*
+/_/items/projects?status=published,under_review,draft
+```
 
 ### Filtering
 
@@ -556,12 +609,75 @@ Used to search items in a collection that matche the filter's conditions. Filter
 | `nnull`              | It is not null                         |
 | `contains`, `like`   | Contains the substring                 |
 | `ncontains`, `nlike` | Doesn't contain the substring          |
+| `rlike`              | Contains a substring using a wildcard  |
+| `nrlike`             | Not contains a substring using a wildcard |
 | `between`            | The value is between two values        |
 | `nbetween`           | The value is not between two values    |
 | `empty`              | The value is empty (null or falsy)     |
 | `nempty`             | The value is not empty (null or falsy) |
 | `all`                | Contains all given related item's IDs  |
 | `has`                | Has one or more related items's IDs    |
+
+##### Filter: Raw Like
+
+The wildcards character for `rlike` and `nrlike` are `%` (percentage) and `_` (underscore).
+
+> From MySQL Docs: https://dev.mysql.com/doc/refman/5.7/en/string-comparison-functions.html#operator_like
+> % matches any number of characters, even zero characters.
+> _ matches exactly one character.
+>
+>`JOHN%` will return matches `John`, `Johnson`, `Johnny`, `Johnathan`, etc. \
+>`JO%N%` will return the above matches, as well as `Jon`, `Jonny`, `Joan`, `Joanne`, `Jones`, etc. \
+>`J_N%` will return `Janice`, `Jane`, `Jones`, `Jinn`, `Jennifer`, `Junior`, etc. \
+>`J_N__` will return `Jonas`, `Jenny`, `Janie`, `Jones`, etc.
+
+##### Filter: Relational
+
+You can use dot notation on relational field. Using the same format: `filter[<field-name>][<operator>]=<value>` with the only difference `<field-name>` can reference a field from the related collection.
+
+If you have a `projects` collection with a field named `author` that's related to another collection named `users` you can reference any `users` field using dot notation; Example: `author.<any-users-field>`.
+
+The example below uses the `rlike` filter to get all projects that belongs to users that has a `@directus.io` domain email. In other words ends with `@directus.io`
+
+```
+GET /items/projects?filter[author.email][rlike]=%@directus.io
+```
+
+::: tip
+Make sure the field is a relational field before using the dot-notation, otherwise the API will return a error saying the field cannot be found.
+:::
+
+You can reference as many field as possible, as long as they are all relational field, except the last one, it could be either relational or non-relational.
+
+```
+GET /items/users?filter[comments.thread.title][like]=Directus
+```
+
+In the example above it will returns all users that have comments in a thread that has `Directus` in its title.
+
+There's two filter `has` and `all` that only works on `O2M`-type fields, any other type of fields used will throw an error saying the field cannot be found.
+
+The `all` filter will returns items that contains all IDs passed.
+
+```
+GET /items/projects?filter[contributors][all]=1,2,3
+```
+
+The example above will return all projects that have the user with ID 1, 2, and 3 as collaborator.
+
+Using `has` will return items with at least that mininum number of related items.
+
+Example of requesting projects with at least one contributor:
+
+```
+GET /items/projects?filter[contributors][has]=1
+```
+
+Example of requesting projects with at least three contributors:
+
+```
+GET /items/projects?filter[contributors][has]=3
+```
 
 #### AND vs OR
 
@@ -588,10 +704,6 @@ The format for date is `YYYY-MM-DD` and for datetime is `YYYY-MM-DD HH:MM:SS`. T
 - Months, days, minutes and seconds in two digits, adding leading zero padding when it's a one digit month
 - Hour in 24 hour format
 
-@TODO: Implemented soon
-
-Alias for current datetime `now` and current date `today`.
-
 ```
 # Equals to
 GET /items/comments?filter[datetime]=2018-05-21 15:48:03
@@ -609,12 +721,29 @@ GET /items/comments?filter[datetime][lt]=2018-05-21 15:48:03
 GET /items/comments?filter[datetime][lte]=2018-05-21 15:48:03
 
 # Between two date
-GET /items/comments?filter[datetime][lte]=2018-05-21 15:48:03,2018-05-21 15:49:03
+GET /items/comments?filter[datetime][between]=2018-05-21 15:48:03,2018-05-21 15:49:03
 ```
+
+For `date` and `datetime` type, `now` can be used as value for "currrent server time".
+
+```
+# Equals to
+GET /items/comments?filter[datetime]=now
+
+# Greater than
+GET /items/comments?filter[datetime][gt]=now
+
+# Between two date
+GET /items/comments?filter[datetime][between]=2018-05-21 15:48:03,now
+```
+
+When the field belongs to a Directus collection, `now` is converted to a UTC date/datime.
 
 ### Language
 
 The `lang` parameter is a CSV of languages that should be returned with the response. This parameter can only be used when a Translation field has been included in the collection. This parameter supports the wildcard (`*`) to return all language translations.
+
+In order to receive the translated values you **must** specify the [`fields`](#fields) parameter (e.g. `lang=*&fields=*.*` or `lang=en&fields=article_translations.*`).
 
 ### Search Query
 
@@ -624,20 +753,80 @@ The `q` parameter allows you to perform a search on all `string` and `number` ty
 
 The `groups` parameter allows grouping the result by one or more fields.
 
-#### Examples
-
-```
-# Groups the result by id and name fields
-groups=id,name
-```
-
-### Joins
-
-The `joins` parameter allows joining items from another collection to the main result.
+This parameter is a raw parameter, it adds all the fields you pass to the [`GROUP BY`](https://dev.mysql.com/doc/refman/5.6/en/group-by-modifiers.html) in SQL. This can result in SQL errors when the [`ONLY_FULL_GROUP_BY`](https://dev.mysql.com/doc/refman/5.6/en/sql-mode.html#sqlmode_only_full_group_by) mode is enabled in MySQL, and there's columns in `ORDER BY` that doesn't exists in the `GROUP BY`.
 
 #### Examples
 
-@TODO: Add examples and useful examples behind this feature
+Users table:
+
+| name      | country  |
+| --------- | -------- |
+| John      | US       |
+| Joseph    | GB       |
+| John      | GB       |
+
+Grouping the Users table by `name` will result in the following:
+
+```
+groups=name
+```
+
+```json
+{
+  "data": [
+    {
+      "name": "John"
+    },
+    {
+      "name": "Joseph"
+    }
+  ]
+}
+```
+
+All items that has the same fields in `groups` will be merged together.
+
+Grouping by both `name` and `country` will result on all items to be returned, because none of them match another record with the same `name` and `country` combined.
+
+### Skip Activity Logging
+
+The `activity_skip` parameter prevent the activity logging to be saved in the `directus_actity` table. `activity_skip=1` means to ignore the logging any other value means record the activity.
+
+#### Examples
+
+If there's collection used to logs a project specific activity and that happens frequently and you want to avoid this activity from filling the `directus_activity` collection, you use the `activity_skip=1` query parameter to skip saving this activity.
+
+```http
+POST /_/items/doors_access_logs?activity_skip=1
+```
+
+```json
+{
+  "door": "D190",
+  "user": 1,
+  "datetime": "2018-12-19 14:58:21"
+}
+```
+
+### Activity Comment
+
+The `comment` parameter is used to add a message to explain why the request is being made. This value is stored in the activity record. This can be either optional, required or forbidden, based on permissions.
+
+This parameter will not work when `activity_skip` is enabled.
+
+#### Examples
+
+If you want to keep track of the reason why a project from the `projects` collection went from `active` to `cancelled`, you can add a comment explaning the reason.
+
+```http
+PATCH /_/items/projects/1?comment=Client business closed doors
+```
+
+```json
+{
+  "status": "cancelled"
+}
+```
 
 ## Items
 
@@ -697,7 +886,6 @@ GET /[project]/items/[collection-name]/[pk]
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `status`      | [Read More](#status)       |
 | `lang`        | [Read More](#language)     |
 
 #### Examples
@@ -721,7 +909,6 @@ GET /[project]/items/[collection-name]/[pk1],[pk2],[pk3]
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `status`      | [Read More](#status)       |
 | `lang`        | [Read More](#language)     |
 
 #### Examples
@@ -754,7 +941,6 @@ GET /[project]/items/[collection-name]
 | `lang`        | [Read More](#language)     |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Examples
 
@@ -814,7 +1000,6 @@ GET /[project]/items/[collection-name]/[id]/revisions
 | `lang`        | [Read More](#language)     |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Examples
 
@@ -826,8 +1011,6 @@ GET /[project]/items/[collection-name]/[id]/revisions
 ### Update Item
 
 Update or replace a single item from a given collection.
-
-@TODO LOOK INTO ALLOWING FILTER PARAM FOR UPDATES, EG: `PUT /[project]/items/projects?filter[title][eq]=title`
 
 ```http
 PATCH /[project]/items/[collection-name]/[pk]
@@ -969,7 +1152,41 @@ GET /[project]/activity
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
+
+##### Response
+
+```json
+{
+  "data": [
+    {
+      "id": 1,
+      "action": "authenticate",
+      "action_by": 1,
+      "action_on": "2018-12-19T14:05:41+00:00",
+      "ip": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15",
+      "collection": "directus_users",
+      "item": "1",
+      "edited_on": null,
+      "comment": null,
+      "comment_deleted_on": null
+    },
+    {
+      "id": 2,
+      "action": "create",
+      "action_by": 1,
+      "action_on": "2018-12-19T14:06:42+00:00",
+      "ip": "::1",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15",
+      "collection": "directus_fields",
+      "item": "133",
+      "edited_on": null,
+      "comment": null,
+      "comment_deleted_on": null
+    }
+  ]
+}
+```
 
 #### Get Activity Event
 
@@ -989,6 +1206,26 @@ GET /[project]/activity/[id1],[id2],[id3],...
 | `status`      | [Read More](#status)       |
 | `lang`        | [Read More](#language)     |
 
+##### Response
+
+```json
+{
+  "data": {
+    "id": 1,
+    "action": "authenticate",
+    "action_by": 1,
+    "action_on": "2018-12-19T14:05:41+00:00",
+    "ip": "::1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15",
+    "collection": "directus_users",
+    "item": "1",
+    "edited_on": null,
+    "comment": null,
+    "comment_deleted_on": null
+  }
+}
+```
+
 #### Create Comment
 
 Create a new comment on an item. Each comment must include the item primary key and its parent collection name.
@@ -996,6 +1233,12 @@ Create a new comment on an item. Each comment must include the item primary key 
 ```http
 POST /[project]/activity/comment
 ```
+
+##### Supported Query Parameters
+
+| Name          | Documentation              |
+| ------------- | -------------------------- |
+| `meta`        | [Read More](#meta)         |
 
 ##### Body
 
@@ -1009,13 +1252,39 @@ A single object representing the new comment.
 }
 ```
 
+##### Response
+
+```json
+{
+  "data": {
+    "id": 2,
+    "action": "comment",
+    "action_by": 1,
+    "action_on": "2018-12-19T21:39:41+00:00",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15",
+    "collection": "projects",
+    "item": "1",
+    "edited_on": null,
+    "comment": "A new comment",
+    "comment_deleted_on": null
+  }
+}
+```
+
 #### Update Comment
 
 Update a comment by its ID.
 
 ```http
-POST /[project]/activity/comment/[id]
+PATCH /[project]/activity/comment/[id]
 ```
+
+##### Supported Query Parameters
+
+| Name          | Documentation              |
+| ------------- | -------------------------- |
+| `meta`        | [Read More](#meta)         |
 
 ##### Body
 
@@ -1027,6 +1296,26 @@ A single object representing the new comment. The collection and item fields are
 }
 ```
 
+##### Response
+
+```json
+{
+  "data": {
+    "id": 2,
+    "action": "comment",
+    "action_by": 1,
+    "action_on": "2018-12-19T21:39:41+00:00",
+    "ip": "127.0.0.1",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15",
+    "collection": "test",
+    "item": "1",
+    "edited_on": "2018-12-20T02:41:00+00:00",
+    "comment": "An updated comment",
+    "comment_deleted_on": null
+  }
+}
+```
+
 #### Delete Comment
 
 Delete a comment by its ID.
@@ -1034,6 +1323,14 @@ Delete a comment by its ID.
 ```http
 DELETE /[project]/activity/comment/[id]
 ```
+
+##### Supported Query Parameters
+
+None.
+
+##### Response
+
+Empty (HTTP 204)
 
 ### Collections
 
@@ -1053,12 +1350,11 @@ In the `fields` list, `field`, `type`, and `interface` are required.
 
 The `datatype` (database vendor specific) may also be required if the `type` supports different datatypes. For example, the `primary_key` type supports both _string_ and _number_, so it is also required to set the `datatype` to a numeric or string datatype.
 
-When `type` requires a length, such as a string or numeric, a `length` attribute is required.
+When `type` requires a length, such as a string or integer, a `length` attribute is required.
 
 ```json
 {
     "collection": "projects",
-    "item_name_template": null,
     "managed": true,
     "hidden": false,
     "single": false,
@@ -1068,12 +1364,11 @@ When `type` requires a length, such as a string or numeric, a `length` attribute
     "fields": [
         {
             "field": "id",
-            "type": "number",
+            "type": "integer",
             "datatype": "int",
-            "interface": "primary_key",
+            "interface": "primary-key",
             "primary_key": true,
             "auto_increment": true,
-            "length": 10,
             "signed": false
         },
         {
@@ -1087,6 +1382,28 @@ When `type` requires a length, such as a string or numeric, a `length` attribute
             "note": "The project title"
         }
     ]
+}
+```
+
+##### Supported Query Parameters
+
+| Name          | Documentation              |
+| ------------- | -------------------------- |
+| `meta`        | [Read More](#meta)         |
+
+##### Response
+
+```json
+{
+  "data": {
+    "collection": "projects",
+    "managed": true,
+    "hidden": false,
+    "single": false,
+    "icon": null,
+    "note": "This collection will store all of our projects",
+    "translation": null
+  }
 }
 ```
 
@@ -1175,7 +1492,6 @@ GET /[project]/collection_presets
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get Collection Preset
 
@@ -1192,7 +1508,6 @@ GET /[project]/collection_presets/[id1],[id2],[id3],...
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Update Collection Preset
 
@@ -1223,7 +1538,7 @@ These endpoints are used for creating, reading, updating, and deleting fields wi
 
 #### Create Field
 
-Creates a new field in a given collection. When creating a field you must submit the [Directus field type](/api/admin-guide/field-types.md) (`type`) as well as a database datatype (`datatype`) specific to your SQL vendor.
+Creates a new field in a given collection. When creating a field you must submit the [Directus field type](/guides/field-types.md) (`type`) as well as a database datatype (`datatype`) specific to your SQL vendor.
 
 ```http
 POST /[project]/fields/[collection]
@@ -1234,7 +1549,25 @@ POST /[project]/fields/[collection]
   "field": "description",
   "type": "string",
   "datatype": "varchar",
-  "interface": "textarea"
+  "interface": "textarea",
+  "unique": true,
+  "primary_key": false,
+  "auto_increment": false,
+  "default_value": null,
+  "note": null,
+  "signed": true,
+  "sort": 0,
+  "hidden_detail": false,
+  "hidden_browse": false,
+  "required": false,
+  "options": null,
+  "locked": false,
+  "translation": null,
+  "readonly": false,
+  "width": 4,
+  "validation": null,
+  "group": null,
+  "length": "255"
 }
 ```
 
@@ -1279,7 +1612,7 @@ PATCH /[project]/fields/[collection]/[field]
 Permanently deletes a field and its content.
 
 ```http
-DELETE /[project]/fields/[collection]
+DELETE /[project]/fields/[collection]/[field]
 ```
 
 :::warning
@@ -1298,7 +1631,11 @@ Uploads or creates a new file.
 POST /[project]/files
 ```
 
-There are two ways to upload a file:
+::: tip NOTE
+All uploads except when using URLs requires the `filename` property.
+:::
+
+There are different ways to upload a file:
 
 ##### Using Base64 Content
 
@@ -1316,6 +1653,24 @@ Using passing the base64 file contents to the `data` field.
 Passing the file form-data to the `data` field when making the `multipart/form-data` `POST` request.
 
 This allows for easier uploading of files when using an HTML form element with the `enctype` (encoding type) set to `multipart/form-data`.
+
+##### Using Supported embedded URLs
+
+Directus supports adding embed videos from YouTube and Vimeo to Directus Files using the video URL. Saving an image as its thumbnail.
+
+```json
+{
+  "data": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+}
+```
+
+##### Using URLs
+
+```json
+{
+  "data": "https://example.com/path/to/image.jpg"
+}
+```
 
 #### Get Files
 
@@ -1338,7 +1693,6 @@ GET /[project]/files
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get File
 
@@ -1355,7 +1709,6 @@ GET /[project]/files/[id1],[id2],[id3],...
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Update File
 
@@ -1445,7 +1798,6 @@ GET /[project]/files/[id]/revisions
 | `sort`        | [Read More](#sort)         |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get File Revision
 
@@ -1461,7 +1813,6 @@ Returns the revisions of a file using a 0-index based offset.
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 ### Folders
 
@@ -1503,7 +1854,6 @@ GET /[project]/files/folders
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get Folder
 
@@ -1520,7 +1870,6 @@ GET /[project]/files/folders/[id1],[id2],[id3],...
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Update Folder
 
@@ -1615,7 +1964,6 @@ GET /[project]/permissions
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get Permission
 
@@ -1632,7 +1980,6 @@ GET /[project]/permissions/[id1],[id2],[id3],...
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Get My Permissions
 
@@ -1655,7 +2002,6 @@ GET /[project]/permissions/me
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get My Collection Permissions
 
@@ -1671,7 +2017,6 @@ GET /[project]/permissions/me/[collection-name]
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Update Permission
 
@@ -1802,7 +2147,6 @@ Returns the list of relations.
 | `filter`      | [Read More](#filter)       |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 #### Get Relation
 
@@ -1819,7 +2163,6 @@ GET /[project]/relations/[id1],[id2],[id3],...
 | ------------- | -------------------------- |
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
-| `joins`       | [Read More](#joins)        |
 
 #### Update Relation
 
@@ -1946,6 +2289,12 @@ Returns a list of roles.
 
 ```http
 GET /[project]/roles
+```
+
+Returns a list of roles and their users
+
+```http
+GET /[project]/roles?fields=*,users.user.*
 ```
 
 #### Get Role
@@ -2124,7 +2473,6 @@ GET /[project]/users
 | `lang`        | [Read More](#language)     |
 | `q`           | [Read More](#search-query) |
 | `groups`      | [Read More](#groups)       |
-| `joins`       | [Read More](#joins)        |
 
 ##### Examples
 
@@ -2150,7 +2498,6 @@ GET /[project]/users/[pk],[pk],[pk]
 | `fields`      | [Read More](#fields)       |
 | `meta`        | [Read More](#meta)         |
 | `status`      | [Read More](#status)       |
-| `joins`       | [Read More](#joins)        |
 
 ##### Examples
 
@@ -2160,6 +2507,30 @@ Returns the user with an ID of `1`.
 curl -u <token>: https://api.directus.io/_/users/1
 ```
 
+#### Get Currently Logged-In User
+
+Gets a single user from within this project based on the token that's used to make the request.
+
+```http
+GET /[project]/users/me
+```
+
+##### Supported Query Parameters
+
+| Name          | Documentation              |
+| ------------- | -------------------------- |
+| `fields`      | [Read More](#fields)       |
+| `meta`        | [Read More](#meta)         |
+| `status`      | [Read More](#status)       |
+
+##### Examples
+
+Returns the user based on the token provided.
+
+```bash
+curl -u <token>: https://api.directus.io/_/users/me
+```
+
 #### Update User
 
 Updates a Directus User.
@@ -2167,8 +2538,6 @@ Updates a Directus User.
 ```http
 PATCH /[project]/users/[id]
 ```
-
-@TODO DO WE WANT TO SUPPORT CSV OF PKs HERE TOO?
 
 :::tip NOTE
 **PATCH** will partially update the item with the provided data, any missing fields will be ignored.
@@ -2386,7 +2755,7 @@ POST /[project]/mail
   "body": "Hello <b>{{name}}</b>, this is your new password: {{password}}.",
   "type": "html",
   "data": {
-    "user": "John Doe",
+    "name": "John Doe",
     "password": "secret"
   }
 }
@@ -2404,22 +2773,6 @@ These endpoints search for different types of enabled extensions and include the
 GET /interfaces
 GET /layouts
 GET /pages
-```
-
-### Get Interface
-
-All endpoints defined in an interface will be located within the `interfaces` group.
-
-```http
-GET /[project]/interfaces/[interface-id]
-```
-
-### Get Page
-
-All endpoints defined in a page will be located within the `pages` group.
-
-```http
-GET /[project]/pages/[page-id]
 ```
 
 ### Get Custom Endpoint
@@ -2452,7 +2805,13 @@ GET /
 {
   "data": {
     "api": {
-      "version": "2.0.0-rc.2"
+      "version": "2.0.14",
+      "database": "mysql",
+      "project_name": "Directus",
+      "project_logo": {
+        "full_url": "http://localhost/uploads/_/originals/logo.jpg",
+        "url": "/uploads/_/originals/logo.jpg"
+      }
     },
     "server": {
       "general": {
@@ -2506,6 +2865,18 @@ An example would be if `upload_max_size` has been increased only for a single pr
 }
 ```
 
+### Update
+
+Updates the project database.
+
+```http
+POST /[project]/update
+```
+
+#### Response
+
+Empty response when successful.
+
 ### Create Project
 
 Create a new project (database and config file) to be managed by this API instance.
@@ -2520,8 +2891,10 @@ POST /projects
 | --------------- | -------------------------------------- | ---------
 | `project`       | The project key. Default: `_`          | No
 | `force`         | Force the installation                 | No
+| `existing`      | Ignore existing installation           | No
 | `db_type`       | Database type. Only `mysql` supported  | No
 | `db_host`       | Database host. Default: `localhost`    | No
+| `db_socket`     | Database unix socket                   | No
 | `db_port`       | Database port. Default: `3306`         | No
 | `db_name`       | Database name                          | Yes
 | `db_user`       | Database user name                     | Yes
@@ -2531,11 +2904,22 @@ POST /projects
 | `user_token`    | Directus Admin token. Default: `null`  | No
 | `mail_from`     | Default mailer `from` email            | No
 | `project_name`  | The project name. Default: `Directus`  | No
+| `app_url`       | The application's URL.                 | No
 | `cors_enabled`  | Enable CORS. Default `true`            | No
 | `auth_secret`   | Sets the authentication secret key     | No
+| `auth`          | [Auth Object](#projects-auth-config)   | No
+| `cors`          | [CORS Object](#projects-cors-config)   | No
+| `cache`         | [Cache Object](#projects-cache-config) | No
+| `storage`       | [Storage Object](#projects-storage-config) | No
+| `mail`          | [Mail Object](#projects-mail-config) | No
+| `rate_limit`    | [Rate Limit Object](#projects-mail-config) | No
 
 ::: warning
 When `project` is not specified it will create the default configuration.
+:::
+
+::: tip
+If there's a fille in the root named `.lock` this instance is locked from creating new projects.
 :::
 
 ```json
@@ -2548,9 +2932,92 @@ When `project` is not specified it will create the default configuration.
 }
 ```
 
+### Projects Auth Config
+
+| Attribute       | Description
+| --------------- | --------------------------------------
+| `secret`        | Auth secret key
+| `public`        | Auth public key
+| `social_providers` | List of SSO Providers.
+
+SSO Providers supported `okta`, `github`, `facebook`, `google`, and `twitter`.
+
+Read more about the `auth` configuration [here](../advanced/api/configuration.md#auth).
+
+### Projects CORS Config
+
+| Attribute       | Description
+| --------------- | --------------------------------------
+| `enabled`       | Enable (`true`) or disable (`false`) CORS
+| `origin`        | List of allowed origin hosts
+| `methods`       | List of allowed HTTP methods
+| `headers`       | List of allowed HTTP headers
+| `exposed_header`| List of HTTP headers to expose in the response
+| `max_age`       | How long (in seconds) to cache a preflight request
+| `credentials`   | Include client credentials (cookies, auth headers, and TLS client certificates)
+
+Read more about the `cors` configuration [here](../advanced/api/configuration.md#cors).
+
+### Projects Cache Config
+
+| Attribute       | Description
+| --------------- | --------------------------------------
+| `enabled`       | Enable (`true`) or disable (`false`) cache
+| `response_ttl`  | How long (in seconds) the cache will be valid
+| `adapter`       | Cache adapter identifier (`apc`, `apcu`, `filesystem`, `memcached`, `redis`)
+| `path`          | When using `filesystem` adapter, path where the cache will be stored
+| `host`          | The adapter host
+| `port`          | The adapter port
+
+Read more about the `cache` configuration [here](../advanced/api/configuration.md#cache).
+
+### Projects Storage Config
+
+| Attribute       | Description
+| --------------- | --------------------------------------
+| `adapter`       | Storage adapter identifier
+| `root`          | Storage root path
+| `root_url`      | Storage url to access files in `root`
+| `thumb_root`    | Thumbnails root path
+| `key`           | S3 Bucket key
+| `secret`        | S3 Bucket secret
+| `region`        | S3 Bucket region
+| `version`       | S3 Bucket version
+| `bucket`        | S3 Bucket name
+| `options`       | S3 Bucket options
+| `endpoint`      | S3 Bucket endpoint
+
+Read more about the `storage` configuration [here](../advanced/api/configuration.md#storage).
+
+### Projects Mail Config
+
+| Attribute       | Description
+| --------------- | --------------------------------------
+| `transport`     | Mail transport
+| `sendmail`      | Mail sendmail command (when `sendmail` is used)
+| `host`          | SMTP host
+| `port`          | SMTP port
+| `username`      | SMTP username
+| `password`      | SMTP password
+| `encryption`    | SMTP encryption
+
+Read more about the `storage` configuration [here](../advanced/api/configuration.md#mail).
+
+### Projects Rate Limit Config
+
+| Attribute       | Description
+| --------------- | --------------------------------------
+| `enabled`       | Enable (`true`) or Disable (`false`)
+| `limit`         | Number of request within `interval`
+| `interval`      | How long (in seconds) a interval will last
+| `adapter`       | Rate limit adapter
+| `host`          | Adapter host
+| `port`          | Adapter port
+| `timeout`       | Adapter request timeout
+
 ## Field Types
 
-Returns the list of [Directus field types](/api/admin-guide/field-types.md).
+Returns the list of [Directus field types](/guides/field-types.md).
 
 ```http
 GET /types
@@ -2606,7 +3073,7 @@ A list of all system objects expected or returned by Directus endpoints.
 | --------------------- | ----------------- | ----------------------------------------- |
 | `id`                  | `integer`         |                                           |
 | `action`              | `string`          |                                           |
-| `action_by`           | `integer`,`User`  |                                           |
+| `action_by`           | `integer`,`User`  | The ID of the User                        |
 | `action_on`           | `timestamp`       |                                           |
 | `ip`                  | `string`          |                                           |
 | `user_agent`          | `string`          |                                           |
@@ -2621,8 +3088,8 @@ A list of all system objects expected or returned by Directus endpoints.
 | Key                   |  Type                 | Description                               |
 | --------------------- | --------------------- | ----------------------------------------- |
 | `id`                  | `integer`             |                                           |
-| `activity`            | `integer`, `Activity` |                                           |
-| `user`                | `integer`,`User`      |                                           |
+| `activity`            | `integer`, `Activity` | The ID of the Activity                    |
+| `user`                | `integer`,`User`      | The ID of the User                        |
 | `seen_on`             | `timestamp`           |                                           |
 | `archived`            | `boolean`             |                                           |
 
@@ -2634,9 +3101,9 @@ A list of all system objects expected or returned by Directus endpoints.
 | `managed`             | `boolean`            |                                           |
 | `hidden`              | `boolean`            |                                           |
 | `single`              | `boolean`            |                                           |
-| `translation`         | `json`               |                                           |
-| `note`                | `string`             |                                           |
 | `icon`                | `string`             |                                           |
+| `note`                | `string`             |                                           |
+| `translation`         | `json`               |                                           |
 
 ### Collection Preset Object
 
@@ -2644,8 +3111,8 @@ A list of all system objects expected or returned by Directus endpoints.
 | --------------------- | -------------------- | ----------------------------------------- |
 | `id`                  | `integer`            |                                           |
 | `title`               | `string`             |                                           |
-| `user`                | `integer`,`User`     |                                           |
-| `role`                | `integer`, `Role`    |                                           |
+| `user`                | `integer`, `User`    |  The ID of the User                       |
+| `role`                | `integer`, `Role`    |  The ID of the Role                       |
 | `collection`          | `string`             |                                           |
 | `search_query`        | `string`             |                                           |
 | `filters`             | `json`               |                                           |
@@ -2659,44 +3126,378 @@ A list of all system objects expected or returned by Directus endpoints.
 | Key                   |  Type                  | Description                               |
 | --------------------- | ---------------------- | ----------------------------------------- |
 | `id`                  | `integer`              |                                           |
-| `collection`          | `string`, `Collection` |                                           |
+| `collection`          | `string`, `Collection` | The ID of the Collection                  |
 | `field`               | `string`               |                                           |
 | `type`                | `string`               |                                           |
 | `interface`           | `string`               |                                           |
 | `options`             | `json`                 |                                           |
 | `locked`              | `boolean`              |                                           |
-| `translation`         | `json`                 |                                           |
-| `readonly`            | `boolean`              |                                           |
-| `required`            | `boolean`              |                                           |
-| `sort`                | `integer`              |                                           |
-| `view_width`          | `integer`              |                                           |
-| `note`                | `string`               |                                           |
-| `hidden_input`        | `boolean`              |                                           |
 | `validation`          | `string`               |                                           |
-| `hidden_list`         | `boolean`              |                                           |
+| `required`            | `boolean`              |                                           |
+| `readonly`            | `boolean`              |                                           |
+| `hidden_detail`       | `boolean`              |                                           |
+| `hidden_browse`       | `boolean`              |                                           |
+| `sort`                | `integer`              |                                           |
+| `width`               | `integer`              |                                           |
 | `group`               | `integer`              |                                           |
+| `note`                | `string`               |                                           |
+| `translation`         | `json`                 |                                           |
 
 ### File Object
 
+| Key           | Type               | Description          |
+|---------------|--------------------|----------------------|
+| `id`          | `integer`          |                      |
+| `storage`     | `string`           |                      |
+| `filename`    | `string`           |                      |
+| `title`       | `string`           |                      |
+| `type`        | `string`           |                      |
+| `uploaded_by` | `integer`, `User`  | The ID of the User   |
+| `uploaded_on` | `timestamp`        |                      |
+| `charset`     | `string`           |                      |
+| `filesize`    | `integer`          |                      |
+| `width`       | `integer`          |                      |
+| `height`      | `integer`          |                      |
+| `duration`    | `integer`          |                      |
+| `embed`       | `string`           |                      |
+| `folder`      | `string`, `Folder` | The ID of the Folder |
+| `description` | `string`           |                      |
+| `location`    | `string`           |                      |
+| `tags`        | `array`, `string`  |                      |
+| `metadata`    | `json`             |                      |
+| `data`        | `json`             |                      |
+
 ### Folder Object
+
+| Key             | Type               | Description |
+|-----------------|--------------------|-------------|
+| `id`            | `integer`          |             |
+| `name`          | `string`           |             |
+| `parent_folder` | `string`, `Folder` |             |
 
 ### Permission Object
 
+| Key                     | Type              | Description                                          |
+|-------------------------|-------------------|------------------------------------------------------|
+| `id`                    | `integer`         |                                                      |
+| `collection`            | `string`          |                                                      |
+| `role`                  | `integer`, `Role` | The ID of the Role                                   |
+| `status`                | `string`          |                                                      |
+| `create`                | `string`          | "none" (or NULL), "full"                             |
+| `read`                  | `string`          | "none" (or NULL), "mine", "role", "full"             |
+| `update`                | `string`          | "none" (or NULL), "mine", "full"                     |
+| `delete`                | `string`          | "none" (or NULL), "mine", "role", "full"             |
+| `comment`               | `string`          | "none", "read", "update" (or NULL), "create", "full" |
+| `explain`               | `string`          | "none" (or NULL), "update", "create", "always"       |
+| `read_field_blacklist`  | `array`           | List of fields that the role cannot read             |
+| `write_field_blacklist` | `array`           | List of fields that the role cannot edit             |
+| `status_blacklist`      | `array`           |                                                      |
+
 ### Relation Object
+
+| Key               | Type                   | Description |
+|-------------------|------------------------|-------------|
+| `id`              | `integer`              |             |
+| `collection_many` | `string`, `Collection` |             |
+| `field_many`      | `string`, `Field`      |             |
+| `collection_one`  | `string`, `Collection` |             |
+| `field_one`       | `string`, `Field`      |             |
+| `junction_field`  | `string`, `Field`      |             |
 
 ### Revision Object
 
+| Key                 | Type                   | Description                                                                                       |
+|---------------------|------------------------|---------------------------------------------------------------------------------------------------|
+| `id`                | `integer`              |                                                                                                   |
+| `activity`          | `integer`, `Activity`  | The ID of the Activity                                                                            |
+| `collection`        | `string`, `Collection` | The ID of the Collection                                                                          |
+| `item`              | `string`               | ID of the item in the collection, or the Collection name if the collection is directus_collection |
+| `data`              | `json`                 | The item's JSON object                                                                            |
+| `delta`             | `json`                 | Item keys that were changed and their updated values                                              |
+| `parent_collection` | `string`,`Collection`  |                                                                                                   |
+| `parent_item`       | `string`,`Item`        |                                                                                                   |
+| `parent_changed`    | `boolean`              |                                                                                                   |
+
 ### Role Object
+
+| Key             | Type            | Description             |
+|-----------------|-----------------|-------------------------|
+| `id`            | `integer`       |                         |
+| `name`          | `string`        | Name of the role        |
+| `description`   | `string`        | Description of the role |
+| `ip_whitelist`  | `string`        |                         |
+| `nav_blacklist` | `string`        |                         |
+| `external_id`   | `string`        |                         |
 
 ### Setting Object
 
+| Key     | Type      | Description |
+|---------|-----------|-------------|
+| `id`    | `integer` |             |
+| `key`   | `string`  |             |
+| `value` | `string`  |             |
+
 ### User Object
+
+| Key                   | Type              | Description                   |
+|-----------------------|-------------------|-------------------------------|
+| `id`                  | `integer`         |                               |
+| `status`              | `string`          |                               |
+| `first_name`          | `string`          |                               |
+| `last_name`           | `string`          |                               |
+| `email`               | `string`          |                               |
+| `password`            | `string`          |                               |
+| `token`               | `string`          | Static token                  |
+| `timezone`            | `string`          |                               |
+| `locale`              | `string`          |                               |
+| `locale_options`      | `string`          |                               |
+| `avatar`              | `integer`, `File` | The ID of the File            |
+| `company`             | `string`          |                               |
+| `title`               | `string`          |                               |
+| `email_notifications` | `boolean`         |                               |
+| `last_access_on`      | `timestamp`       |                               |
+| `last_page`           | `string`          | The relative path of the page |
+| `external_id`         | `string`          | For SCIM authorization        |
 
 ### User Role Object
 
+| Key    | Type              | Description        |
+|--------|-------------------|--------------------|
+| `id`   | `integer`         |                    |
+| `user` | `integer`, `User` | The ID of the User |
+| `role` | `integer`, `Role` | The ID of the Role |
+
+## GraphQL
+
+The Directus REST API offers the same powerful and granular options as GraphQL. However, some users may want to use the specific GraphQL specification for requests and responses. For that reason, Directus offers a GraphQL endpoint as a wrapper of the REST API.
+
+::: warning Limited Support
+Currently supports "Queries" only. "Mutations" and "Subscription" support will be added soon.
+:::
+
+### Configuring GraphQL
+
+1. Clone the API repo.
+2. Do `composer update`
+3. Download & install the [GraphiQL](https://electronjs.org/apps/graphiql) tool on your system.
+    * It provides the GUI for editing and testing GraphQL queries and mutations.
+4. Insert your project URL in **GraphQL Endpoint**. Make sure the request type is POST.
+    * For example, `<setup_url>/<project-key>/gql?access_token=demo`
+5. GraphiQL will list down all the queries.
+
+Once you've setup the GraphQL on server side, you'll need a GraphQL client to prepare a query and send requests. Many different programming languages support GraphQL. [This list](https://graphql.org/code/#graphql-clients) contains some of the popular client libraries.
+
+### Filters
+
+To apply filters on a list of items, you can use the `filter` argument. Filter fields can be defined as `<field-name>_<operator>:<value>`. A list of available filters can be found [here](/api/reference.html#filtering)
+
+For example, to only return "horror" movies from a `movies` collection, we can apply a filter like this:
+
+```
+{
+  movies(limit: 10, filter: {genre_contains: "horror"}) {
+    data {
+      name
+    }
+  }
+}
+```
+
+### How To Use
+
+[Here is the list](https://graphql.org/code/#javascript-1) of JavaScript libraries available for using GraphQL client side. We'll be using [Vue-Apollo](https://vue-apollo.netlify.com/guide/) which integrates [Apollo](https://www.apollographql.com/) in your Vue components with declarative queries.
+
+Vue-Apollo is recommended because:
+
+1. Can be installed via Vue CLI as a plugin.
+2. Jump start the development without lengthy configuration.
+
+#### 1. Install & Setup Vue Apollo
+
+```
+npm install --save vue-apollo graphql apollo-boost
+```
+
+```javascript
+import Vue from "vue";
+import VueApollo from "vue-apollo";
+
+Vue.use(VueApollo);
+```
+
+Follow [this link](https://vue-apollo.netlify.com/guide/installation.html) for more info on Vue-Apollo setup.
+
+#### 2. Create Apollo Client & Provider
+
+Generally this should be added into entry file of the project. In most cases it would be `main.js` or `app.js`
+
+```javascript
+import ApolloClient from "apollo-boost";
+
+const apolloClient = new ApolloClient({
+  // Add absolute project URL here:
+  // If your setup has multiple projects, use respective key else default should be '_'
+  // More info: https://docs.directus.io/api/reference.html#project-prefix
+  uri:
+    "http://localhost:8888/directus/api/public/<project-key>/gql?access_token=demo"
+});
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient
+});
+```
+
+#### 3. Register Apollo Provider to Vue
+
+```javascript
+new Vue({
+  el: "#app",
+  apolloProvider,
+  render: h => h(App)
+});
+```
+
+You are now ready to use Apollo in your components!
+
+#### 4. Query the data
+
+```vue
+<template>
+  <div class v-html="about.about_us"></div>
+</template>
+
+<script>
+import gql from "graphql-tag";
+
+export default {
+  apollo: {
+    about: gql`
+      query {
+        about(id: 1) {
+          about_us
+        }
+      }
+    `
+  }
+};
+</script>
+```
+
+[Read more](https://vue-apollo.netlify.com/guide/apollo/) about how to form the query and request data from GraphQL.
+
+### Item Details
+
+When you want a specific item based on a primary key, you can pass an `id` argument. For example, if you want to get details of id `1` from `movies` collection:
+
+```
+movies(id: 1) {
+  data {
+    name
+    genre
+    status
+  }
+}
+```
+
+::: tip
+When you're requesting an item based on primary key, obviously you'll always get a single item. But the response you'll get will always be an array with a single item. This is because how GraphQL & Directus is designed. The GraphQL expects a predefined `types` of a field. So in our case, an **item** or **list of items** will always be an `array`.
+:::
+
+A complete example to get details of an item from the `movies` collection:
+
+```vue
+<template>
+  <div id="app">
+    <!-- You should always select `0th` item when you're requesting an item based on primary key -->
+    <h1>{{ movies.data[0].name }}</h1>
+  </div>
+</template>
+
+<script>
+import gql from "graphql-tag";
+
+export default {
+  apollo: {
+    movies: gql`
+      query {
+        movies(id: 1) {
+          data {
+            name
+            genre
+            status
+          }
+        }
+      }
+    `
+  }
+};
+</script>
+```
+
+### Listing Items
+
+You can get a set of items from a particular collection. For example, if you want to list items from the `movies` collection, the query would be:
+
+```
+movies(limit:10) {
+  data {
+    name
+  }
+  meta {
+    result_count
+    total_count
+  }
+}
+```
+
+Here the `data` is an array containing all the items while `meta` includes all metadata about the items. The response format is same as the REST API so you can use queries in GraphQL or the REST API interchangably. Read more about meta [here.](/api/reference.html#metadata)
+
+#### Arguments
+
+Collection supports following 3 arguments.
+
+- limit: Limits the number of items per page.
+- offset: To skip the number of items multiplied by limit from start.
+- filter: To list specific items based on their values. [Read More](./filters.html)
+- id: To get a specific item with primary key. [Read More](./item-details.html).
+
+A complete example to list down items from the `movies` collection:
+
+```vue
+<template>
+  <div id="app">
+    <ul>
+      <li v-for="item in movies.data">{{ item.name }}</li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import gql from "graphql-tag";
+
+export default {
+  apollo: {
+    movies: gql`
+      query {
+        movies(limit: 10) {
+          data {
+            name
+          }
+          meta {
+            result_count
+            total_count
+          }
+        }
+      }
+    `
+  }
+};
+</script>
+```
+
 ## SCIM
 
-Directus partially supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for the exchange of user information between systems, therefore allowing users to be created, managed, and disabled outside of Directus.
+Directus partially supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for the exchange of user information between systems, therefore allowing users to be externally managed using the endpoints described below.
 
 ### Overview
 
@@ -2708,6 +3509,8 @@ Directus partially supports Version 2 of System for Cross-domain Identity Manage
 | `/Groups/[id]` | `GET`, `PUT`, `PATCH`, `DELETE` |
 
 Learn more within the "SCIM Endpoints and HTTP Methods" section of [RFC7644](https://tools.ietf.org/html/rfc7644#section-3.2).
+
+If want to integrate Directus SCIM endpoints with Okta, follow these steps on [Publishing Your SCIM-Based Provisioning Integration](https://developer.okta.com/standards/SCIM/#publishing-your-scim-based-provisioning-integration) section.
 
 ### Create SCIM User
 
@@ -2877,6 +3680,8 @@ GET /[project]/scim/v2/Users?filter=userName eq user@example.com
 ```http
 GET /[project]/scim/v2/Users/[id]
 ```
+
+The `id` must be the `external_id` in the `directus_users` collection, which is the `id` in the SCIM Users results.
 
 #### Response
 

@@ -1,7 +1,7 @@
 {
   "name": "@directus/docs",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Directus Docs",
   "main": "index.js",
   "repository": "directus/docs-v7",
@@ -11,7 +11,8 @@
   ],
   "scripts": {
     "dev": "vuepress dev .",
-    "build": "vuepress build ."
+    "build": "vuepress build .",
+    "eject": "vuepress eject"
   },
   "author": "Rijk van Zanten <rijkvanzanten@me.com>",
   "contributors": [
@@ -25,6 +26,7 @@
   "homepage": "https://github.com/directus/docs#readme",
   "devDependencies": {},
   "dependencies": {
-    "vuepress": "^0.14.2"
+    "@vuepress/plugin-medium-zoom": "^1.0.0-alpha.0",
+    "vuepress": "^1.0.0-alpha.27"
   }
 }
