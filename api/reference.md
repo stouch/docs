@@ -116,6 +116,11 @@ The API uses numeric codes to avoid the need for translated error messages based
 - `0106` - User Not Found (404)
 - `0107` - User with Provided Email Not Found (404)
 - `0108` - User Not Authenticated (401)
+- `0109` - Invalid Request Token (500)
+- `0110` - Expired Request Token (500)
+- `0111` - User Missing 2FA OTP (404)
+- `0112` - Invalid User OTP (404)
+- `0113` - 2FA Enforced but Not Activated (401)
 
 #### Items Error Codes
 
