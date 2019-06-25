@@ -113,6 +113,13 @@ The following reserved project names can not be used because they represent root
 
 The SQL database's tables, columns, datatypes, defaults, and other architectual information. This does not include any items or content.
 
+### Telemetry
+
+Directus pings a centralized [Telemetry](https://github.com/directus/telemetry) server to accomplish two things:
+
+1. Retrieve the latest releases from GitHub to inform Admin users when an upgrade is available.
+2. Send anonymous metrics used to calculate Directus install count.
+
 ### Versionless
 
 The Directus API is "versionless", which means that new releases will only include fixes and improvements, but no deprecations or breaking changes.
