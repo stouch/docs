@@ -40,6 +40,8 @@ Clicking one of these icons will take you to a secure login page of the service 
 ### 2FA
 Two-Factor Authentication (2FA) is an authentication method that requires extra evidence from the user, apart from their password. In this case, we require a One-Time Password (OTP). This is a code that is stored in an authenticator and changes every 30 seconds.
 
+It's a great way to help keep your account secure because it adds a layer of security to your account. Even if someone were to obtain your password, they would still need your authenticator to log in.
+
 To enable 2FA, go to your User Profile, click "Enable 2FA". add the 2FA secret to your authenticator and save.
 
 ::: danger
