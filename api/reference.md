@@ -459,7 +459,7 @@ The user credentials, with an OTP.
 }
 ```
 
-::: info
+::: warning
 If an invalid OTP is specified, the API will throw an `InvalidOTPException`. If the user has 2FA enabled, but no OTP is given, the API will throw a `Missing2FAPasswordException`.
 :::
 
