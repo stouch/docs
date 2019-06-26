@@ -440,7 +440,7 @@ POST /[project]/auth/sso/access_token
 ```
 
 ### Logging in with 2FA
-Two-Factor Authentication (2FA) is an authentication method that requires extra evidence from the user, apart from their password. In this case, we require a One-Time Password (OTP). This is a password that is stored in an authenticator and changes every 30 seconds.
+Two-Factor Authentication (2FA) is an authentication method that requires extra evidence from the user, apart from their password. In this case, we require a One-Time Password (OTP). This is a code that is stored in an authenticator and changes every 30 seconds.
 
 #### Get Auth Token with 2FA
 
