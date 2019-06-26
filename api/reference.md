@@ -463,16 +463,6 @@ The user credentials, with an OTP.
 If an invalid OTP is specified, the API will throw an `InvalidOTPException`. If the user has 2FA enabled, but no OTP is given, the API will throw a `Missing2FAPasswordException`.
 :::
 
-
-
-### Generate a 2FA secret
-
-Gets a 2FA secret. This endpoint can be used to then set a user's 2FA secret
-
-```http
-POST /[project]/utils/2fa_secret
-```
-
 ##### Response
 
 A 2FA secret.
@@ -2775,6 +2765,14 @@ POST /[project]/utils/random/string
 | Name   | Default | Description                  |
 | ------ | ------- | ---------------------------- |
 | length | 32      | Length of string to generate |
+
+### Generate 2FA secret
+
+Gets a 2FA secret. This endpoint can be used to then set a user's 2FA secret.
+
+```http
+POST /[project]/utils/2fa_secret
+```
 
 ## Mail
 
