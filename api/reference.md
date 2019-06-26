@@ -439,6 +439,51 @@ POST /[project]/auth/sso/access_token
 }
 ```
 
+### Logging in with 2FA
+
+#### Get Auth Token with 2FA
+
+```http
+POST /[project]/auth/authenticate
+```
+
+##### Body
+
+The user credentials, with an OTP.
+
+```json
+{
+    "email": "rijk@directus.io",
+    "password": "supergeheimwachtwoord",
+    "otp": "140619"
+}
+```
+
+::: info
+If an invalid OTP is specified, the API will throw an `InvalidOTPException`. If the user has 2FA enabled, but no OTP is given, the API will throw a `Missing2FAPasswordException`.
+:::
+
+
+
+### Generate a 2FA secret
+
+Gets a 2FA secret. This endpoint can be used to then set a user's 2FA secret
+
+```http
+POST /[project]/utils/2fa_secret
+```
+
+##### Response
+
+A 2FA secret.
+
+```json
+{
+        "2fa_secret": "140619",
+        "public": true
+}
+```
+
 ## Query Parameters
 
 The API has a set of query parameters that can be used for specific actions, such as: filtering, sorting, limiting, and choosing fields. These supported query parameters are listed below:
