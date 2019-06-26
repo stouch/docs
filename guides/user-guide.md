@@ -37,6 +37,15 @@ When [the system has been configured to allow you to login with external service
 
 Clicking one of these icons will take you to a secure login page of the service you chose. Directus will allow you to login with your external account as long as it uses the same email address as your Directus user account.
 
+### 2FA
+Two-Factor Authentication (2FA) is an authentication method that requires extra evidence from the user, apart from their password. In this case, we require a One-Time Password (OTP). This is a code that is stored in an authenticator and changes every 30 seconds.
+
+To enable 2FA, go to your User Profile, click "Enable 2FA". add the 2FA secret to your authenticator and save.
+
+::: danger
+This QR code will only be shown to you once. After you save your profile, the next time you log in, you will be required to enter your OTP after your email and password.
+:::
+
 ### Forgot password
 
 Your password is securely encrypted, so no one can remind you what it is if forgotten. Instead, click on the "Forgot Password" link and enter the email address you use to log in. Directus will then send you an email with a temporary reset link; simply click on that link or paste it into your browser to reset your password.
