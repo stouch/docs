@@ -22,6 +22,7 @@ $ cd app
 ```
 
 2. Bump the version in `package.json`
+   + Tag the release on master
 
 3. Install npm dependencies
 
@@ -85,6 +86,7 @@ $ cd api
 ```
 
 2. Bump the version in `package.json` and `src/core/Directus/Application/Application.php`
+   + Tag the release on master
 
 3. Install the composer dependencies
 
