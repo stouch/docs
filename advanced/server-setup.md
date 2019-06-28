@@ -1,6 +1,6 @@
 # Server Setup
 
-> To get Directus working on most servers all you need to do is ensure that traffic is routed to the correct files. Let's take a look at some common examples below.
+> While only Apache is _officially_ supported, to get Directus working on most servers all you need to do is ensure that traffic is routed to the correct files. Let's take a look at some common examples below.
 
 ## Apache
 
