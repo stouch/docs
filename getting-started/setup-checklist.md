@@ -88,6 +88,6 @@ If you are implementing a solution for a client or an enterprise, you want to ta
 
 If all of the above fails, you should:
 
-- Ask for help on the `#support` channel of our [Community Slack](https://slack.directus.io/)
+- Ask for help on the `#support` channel of our [Community Slack](https://directus.chat)
 - You can also post configuration questions on [StackOverflow](https://stackoverflow.com/search?q=directus)
 - Lastly, if this truly seems like a `bug` (not a configuration problem) then report it on GitHub issues for the [API](https://github.com/directus/api/issues/new?template=Bug_report.md) or [App](https://github.com/directus/app/issues/new?template=Bug_report.md).
