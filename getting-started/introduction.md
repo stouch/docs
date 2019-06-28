@@ -64,6 +64,10 @@ To make it as easy as possible to actually play around with Directus we maintain
 
 For general information, resources, and team info we maintain a marketing [website](https://directus.io/). This is a good non-technical hub to serve as as introduction to the Directus platform.
 
+### Directus Community
+
+Join our growing community on [Directus Slack](https://directus.chat) (1,100+ members) to get an inside peak into what's happening within our organization. From community support to seeing where the platform is heading next, it's a great way to get more involved!
+
 ### Directus Marketplace
 
 Coming in early 2019, this will be a library of extensions available for Directus. Eventually we plan on opening this up to community submissions and allowing monetization — but initially it will showcase free extensions created by our core team.
