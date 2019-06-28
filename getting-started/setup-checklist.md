@@ -71,7 +71,7 @@
 
 There are great guides published with our official docker images for the directus [app](https://hub.docker.com/r/directus/app) and [API](https://hub.docker.com/r/directus/api). Those are your best resources for hitting the ground running with the respective containers.
 
-> If you're taking a stab at rolling your own image from the source code for a bespoke use case, here's a brief explainer along with our best wishes (to all explorers & tinkerers out there 🚀🍻 - do [share your journey](https://slack.directus.io/) and any lessons with us)
+> If you're taking a stab at rolling your own image from the source code for a bespoke use case, here's a brief explainer along with our best wishes (to all explorers & tinkerers out there 🚀🍻 - do [share your journey](https://directus.chat) and any lessons with us)
 
 ### So what is Docker, anyway?
 Your docker (or Kubernetes) images are made of the same "stuff" as a UNIX based OS environment, just packaged in a container. Docker - and other containerization frameworks are simply faster, meaner virtualization paradigms (think evolution of VMs from of old).
