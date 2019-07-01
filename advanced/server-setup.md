@@ -96,15 +96,15 @@ server {
     # disable_symlinks if_not_owner;
 
     location / {
-        try_files $uri $uri/ /index.php$args;
+        try_files $uri $uri/ /index.php?$args;
     }
 
     location /admin {
-        try_files $uri $uri/ /admin/index.html$args;
+        try_files $uri $uri/ /admin/index.html?$args;
     }
 
     location /thumbnail {
-        try_files $uri $uri/ /thumbnail/index.php$args;
+        try_files $uri $uri/ /thumbnail/index.php?$args;
     }
 
     # Deny direct access to php files in extensions
