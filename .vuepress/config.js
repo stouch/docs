@@ -72,7 +72,8 @@ module.exports = {
           ["/getting-started/concepts", "Concepts"],
           ["/getting-started/contributing", "Contributing"],
           ["/getting-started/supporting-directus", "Supporting Directus"],
-          ["/getting-started/troubleshooting", "Troubleshooting"]
+          ["/getting-started/troubleshooting", "Troubleshooting"],
+          ["/getting-started/setup-checklist", "Setup Checklist"]
         ]
       },
       {
