@@ -6,6 +6,8 @@
 **This checklist applies to the OS-level requirements for your Directus server**. If you are installing Directus using any of the other installation methods outlined [here](/getting-started/installation.html#setup), you will need to examine your container image (or other system configuration) to ensure these requirements are met.
 :::
 
+## Checklist
+
 1. **Check your Server Requirements** — Ensure that your server meets the [minimum Directus requirements](/advanced/requirements.html):
 
     - Apache 2
@@ -65,7 +67,7 @@
     
 13. **Did you check [GitHub](https://github.com/directus) for an open issue similar to yours?**
 
-## But I don't see anything about Docker or Containers...
+## Docker and Containers
 
 > If you are a docker ninja, feel free to skip this explainer
 
