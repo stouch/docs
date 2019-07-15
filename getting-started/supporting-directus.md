@@ -46,7 +46,7 @@ No technical skills? Not enough time for a pull-request? No problem! We have ple
 
 ### Translations
 
-Directus is a worldwide project. Our team and users are spread out across the globe and often speak different languages. If you do too, we'd love to get Directus [translated into your native tongue](https://github.com/directus/directus/issues/1203). It's easy, and each new translation opens the door to a huge number of new users.
+Directus is a worldwide project. Our team and users are spread out across the globe and often speak different languages. If you do too, we'd love to get Directus [translated into your native tongue](https://locales.directus.io/). It's easy, and each new translation opens the door to a huge number of new users.
 
 ### Bug Reporting
 
