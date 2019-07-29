@@ -517,7 +517,7 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
 
 ### Limit
 
-Using `limit` can be set the maximum number of items that will be returned. You can also use `-1` to return all items, bypassing the default limits.
+Using `limit` can be set the maximum number of items that will be returned. You can also use `-1` to return all items, bypassing the default limits. The default limit is set to 200.
 
 #### Examples
 
