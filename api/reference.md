@@ -871,6 +871,97 @@ _Or, for batch creating multiple items:_
 ]
 ```
 
+#### Relational Data
+
+##### 1. O2M 
+
+A single item or an array of multiple items to be created. Field keys must match the collection's column names.
+
+- Create New
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+         "name" : "Design",
+         "order" : 1
+      },
+      {
+        "name" : "Development",
+         "order" : 2
+      }
+    ]
+}
+```
+- Select Existing
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+         "id" : 1
+      }
+    ]
+}
+```
+
+##### 2. M2O 
+
+A single item to be created. Field key must match the collection's column name.
+
+```json
+{
+    "title": "Project One",
+    "category": 1
+}
+```
+##### 3. M2M 
+
+A single item or an array of multiple items to be created. Field keys must match the collection's column names.
+
+- Add New
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+        "category_id": {
+          "name" : "Design",
+          "order" : 1
+        }
+      },
+      {
+        "category_id": {
+          "name" : "Development",
+          "order" : 2
+        }
+      }
+    ]
+}
+```
+- Select Existing
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+        "category_id": {
+          "id" : 1
+        }
+      },
+      {
+        "category_id": {
+          "id" : 2
+        }
+      }
+    ]
+}
+```
+
 ::: tip
 The API may not return any data for successful requests if the user doesn't have adequate read permission. Instead, `204 NO CONTENT` is returned.
 :::
