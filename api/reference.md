@@ -877,7 +877,7 @@ _Or, for batch creating multiple items:_
 
 A single item or an array of multiple items to be created. Field keys must match the collection's column names.
 
-- Create New
+- Add New
 
 ```json
 {
