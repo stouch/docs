@@ -207,7 +207,7 @@ The JWT token payload contains the user ID, type of token (`auth`), and an expir
 
 The JWT access tokens are the safest way to authenticate into Directus. However, the tokens expire really quickly and you need to login using a users credentials to retrieve it. This is not the most convenient when using Directus on the server side.
 
-You can assign a static token to any user by adding a value to the `token` column in the `directus_users` table in the database directly. As of right now, it's not (yet) possible to set this token from the admin application, as it's rather easy to create a huge security leak for unexperienced users.
+You can assign a static token to any user by [adding a value to the `token` column in the `directus_users` table](#update-user) in the database directly. As of right now, it's not (yet) possible to set this token from the admin application, as it's rather easy to create a huge security leak for unexperienced users.
 
 The token will never expire and should be considered top secret.
 
@@ -2540,6 +2540,11 @@ Updates a Directus User.
 
 ```http
 PATCH /[project]/users/[id]
+```
+
+For example: let's add a static token to the user with the primary key 9:
+```bash
+curl --request PATCH --data '{ "token": "<your_super_secret_token_for_the_user_here>" }' -H '{ "Content-Type": "application/json", "Authorization": "<your_admin_token_with_write_privileges_on_directus_users_table_here>" }' /[project]/users/9
 ```
 
 :::tip NOTE
