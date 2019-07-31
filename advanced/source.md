@@ -10,7 +10,7 @@ In order to work on the API, you'll need to install the source version locally. 
 
 * A HTTP Web Server that supports URL rewrites
     * _Comes with .htaccess included for Apache_
-* MySQL 5.2+
+* MySQL 5.7+
     * Database (empty or existing)
     * Database User (with access to database)
 * PHP 7.1+
@@ -60,19 +60,7 @@ If you don't want to install any development package use the `--no-dev` option.
 composer install --no-dev
 ```
 
-#### 3. Install the npm dependencies of and build the extensions
-
-```bash
-cd extensions
-npm install
-npm run build
-```
-
-::: tip Development mode
-Just like the app, if you'd like to actively work on Extensions, use `npm run dev` instead of `npm run build`.
-:::
-
-#### 4. Create a database
+#### 3. Create a database
 
 On your local server, create a new database to use with the API.
 
@@ -91,7 +79,7 @@ If you are skipping the installer and adding the SQL directly to your database, 
 * **Password:** `password`
 :::
 
-#### 5. Config File Installer
+#### 4. Config File Installer
 
 The API uses a config file to know which database to connect to. Copy or rename the `/config/api_sample.php` file to `/config/api.php` (default project) and edit the settings as indicated.
 

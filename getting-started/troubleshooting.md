@@ -1,10 +1,16 @@
 # 🤔 Troubleshooting
 
-> Below are solutions to some common issues that you may experience when working with Directus. You can also post questions to [StackOverflow](https://stackoverflow.com/questions/tagged/directus) or reach out to the members of our [Slack](https://slack.directus.io) community!
+> Below are solutions to some common issues that you may experience when working with Directus. You can also post questions to [StackOverflow](https://stackoverflow.com/questions/tagged/directus) or reach out to the members of our [Slack](https://directus.chat) community!
 
 ::: warning Premium Support
 Due to the enormous number of people using Directus, our Core Team can only provide support to paying Directus Cloud customers or clients who purchase support hours.
 :::
+
+## General Issues
+
+### I can't save content with certain languages, characters, or emoji
+
+This is an issue with the database itself. Please confirm that your database, tables, and fields are all set to use `utf8-mb4` charset and encoding.
 
 ## Installation Issues
 

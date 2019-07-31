@@ -7,7 +7,7 @@
 Directus is developed and tested on the LAMP stack, and therefore this is the only officially supported environment. Alternate stacks (NGINX, Caddy, MariaDB, Percona, etc) may also work but you should proceed at your own risk. Please ensure your server meets the following requirements:
 
 * **Apache**
-* **MySQL 5.2+**
+* **MySQL 5.7+**
     * A Database (empty or existing)
     * A Database User (with access to database)
 * **PHP 7.1+**
@@ -34,7 +34,7 @@ Alternatively, you can choose from one of these other installation methods.
 :::
 
 ::: tip
-If you are using Apache, make sure `mod_rewrite` and `AllowOverride` are enabled. [Read more](../advanced/server-setup.md#apache)
+If you are using Apache, make sure `mod_rewrite` and `AllowOverride` are enabled. [Read more](/advanced/server-setup.md#apache)
 :::
 
 ::: tip

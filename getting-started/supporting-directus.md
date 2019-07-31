@@ -20,11 +20,15 @@ Our merchandise is a great way to support Directus – you get a shirt and we ge
 
 ### Commissions
 
-Another great way to get something back for your financial support (other than our amazing software) is to commission Directus work. If you need an interface, layout, or other custom feature – just [reach out to our parent company](mailto:contact@rngr.org?subject=Directus+Commission+Inquiry) to design and build it for you. If it can be merged into our Core codebase then it even benefits the entire community!
+Another great way to get something back for your financial support (other than our amazing software) is to commission a new Directus feature. If you need an interface, layout, or other custom feature – just [reach out to our parent company](mailto:contact@rngr.org?subject=Directus+Commission+Inquiry) to design and build it for you. If it can be merged into our Core codebase then it even benefits the entire community!
+
+### Sponsored Bugs
+
+Is that pesky bug not getting solved fast enough for your needs? We triage all of our reported bugs ([App](https://github.com/directus/app/projects/17) and [API](https://github.com/directus/api/projects/17)) based on priority and how long the fix is estimated to take. If you need a bug fixed sooner you can reach out to us about "sponsoring" it. We provide an cost estimate for subsidizing a more expeditious resolution.
 
 ### Premium Support
 
-If you need a little extra help setting things up, or would like to have a monthly retainer of premium support hours please
+For everything else, whether you just need a little extra help setting things up, or would like an ongoing monthly retainer of premium support hours, please reach out to [support@directus.io](mailto:support@directus.io).
 
 ## Platform Contributions
 
@@ -42,7 +46,7 @@ No technical skills? Not enough time for a pull-request? No problem! We have ple
 
 ### Translations
 
-Directus is a worldwide project. Our team and users are spread out across the globe and often speak different languages. If you do too, we'd love to get Directus [translated into your native tongue](https://github.com/directus/directus/issues/1203). It's easy, and each new translation opens the door to a huge number of new users.
+Directus is a worldwide project. Our team and users are spread out across the globe and often speak different languages. If you do too, we'd love to get Directus [translated into your native tongue](https://locales.directus.io/). It's easy, and each new translation opens the door to a huge number of new users.
 
 ### Bug Reporting
 
@@ -62,7 +66,7 @@ Have a few followers on Twitter? A quick post mentioning our [@directus](https:/
 
 ### Testimonials
 
-One sentence. Even that was a sentence and it was only two words! If you're a fan of Directus, we'd love to hear why with a short endorsement. Shoot us an email, Tweet, or [Slack](https://slack.directus.io) message. And if you'd like to have your testimonial [on our website](https://directus.io/#testimonials) be sure to include your name, title, company, and picture.
+One sentence. Even that was a sentence and it was only two words! If you're a fan of Directus, we'd love to hear why with a short endorsement. Shoot us an email, Tweet, or [Slack](https://directus.chat) message. And if you'd like to have your testimonial [on our website](https://directus.io/#testimonials) be sure to include your name, title, company, and picture.
 
 ### SWAG
 

@@ -22,6 +22,7 @@ $ cd app
 ```
 
 2. Bump the version in `package.json`
+   + Tag the release on master
 
 3. Install npm dependencies
 
@@ -47,7 +48,7 @@ $ git clone -b build git@github.com:directus/app.git app-build
 7. Copy everything from `app/dist` to `app-build`
 
 ```bash
-$ cp -r app/dist/. app-build
+$ cp -r app/dist/ app-build
 ```
 
 8. Delete all .DS_Store files
@@ -85,32 +86,24 @@ $ cd api
 ```
 
 2. Bump the version in `package.json` and `src/core/Directus/Application/Application.php`
+   + Tag the release on master
 
 3. Install the composer dependencies
 
 ```bash
-$ composer install -a
+$ composer install -a --no-dev
 ```
 
-4. Install and build the system extensions
-
-```bash
-$ cd extensions
-$ npm install
-$ npm run build
-$ cd ..
-```
-
-5. Clone the build branch of the api
+4. Clone the build branch of the api
 
 ```bash
 $ cd ..
 $ git clone -b build git@github.com:directus/api.git api-build
 ```
 
-6. Delete everything in `api-build` except the `.git` folder and `composer.json` file
+5. Delete everything in `api-build` except the `.git` folder and `composer.json` file
 
-7. Delete all nested .git folders (prevent submodules)
+6. Delete all nested .git folders (prevent submodules)
 
 ```bash
 $ cd api/vendor
@@ -120,7 +113,7 @@ $ ( find . -type d -name ".git" \
 $ cd ..
 ```
 
-8. Move these files into `api-build`:
+7. Move these files into `api-build`:
 
 * bin/
 * config/
@@ -134,14 +127,14 @@ $ cd ..
 * composer.json
 
 
-9. Delete all .DS_Store files
+8. Delete all .DS_Store files
 
 ```bash
 $ cd api-build
 $ find . -name '.DS_Store' -type f -delete
 ```
 
-10. Add this .gitignore file:
+9. Add this .gitignore file:
 
 ```
 Icon
@@ -196,7 +189,7 @@ composer.lock
 !**/.gitkeep
 ```
 
-11. Add-commit-push
+10. Add-commit-push
 
 ```bash
 $ git add .
@@ -204,9 +197,9 @@ $ git commit -m "<VERSION NUMBER>"
 $ git push origin build
 ```
 
-12. Create release on GH
+11. Create release on GH
 
-13. Delete local repos
+12. Delete local repos
 
 ```bash
 $ cd ..
@@ -241,7 +234,7 @@ $ rm -rf api-build/.git
 5. Copy everything in the api-build folder to the main directus/directus repo
 
 ```bash
-$ cp -r api-build/* directus
+$ cp -r api-build/ directus
 ```
 
 6. Clone the app build
@@ -265,7 +258,7 @@ $ rm -rf app-build/.git
 9. Copy everything from app-build to directus/public/admin
 
 ```bash
-$ cp -r app-build/* directus/public/admin
+$ cp -r app-build/ directus/public/admin
 ```
 
 10. Duplicate the `directus/public/admin/config_example.js` file to `directus/public/admin/config.js`
