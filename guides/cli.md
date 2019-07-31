@@ -164,3 +164,21 @@ Removes all the logs that were last modified `<days>` ago. it uses [`filemtime`]
 :::tip
 You can setup a cronjob to clean old files at a set frequency
 :::
+
+
+## Maintenance Module
+
+Enables/disables the maintenance mode. When maintenance mode is "on" the api returns all requests with `503 Service Unavailable` and a appropriate error message ([see Error Codes](../api/reference.md)). 
+
+`maintenance:status` tells you if maintenance mode is currently "on" or "off".
+
+### Usage:
+```bash
+php bin/directus maintenance:on
+php bin/directus maintenance:off
+php bin/directus maintenance:status
+```
+
+:::tip
+You can manually activate/deactivate the maintenance mode by creating/removing the file `logs/maintenance`
+:::
