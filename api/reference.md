@@ -906,7 +906,18 @@ A single item or an array of multiple items to be created. Field keys must match
     ]
 }
 ```
+- Deleting an Item
 
+```json
+{
+    "category": [
+      {
+         "id" : 1,
+         "$delete" : true
+      }
+    ]
+}
+```
 ##### 2. M2O 
 
 A single item to be created. Field key must match the collection's column name.
@@ -961,7 +972,18 @@ A single item or an array of multiple items to be created. Field keys must match
     ]
 }
 ```
+- Deleting an Item
 
+```json
+{
+    "category": [
+      {
+         "id" : 1,
+         "$delete" : true
+      }
+    ]
+}
+```
 ::: tip
 The API may not return any data for successful requests if the user doesn't have adequate read permission. Instead, `204 NO CONTENT` is returned.
 :::
