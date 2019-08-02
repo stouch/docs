@@ -26,7 +26,7 @@ Occasionally people may login and change the passwords on these accounts, we're 
 
 ## Can I extend the JWT token?
 
-The JWT Token can't have it's length of validity modified if you need anything more than that, you can either refresh the token to get a new token, or you can utilise the Static tokens, however, static tokens are less secure.
+The JWT Token can't have it's length of validity modified if you need anything more than that, you can either [refresh the token](/api/reference.html#refresh-auth-token) to get a new token, or you can utilise the [Static tokens](/api/reference.html#static-tokens), however, static tokens are less secure.
 
 ## Will the bin scripts update all my projects?
 
