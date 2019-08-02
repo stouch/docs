@@ -142,6 +142,14 @@ module.exports = {
           ['/advanced/api/data', 'Direct Data Access'],
           // ['/advanced/deploying-versions', 'Deploying Versions'],
         ]
+      },
+      {
+        title: "💬 Help & Support",
+        collapsable: true,
+        children: [
+          ['/help/questions', 'Frequently Asked Questions'],
+          ['/help/troubleshooting', 'Troubleshooting'],
+        ]
       }
     ]
   }
