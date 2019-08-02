@@ -6,7 +6,7 @@
 Due to the enormous number of people using Directus, our Core Team can only provide support to paying Directus Cloud customers or clients who purchase support hours.
 :::
 
-### My relational data/file is only returning an ID
+## My relational data/file is only returning an ID
 
 Please note the following two things:
 
