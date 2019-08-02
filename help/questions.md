@@ -15,7 +15,7 @@ Please note the following two things:
 2) Ensure you have the correct correct read permissions for the table your related data is in. By default, Directus makes reading collections private and you will need to enable read permission for the tables you'd like to be able to read.
 
 :::tip
-If you're making an unauthenticated request, and expecting to see files, you might want to open up `directus_files` to the `public` role. Be aware, this may allow advanced users to list all files.
+If you're making an unauthenticated request, and you're expecting to see files, you'll need to allow read access to `directus_files` for the `public` role. Be aware, this may allow advanced users to list all files.
 :::
 
 ## I can't login to the demo
