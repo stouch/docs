@@ -11,7 +11,7 @@ Directus is developed and tested on the LAMP stack, and therefore this is the on
     * A Database (empty or existing)
     * A Database User (with access to database)
 * **PHP 7.1+**
-    * Extensions:  `pdo`, `mysql`, `curl`, `gd`, `fileinfo`, and `mbstring`
+    * Extensions:  `pdo`, `mysql`, `curl`, `gd`, `fileinfo`, `libapache2-mod-php` and `mbstring`
 
 ::: tip Detailed Requirements
 View our [detailed requirements page](/advanced/requirements.md) to learn more about these requirements, neccesary permissions, and other server-specific prerequisites.
@@ -34,7 +34,7 @@ Alternatively, you can choose from one of these other installation methods.
 :::
 
 ::: tip
-If you are using Apache, make sure `mod_rewrite` and `AllowOverride` are enabled. [Read more](../advanced/server-setup.md#apache)
+If you are using Apache, make sure `mod_rewrite` and `AllowOverride` are enabled. [Read more](/advanced/server-setup.md#apache)
 :::
 
 ::: tip

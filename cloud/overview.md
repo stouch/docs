@@ -32,7 +32,7 @@ Directus Cloud accounts are how individuals access the platform. Accounts are fr
 
 ### Requesting Access
 
-Reach out to one of our Core Team members on the [Directus Community Slack](https://slack.directus.io/).
+Reach out to one of our Core Team members on the [Directus Community Slack](https://directus.chat).
 
 ### Logging In
 

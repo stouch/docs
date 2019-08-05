@@ -104,6 +104,9 @@ The API uses numeric codes to avoid the need for translated error messages based
 - `0018` - Unauthorized Location Access (401)
 - `0019` - Installation Invalid database information (400)
 - `0020` - Missing Storage Configuration (500)
+- `0021` - API is currently under maintenance. (503)
+- `0022` - Invalid Cache Adapter (503)
+- `0023` - Invalid Cache Configuration (503)
 
 #### Authentication Error Codes
 
@@ -204,7 +207,7 @@ The JWT token payload contains the user ID, type of token (`auth`), and an expir
 
 The JWT access tokens are the safest way to authenticate into Directus. However, the tokens expire really quickly and you need to login using a users credentials to retrieve it. This is not the most convenient when using Directus on the server side.
 
-You can assign a static token to any user by adding a value to the `token` column in the `directus_users` table in the database directly. As of right now, it's not (yet) possible to set this token from the admin application, as it's rather easy to create a huge security leak for unexperienced users.
+You can assign a static token to any user by [adding a value to the `token` column in the `directus_users` table](#update-user) in the database directly. As of right now, it's not (yet) possible to set this token from the admin application, as it's rather easy to create a huge security leak for unexperienced users.
 
 The token will never expire and should be considered top secret.
 
@@ -308,7 +311,9 @@ curl https://example.com/api/types?access_token=staticToken&project=_
 
 #### Project via Header
 
+```
 curl -H "Authorization: Bearer staticToken" -H "X-Directus-Project: _" https://example.com/api/
+```
 
 ### Refresh Auth Token
 
@@ -514,7 +519,8 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
 
 ### Limit
 
-Using `limit` can set the maximum number of items that will be returned. You can also use `-1` to return all items, bypassing the default limits.
+Using `limit` can be set the maximum number of items that will be returned. You can also use `-1` to return all items, bypassing the default limits. The default limit is set to 200.
+
 
 #### Examples
 
@@ -630,7 +636,7 @@ Example:
 
 ### Filtering
 
-Used to search items in a collection that matche the filter's conditions. Filters follow the syntax `filter[<field-name>][<operator>]=<value>`. The `field-name` supports dot-notation to filter on nested relational fields.
+Used to search items in a collection that matches the filter's conditions. Filters follow the syntax `filter[<field-name>][<operator>]=<value>`. The `field-name` supports dot-notation to filter on nested relational fields.
 
 #### Filter Operators
 
@@ -704,7 +710,7 @@ GET /items/projects?filter[contributors][all]=1,2,3
 
 The example above will return all projects that have the user with ID 1, 2, and 3 as collaborator.
 
-Using `has` will return items that has at least the mininum number given as related items. 
+Using `has` will return items with at least that mininum number of related items.
 
 Example of requesting projects with at least one contributor:
 
@@ -907,6 +913,119 @@ _Or, for batch creating multiple items:_
 ]
 ```
 
+#### Relational Data
+
+##### 1. O2M 
+
+A single item or an array of multiple items to be created. Field keys must match the collection's column names.
+
+- Add New
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+         "name" : "Design",
+         "order" : 1
+      },
+      {
+        "name" : "Development",
+         "order" : 2
+      }
+    ]
+}
+```
+- Select Existing
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+         "id" : 1
+      }
+    ]
+}
+```
+- Deleting an Item
+
+```json
+{
+    "category": [
+      {
+         "id" : 1,
+         "$delete" : true
+      }
+    ]
+}
+```
+##### 2. M2O 
+
+A single item to be created. Field key must match the collection's column name.
+
+```json
+{
+    "title": "Project One",
+    "category": 1
+}
+```
+##### 3. M2M 
+
+A single item or an array of multiple items to be created. Field keys must match the collection's column names.
+
+- Add New
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+        "category_id": {
+          "name" : "Design",
+          "order" : 1
+        }
+      },
+      {
+        "category_id": {
+          "name" : "Development",
+          "order" : 2
+        }
+      }
+    ]
+}
+```
+- Select Existing
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+        "category_id": {
+          "id" : 1
+        }
+      },
+      {
+        "category_id": {
+          "id" : 2
+        }
+      }
+    ]
+}
+```
+- Deleting an Item
+
+```json
+{
+    "category": [
+      {
+         "id" : 1,
+         "$delete" : true
+      }
+    ]
+}
+```
 ::: tip
 The API may not return any data for successful requests if the user doesn't have adequate read permission. Instead, `204 NO CONTENT` is returned.
 :::
@@ -1651,7 +1770,7 @@ PATCH /[project]/fields/[collection]/[field]
 Permanently deletes a field and its content.
 
 ```http
-DELETE /[project]/fields/[collection]
+DELETE /[project]/fields/[collection]/[field]
 ```
 
 :::warning
@@ -2578,6 +2697,11 @@ Updates a Directus User.
 PATCH /[project]/users/[id]
 ```
 
+For example: let's add a static token to the user with the primary key 9:
+```bash
+curl --request PATCH --data '{ "token": "<your_super_secret_token_for_the_user_here>" }' -H '{ "Content-Type": "application/json", "Authorization": "<your_admin_token_with_write_privileges_on_directus_users_table_here>" }' /[project]/users/9
+```
+
 :::tip NOTE
 **PATCH** will partially update the item with the provided data, any missing fields will be ignored.
 :::
@@ -3305,6 +3429,234 @@ A list of all system objects expected or returned by Directus endpoints.
 | `id`   | `integer`         |                    |
 | `user` | `integer`, `User` | The ID of the User |
 | `role` | `integer`, `Role` | The ID of the Role |
+
+## GraphQL
+
+The Directus REST API offers the same powerful and granular options as GraphQL. However, some users may want to use the specific GraphQL specification for requests and responses. For that reason, Directus offers a GraphQL endpoint as a wrapper of the REST API.
+
+::: warning Limited Support
+Currently supports "Queries" only. "Mutations" and "Subscription" support will be added soon.
+:::
+
+### GraphQL Endpoint
+
+GraphQL comes included with each instance of the Directus API, so there is nothing to install of configure. You will, however, need a [GraphQL client](https://graphql.org/code/#graphql-clients) to prepare queries and send requests. It may also help to have a GUI (such as [GraphiQL](https://electronjs.org/apps/graphiql)) for editing and testing GraphQL queries and mutations.
+
+```http
+POST /[project]/gql?access_token={admin_access_token}
+```
+
+:::tip
+This endpoint requires admin access token as a query parameter.
+:::
+
+### Filters
+
+To apply filters on a list of items, you can use the `filter` argument. Filter fields can be defined as `<field-name>_<operator>:<value>`. A list of available filters can be found [here](/api/reference.html#filtering)
+
+For example, to only return "horror" movies from a `movies` collection, we can apply a filter like this:
+
+```
+{
+  movies(limit: 10, filter: {genre_contains: "horror"}) {
+    data {
+      name
+    }
+  }
+}
+```
+
+### How To Use
+
+[Here is a list](https://graphql.org/code/#javascript-1) of JavaScript libraries available for using GraphQL client side. We'll be using [Vue-Apollo](https://vue-apollo.netlify.com/guide/) which integrates [Apollo](https://www.apollographql.com/) in your Vue components with declarative queries.
+
+Vue-Apollo is recommended because:
+
+1. Can be installed via Vue CLI as a plugin
+2. Jump begin development without lengthy configuration
+
+#### 1. Install & Setup Vue Apollo
+
+```
+npm install --save vue-apollo graphql apollo-boost
+```
+
+```javascript
+import Vue from "vue";
+import VueApollo from "vue-apollo";
+
+Vue.use(VueApollo);
+```
+
+Follow [this link](https://vue-apollo.netlify.com/guide/installation.html) for more info on Vue-Apollo setup.
+
+#### 2. Create Apollo Client & Provider
+
+Generally this should be added into entry file of the project. In most cases it would be `main.js` or `app.js`
+
+```javascript
+import ApolloClient from "apollo-boost";
+
+const apolloClient = new ApolloClient({
+  // Add absolute project URL here:
+  // If your setup has multiple projects, use respective key else default should be '_'
+  // More info: https://docs.directus.io/api/reference.html#project-prefix
+  uri:
+    "http://localhost:8888/directus/api/public/<project-key>/gql?access_token=demo"
+});
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient
+});
+```
+
+#### 3. Register Apollo Provider to Vue
+
+```javascript
+new Vue({
+  el: "#app",
+  apolloProvider,
+  render: h => h(App)
+});
+```
+
+You are now ready to use Apollo in your components!
+
+#### 4. Query the data
+
+```vue
+<template>
+  <div class v-html="about.about_us"></div>
+</template>
+
+<script>
+import gql from "graphql-tag";
+
+export default {
+  apollo: {
+    about: gql`
+      query {
+        about(id: 1) {
+          about_us
+        }
+      }
+    `
+  }
+};
+</script>
+```
+
+[Read more](https://vue-apollo.netlify.com/guide/apollo/) about how to form the query and request data from GraphQL.
+
+### Item Details
+
+When you want a specific item based on a primary key, you can pass an `id` argument. For example, if you want to get details of id `1` from `movies` collection:
+
+```
+movies(id: 1) {
+  data {
+    name
+    genre
+    status
+  }
+}
+```
+
+::: tip
+When you're requesting an item based on primary key, obviously you'll always get a single item. But the response you'll get will always be an array with a single item. This is because how GraphQL & Directus is designed. The GraphQL expects a predefined `types` of a field. So in our case, an **item** or **list of items** will always be an `array`.
+:::
+
+A complete example to get details of an item from the `movies` collection:
+
+```vue
+<template>
+  <div id="app">
+    <!-- You should always select `0th` item when you're requesting an item based on primary key -->
+    <h1>{{ movies.data[0].name }}</h1>
+  </div>
+</template>
+
+<script>
+import gql from "graphql-tag";
+
+export default {
+  apollo: {
+    movies: gql`
+      query {
+        movies(id: 1) {
+          data {
+            name
+            genre
+            status
+          }
+        }
+      }
+    `
+  }
+};
+</script>
+```
+
+### Listing Items
+
+You can get a set of items from a particular collection. For example, if you want to list items from the `movies` collection, the query would be:
+
+```
+movies(limit:10) {
+  data {
+    name
+  }
+  meta {
+    result_count
+    total_count
+  }
+}
+```
+
+Here the `data` is an array containing all the items while `meta` includes all metadata about the items. The response format is same as the REST API so you can use queries in GraphQL or the REST API interchangably. Read more about meta [here.](/api/reference.html#metadata)
+
+#### Arguments
+
+Collection supports following 3 arguments.
+
+- limit: Limits the number of items per page.
+- offset: To skip the number of items multiplied by limit from start.
+- filter: To list specific items based on their values.
+- id: To get a specific item with primary key.
+
+A complete example to list down items from the `movies` collection:
+
+```vue
+<template>
+  <div id="app">
+    <ul>
+      <li v-for="item in movies.data">{{ item.name }}</li>
+    </ul>
+  </div>
+</template>
+
+<script>
+import gql from "graphql-tag";
+
+export default {
+  apollo: {
+    movies: gql`
+      query {
+        movies(limit: 10) {
+          data {
+            name
+          }
+          meta {
+            result_count
+            total_count
+          }
+        }
+      }
+    `
+  }
+};
+</script>
+```
 
 ## SCIM
 

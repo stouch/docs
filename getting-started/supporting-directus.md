@@ -46,7 +46,7 @@ No technical skills? Not enough time for a pull-request? No problem! We have ple
 
 ### Translations
 
-Directus is a worldwide project. Our team and users are spread out across the globe and often speak different languages. If you do too, we'd love to get Directus [translated into your native tongue](https://github.com/directus/directus/issues/1203). It's easy, and each new translation opens the door to a huge number of new users.
+Directus is a worldwide project. Our team and users are spread out across the globe and often speak different languages. If you do too, we'd love to get Directus [translated into your native tongue](https://locales.directus.io/). It's easy, and each new translation opens the door to a huge number of new users.
 
 ### Bug Reporting
 
@@ -66,7 +66,7 @@ Have a few followers on Twitter? A quick post mentioning our [@directus](https:/
 
 ### Testimonials
 
-One sentence. Even that was a sentence and it was only two words! If you're a fan of Directus, we'd love to hear why with a short endorsement. Shoot us an email, Tweet, or [Slack](https://slack.directus.io) message. And if you'd like to have your testimonial [on our website](https://directus.io/#testimonials) be sure to include your name, title, company, and picture.
+One sentence. Even that was a sentence and it was only two words! If you're a fan of Directus, we'd love to hear why with a short endorsement. Shoot us an email, Tweet, or [Slack](https://directus.chat) message. And if you'd like to have your testimonial [on our website](https://directus.io/#testimonials) be sure to include your name, title, company, and picture.
 
 ### SWAG
 

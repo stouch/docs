@@ -3,7 +3,7 @@
 > Each API project configuration is contained within a dedicated file in the `/config` directory. Additionally, this process adds a boilerplate system schema into the project's database.
 
 ::: tip
-If you are using Apache, make sure `mod_rewrite` and `AllowOverride` are enabled. [Read more](../advanced/server-setup.md#apache)
+If you are using Apache, make sure `mod_rewrite` and `AllowOverride` are enabled. [Read more](/advanced/server-setup.md#apache)
 :::
 
 ## Project Config Files

@@ -1,6 +1,6 @@
 # Server Setup
 
-> To get Directus working on most servers all you need to do is ensure that traffic is routed to the correct files. Let's take a look at some common examples below.
+> While only Apache is _officially_ supported, to get Directus working on most servers all you need to do is ensure that traffic is routed to the correct files. Let's take a look at some common examples below.
 
 ## Apache
 
@@ -96,15 +96,15 @@ server {
     # disable_symlinks if_not_owner;
 
     location / {
-        try_files $uri $uri/ /index.php$args;
+        try_files $uri $uri/ /index.php?$args;
     }
 
     location /admin {
-        try_files $uri $uri/ /admin/index.html$args;
+        try_files $uri $uri/ /admin/index.html?$args;
     }
 
     location /thumbnail {
-        try_files $uri $uri/ /thumbnail/index.php$args;
+        try_files $uri $uri/ /thumbnail/index.php?$args;
     }
 
     # Deny direct access to php files in extensions

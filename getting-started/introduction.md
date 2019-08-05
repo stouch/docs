@@ -58,11 +58,15 @@ This is what you're reading right now. We believe that maintaining great Documen
 
 ### Directus Demos
 
-To make it as easy as possible to actually play around with Directus we maintain two online demos: [latest release](https://directus.app) (stable) and [latest commit](https://next.directus.app) (canary). Both demos reset each hour so if things look a little screwy just wait a bit. To access either of these demos you can use the credentials: `admin@example.com` and `password`.
+To make it as easy as possible to actually play around with Directus we maintain two online demos: [latest release](https://directus.app) (stable) and [latest commit](https://nightly.directus.app) (nightly). Both demos reset each hour so if things look a little screwy just wait a bit. To access either of these demos you can use the credentials: `admin@example.com` and `password`.
 
 ### Directus Website
 
 For general information, resources, and team info we maintain a marketing [website](https://directus.io/). This is a good non-technical hub to serve as as introduction to the Directus platform.
+
+### Directus Community
+
+Join our growing community on [Directus Slack](https://directus.chat) (1,100+ members) to get an inside peak into what's happening within our organization. From community support to seeing where the platform is heading next, it's a great way to get more involved!
 
 ### Directus Marketplace
 

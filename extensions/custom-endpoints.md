@@ -1,6 +1,6 @@
 # Custom Endpoints
 
-> In addition to the [core endpoints](../api-reference/reference.md), you can add completely custom endpoints. Custom endpoints are easy to create files that return an array with the endpoint path, method, and handler. All custom endpoints are scoped within `/custom` to avoid conflicts with the Core functionality.
+> In addition to the [core endpoints](../api/reference.md), you can add completely custom endpoints. Custom endpoints are easy to create files that return an array with the endpoint path, method, and handler. All custom endpoints are scoped within `/custom` to avoid conflicts with the Core functionality.
 
 ## Creating Custom Endpoints
 
@@ -23,6 +23,7 @@ The following file path: A file stored in `public/extensions/custom/endpoints/ex
 
 use Directus\Application\Http\Request;
 use Directus\Application\Http\Response;
+use Directus\Services\ItemsService;
 
 return [
   // The endpoint path:
@@ -34,10 +35,16 @@ return [
     'method' => 'GET',
     'handler' => function (Request $request, Response $response) {
 
+       // Get all answers from DB
+      $itemsService = new ItemsService($this);
+
+      $params = $request->getQueryParams();
+      $programs = $itemsService->findAll('items', $params);
+
+
       return $response->withJson([
           'data' => [
-              'item 1',
-              'item 2'
+              $programs
           ]
       ]);
     }
