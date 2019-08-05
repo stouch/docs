@@ -475,6 +475,7 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
 *   `result_count` - Number of items returned in this response
 *   `total_count` - Total number of items in this collection
 *   `status_count` - Number of items per status
+*   `filter_count` - Number of items matching the filter query
 
 ```
 # Here is an example of all meta data enabled
@@ -483,6 +484,7 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
     "type":"collection",
     "result_count":20,
     "total_count":962,
+    "filter_count":120,
     "status_count":{
         "deleted":94,
         "draft":90,
@@ -519,6 +521,7 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
 
 Using `limit` can be set the maximum number of items that will be returned. You can also use `-1` to return all items, bypassing the default limits. The default limit is set to 200.
 
+
 #### Examples
 
 ```
@@ -531,6 +534,45 @@ Using `limit` can be set the maximum number of items that will be returned. You 
 
 ::: warning
 Fetching unlimited data may result in degraded performance or timeouts, use with caution.
+:::
+
+### Pagination
+
+Using `page` along with `limit` can set the maximum number of items that will be returned grouped by pages.
+
+#### Examples
+
+```
+# Returns a miximum of 10 items skipping the first 2 pages
+?limit=10&page=3
+
+# Here is an example of the response with pagination active
+{
+    "meta": {
+        "collection": "movies",
+        "type": "collection",
+        "result_count": 10,
+        "total_count": 3040,
+        "filter_count": 63,
+        "limit": 10,
+        "offset": 20,
+        "page": 3,
+        "page_count": 7,
+        "links": {
+            "self": "http://api.directus.com/_/items/movies",
+            "current": "http://api.directus.com/_/items/movies?access_token=token&meta=*&filter[keywords][contains]=account&page=2&limit=10",
+            "first": "http://api.directus.com/_/items/movies?access_token=token&meta=*&filter[keywords][contains]=account&page=1&limit=10&offset=10",
+            "last": "http://api.directus.com/_/items/movies?access_token=token&meta=*&filter[keywords][contains]=account&page=7&limit=10&offset=60",
+            "next": "http://api.directus.com/_/items/movies?access_token=token&meta=*&filter[keywords][contains]=account&page=4&limit=10&offset=30",
+            "previous": "http://api.directus.com/_/items/movies?access_token=token&meta=*&filter[keywords][contains]=account&page=2&limit=10&offset=10"
+        }
+    },
+    "data": [...]
+}
+```
+
+::: warning
+If sending the `offset` parameter along with the `page` and `limit` parameters, the `page` parameter will be ignored, and the `offset` parameter will be used.
 :::
 
 ### Offset
