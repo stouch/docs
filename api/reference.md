@@ -594,7 +594,7 @@ Example:
 
 ### Filtering
 
-Used to search items in a collection that matche the filter's conditions. Filters follow the syntax `filter[<field-name>][<operator>]=<value>`. The `field-name` supports dot-notation to filter on nested relational fields.
+Used to search items in a collection that matches the filter's conditions. Filters follow the syntax `filter[<field-name>][<operator>]=<value>`. The `field-name` supports dot-notation to filter on nested relational fields.
 
 #### Filter Operators
 
