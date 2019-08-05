@@ -39,3 +39,8 @@ The JWT Token can't have it's length of validity modified if you need anything m
 ### Will the bin scripts update all my projects?
 
 Running `bin/directus db:upgrade` will only update your default `_` project. You will need to update your custom projects manually.
+
+## Data Migrations
+
+### Does Directus handle deploying or migrating of content?
+When you add data into a database, Directus does not provide any tool for you to migrate or deploy your data changes between different environments (_ie. from development to production_).
