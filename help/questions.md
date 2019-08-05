@@ -43,4 +43,19 @@ Running `bin/directus db:upgrade` will only update your default `_` project. You
 ## Data Migrations
 
 ### Does Directus handle deploying or migrating of content?
+
 When you add data into a database, Directus does not provide any tool for you to migrate or deploy your data changes between different environments (_ie. from development to production_).
+
+## SDKs
+
+### What SDKs are available for Directus?
+
+Currently, the only SDK maintained for Directus 7 is the Javascript-SDK, it's difficult to be Open-Source and maintain multiple SDKs. 
+
+We're hoping for, and awaiting support from the [OpenAPI 3.0 Spec](https://github.com/OAI/OpenAPI-Specification/issues/1706). Giving a thumbs-up could really help! You can, follow the progress of Directus SDK coverage [here](https://github.com/directus/directus/issues/2255).
+
+### Where's the PHP SDK?
+
+_Please see the above..._
+
+When using PHP, we recommend using Guzzle for the time-being and call the [API](/api/reference.html#introduction) directly.
