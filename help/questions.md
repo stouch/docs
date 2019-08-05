@@ -6,7 +6,9 @@
 Due to the enormous number of people using Directus, our Core Team can only provide support to paying Directus Cloud customers or clients who purchase support hours.
 :::
 
-## My relational data/file is only returning an ID
+## API Queries
+
+### My relational data/file is only returning an ID
 
 Please note the following two things:
 
@@ -18,16 +20,22 @@ Please note the following two things:
 If you're making an unauthenticated request, and you're expecting to see files, you'll need to allow read access to `directus_files` for the `public` role. Be aware, this may allow advanced users to list all files.
 :::
 
-## I can't login to the demo
+## Demos
+
+### I can't login to the demo
 
 We maintain two online demos: [latest release](https://directus.app) (stable) and [latest commit](https://nightly.directus.app) (nightly), to access either of these demos, you can use the credentials: `admin@example.com` and `password`.
 
 Occasionally people may login and change the passwords on these accounts, we're sorry about this, both of our demos reset each hour so if things look a little screwy, please just wait a bit 
 
-## Can I extend the JWT token?
+## API Tokens
+
+### Can I extend the JWT token?
 
 The JWT Token can't have it's length of validity modified if you need anything more than that, you can either [refresh the token](/api/reference.html#refresh-auth-token) to get a new token, or you can utilise the [Static tokens](/api/reference.html#static-tokens), however, static tokens are less secure.
 
-## Will the bin scripts update all my projects?
+## Scripts
+
+### Will the bin scripts update all my projects?
 
 Running `bin/directus db:upgrade` will only update your default `_` project. You will need to update your custom projects manually.
