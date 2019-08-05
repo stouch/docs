@@ -28,10 +28,6 @@ MAMP has a known issue where it strips out the `Authorization` header which Dire
 
 ## API Issues
 
-### My relational data/file is only returning an ID
-
-Directus allows you to request specific field data at different depths. You can use the [`fields` parameter](../api/reference.md#fields) to fetch deeper relationships fields (eg: `?fields=*.*.*` for three levels deep) or even specific fields to keep things as performant as possible (eg: `?fields=image.title` for a relational image's title).
-
 ## Buildchain Issues
 
 If for some reason the buildchain is acting up, or you're not seeing the changes you've made reflected in the browser, please try the following things:
