@@ -59,3 +59,11 @@ We're hoping for, and awaiting support from the [OpenAPI 3.0 Spec](https://githu
 _Please see the above..._
 
 When using PHP, we recommend using Guzzle for the time-being and call the [API](/api/reference.html#introduction) directly.
+
+## Errors
+
+### Can't install the database on MariaDB
+
+Some users have noted seeing the following error message: `not able to install database: ./directus install:database SQLSTATE[42000]: Syntax error or access violation: 1071 Specified key was too long; max key length is 767 bytes`
+
+When you're using MariaDB, though it's based on the same source code as MySQL, there are subtle differences. Directus requires the use of the `utf8mb4` charset. [MariaDB V10.2](https://mariadb.com/kb/en/library/supported-character-sets-and-collations/) or higher will be required for this to work.
