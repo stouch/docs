@@ -442,6 +442,42 @@ POST /[project]/auth/sso/access_token
 }
 ```
 
+### Logging in with 2FA
+Two-Factor Authentication (2FA) is an authentication method that requires extra evidence from the user, apart from their password. In this case, we require a One-Time Password (OTP). This is a code that is stored in an authenticator and changes every 30 seconds.
+
+#### Get Auth Token with 2FA
+
+```http
+POST /[project]/auth/authenticate
+```
+
+##### Body
+
+The user credentials, with an OTP.
+
+```json
+{
+    "email": "rijk@directus.io",
+    "password": "supergeheimwachtwoord",
+    "otp": "140619"
+}
+```
+
+::: warning
+If an invalid OTP is specified, the API will throw an `InvalidOTPException`. If the user has 2FA enabled, but no OTP is given, the API will throw a `Missing2FAPasswordException`.
+:::
+
+##### Response
+
+A 2FA secret.
+
+```json
+{
+        "2fa_secret": "140619",
+        "public": true
+}
+```
+
 ## Query Parameters
 
 The API has a set of query parameters that can be used for specific actions, such as: filtering, sorting, limiting, and choosing fields. These supported query parameters are listed below:
@@ -2893,6 +2929,15 @@ POST /[project]/utils/random/string
 | Name   | Default | Description                  |
 | ------ | ------- | ---------------------------- |
 | length | 32      | Length of string to generate |
+
+### Generate 2FA secret
+Two-Factor Authentication (2FA) is an authentication method that requires extra evidence from the user, apart from their password.
+
+Gets a 2FA secret, which can then be used to set a user's 2FA secret.
+
+```http
+POST /[project]/utils/2fa_secret
+```
 
 ## Mail
 
