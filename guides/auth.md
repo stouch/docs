@@ -46,7 +46,7 @@ The API encrypts every Directus user's password as a hash using a strong one-way
 You can manually generate new passwords using the PHP code below, or by using [online tools](https://bcrypt-generator.com/). Once generated, you can add the hashed value directly to `directus_users.password`.
 
 ```php
-password_hash($password, PASSWORD_BCRYPT, ['cost' => 10])
+echo password_hash('new-password-here', PASSWORD_BCRYPT, ['cost' => 10]);
 ```
 
 ## Two-Factor Authentication (2FA)
