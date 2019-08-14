@@ -37,6 +37,18 @@ Keeps the access token in the SDK and the application store in sync. The token i
 
 If the user re-opens the page when there is an invalid token in the store, the SDKs loggedIn flag will be false and the application will logout immediately.
 
+## Password Encryption
+
+The API encrypts every Directus user's password as a hash using a strong one-way hashing algorithm called `bcrypt`. The `CRYPT_BLOWFISH` algorithm creates a 60 character long hash with a recognizable `$2y$` identifier. All hashes are generated with a random salt and a cost of `10`. This cost determines the rounds of expansion used, so our default cost of `10` is equal to 2<sup>10</sup> (1,024) iterations — a good balance for most hardware.
+
+### Manually Setting Passwords
+
+You can manually generate new passwords using the PHP code below, or by using [online tools](https://bcrypt-generator.com/). Once generated, you can add the hashed value directly to `directus_users.password`.
+
+```php
+password_hash($password, PASSWORD_BCRYPT, ['cost' => 10])
+```
+
 ## Two-Factor Authentication (2FA)
 
 ### Enabling 2FA
