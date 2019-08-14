@@ -365,6 +365,10 @@ The API checks the validity of the reset token, that it hasn't expired, and that
 GET /[project]/auth/password/reset/[reset-token]
 ```
 
+::: tip
+[Go here](/guides/auth.md#password-encryption) to learn more about how passwords are stored and how to manually reset them.
+:::
+
 ### SSO
 
 Directus supports modular Single Sign-On (SSO) authentication services, such as Google and Facebook.
