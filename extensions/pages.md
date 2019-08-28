@@ -6,7 +6,11 @@
 
 A Page is made up of at least two core files. You can create a page from scratch or use the [extension toolkit](https://github.com/directus/extension-toolkit) to generate boilerplate code.
 
-To create a page from scratch, create these files in `directus/public/extensions/custom/pages`.
+If not using the extension toolkit, here's how you can create a page from scratch:
+1. Create a meta.json file in `public/extensions/custom/pages`. See below for an example.
+2. Write up your page in a .vue file.
+3. Transpile the .vue file in the same directory as step #1.
+   For example, if using Webpack, [Here's a guide to configuring webpack to compile with vue](https://medium.com/js-dojo/how-to-configure-webpack-4-with-vuejs-a-complete-guide-209e943c4772).
 
 ### `page.vue`
 
