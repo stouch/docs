@@ -6,6 +6,8 @@
 
 A Page is made up of at least two core files. You can create a page from scratch or use the [extension toolkit](https://github.com/directus/extension-toolkit) to generate boilerplate code.
 
+To create a page from scratch, create these files in `directus/public/extensions/custom/pages`.
+
 ### `page.vue`
 
 A standard Vue.js single file component that renders the content of the Page extension.
