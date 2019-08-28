@@ -10,7 +10,8 @@ If not using the extension toolkit, here's how you can create a page from scratc
 1. Create a meta.json file in `public/extensions/custom/pages`. See below for an example.
 2. Write up your page in a .vue file.
 3. Transpile the .vue file in the same directory as step #1.
-   For example, if using Webpack, [Here's a guide to configuring webpack to compile with vue](https://medium.com/js-dojo/how-to-configure-webpack-4-with-vuejs-a-complete-guide-209e943c4772).
+   - (Recommended) If using Parcel, run `parcel build page.vue -d ./ --no-source-maps --global __DirectusExtension__`
+   - If using Webpack, [Here's a guide to configuring webpack to compile with vue](https://medium.com/js-dojo/how-to-configure-webpack-4-with-vuejs-a-complete-guide-209e943c4772).
 
 ### `page.vue`
 
