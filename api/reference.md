@@ -104,6 +104,9 @@ The API uses numeric codes to avoid the need for translated error messages based
 - `0018` - Unauthorized Location Access (401)
 - `0019` - Installation Invalid database information (400)
 - `0020` - Missing Storage Configuration (500)
+- `0021` - API is currently under maintenance. (503)
+- `0022` - Invalid Cache Adapter (503)
+- `0023` - Invalid Cache Configuration (503)
 
 #### Authentication Error Codes
 
@@ -121,6 +124,7 @@ The API uses numeric codes to avoid the need for translated error messages based
 - `0111` - User Missing 2FA OTP (404)
 - `0112` - Invalid User OTP (404)
 - `0113` - 2FA Enforced but Not Activated (401)
+- `0114` - Auth validation error (422) - _Invalid Email / Invalid Password_
 
 #### Items Error Codes
 
@@ -209,7 +213,7 @@ The JWT token payload contains the user ID, type of token (`auth`), and an expir
 
 The JWT access tokens are the safest way to authenticate into Directus. However, the tokens expire really quickly and you need to login using a users credentials to retrieve it. This is not the most convenient when using Directus on the server side.
 
-You can assign a static token to any user by adding a value to the `token` column in the `directus_users` table in the database directly. As of right now, it's not (yet) possible to set this token from the admin application, as it's rather easy to create a huge security leak for unexperienced users.
+You can assign a static token to any user by [adding a value to the `token` column in the `directus_users` table](#update-user) in the database directly. As of right now, it's not (yet) possible to set this token from the admin application, as it's rather easy to create a huge security leak for unexperienced users.
 
 The token will never expire and should be considered top secret.
 
@@ -367,6 +371,10 @@ The API checks the validity of the reset token, that it hasn't expired, and that
 GET /[project]/auth/password/reset/[reset-token]
 ```
 
+::: tip
+[Go here](/guides/auth.md#password-encryption) to learn more about how passwords are stored and how to manually reset them.
+:::
+
 ### SSO
 
 Directus supports modular Single Sign-On (SSO) authentication services, such as Google and Facebook.
@@ -444,6 +452,42 @@ POST /[project]/auth/sso/access_token
 }
 ```
 
+### Logging in with 2FA
+Two-Factor Authentication (2FA) is an authentication method that requires extra evidence from the user, apart from their password. In this case, we require a One-Time Password (OTP). This is a code that is stored in an authenticator and changes every 30 seconds.
+
+#### Get Auth Token with 2FA
+
+```http
+POST /[project]/auth/authenticate
+```
+
+##### Body
+
+The user credentials, with an OTP.
+
+```json
+{
+    "email": "rijk@directus.io",
+    "password": "supergeheimwachtwoord",
+    "otp": "140619"
+}
+```
+
+::: warning
+If an invalid OTP is specified, the API will throw an `InvalidOTPException`. If the user has 2FA enabled, but no OTP is given, the API will throw a `Missing2FAPasswordException`.
+:::
+
+##### Response
+
+A 2FA secret.
+
+```json
+{
+        "2fa_secret": "140619",
+        "public": true
+}
+```
+
 ## Query Parameters
 
 The API has a set of query parameters that can be used for specific actions, such as: filtering, sorting, limiting, and choosing fields. These supported query parameters are listed below:
@@ -477,6 +521,7 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
 *   `result_count` - Number of items returned in this response
 *   `total_count` - Total number of items in this collection
 *   `status_count` - Number of items per status
+*   `filter_count` - Number of items matching the filter query
 
 ```
 # Here is an example of all meta data enabled
@@ -485,6 +530,7 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
     "type":"collection",
     "result_count":20,
     "total_count":962,
+    "filter_count":120,
     "status_count":{
         "deleted":94,
         "draft":90,
@@ -519,7 +565,8 @@ The `meta` parameter is a CSV of metadata fields to include. This parameter supp
 
 ### Limit
 
-Using `limit` can be set the maximum number of items that will be returned. You can also use `-1` to return all items, bypassing the default limits.
+Using `limit` can be set the maximum number of items that will be returned. You can also use `-1` to return all items, bypassing the default limits. The default limit is set to 200.
+
 
 #### Examples
 
@@ -533,6 +580,45 @@ Using `limit` can be set the maximum number of items that will be returned. You 
 
 ::: warning
 Fetching unlimited data may result in degraded performance or timeouts, use with caution.
+:::
+
+### Pagination
+
+Using `page` along with `limit` can set the maximum number of items that will be returned grouped by pages.
+
+#### Examples
+
+```
+# Returns a miximum of 10 items skipping the first 2 pages
+?limit=10&page=3
+
+# Here is an example of the response with pagination active
+{
+    "meta": {
+        "collection": "movies",
+        "type": "collection",
+        "result_count": 10,
+        "total_count": 3040,
+        "filter_count": 63,
+        "limit": 10,
+        "offset": 20,
+        "page": 3,
+        "page_count": 7,
+        "links": {
+            "self": "http://api.directus.com/_/items/movies",
+            "current": "http://api.directus.com/_/items/movies?access_token=token&meta=*&filter[keywords][contains]=account&page=2&limit=10",
+            "first": "http://api.directus.com/_/items/movies?access_token=token&meta=*&filter[keywords][contains]=account&page=1&limit=10&offset=10",
+            "last": "http://api.directus.com/_/items/movies?access_token=token&meta=*&filter[keywords][contains]=account&page=7&limit=10&offset=60",
+            "next": "http://api.directus.com/_/items/movies?access_token=token&meta=*&filter[keywords][contains]=account&page=4&limit=10&offset=30",
+            "previous": "http://api.directus.com/_/items/movies?access_token=token&meta=*&filter[keywords][contains]=account&page=2&limit=10&offset=10"
+        }
+    },
+    "data": [...]
+}
+```
+
+::: warning
+If sending the `offset` parameter along with the `page` and `limit` parameters, the `page` parameter will be ignored, and the `offset` parameter will be used.
 :::
 
 ### Offset
@@ -596,7 +682,7 @@ Example:
 
 ### Filtering
 
-Used to search items in a collection that matche the filter's conditions. Filters follow the syntax `filter[<field-name>][<operator>]=<value>`. The `field-name` supports dot-notation to filter on nested relational fields.
+Used to search items in a collection that matches the filter's conditions. Filters follow the syntax `filter[<field-name>][<operator>]=<value>`. The `field-name` supports dot-notation to filter on nested relational fields.
 
 #### Filter Operators
 
@@ -873,6 +959,119 @@ _Or, for batch creating multiple items:_
 ]
 ```
 
+#### Relational Data
+
+##### 1. O2M 
+
+A single item or an array of multiple items to be created. Field keys must match the collection's column names.
+
+- Add New
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+         "name" : "Design",
+         "order" : 1
+      },
+      {
+        "name" : "Development",
+         "order" : 2
+      }
+    ]
+}
+```
+- Select Existing
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+         "id" : 1
+      }
+    ]
+}
+```
+- Deleting an Item
+
+```json
+{
+    "category": [
+      {
+         "id" : 1,
+         "$delete" : true
+      }
+    ]
+}
+```
+##### 2. M2O 
+
+A single item to be created. Field key must match the collection's column name.
+
+```json
+{
+    "title": "Project One",
+    "category": 1
+}
+```
+##### 3. M2M 
+
+A single item or an array of multiple items to be created. Field keys must match the collection's column names.
+
+- Add New
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+        "category_id": {
+          "name" : "Design",
+          "order" : 1
+        }
+      },
+      {
+        "category_id": {
+          "name" : "Development",
+          "order" : 2
+        }
+      }
+    ]
+}
+```
+- Select Existing
+
+```json
+{
+    "title": "Project One",
+    "category": [
+      {
+        "category_id": {
+          "id" : 1
+        }
+      },
+      {
+        "category_id": {
+          "id" : 2
+        }
+      }
+    ]
+}
+```
+- Deleting an Item
+
+```json
+{
+    "category": [
+      {
+         "id" : 1,
+         "$delete" : true
+      }
+    ]
+}
+```
 ::: tip
 The API may not return any data for successful requests if the user doesn't have adequate read permission. Instead, `204 NO CONTENT` is returned.
 :::
@@ -2544,6 +2743,11 @@ Updates a Directus User.
 PATCH /[project]/users/[id]
 ```
 
+For example: let's add a static token to the user with the primary key 9:
+```bash
+curl --request PATCH --data '{ "token": "<your_super_secret_token_for_the_user_here>" }' -H '{ "Content-Type": "application/json", "Authorization": "<your_admin_token_with_write_privileges_on_directus_users_table_here>" }' /[project]/users/9
+```
+
 :::tip NOTE
 **PATCH** will partially update the item with the provided data, any missing fields will be ignored.
 :::
@@ -2735,6 +2939,15 @@ POST /[project]/utils/random/string
 | Name   | Default | Description                  |
 | ------ | ------- | ---------------------------- |
 | length | 32      | Length of string to generate |
+
+### Generate 2FA secret
+Two-Factor Authentication (2FA) is an authentication method that requires extra evidence from the user, apart from their password.
+
+Gets a 2FA secret, which can then be used to set a user's 2FA secret.
+
+```http
+POST /[project]/utils/2fa_secret
+```
 
 ## Mail
 

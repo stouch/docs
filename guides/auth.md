@@ -36,3 +36,31 @@ The `SDK.login()` method returns a promise. The promise will resolve on a succes
 Keeps the access token in the SDK and the application store in sync. The token in the store gets saved and retrieved to/from localstorage so the user isn't logged out on refresh.
 
 If the user re-opens the page when there is an invalid token in the store, the SDKs loggedIn flag will be false and the application will logout immediately.
+
+## Password Encryption
+
+The API encrypts every Directus user's password as a hash using a strong one-way hashing algorithm called `bcrypt`. The `CRYPT_BLOWFISH` algorithm creates a 60 character long hash with a recognizable `$2y$` identifier. All hashes are generated with a random salt and a cost of `10`. This cost determines the rounds of expansion used, so our default cost of `10` is equal to 2<sup>10</sup> (1,024) iterations — a good balance for most hardware.
+
+### Manually Setting Passwords
+
+You can manually generate new passwords using the PHP code below, or by using [online tools](https://bcrypt-generator.com/). Once generated, you can add the hashed value directly to `directus_users.password`.
+
+```php
+echo password_hash('new-password-here', PASSWORD_BCRYPT, ['cost' => 10]);
+```
+
+## Two-Factor Authentication (2FA)
+
+### Enabling 2FA
+
+2FA is enabled from the User Profile. To do so, click on the "Enable 2FA" button, and scan the QR code in your authenticator app.
+
+::: danger
+This QR code will only be shown to you once. After you save your profile, the next time you log in, you will be required to enter your One-Time Password (OTP) after your email and password.
+:::
+
+The user's 2FA secret is stored in the `2fa_secret` column of the `directus_users` table.
+
+### Enforcing 2FA
+
+2FA is enforced at a Role level, by toggling "Enforce 2FA". For any route that makes use of the `AuthenticationMiddleWare`, such as `'/'`,  if 2FA is enforced but not enabled for the current user, the API will throw a `TFAEnforcedException`.

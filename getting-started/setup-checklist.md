@@ -6,6 +6,8 @@
 **This checklist applies to the OS-level requirements for your Directus server**. If you are installing Directus using any of the other installation methods outlined [here](/getting-started/installation.html#setup), you will need to examine your container image (or other system configuration) to ensure these requirements are met.
 :::
 
+## Checklist
+
 1. **Check your Server Requirements** — Ensure that your server meets the [minimum Directus requirements](/advanced/requirements.html):
 
     - Apache 2
@@ -65,13 +67,13 @@
     
 13. **Did you check [GitHub](https://github.com/directus) for an open issue similar to yours?**
 
-## But I don't see anything about Docker or Containers...
+## Docker and Containers
 
 > If you are a docker ninja, feel free to skip this explainer
 
 There are great guides published with our official docker images for the directus [app](https://hub.docker.com/r/directus/app) and [API](https://hub.docker.com/r/directus/api). Those are your best resources for hitting the ground running with the respective containers.
 
-> If you're taking a stab at rolling your own image from the source code for a bespoke use case, here's a brief explainer along with our best wishes (to all explorers & tinkerers out there 🚀🍻 - do [share your journey](https://slack.directus.io/) and any lessons with us)
+> If you're taking a stab at rolling your own image from the source code for a bespoke use case, here's a brief explainer along with our best wishes (to all explorers & tinkerers out there 🚀🍻 - do [share your journey](https://directus.chat) and any lessons with us)
 
 ### So what is Docker, anyway?
 Your docker (or Kubernetes) images are made of the same "stuff" as a UNIX based OS environment, just packaged in a container. Docker - and other containerization frameworks are simply faster, meaner virtualization paradigms (think evolution of VMs from of old).
@@ -88,6 +90,6 @@ If you are implementing a solution for a client or an enterprise, you want to ta
 
 If all of the above fails, you should:
 
-- Ask for help on the `#support` channel of our [Community Slack](https://slack.directus.io/)
+- Ask for help on the `#support` channel of our [Community Slack](https://directus.chat)
 - You can also post configuration questions on [StackOverflow](https://stackoverflow.com/search?q=directus)
 - Lastly, if this truly seems like a `bug` (not a configuration problem) then report it on GitHub issues for the [API](https://github.com/directus/api/issues/new?template=Bug_report.md) or [App](https://github.com/directus/app/issues/new?template=Bug_report.md).

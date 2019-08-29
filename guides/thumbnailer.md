@@ -108,7 +108,9 @@ This image will be used when trying to generate a thumbnail with invalid options
 
 Based on the configuration above, below are a few examples that show the output of the Thumbnailer.
 
-[Original File Used Below](../img/thumbnailer/original.jpg) — 602KB and 1800x1200
+### Original File Used Below — 602KB and 1800x1200
+
+![Original File](../img/thumbnailer/original.jpg)
 
 ### Crop Better 200x200
 

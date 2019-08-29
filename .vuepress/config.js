@@ -72,7 +72,7 @@ module.exports = {
           ["/getting-started/concepts", "Concepts"],
           ["/getting-started/contributing", "Contributing"],
           ["/getting-started/supporting-directus", "Supporting Directus"],
-          ["/getting-started/troubleshooting", "Troubleshooting"]
+          ["/getting-started/setup-checklist", "Setup Checklist"]
         ]
       },
       {
@@ -140,6 +140,14 @@ module.exports = {
           ['/advanced/api/codebase', 'API Codebase'],
           ['/advanced/api/data', 'Direct Data Access'],
           // ['/advanced/deploying-versions', 'Deploying Versions'],
+        ]
+      },
+      {
+        title: "💬 Help & Support",
+        collapsable: true,
+        children: [
+          ['/help/questions', 'Frequently Asked Questions'],
+          ['/help/troubleshooting', 'Troubleshooting'],
         ]
       }
     ]

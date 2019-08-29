@@ -17,3 +17,74 @@ Interfaces are highly customizable with options that allow you to tailor them to
 ## Custom Interfaces
 
 If you need to tailor an interface to your specific needs, or want something completely different, you can create custom interface extensions. [Learn more about that here](/extensions/interfaces.md).
+
+## Core Interfaces
+
+WORK IN PROGRESS — There are a number of interfaces that ship with Directus that cover most use cases out-of-the-box. Below we'll give an overview of each.
+
+### `button-group`
+A highly customizable "radio" interface that allows users to select a single option, with its value saved as a string. Options can be text, icons, or both, and can be separated into different groups.
+#### Options
+* `choices` — JSON that defines the options (text/icon labels), values, and grouping.
+* `theme` — Choose between solid and outlined buttons.
+
+### `calendar`
+### `checkboxes-relational`
+### `checkboxes`
+### `code`
+### `collections`
+### `color-palette`
+### `color`
+### `date`
+### `datetime-created`
+### `datetime-updated`
+### `datetime`
+### `divider`
+### `dropdown`
+### `file-preview`
+### `file-size`
+### `file`
+### `files`
+### `hashed`
+### `icon`
+### `json`
+### `language`
+### `many-to-many`
+### `many-to-one`
+### `map`
+### `markdown`
+### `multiselect`
+### `numeric`
+### `one-to-many`
+### `password`
+### `preview`
+### `primary-key`
+### `radio-buttons`
+### `rating`
+### `repeater`
+### `slider`
+### `slug`
+### `sort`
+### `status`
+### `tags`
+### `text-input`
+### `textarea`
+### `time`
+### `toggle-icon`
+### `toggle`
+### `translation`
+### `user-created`
+### `user-roles`
+### `user-updated`
+### `user`
+### `wysiwyg-full`
+### `wysiwyg`
+
+## System Interfaces
+
+This subset of Core Interfaces were built specifically for use within Directus Settings. Please be aware that these interfaces are ad hoc and might not work well for project content.
+
+### `2fa-secret`
+### `activity-icon`
+### `interface-options`
+### `interfaces`

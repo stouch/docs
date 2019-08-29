@@ -23,6 +23,7 @@ The following file path: A file stored in `public/extensions/custom/endpoints/ex
 
 use Directus\Application\Http\Request;
 use Directus\Application\Http\Response;
+use Directus\Services\ItemsService;
 
 return [
   // The endpoint path:
@@ -34,10 +35,16 @@ return [
     'method' => 'GET',
     'handler' => function (Request $request, Response $response) {
 
+       // Get all answers from DB
+      $itemsService = new ItemsService($this);
+
+      $params = $request->getQueryParams();
+      $programs = $itemsService->findAll('items', $params);
+
+
       return $response->withJson([
           'data' => [
-              'item 1',
-              'item 2'
+              $programs
           ]
       ]);
     }
