@@ -119,7 +119,7 @@ The API uses numeric codes to avoid the need for translated error messages based
 - `0106` - User Not Found (404)
 - `0107` - User with Provided Email Not Found (404)
 - `0108` - User Not Authenticated (401)
-- `0109` - Auth validation error (422) - _Invalid Email / Invalid Password_
+- `0114` - Auth validation error (422) - _Invalid Email / Invalid Password_
 
 #### Items Error Codes
 
