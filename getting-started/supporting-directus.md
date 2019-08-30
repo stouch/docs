@@ -70,7 +70,7 @@ One sentence. Even that was a sentence and it was only two words! If you're a fa
 
 ### SWAG
 
-It wouldn't be cost-effective for us to give out thousands of free shirts and sweatshirts (you can buy them!), but we _can_ send out thousands of stickers, pins, magnets, and other "Stuff We All Get". Mention us on Twitter or even just shoot us an email with your shipping address and we'll send you some! Post a pic of our sticker somewhere awesome (and legal) and we might just send you some free merch too!
+It wouldn't be cost-effective for us to give out thousands of free shirts and sweatshirts (you can buy them!), but we _can_ send out thousands of stickers, pins, magnets, and other "Stuff We All Get". Mention us on Twitter or even just shoot us an email with your shipping address and we'll send you some! Post a pic of our sticker somewhere awesome (and legal) and we might just send you a free shirt too! We can ship for free within the US, for international shipping, we may require a one-time donation to cover shipping costs. Believe it or not, it can cost us $50 or more just to send a few _stickers_ to certain countries!
 
 ### Project Badges
 
