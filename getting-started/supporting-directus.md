@@ -16,7 +16,7 @@ Unfortunately, Patreon [doesn't support one-time payments](https://patreon.zende
 
 ### Merch
 
-Our merchandise is a great way to support Directus – you get a shirt and we get some financial support and free advertising. We don't have an online store, but if you make a financial donation using the above methods we'd be happy to send you stuff. Just be sure to message us with sizing/shipping details. T-Shirts require a minimum donation of $20 and our sweatshirts are currently sold out.
+Our merchandise is a great way to support Directus – you get a shirt and we get some financial support and free advertising. We don't have an online store, but if you make a financial donation using the above methods we'd be happy to send you stuff. Just be sure to message us with sizing/shipping details. T-Shirts and bags require a minimum donation of $25 to cover shipping within the US, or $50 if shipping internationally. Sweatshirts and other premium merch is reserved for partners, sponsors, and our Core team of contributors.
 
 ### Commissions
 
