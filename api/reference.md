@@ -1862,6 +1862,8 @@ This allows for easier uploading of files when using an HTML form element with t
 
 Directus supports adding embed videos from YouTube and Vimeo to Directus Files using the video URL. Saving an image as its thumbnail.
 
+You can also import an image or PDF from a URL.
+
 ```json
 {
   "data": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
