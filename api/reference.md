@@ -775,7 +775,7 @@ GET /items/projects?filter[contributors][has]=3
 By default, all chained filters are treated as ANDs, which means _all_ conditions must match. To create an OR combination, you can add the `logical` operator, as shown below:
 
 ```
-GET /items/projects?filter[category][eq]=development&filter[title][logical]=or&filter[title][like]=design
+GET /items/projects?filter[category][eq]=development&filter[category][logical]=or&filter[category][like]=design
 ```
 
 ::: tip
