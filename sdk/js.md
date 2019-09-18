@@ -19,7 +19,7 @@ const client = new DirectusSDK();
 Alternatively, you can use the bundle hosted on a static npm cdn:
 
 ```html
-<script src="https://unpkg.com/@directus/sdk-js@4.0.0/dist/directus-sdk.umd.min.js"></script>
+<script src="https://unpkg.com/@directus/sdk-js@5.3.4/dist/directus-sdk.umd.min.js"></script>
 
 <script>
   const client = new DirectusSDK();
