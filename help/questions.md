@@ -34,6 +34,12 @@ Occasionally people may login and change the passwords on these accounts, we're 
 
 The JWT Token can't have it's length of validity modified if you need anything more than that, you can either [refresh the token](/api/reference.html#refresh-auth-token) to get a new token, or you can utilise the [Static tokens](/api/reference.html#static-tokens), however, static tokens are less secure.
 
+## Files
+
+### How can I increase the 2MB limit on file uploads?
+
+Directus pulls the file limit based on the upload limit that's configured for your PHP environment. The values you're looking for are `upload_max_filesize` and `post_max_size`. These can both be found in your `php.ini` file.
+
 ## Scripts
 
 ### Will the bin scripts update all my projects?
