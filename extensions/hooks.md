@@ -259,3 +259,43 @@ return [
   ]
 ];
 ```
+
+## Webhooks
+
+Webhooks allow you to send an HTTP request when a specific event occurs. Creating a webhook in Directus is done by creating a custom hook (see above) that makes an HTTP request.
+
+The example below sends a `POST` request to `http://example.com/alert` every time an article is created, using the following payload:
+
+```json
+{
+  "type": "article",
+  "data": {
+    "title": "new article",
+    "body": "this is a new article"
+  }
+}
+```
+
+```php
+<?php
+
+return [
+    'actions' => [
+        // Send an alert when a article is created
+        'collection.insert.articles' => function (array $data) {
+            $client = new \GuzzleHttp\Client([
+                'base_uri' => 'http://example.com'
+            ]);
+
+            $data = [
+                'type' => 'article',
+                'data' => $data
+            ];
+
+            $response = $client->request('POST', '/alert', [
+                'json' => $data
+            ]);
+        }
+    ]
+];
+```
