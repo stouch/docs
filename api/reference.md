@@ -1232,9 +1232,60 @@ A single item to be updated. Field keys must match the collection's column names
 
 #### Examples
 
-*   Return the project item with an primary key of `1`
-    ```bash
-    curl -u <token>: -d "title=new title" https://api.directus.io/_/items/projects/1
+* Update the name field on an item
+    ```JSON
+    {
+        "name": "Directus"
+    }
+    ```
+
+##### Relational updates
+* [M2M] Connect a new existing item to a many to many field
+    ```json
+    {
+        "articles": [
+            {
+                "article_id": 15
+            }
+        ]
+    }
+    ```
+* [M2M] Create a new related item and add it to the field
+    ```json
+    {
+        "articles": [
+            {
+                "article_id": {
+                    "title": "Working with relationships",
+                    "author": 21
+                }
+            }
+        ]
+    }
+    ```
+* [M2M] Delete the relationship to another item
+    ```json
+    {
+        "articles": [
+            {
+                "id": 61,
+                "$delete": true
+            }
+        ]
+    }
+    ```
+* [M2M] Update a related item
+    ```json
+    {
+        "articles": [
+            {
+                "id": 61,
+                "article_id": {
+                    "title": "My article's new title"
+                }
+            }
+        ]
+    }
     ```
 
 ### Update Items
