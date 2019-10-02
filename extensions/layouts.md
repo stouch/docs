@@ -118,4 +118,4 @@ The meta.json file contains metadata for the layout, such as its unique name, au
 
 ## Mixin (props)
 
-We've prepared a [mixin](https://github.com/directus/extensions/blob/master/mixins/layout.js) that adds all the props to the component that the application passes to the layout. These include items and a bunch of others.
+We've prepared a [mixin](https://github.com/directus/extension-toolkit/blob/master/mixins/layout.js) that adds all the props to the component that the application passes to the layout. These include items and a bunch of others.
