@@ -250,7 +250,7 @@ return [
         // Or
         $container = \Directus\Application\Application::getInstance();
         // Monolog\Logger instance
-        $logger = $container->get('logger');
+        $logger = $container->fromContainer('logger');
         $logger->error($e);
         // beside error there are:
         // debug, info, notice, warning, critical, alert, and emergency methods
