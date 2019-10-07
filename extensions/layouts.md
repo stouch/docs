@@ -21,6 +21,15 @@ These are other potential layouts that could be created to view specific types o
 
 ## Files & Structure
 
+A layout is made up out of three required core files. ou can create a layout from scratch or use the [extension toolkit](https://github.com/directus/extension-toolkit) to generate boilerplate code.
+
+If not using the extension toolkit, here's how you can create a layout from scratch:
+1. Create a meta.json file in `public/extensions/custom/layouts`. See below for an example.
+2. Create your .vue files as described below.
+3. Transpile the .vue files in the same directory as step #1.
+   - (Recommended) If using Parcel, run `parcel build layout.vue -d ./ --no-source-maps --global __DirectusExtension__` (and same for `options.vue`)
+   - If using Webpack, [Here's a guide to configuring webpack to compile with vue](https://medium.com/js-dojo/how-to-configure-webpack-4-with-vuejs-a-complete-guide-209e943c4772).
+
 ### layout.vue
 
 A standard Vue.js single file component that renders the actual layout like cards in this example.
