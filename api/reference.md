@@ -1716,7 +1716,7 @@ Deleting a collection removes the actual table and any records therein from the 
 
 ### Collection Presets
 
-These endpoints are used for creating, reading, updating, and deleting collection presets.
+These endpoints are used for creating, reading, updating, and deleting [collection presets](/getting-started/concepts.md#collection-preset) (essentially bookmarks of collection items).
 
 #### Create Collection Preset
 
