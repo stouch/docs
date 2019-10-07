@@ -87,7 +87,7 @@ Every interface should support a `readonly` and a `disabled` state.
 
 ## Mixin (props)
 
-We've prepared a [mixin](https://github.com/directus/extensions/blob/master/mixins/interface.js) that adds all the props to the component that the application passes to the interface. These include value, collection, relationship, and a bunch of others. A minimal interface mostly uses `value` and `options`.
+We've prepared a [mixin](https://github.com/directus/extension-toolkit/blob/master/mixins/interface.js) that adds all the props to the component that the application passes to the interface. These include value, collection, relationship, and a bunch of others. A minimal interface mostly uses `value` and `options`.
 
 ## Testing
 
