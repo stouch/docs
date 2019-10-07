@@ -21,7 +21,7 @@ These are other potential layouts that could be created to view specific types o
 
 ## Files & Structure
 
-A layout is made up out of three required core files. ou can create a layout from scratch or use the [extension toolkit](https://github.com/directus/extension-toolkit) to generate boilerplate code.
+A layout is made up out of three required core files. You can create a layout from scratch or use the [extension toolkit](https://github.com/directus/extension-toolkit) to generate boilerplate code.
 
 If not using the extension toolkit, here's how you can create a layout from scratch:
 1. Create a meta.json file in `public/extensions/custom/layouts`. See below for an example.
