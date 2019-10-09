@@ -4,7 +4,15 @@
 
 ## Files & Structure
 
-An interface is made up out of three required core files. You can create these from scratch or duplicate an existing Interface to get a head-start.
+An interface is made up out of three required core files. You can create a layout from scratch or use the [extension toolkit](https://github.com/directus/extension-toolkit) to generate boilerplate code.
+
+If not using the extension toolkit, here's how you can create an interface from scratch:
+1. Create a meta.json file in `public/extensions/custom/interfaces`. See below for an example.
+2. Create your .vue files as described below.
+3. Transpile the .vue files in the same directory as step #1.
+   - (Recommended) If using Parcel, run `parcel build input.vue -d ./ --no-source-maps --global __DirectusExtension__` (and same for `display.vue`)
+   - If using Webpack, [Here's a guide to configuring webpack to compile with vue](https://medium.com/js-dojo/how-to-configure-webpack-4-with-vuejs-a-complete-guide-209e943c4772).
+
 
 ### `input.vue`
 
