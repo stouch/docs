@@ -5,6 +5,8 @@
 Hooks are created as functions that are triggered when certain events happen, for example:
 
 ```php
+<?php
+
 return [
   'actions' => [
     'item.create.articles' => function ($data, $collectionName) {
@@ -20,6 +22,8 @@ return [
 To add a hook, you create a PHP file in the `/public/extensions/custom/hooks/` folder, for example `/public/extensions/custom/hooks/my-hook.php`. This file will need to return an array that contains functions for each of the events you'd like to listen to:
 
 ```php
+<?php
+
 return [
   'actions' => [
     'application.error' => function (Exception $error) {
@@ -89,6 +93,8 @@ By default, the Hooks above occur _after_ an event has happened. You can append 
 In this example we'll notify an email address every time a new article is created.
 
 ```php
+<?php
+
 return [
   'actions' => [
     'item.create.articles' => function ($data, $collectionName) {
@@ -116,7 +122,9 @@ Name                                 | Description
 In this example we'll generate and set a `uuid` right before every article is created.
 
 ```php
-[
+<?php
+
+return [
   'filters' => [
     'item.create.articles:before' => function (\Directus\Hook\Payload $payload) {
       $payload->set('uuid', \Directus\generate_uuid4());
@@ -124,7 +132,7 @@ In this example we'll generate and set a `uuid` right before every article is cr
       return $payload;
     }
   ]
-]
+];
 ```
 
 #### Useful Methods when working with the Payload
@@ -153,6 +161,8 @@ Name                    | Description
 Directus _system_ collections also trigger filters, remember to omit them in your filter to prevent damage to the system.
 
 ```php
+<?php
+
 use Directus\Database\Schema\SchemaManager;
 
 $collectionName = $payload->attribute('collection_name');
@@ -168,6 +178,8 @@ if (in_array($collectionName, SchemaManager::getSystemCollections())) {
 It is easy to create Web Hooks in Directus. Simply include an HTTP POST that includes the desired data within the event. We've included a [disabled example](https://github.com/directus/api/tree/master/public/extensions/custom/hooks/_webhook) in the codebase to help you get started.
 
 ```php
+<?php
+
 return [
   'actions' => [
     // Post a web callback when an article is created
@@ -198,6 +210,8 @@ NOTE: Make sure to validate using `:before` to make sure to validate _before_ th
 :::
 
 ```php
+<?php
+
 return [
   'filters' => [
     'item.create.articles:before' => function (\Directus\Hook\Payload $payload) {
@@ -229,6 +243,8 @@ In order to send the API error logs to an external service, you can use a Hook a
 Example:
 
 ```php
+<?php
+
 return [
   'actions' => [
     // Post a web callback when an article is created
