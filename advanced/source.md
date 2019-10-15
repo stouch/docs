@@ -70,7 +70,7 @@ If you'd rather skip the installer (next step), you can simply import the boiler
 
 ##### Demo SQL
 
-This file comes with the boilerplate schema as well as some dummy collections, fields, data, and Settings. You can [download a demo SQL schema](https://sql.directus.app/demo.sql) to skip the API's installation process.
+This file comes with the boilerplate schema as well as some dummy collections, fields, data, and Settings. You can [download a demo SQL schema](https://github.com/directus/demo-sql) to skip the API's installation process.
 
 ::: tip Credentials
 If you are skipping the installer and adding the SQL directly to your database, the default login credentials are:
