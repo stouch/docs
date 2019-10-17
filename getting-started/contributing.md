@@ -11,7 +11,7 @@ It is important to understand how our codebases are organized and why. Directus 
 An API wrapper for custom SQL databases. It allows _projects_ to easily communicate with the SQL databases, and is the "engine" of the Directus Suite.
 
 ::: warning Why are the App's extensions in the API?
-You may be wondering why the App's extensionsare in the API codebase. Learn more about the reasoning for this in our [Architecture Explanation](/extensions/architecture.md).
+You may be wondering why the App's extensions are in the API codebase. Learn more about the reasoning for this in our [Architecture Explanation](/extensions/architecture.md).
 :::
 
 ### [directus-app](https://github.com/directus/app)
