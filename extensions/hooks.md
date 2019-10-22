@@ -9,7 +9,7 @@ Hooks are created as functions that are triggered when certain events happen, fo
 
 return [
   'actions' => [
-    'item.create.articles' => function ($data, $collectionName) {
+    'item.create.articles' => function ($collectionName, $data) {
       $content = 'New article was created with the title: ' . $data['title'];
       notify('admin@example.com', 'New Article', $content);
     }
@@ -97,7 +97,7 @@ In this example we'll notify an email address every time a new article is create
 
 return [
   'actions' => [
-    'item.create.articles' => function ($data, $collectionName) {
+    'item.create.articles' => function ($collectionName, $data) {
       $content = 'New article was created with the title: ' . $data['title'];
       notify('admin@example.com', 'New Article', $content);
     }
@@ -183,7 +183,7 @@ It is easy to create Web Hooks in Directus. Simply include an HTTP POST that inc
 return [
   'actions' => [
     // Post a web callback when an article is created
-    'item.create.articles' => function (array $data) {
+    'item.create.articles' => function ($collectionName, array $data) {
       $client = new \GuzzleHttp\Client([
         'base_uri' => 'https://example.com'
       ]);
@@ -248,7 +248,7 @@ Example:
 return [
   'actions' => [
     // Post a web callback when an article is created
-    'item.create.articles' => function (array $data) {
+    'item.create.articles' => function ($collectionName, array $data) {
       $client = new \GuzzleHttp\Client([
         'base_uri' => 'https://example.com'
       ]);
@@ -298,7 +298,7 @@ The example below sends a `POST` request to `http://example.com/alert` every tim
 return [
     'actions' => [
         // Send an alert when a article is created
-        'collection.insert.articles' => function (array $data) {
+        'collection.insert.articles' => function ($collectionName, array $data) {
             $client = new \GuzzleHttp\Client([
                 'base_uri' => 'http://example.com'
             ]);
