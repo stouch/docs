@@ -3278,13 +3278,15 @@ Read more about the `storage` configuration [here](../advanced/api/configuration
 
 | Attribute       | Description
 | --------------- | --------------------------------------
-| `enabled`       | Enable (`true`) or Disable (`false`)
-| `limit`         | Number of request within `interval`
-| `interval`      | How long (in seconds) a interval will last
-| `adapter`       | Rate limit adapter
-| `host`          | Adapter host
-| `port`          | Adapter port
-| `timeout`       | Adapter request timeout
+| `enabled`       | Enable (`true`) or Disable (`false`). Default: `false`
+| `limit`         | Number of request within `interval`. Default: `100`
+| `interval`      | How long (in seconds) a interval will last. Default: `60`
+| `adapter`       | Rate limit adapter. Default: `redis`
+| `host`          | Adapter host. Default: `127.0.0.1`
+| `port`          | Adapter port. Default: `6379`
+| `timeout`       | Adapter request timeout. Default: `10`
+
+The Rate Limit object is defined in `api.php` config file.
 
 ## Field Types
 
