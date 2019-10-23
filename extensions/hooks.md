@@ -111,9 +111,9 @@ Filter Hooks are similar to Actions but alter the data that passes through it. F
 
 Name                                 | Description
 ------------------------------------ | ------------
-`item.create`                        | Item is created. You can also limit to a specific collection using `item.create.[collection-name]`. Supports `:before` and `:after` (default)
-`item.read`                          | Item is read. You can also limit to a specific collection using `item.read.[collection-name]`. Supports `:before` and `:after` (default)
-`item.update`                        | Item is updated. You can also limit to a specific collection using `item.update.[collection-name]`. Supports `:before` and `:after` (default)
+`item.create`                        | Item is created. You can also limit to a specific collection using `item.create.[collection-name]`. Supports `:before` (default)
+`item.read`                          | Item is read. You can also limit to a specific collection using `item.read.[collection-name]`. Supports `:before` (default)
+`item.update`                        | Item is updated. You can also limit to a specific collection using `item.update.[collection-name]`. Supports `:before` (default)
 `response`                           | Before adding the content into the HTTP response body.  You can also limit to a specific collection using `response.[collection-name]`.
 `response.[method]`                  | Same as `response` but only executes for a specific http method, such as `GET, POST, DELETE, PATCH, PUT, OPTIONS`. You can also limit to a specific collection using `response.[method].[collection-name]`.
 
