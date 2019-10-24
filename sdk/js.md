@@ -65,7 +65,7 @@ const client = new DirectusSDK({
 });
 ```
 
-This storage can be any provider, as long as it has synchronous `.getItem()` and `.setItem()` methods. `window.localStorage` and `window.sessionStorage` work natively in the browser.
+This storage can be any provider, as long as it has synchronous `.getItem()`, `.setItem()` and `.removeItem()` methods. `window.localStorage` and `window.sessionStorage` work natively in the browser.
 
 **Using a static access token**
 Alternatively, you can connect to the API with a static token (as controlled by the `token` field in the directus_users collection). This token doesn't expire and thus shouldn't be used on the client side.
