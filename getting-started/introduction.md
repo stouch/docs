@@ -72,6 +72,10 @@ For general information, resources, and team info we maintain a marketing [websi
 
 Join our growing community on [Directus Slack](https://directus.chat) (1,300+ members) to get an inside peak into what's happening within our organization. From community support to seeing where the platform is heading next, it's a great way to get more involved!
 
+### Directus Locales
+
+In addition to managing multilingual content, the Directus Admin App itself can also be translated into different langauges. Our locales are managed through the [Directus CrowdIn](https://locales.directus.io/), which provides a friendly interface and automatically submits pull-requests to the git repository.
+
 ### Directus Marketplace
 
 Coming in early 2019, this will be a library of extensions available for Directus. Eventually we plan on opening this up to community submissions and allowing monetization — but initially it will showcase free extensions created by our core team.
