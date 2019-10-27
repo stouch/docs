@@ -13,6 +13,10 @@ Directus is developed and tested on the LAMP stack, and therefore this is the on
 * **PHP 7.1+**
     * Extensions:  `pdo`, `mysql`, `curl`, `gd`, `fileinfo`, `libapache2-mod-php` and `mbstring`
 
+::: tip Alternate SQL Vendors
+In theory, Directus should work with MySQL drop-in alternatives such as MariaDB (`10.2+`) or Percona Server. However, these are *not* officially supported so you should proceed at your own risk.
+:::
+
 ::: tip Detailed Requirements
 View our [detailed requirements page](/advanced/requirements.md) to learn more about these requirements, neccesary permissions, and other server-specific prerequisites.
 :::
