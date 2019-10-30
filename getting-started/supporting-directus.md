@@ -8,7 +8,7 @@ Our servers and full-time staff all cost money. Far more money than we generate 
 
 ### Memberships
 
-We accept memberships through our Patreon account. These monthly donations are the ideal financial contribution since  they're a bit more dependable and we can roughly predict the monthly amount. To become a member/sponsor, please [visit our Patreon page](https://www.patreon.com/directus).
+We accept memberships through our Patreon account. These monthly donations are the ideal financial contribution since  they're a bit more dependable and we can roughly predict the monthly amount. To become a member/sponsor, please visit our [Patreon page](https://www.patreon.com/directus) or [GitHub Sponsors page](https://github.com/sponsors/directus).
 
 ### One-Time Donations
 
