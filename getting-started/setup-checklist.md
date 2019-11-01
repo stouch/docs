@@ -54,7 +54,7 @@
 
 9. **Did you install or create the App configuration file?**
 
-10. **Did you get `pong` response from the `/ping` server endpont?**
+10. **Did you get `pong` response from the `/server/ping` server endpoint?**
 
 11. **Are you using the correct API project URL?** More guidance on verifying this soon.
 
