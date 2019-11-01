@@ -735,7 +735,7 @@ GET /items/projects?filter[author.email][rlike]=%@directus.io
 ```
 
 ::: tip
-Make sure the field is a relational field before using the dot-notation, otherwise the API will return an~ error saying the field cannot be found.
+Make sure the field is a relational field before using the dot-notation, otherwise the API will return an error saying the field cannot be found.
 :::
 
 You can reference as many field as possible, as long as they are all relational field, except the last one, it could be either relational or non-relational.
