@@ -307,7 +307,7 @@ The access token that is returned through this endpoint must be used with any su
 | `/server/ping`                   | No
 | `/types`                         | **Yes**
 
-The proctected endpoints that doesn't starts with `/[project]`, requires the user to send the project name via HTTP header or query string when using static tokens. JWT tokens already has this information in their payloads.
+The protected endpoints that don't start with `/[project]`, requires the user to send the project name via HTTP header or query string when using static tokens. JWT tokens already has this information in their payloads.
 
 #### Project via Query String
 
@@ -735,7 +735,7 @@ GET /items/projects?filter[author.email][rlike]=%@directus.io
 ```
 
 ::: tip
-Make sure the field is a relational field before using the dot-notation, otherwise the API will return a error saying the field cannot be found.
+Make sure the field is a relational field before using the dot-notation, otherwise the API will return an error saying the field cannot be found.
 :::
 
 You can reference as many field as possible, as long as they are all relational field, except the last one, it could be either relational or non-relational.
@@ -756,7 +756,7 @@ GET /items/projects?filter[contributors][all]=1,2,3
 
 The example above will return all projects that have the user with ID 1, 2, and 3 as collaborator.
 
-Using `has` will return items with at least that mininum number of related items.
+Using `has` will return items with at least that minimum number of related items.
 
 Example of requesting projects with at least one contributor:
 
@@ -815,7 +815,7 @@ GET /items/comments?filter[datetime][lte]=2018-05-21 15:48:03
 GET /items/comments?filter[datetime][between]=2018-05-21 15:48:03,2018-05-21 15:49:03
 ```
 
-For `date` and `datetime` type, `now` can be used as value for "currrent server time".
+For `date` and `datetime` type, `now` can be used as value for "current server time".
 
 ```
 # Equals to
@@ -828,7 +828,7 @@ GET /items/comments?filter[datetime][gt]=now
 GET /items/comments?filter[datetime][between]=2018-05-21 15:48:03,now
 ```
 
-When the field belongs to a Directus collection, `now` is converted to a UTC date/datime.
+When the field belongs to a Directus collection, `now` is converted to a UTC date/datetime.
 
 ### Language
 
@@ -907,7 +907,7 @@ This parameter will not work when `activity_skip` is enabled.
 
 #### Examples
 
-If you want to keep track of the reason why a project from the `projects` collection went from `active` to `cancelled`, you can add a comment explaning the reason.
+If you want to keep track of the reason why a project from the `projects` collection went from `active` to `cancelled`, you can add a comment explaining the reason.
 
 ```http
 PATCH /_/items/projects/1?comment=Client business closed doors
@@ -1094,7 +1094,7 @@ GET /[project]/items/[collection-name]/[pk]
 
 #### Examples
 
-*   Return the project item with an primary key of `1`
+*   Return the project item with a primary key of `1`
     ```bash
     curl -u <token>: https://api.directus.io/_/items/projects/1
     ```
@@ -2152,7 +2152,7 @@ DELETE /[project]/files/[id1],[id2],[id3],...
 ```
 
 :::warning
-This is not a recurrsive delete. As of now, any sub-folders and files are left orphaned in the heirarchy. Be sure to empty a virtual folder before deleting it.
+This is not a recursive delete. As of now, any sub-folders and files are left orphaned in the hierarchy. Be sure to empty a virtual folder before deleting it.
 :::
 
 ### Permissions
@@ -2900,7 +2900,7 @@ GET /[project]/users/[id]/revisions
 
 #### Get User Revision
 
-Returns a single revision of an user using a 0-index based offset.
+Returns a single revision of a user using a 0-index based offset.
 
 ```http
 GET /[project]/users/[id]/revisions/[offset]
@@ -3190,7 +3190,7 @@ When `project` is not specified it will create the default configuration.
 :::
 
 ::: tip
-If there's a fille in the root named `.lock` this instance is locked from creating new projects.
+If there's a file in the root named `.lock` this instance is locked from creating new projects.
 :::
 
 ```json
@@ -3743,7 +3743,7 @@ Directus partially supports Version 2 of System for Cross-domain Identity Manage
 
 Learn more within the "SCIM Endpoints and HTTP Methods" section of [RFC7644](https://tools.ietf.org/html/rfc7644#section-3.2).
 
-If want to integrate Directus SCIM endpoints with Okta, follow these steps on [Publishing Your SCIM-Based Provisioning Integration](https://developer.okta.com/standards/SCIM/#publishing-your-scim-based-provisioning-integration) section.
+If you want to integrate Directus SCIM endpoints with Okta, follow these steps on [Publishing Your SCIM-Based Provisioning Integration](https://developer.okta.com/standards/SCIM/#publishing-your-scim-based-provisioning-integration) section.
 
 ### Create SCIM User
 
