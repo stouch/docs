@@ -881,7 +881,7 @@ Grouping by both `name` and `country` will result on all items to be returned, b
 
 ### Skip Activity Logging
 
-The `activity_skip` parameter prevent the activity logging to be saved in the `directus_actity` table. `activity_skip=1` means to ignore the logging any other value means record the activity.
+The `activity_skip` parameter prevent the activity logging to be saved in the `directus_activity` table. `activity_skip=1` means to ignore the logging any other value means record the activity.
 
 #### Examples
 
