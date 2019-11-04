@@ -171,6 +171,7 @@ The API uses numeric codes to avoid the need for translated error messages based
 - `0500` - Mailer Transport Not Found (500)
 - `0501` - Invalid Transport Option (500)
 - `0502` - Invalid Transport Instance (500)
+- `0503` - Mail Sending Failed (500)
 
 #### Filesystem Error Codes
 
