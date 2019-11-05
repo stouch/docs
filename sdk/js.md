@@ -30,17 +30,45 @@ Alternatively, you can use the bundle hosted on a static npm cdn:
 
 ### Authentication
 
-You can connect and login to the API in two ways:
+You can connect and login to the API in a few ways:
+
+**Within a Directus Extension**
+
+If you're making API requests from a custom VueJS Directus extension, you can use the credentials the user already provided Directus on initial login.
+
+```js
+import DirectusSDK from "@directus/sdk-js";
+
+const client = new DirectusSDK({
+  url: "https://demo-api.directus.app/",
+  project: "_",
+  storage: window.localStorage
+});
+```
+
+However, Directus provides each extension VueJS component with `this.$api`, an instance of `DirectusSDK` already logged in. Read more at https://docs.directus.io/advanced/app/sdk-api.html.
+
+```js
+export default {
+  name: "example-component",
+  created() {
+    // No login needed
+    this.$api.getItems("projects")
+      .then(/* do something with response */)
+  }
+}
+```
 
 **Using JWT**
 
-If you're making API requests from client side JS, you should login using the `login` method. The SDK will fetch an access token based on the credentials and use that for all subsequent requests.
+If you're making API requests from your own client side JS, you should login using the asynchronous `login` method. The SDK will fetch an access token based on the credentials and use that for all subsequent requests.
 
 ```js{3,5-10}
 import DirectusSDK from "@directus/sdk-js";
 
 const client = new DirectusSDK();
 
+// This returns a promise - don't try to access any data until this promise resolves
 client.login({
   url: "https://demo-api.directus.app/",
   project: "_",
@@ -106,6 +134,8 @@ async function fetchAllItems() {
 ```
 
 ## Reference
+
+Note that all of the following methods are asynchronous and return promises.
 
 If you think a method is missing, please reach out on GitHub or [Slack](https://directus.chat)!
 
