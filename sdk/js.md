@@ -77,8 +77,6 @@ client.login({
 });
 ```
 
-However, D
-
 #### Staying logged in
 
 The SDK will automatically refresh the token until you call the `.logout()` method.
