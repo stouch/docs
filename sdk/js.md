@@ -46,6 +46,19 @@ const client = new DirectusSDK({
 });
 ```
 
+However, Directus provides each extension VueJS component with `this.$api`, an instance of `DirectusSDK` already logged in. Read more at https://docs.directus.io/advanced/app/sdk-api.html.
+
+```js
+export default {
+  name: "example-component",
+  created() {
+    // No login needed
+    this.$api.getItems("projects")
+      .then(/* do something with response */)
+  }
+}
+```
+
 **Using JWT**
 
 If you're making API requests from your own client side JS, you should login using the asynchronous `login` method. The SDK will fetch an access token based on the credentials and use that for all subsequent requests.
@@ -63,6 +76,8 @@ client.login({
   password: "password"
 });
 ```
+
+However, D
 
 #### Staying logged in
 
