@@ -23,6 +23,7 @@ Key               | Description
 `thumbnail_actions`         | **WIP**; List options to perform different thumbnail generation actions. | `contain` and `crop`
 `thumbnail_cache_ttl`       | Cache time to live in seconds. It sets HTTP `max-age` and `Expires` datetime. Default: `86400` seconds = 1 day
 `trusted_proxies` | Trusted proxies IP address. By default all are trusted
+`password_policy` | **None:** No restrictions; **Weak:** Minimum character length of 8; **Strong:** 1+ lowercase letter, 1+ uppercase letter, 1+ number, 1+ special character, minimum character length of 8
 
 ::: tip UUID
 The `uuid` file naming uses UUID v5, and `6ba7b810-9dad-11d1-80b4-00c04fd430c8` as the namespace DNS. A constant value defined in [ramsey/uuid](https://github.com/ramsey/uuid/blob/5cadea8447ea1734b66e402aeb1a1739957d59f6/src/Uuid.php#L44) package.
