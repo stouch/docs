@@ -107,6 +107,7 @@ The API uses numeric codes to avoid the need for translated error messages based
 - `0021` - API is currently under maintenance. (503)
 - `0022` - Invalid Cache Adapter (503)
 - `0023` - Invalid Cache Configuration (503)
+- `0024` - Unknown Project (500)
 
 #### Authentication Error Codes
 
