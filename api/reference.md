@@ -125,6 +125,7 @@ The API uses numeric codes to avoid the need for translated error messages based
 - `0112` - Invalid User OTP (404)
 - `0113` - 2FA Enforced but Not Activated (401)
 - `0114` - Auth validation error (422) - _Invalid Email / Invalid Password_
+- `0115` - SSO not allowed with 2FA enabled
 
 #### Items Error Codes
 
