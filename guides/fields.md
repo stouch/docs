@@ -22,7 +22,7 @@ Only the "Name" is required for this step, but it's good to familiarize yourself
   * **Datatype** — Database-specific type to use (eg: `VARCHAR`, `INT`, etc).
   * **Length** — Max size of data that can be contained by this field.
   * **Default** — The default value for this field. Used for new items if the field is left blank.
-  * **Validation** — A RegEx string used to validate the value on save.
+  * **Validation** — A RegEx string used to validate the value on save. (eg: `/^[A-Z]+$/` allows only uppercase characters)
   * **Validation Message** — Custom validation message displayed if the above validation fails
   * **Required** — Whether or not this field requires a value.
   * **Readonly** — Whether or not this field's interface is interactive on the item detail page
