@@ -56,7 +56,11 @@ When deleting an item, the API does the following:
   * If no, it hard deletes the item (permanently removed from the database)
   
 ::: warning
-There may be conflicts when using soft-delete alongside unique columns. This is because soft-deleting is a Directus construct, while `unique` columns are enforced at the database level. Therefore if you soft-delete an item with a _unique_ field, you will get an error if you try to add that value again. The solution would be to remove the unique constraint, or change your status options to _hard_ delete instead.
+There may be conflicts when using soft-delete alongside unique columns. This is because soft-deleting is a Directus construct, while `unique` columns are enforced at the database level. Therefore if you soft-delete an item with a _unique_ field, you will get an error if you try to add that value again. The solution would be to remove the unique constraint, or do one of the following:
+
+* Set the `soft_delete` setting to `false` so that it is just another "normal" status option.
+* Remove the deleted status option, then simply use item red delete button for hard-deleting.
+* Delete the `status` field altogether, users with permission to delete will hard delete items.
 :::
 
 ## Workflow
