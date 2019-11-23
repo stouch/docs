@@ -55,6 +55,7 @@ php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pa
 | `p`            | Database user's password
 | `e`            | (Optional) The Directus email that will be used as sender in the mailing process
 | `s`            | Database unix socket
+| `a`            | Super Admin Token
 | `c`            | Enable/Disable CORS
 | `N`            | Unique Project's name
 | `timezone`     | API Server default timezone
@@ -63,7 +64,7 @@ php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pa
 #### Example: http://example.local
 
 ```bash
-php bin/directus install:config -h localhost -n directus -u root -p pass
+php bin/directus install:config -h localhost -n directus -u root -p pass -a super_admin_token
 ```
 
 #### Example: http://example.local/directus
