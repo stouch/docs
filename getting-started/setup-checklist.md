@@ -48,24 +48,20 @@
 
 7. **Are you using the [latest release of Directus](https://github.com/directus/directus/releases)?**
 
-8. **Did you run the migration script?** This is especially important if you have upgraded from a previous version. You can run this from the App by navigating to: _Settings > Update Database_. Or run it directly with our [CLI](/guides/cli.html#upgrade-directus-schema) or [API Endpoint](/api/reference.html#update).
+8. **Did you install or create the API configuration file?**
 
-9. **Did you install or create the API configuration file?**
+9. **Did you get `pong` response from the `/server/ping` server endpoint?**
 
-9. **Did you install or create the App configuration file?**
+10. **Are you using the correct API project URL?** More guidance on verifying this soon.
 
-10. **Did you get `pong` response from the `/server/ping` server endpoint?**
-
-11. **Are you using the correct API project URL?** More guidance on verifying this soon.
-
-12. **Did you check your logs?**
+11. **Did you check your logs?**
 
     - Directus Logs
     - Apache logs
     - PHP logs
     - MySQL logs
     
-13. **Did you check [GitHub](https://github.com/directus) for an open issue similar to yours?**
+12. **Did you check [GitHub](https://github.com/directus) for an open issue similar to yours?**
 
 ## Docker and Containers
 

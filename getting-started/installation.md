@@ -18,12 +18,12 @@ In theory, Directus should work with MySQL drop-in alternatives such as MariaDB 
 :::
 
 ::: tip Detailed Requirements
-View our [detailed requirements page](/advanced/requirements.md) to learn more about these requirements, neccesary permissions, and other server-specific prerequisites.
+View our [detailed requirements page](/advanced/requirements.md) to learn more about these requirements, necessary permissions, and other server-specific prerequisites.
 :::
 
 ## Setup
 
-Running the following `git` command from your server's command line is the preferred method of installing the codebase.
+Running the following `git` command from your server's command line is the preferred method of installing the platform.
 
 ```bash
 git clone https://github.com/directus/directus.git
@@ -33,16 +33,11 @@ git clone https://github.com/directus/directus.git
 Alternatively, you can choose from one of these other installation methods.
 * [Docker](/advanced/other-install-methods.md#docker)
 * [Zip, Tar, or FTP](/advanced/other-install-methods.md#manual)
-* [Standalone](/advanced/other-install-methods.md#standalone)
 * [Source](/advanced/other-install-methods.md#source)
 :::
 
 ::: tip
 If you are using Apache, make sure `mod_rewrite` and `AllowOverride` are enabled. [Read more](/advanced/server-setup.md#apache)
-:::
-
-::: tip
-If after installation you are experiencing missing functions or packages errors, [follow these steps](https://github.com/directus/api/issues/620#issuecomment-449905619) to recreate `composer.json` and update the composer autoloader. If there's already a `composer.json`, either run [`composer dump-autoload`](https://getcomposer.org/doc/03-cli.md#dump-autoload-dumpautoload-).
 :::
 
 ## Configure
@@ -54,7 +49,7 @@ If after installation you are experiencing missing functions or packages errors,
 Field          | Description
 :------------- | :-----------
 Project Name   | The name of your project
-Project Key    | For now, only the `_` default is available through the installer
+Project Key    | The key that will be used in the API endpoints
 Admin Email    | The email address of your first administrator
 Admin Password | The password for your first administrator
 Host           | The server/host of your database
@@ -70,7 +65,7 @@ Alternatively, you can [manually configure Directus](/advanced/api/configuration
 
 ## Logging In
 
-Once you've completed the installer you will automatically be taken to the login page of the Directus App (again, at `/admin`). You can then login with the credentials you provided during configuration, or the default credentials (`admin@example.com` and `password`) if configured manually.
+Once you've completed the installer you will automatically be taken to the login page of the Directus App. You can then login with the credentials you provided during configuration.
 
 ---
 

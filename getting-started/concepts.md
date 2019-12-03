@@ -47,7 +47,7 @@ A Mustache-style string used to format field values. For example:
 
 ### Environment
 
-A flag set in the project config: either `production` or `staging` (not to be confused with deployment environments).
+A flag set in the project config: either `production` or `staging` (not to be confused with environment variables).
 
 ### Extension
 
@@ -55,11 +55,11 @@ Anything that extends the core codebase, including: Interfaces, Pages, Storage A
 
 ### Field
 
-A Field is a specific type of value within a Collection. For example, you might have _Title_, _Body_, _Author_, and _Date Published_ fields within an _Articles_ collection. Each field represents a database column. Saved as a SQL column or alias.
+A Field is a specific type of value within a Collection. For example, you might have _Title_, _Body_, _Author_, and _Date Published_ fields within an _Articles_ collection. Each field is saved as a SQL column or alias.
 
 ### Field Type
 
-An extended and agnostic storage type mapped to SQL vendor datatypes (eg: `string`, `number`, etc). Also includes non-DB style types that provide extra functionality into the system (eg `m2o`, `translation`, etc).
+An extended and agnostic storage type mapped to SQL vendor datatypes (eg: `string`, `number`, etc). Also includes non-DB style types that provide extra functionality into the system (eg `o2m`, `translation`, etc).
 
 ### Headless CMS
 
@@ -87,13 +87,7 @@ The presentation of data on the Item Browse page. This could be a listing, tiles
 
 ### Multitenancy
 
-The Directus suite of software has been designed for projects both simple and complex, both small and enormous. To accomodate this, you can install the App and API individually or use the bundled version which combines both. This decoupled approach allows for a single App to manage any number of APIs, even if they are located on different servers. Additionally, each API supports multiple databases, so you only need to install a single instance for all your projects and deployment environments.
-
-![Suite Overview](../img/overview.png)
-
-::: tip
-Feel free to use our always-up-to-date hosted App to connect to any publicly accessible Directus API instance: [https://directus.app](https://directus.app/).
-:::
+Every instance of the API has support for multiple projects, and therefore multiple databases, out of the box.
 
 ### Note
 

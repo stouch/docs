@@ -36,17 +36,18 @@ Every aspect of Directus is data-first and guided by the following core principl
 
 There are several properties within the Directus ecosystem, below is a brief overview.
 
+### Directus Suite
+
+The main recommended installation of Directus. Includes the Directus API and the Directus App.
+
 ### Directus API
 
-This is the "engine" of Directus, providing a dynamic API for any MySQL database. It is bundled in the Directus Suite but it can also be installed as a standalone framework. The [codebase](https://github.com/directus/api) is written primarily in PHP and uses Zend-DB for database abstraction.
+This is the "engine" of Directus, providing a dynamic API for any MySQL database. It is bundled in the Directus Suite. The [codebase](https://github.com/directus/api) is written primarily in PHP and uses Zend-DB for database abstraction.
 
 ### Directus Application
 
-This is the admin app that allows non-technical users to manage database content. It can be installed as a standalone webapp for multitenancy but must be connected to an instance of the Directus API to function. The [codebase](https://github.com/directus/app) is written in Vue.js.
+This is the admin app that allows non-technical users to manage database content. It is bundled in the Directus Suite, and requires an instance of the Directus API to function. The [codebase](https://github.com/directus/app) is written in Vue.js.
 
-### Directus Suite
-
-Both the App and API will be needed for most use-cases, so our [main repository](https://github.com/directus/directus) is a combined build that includes the Directus API, Directus App, and all dependencies. This is the recommended method for installing Directus.
 
 ### Directus Cloud
 
@@ -58,9 +59,9 @@ This is what you're reading right now. We believe that maintaining great Documen
 
 ### Directus Demos
 
-To make it as easy as possible to actually play around with Directus we maintain two online demos: [latest release](https://directus.app) (stable) and [latest commit](https://nightly.directus.app) (nightly). Both demos reset each hour so if things look a little screwy just wait a bit. To access either of these demos you can use the credentials: `admin@example.com` and `password`.
+To make it as easy as possible to actually play around with Directus we maintain an online demo: [demo.directus.io](https://demo.directus.io). The demo resets each hour so if things look a little screwy just wait a bit. To access either of these demos you can use the credentials: `admin@example.com` and `password`.
 
-### Directus Status
+### Directus Cloud Status
 
 For up-to-date system information you can check our [Status Page](https://status.directus.io). This page provides current and historical incident details, as well as our current 30-day uptime percentage.
 
@@ -70,7 +71,7 @@ For general information, resources, and team info we maintain a marketing [websi
 
 ### Directus Community
 
-Join our growing community on [Directus Slack](https://directus.chat) (1,300+ members) to get an inside peak into what's happening within our organization. From community support to seeing where the platform is heading next, it's a great way to get more involved!
+Join our growing community on [Directus Slack](https://directus.chat) (1,600+ members) to get an inside peak into what's happening within our organization. From community support to seeing where the platform is heading next, it's a great way to get more involved!
 
 ### Directus Locales
 
@@ -78,4 +79,4 @@ In addition to managing multilingual content, the Directus Admin App itself can 
 
 ### Directus Marketplace
 
-Coming in early 2019, this will be a library of extensions available for Directus. Eventually we plan on opening this up to community submissions and allowing monetization — but initially it will showcase free extensions created by our core team.
+Coming in 2019, this will be a library of extensions available for Directus. Eventually we plan on opening this up to community submissions and allowing monetization — but initially it will showcase free extensions created by our core team.

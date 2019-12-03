@@ -81,23 +81,19 @@ module.exports = {
         children: [
           "/guides/user-guide",
           "/guides/accountability",
-          "/guides/auth",
           "/guides/cli",
           "/guides/collections",
           "/guides/database",
           "/guides/fields",
           "/guides/field-types",
           "/guides/interfaces",
-          ["/guides/i18n", "Internationalization"],
           "/guides/permissions",
           "/guides/projects",
           "/guides/relationships",
           "/guides/roles",
-          "/guides/settings",
           "/guides/sso",
           "/guides/status",
-          ["/guides/style-guide", "Style Guide"],
-          "/guides/thumbnailer",
+          "/guides/asset-generator",
           "/guides/upgrading"
         ]
       },
@@ -109,7 +105,7 @@ module.exports = {
       {
         title: "⚡️ SDKs",
         collapsable: true,
-        children: [["/sdk/js", "Javascript"]]
+        children: [["/sdk/js", "JavaScript"]]
       },
       {
         title: "🦄 Extensions",
@@ -129,17 +125,11 @@ module.exports = {
         title: "🚧 Advanced",
         collapsable: true,
         children: [
-          ['/advanced/app/standalone', 'Standalone Application'],
-          ['/advanced/api/standalone', 'Standalone API'],
           ['/advanced/other-install-methods', 'Other Install Methods'],
           ['/advanced/source', 'Local Dev Environment'],
           ['/advanced/server-setup', 'Server Setup'],
-          ['/advanced/app/configuration', 'Application Configuration'],
-          ['/advanced/app/helpers', 'Application Helpers'],
           ['/advanced/api/configuration', 'API Configuration'],
-          ['/advanced/api/codebase', 'API Codebase'],
-          ['/advanced/api/data', 'Direct Data Access'],
-          // ['/advanced/deploying-versions', 'Deploying Versions'],
+          ['/advanced/api/data', 'Direct Data Access']
         ]
       },
       {
