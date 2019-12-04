@@ -87,7 +87,7 @@ The presentation of data on the Item Browse page. This could be a listing, tiles
 
 ### Multitenancy
 
-Every instance of the API has support for multiple projects, and therefore multiple databases, out of the box.
+Every instance of the API has support for multiple projects, and therefore multiple databases, out of the box. These can be used to organize properties, environments, projects, or anything else.
 
 ### Note
 

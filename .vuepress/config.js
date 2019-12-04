@@ -81,19 +81,21 @@ module.exports = {
         children: [
           "/guides/user-guide",
           "/guides/accountability",
+          "/guides/asset-generator",
+          "/guides/authentication",
           "/guides/cli",
           "/guides/collections",
           "/guides/database",
           "/guides/fields",
           "/guides/field-types",
           "/guides/interfaces",
+          ["/guides/i18n", "Internationalization"],
           "/guides/permissions",
           "/guides/projects",
           "/guides/relationships",
           "/guides/roles",
-          "/guides/sso",
           "/guides/status",
-          "/guides/asset-generator",
+          "/guides/style-guide",
           "/guides/upgrading"
         ]
       },

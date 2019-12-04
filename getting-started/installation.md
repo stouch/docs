@@ -49,7 +49,7 @@ If you are using Apache, make sure `mod_rewrite` and `AllowOverride` are enabled
 Field          | Description
 :------------- | :-----------
 Project Name   | The name of your project
-Project Key    | The key that will be used in the API endpoints
+Project Key    | The key that used in the URL of API endpoints
 Admin Email    | The email address of your first administrator
 Admin Password | The password for your first administrator
 Host           | The server/host of your database
@@ -70,3 +70,7 @@ Once you've completed the installer you will automatically be taken to the login
 ---
 
 👍 You've successfully installed Directus! Now you're ready to [add your first collection](/guides/collections.md).
+
+::: tip
+If you experience any issues after installation and/or setup, please first consult our [Setup Checklist](/getting-started/setup-checklist.md).
+:::

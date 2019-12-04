@@ -4,25 +4,25 @@
 
 ## What is Directus?
 
-**Directus is an open-source suite of software for managing content in custom databases.** It instantly wraps SQL databases with a dynamic API and provides a safe and intuitive Admin App for non-technical users. It can be used as a headless CMS for managing project content, a database client for modeling and viewing raw data, or as standalone software to replace other costly services.
-
-Yes, this is a very broad description. Directus is a simple solution for complex problems.
+**Directus is an open-source suite of software that wraps custom SQL databases with a dynamic API and intuitive Admin App.** It allows both administrators and non-technical users to view and manage the content/data stored in pure SQL databases. It can be used as a headless CMS for managing project content, a database client for modeling and viewing raw data, or as customizable WebApp.
 
 ### What is a "headless" CMS?
+
 With _traditional_ CMS you choose a design template, throw in some content, and it generates a blog or simple website. However that means that these platforms are limited to websites only, since your designs and content are all jumbled together.
 
 In a "headless" CMS, there are no templates built-in, no design or layout editor, and it doesn't generate a website (aka the "head"). It only manages _content_. That's it. Now that your content is cleanly decoupled, you can connect it anywhere! Websites, sure, but also native apps, kiosks, digital signage, other software, internet-of-things (IoT) devices, or any other data-driven project.
 
-In short: traditional CMS are for small or medium-sized websites, headless CMS can manage content for anything.
+In short: traditional CMS are for small or medium-sized websites, headless CMS can manage content for absolutely anything.
 
 ### What is a "database wrapper"?
-Our database-wrapper uses the SQL database's schema to dynamically build a set of custom API endpoints based on the custom achitecture. This means you can install it on top of existing databases, tailor actual database tables/columns to specific project requirements, and even build/optimize in the database directly. 
 
-Perhaps one of the biggest advantages of using a database-wrapper like ours in your project, is that you always have direct access to your pure and unaltered data. Meaning, you can always bypass the API, SDK, or CMS and connect to data directly — effectively removing _any_ bottleneck or additional latency.
+Our database-wrapper uses the SQL database's schema to dynamically build a set of custom API endpoints based on the custom achitecture. This means you can install it on top of existing databases, tailor actual database tables/columns to specific project requirements, and even build/optimize in the database directly.
+
+Perhaps one of the biggest advantages of using a database-wrapper like ours in your project, is that you always have direct access to your pure and unaltered data. Meaning, you always have the option to bypass our API, SDK, or CMS and connect to your data directly — effectively removing _any_ bottleneck or additional latency.
 
 ## Core Principles
 
-Every aspect of Directus is data-first and guided by the following core principles:
+Directus is a simple solution for complex problems. Every aspect of Directus is data-first and guided by the following core principles:
 
 * **Agnostic** — Directus is not specific to websites or limited to HTML. Your data is compatible with any platform or device so you can connect it to all of your projects.
 * **Extensible** — Directus can not be outgrown. Every aspect of the toolkit is modular, allowing you to adapt, customize, and extend the Core feature-set.
@@ -38,7 +38,7 @@ There are several properties within the Directus ecosystem, below is a brief ove
 
 ### Directus Suite
 
-The main recommended installation of Directus. Includes the Directus API and the Directus App.
+This is the actual Directus software you would install on your server. It includes the Directus API, Directus Admin App, and all dependencies.
 
 ### Directus API
 
@@ -59,7 +59,7 @@ This is what you're reading right now. We believe that maintaining great Documen
 
 ### Directus Demos
 
-To make it as easy as possible to actually play around with Directus we maintain an online demo: [demo.directus.io](https://demo.directus.io). The demo resets each hour so if things look a little screwy just wait a bit. To access either of these demos you can use the credentials: `admin@example.com` and `password`.
+To make it as easy as possible to actually play around with Directus we maintain an online demo: [demo.directus.io](https://demo.directus.io). The demo resets each hour so if things look a little screwy just wait a bit. The credentials for this demo are: `admin@example.com` and `password`.
 
 ### Directus Cloud Status
 
@@ -79,4 +79,4 @@ In addition to managing multilingual content, the Directus Admin App itself can 
 
 ### Directus Marketplace
 
-Coming in 2019, this will be a library of extensions available for Directus. Eventually we plan on opening this up to community submissions and allowing monetization — but initially it will showcase free extensions created by our core team.
+Coming in 2020, this will be a library of extensions available for Directus. Eventually we plan on opening this up to community submissions and allowing monetization — but initially it will showcase free extensions created by our core team.
