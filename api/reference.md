@@ -1825,7 +1825,7 @@ Deleting a field removes the actual column and any data therein from the databas
 
 ### Files
 
-These endpoints are used for uploading, updating, and deleting files and virtual folders.
+These endpoints are used for uploading, updating, and deleting files.
 
 #### Upload File
 
@@ -2029,7 +2029,7 @@ These endpoints are used for creating, reading, updating, and deleting virtual f
 Creates a new virtual folder.
 
 ```http
-POST /[project]/files/folders
+POST /[project]/folders
 ```
 
 ```json
@@ -2044,7 +2044,7 @@ POST /[project]/files/folders
 Returns a list of virtual folders.
 
 ```http
-GET /[project]/files/folders
+GET /[project]/folders
 ```
 
 ##### Supported Query Parameters
@@ -2066,8 +2066,8 @@ GET /[project]/files/folders
 Returns the details of one or more virtual folders.
 
 ```http
-GET /[project]/files/folders/[id]
-GET /[project]/files/folders/[id1],[id2],[id3],...
+GET /[project]/folders/[id]
+GET /[project]/folders/[id1],[id2],[id3],...
 ```
 
 ##### Supported Query Parameters
@@ -2082,7 +2082,7 @@ GET /[project]/files/folders/[id1],[id2],[id3],...
 Updates the details of a given virtual folder.
 
 ```http
-PATCH /[project]/files/folders/[id]
+PATCH /[project]/folders/[id]
 ```
 
 ```json
