@@ -421,12 +421,12 @@ client.getLayouts();
 
 ---
 
-#### `getPages()`
+#### `getModules()`
 
-Get all the available pages
+Get all the available modules
 
 ```js
-client.getPages();
+client.getModules();
 ```
 
 ---

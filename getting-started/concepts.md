@@ -100,7 +100,7 @@ A database, config, and file storage directory. Also used for deployment environ
 :::tip Reserved Project Names
 The following reserved project names can not be used because they represent root-level API endpoints that exist now or may exist in the future:
 
-`server`, `projects`, `interfaces`, `pages`, `layouts`, `types`
+`server`, `projects`, `interfaces`, `modules`, `layouts`, `types`
 :::
 
 ### Schema

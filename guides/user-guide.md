@@ -62,7 +62,7 @@ The header bar contains a breadcrumb highlighting where you currently are within
 
 ### Navigation Sidebar
 
-The navigation sidebar contains links to your collections, bookmarks, and extensions. This sidebar is accessible from all pages in the system.
+The navigation sidebar contains links to your collections, bookmarks, and extensions. This sidebar is accessible from all modules in the system.
 
 #### Logo & Loading Indicator
 

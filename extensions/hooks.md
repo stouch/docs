@@ -54,9 +54,9 @@ becomes
 /public/extensions/custom/hooks/send-email/hooks.php
 ```
 
-### Pages, Layouts, and Interfaces
+### Modules, Layouts, and Interfaces
 
-If you're creating a custom Page, Layout, or Interface, you might want to add additional custom Hooks in order to process data send or retrieved for the extension. Pages, Interfaces, and Layouts support their own Hooks by adding a `hooks.php` file to the extension folder. The format is the same as a regular Hook.
+If you're creating a custom Module, Layout, or Interface, you might want to add additional custom Hooks in order to process data send or retrieved for the extension. Modules, Interfaces, and Layouts support their own Hooks by adding a `hooks.php` file to the extension folder. The format is the same as a regular Hook.
 
 ## Reference
 

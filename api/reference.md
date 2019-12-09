@@ -2992,7 +2992,7 @@ These endpoints search for different types of enabled extensions and include the
 ```http
 GET /interfaces
 GET /layouts
-GET /pages
+GET /modules
 ```
 
 ### Get Custom Endpoint
