@@ -184,6 +184,20 @@ client.login({
 });
 ```
 
+The login method accepts the `mode` flag that lets you toggle between JWT and Cookies for authentication. 
+
+```js
+client.login({
+  url: "https://demo.directus.io",
+  email: "admin@example.com",
+  password: "password",
+  mode: "cookie"
+});
+
+:::tip
+You don't have to provide a persist storage adapter when using cookies. The API will manage the cookie and its expiration.
+:::
+
 ---
 
 #### `logout()`
@@ -957,7 +971,7 @@ client.getThirdPartyAuthProviders();
 
 ### Internal methods
 
-These methods are used by all other methods listed above and aren't generally used in normal operation. You can use the following methods to make requests to custom endpoints or use HTTP methods that aren't provided by the methods above.
+These methods are used by all other methods listed above and aren't generally used in normal operation. You can use the following methods to make requests to custom endpoints or use HTTP methods that aren't provided by the methods above. The methods down below are scoped in the `api` class.
 
 #### `request(method, endpoint, params = {}, data = {}, noProject = false, headers = {})`
 
@@ -966,13 +980,13 @@ Make a generic request to the API based on the parameters provided.
 Make a post request to `/update`:
 
 ```js
-client.request("post", "/update");
+client.api.request("post", "/update");
 ```
 
 Get the server info:
 
 ```js
-client.request("get", "/server/info", {}, {}, true);
+client.api.request("get", "/server/info", {}, {}, true);
 ```
 
 ---
@@ -984,7 +998,7 @@ Send a `GET` request to a given endpoint.
 Get all movies sorted by date:
 
 ```js
-client.get("/items/movies", {
+client.api.get("/items/movies", {
   sort: "-datetime"
 });
 ```
@@ -998,7 +1012,7 @@ Send a `POST` request to a given endpoint.
 Create a new movie only returning the ID of the newly created item
 
 ```js
-client.post(
+client.api.post(
   "/items/movies",
   { title: "A New Hope" },
   { fields: "id" }
@@ -1014,7 +1028,7 @@ Send a `PATCH` request to a given endpoint.
 Update the movie with ID 5
 
 ```js
-client.patch("/items/movies/5", { title: "A Newer Hope" });
+client.api.patch("/items/movies/5", { title: "A Newer Hope" });
 ```
 
 ---
@@ -1034,7 +1048,7 @@ Send a `DELETE` request to a given endpoint.
 Delete the movie with ID 5
 
 ```js
-client.delete("/items/movies/5");
+client.api.delete("/items/movies/5");
 ```
 
 ---
