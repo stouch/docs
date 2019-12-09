@@ -42,7 +42,7 @@ This command will overwrite any existing default configuration file at `config.a
 :::
 
 ```bash
-php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pass> -e <directus_email> -s <db_unix_socket>
+php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pass> -e <directus_email> -s <db_unix_socket> -k <project-key>
 ```
 
 | Option         | Description
@@ -95,7 +95,7 @@ php bin/directus install:install -e <admin_email> -p <admin_password> -t <site_n
 | `T`            | Admin Static Auth Token
 | `t`            | Project title
 | `a`            | Project's Application URL
-| `N`            | Unique Project's name
+| `k`            | Unique Project's name
 | `timezone`     | Admin timezone
 | `locale`       | Admin locale
 | `f`            | Recreate Directus core tables. Also remove all Directus data
@@ -140,7 +140,7 @@ Always backup your database before running the database module to prevent data l
 ### Upgrade Directus Schema
 
 ```
-$ bin/directus db:upgrade -k <project-name>
+$ bin/directus db:upgrade -N <project-name>
 ```
 
 :::tip
