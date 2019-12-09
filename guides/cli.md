@@ -56,20 +56,20 @@ php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pa
 | `e`            | (Optional) The Directus email that will be used as sender in the mailing process
 | `s`            | Database unix socket
 | `c`            | Enable/Disable CORS
-| `N`            | Unique Project's name
+| `k`            | Unique Project's key
 | `timezone`     | API Server default timezone
 | `f`            | Force file overwritten
 
 #### Example: http://example.local
 
 ```bash
-php bin/directus install:config -h localhost -n directus -u root -p pass
+php bin/directus install:config -h localhost -k directus -u root -p pass
 ```
 
 #### Example: http://example.local/directus
 
 ```bash
-php bin/directus install:config -h localhost -n directus -u root -p pass -d directus
+php bin/directus install:config -h localhost -k directus -u root -p pass -d directus
 ```
 
 ### Populate the Database Schema:
@@ -140,14 +140,12 @@ Always backup your database before running the database module to prevent data l
 ### Upgrade Directus Schema
 
 ```
-$ bin/directus db:upgrade
+$ bin/directus db:upgrade -k <project-name>
 ```
 
-The command above will upgrade the default project database, to update an specific project the option `N` can be used.
-
-```
-$ bin/directus db:upgrade -N <project-name>
-```
+:::tip
+Don't forget to provide the project key when updating the database
+:::
 
 ## Log Module
 
