@@ -119,7 +119,7 @@ module.exports = {
           "/extensions/hooks",
           "/extensions/interfaces",
           "/extensions/layouts",
-          "/extensions/pages",
+          "/extensions/modules",
           "/extensions/storage-adapters"
         ]
       },
