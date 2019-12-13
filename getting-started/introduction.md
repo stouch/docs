@@ -80,3 +80,9 @@ In addition to managing multilingual content, the Directus Admin App itself can 
 ### Directus Marketplace
 
 Coming in 2020, this will be a library of extensions available for Directus. Eventually we plan on opening this up to community submissions and allowing monetization — but initially it will showcase free extensions created by our core team.
+
+-----
+
+<a href="https://www.netlify.com">
+  <img src="https://www.netlify.com/img/global/badges/netlify-light.svg"/>
+</a>
