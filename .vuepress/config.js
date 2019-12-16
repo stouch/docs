@@ -95,7 +95,7 @@ module.exports = {
           "/guides/relationships",
           "/guides/roles",
           "/guides/status",
-          "/guides/style-guide",
+          ["/guides/style-guide", "Style Guide"],
           "/guides/upgrading"
         ]
       },
