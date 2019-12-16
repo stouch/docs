@@ -1836,7 +1836,7 @@ POST /[project]/files
 ```
 
 ::: tip NOTE
-All uploads except when using URLs requires the `filename` property.
+All uploads except when using URLs require the `filename_disk` and `filename_download` properties.
 :::
 
 There are different ways to upload a file:
@@ -1847,7 +1847,8 @@ Using passing the base64 file contents to the `data` field.
 
 ```json
 {
-  "filename": "image.jpg",
+  "filename_disk": "image.jpg",
+  "filename_download": "image.jpg",
   "data": "<base64-content>"
 }
 ```
@@ -3331,27 +3332,28 @@ A list of all system objects expected or returned by Directus endpoints.
 
 ### File Object
 
-| Key           | Type               | Description          |
-|---------------|--------------------|----------------------|
-| `id`          | `integer`          |                      |
-| `storage`     | `string`           |                      |
-| `filename`    | `string`           |                      |
-| `title`       | `string`           |                      |
-| `type`        | `string`           |                      |
-| `uploaded_by` | `integer`, `User`  | The ID of the User   |
-| `uploaded_on` | `timestamp`        |                      |
-| `charset`     | `string`           |                      |
-| `filesize`    | `integer`          |                      |
-| `width`       | `integer`          |                      |
-| `height`      | `integer`          |                      |
-| `duration`    | `integer`          |                      |
-| `embed`       | `string`           |                      |
-| `folder`      | `string`, `Folder` | The ID of the Folder |
-| `description` | `string`           |                      |
-| `location`    | `string`           |                      |
-| `tags`        | `array`, `string`  |                      |
-| `metadata`    | `json`             |                      |
-| `data`        | `json`             |                      |
+| Key                 | Type               | Description                                  |
+|---------------------|--------------------|----------------------------------------------|
+| `id`                | `integer`          |                                              |
+| `storage`           | `string`           |                                              |
+| `filename_disk`     | `string`           | The source filename                          |
+| `filename_download` | `string`           | The filename proposed to the download client |
+| `title`             | `string`           |                                              |
+| `type`              | `string`           |                                              |
+| `uploaded_by`       | `integer`, `User`  | The ID of the User                           |
+| `uploaded_on`       | `timestamp`        |                                              |
+| `charset`           | `string`           |                                              |
+| `filesize`          | `integer`          |                                              |
+| `width`             | `integer`          |                                              |
+| `height`            | `integer`          |                                              |
+| `duration`          | `integer`          |                                              |
+| `embed`             | `string`           |                                              |
+| `folder`            | `string`, `Folder` | The ID of the Folder                         |
+| `description`       | `string`           |                                              |
+| `location`          | `string`           |                                              |
+| `tags`              | `array`, `string`  |                                              |
+| `metadata`          | `json`             |                                              |
+| `data`              | `json`             |                                              |
 
 ### Folder Object
 
