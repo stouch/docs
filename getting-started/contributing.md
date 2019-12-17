@@ -130,8 +130,8 @@ git fetch upstream
 When all the changes are fetched, you can checkout the branch you want to update and merge in the changes.
 
 ```
-git checkout develop
-git rebase upstream/develop
+git checkout master
+git rebase upstream/master
 ```
 
 If you haven't made any commits on the branch you're updating, git will update your branch without complaints. If you _have_ created commits in the meantime, git will step by step apply all the commits from _upstream_ and try to add in the commit you made in the meantime. It is very plausible that conflicts arise at this stage. When you've changed something that also changed on the upstream, git requires you to resolve the conflict yourself before being able to move on.
@@ -142,11 +142,11 @@ You should always favor changes on upstream over your local ones.
 
 #### Doing Work
 
-Whenever you begin working on a bugfix or new feature, make sure to create a new branch. This makes sure that your changes are organized and separated from the develop branch, so you can submit and manage your pull requests for separate fixes/features more easily.
+Whenever you begin working on a bugfix or new feature, make sure to create a new branch. This makes sure that your changes are organized and separated from the master branch, so you can submit and manage your pull requests for separate fixes/features more easily.
 
 ```bash
-# Checkout the develop branch - you want your new branch to come from develop
-git checkout develop
+# Checkout the master branch - you want your new branch to come from master
+git checkout master
 
 # Create a new branch named newfeature (give your branch its own simple informative name)
 git branch newfeature
@@ -156,26 +156,26 @@ git checkout newfeature
 ```
 
 ::: warning Up-to-date
-Make sure to update your develop branch with the one from upstream, so you're certain you start with the latest version of the project!
+Make sure to update your master branch with the one from upstream, so you're certain you start with the latest version of the project!
 :::
 
 #### Submitting a Pull Request
 
-Prior to opening your pull request, you might want to update your branch a final time, so it can immediately be merged into the develop branch of upstream.
+Prior to opening your pull request, you might want to update your branch a final time, so it can immediately be merged into the master branch of upstream.
 
 ```bash
-# Fetch upstream develop and merge with your repo's develop branch
+# Fetch upstream master and merge with your repo's master branch
 git fetch upstream
-git checkout develop
-git merge upstream/develop
+git checkout master
+git merge upstream/master
 
-# If there were any new commits, rebase your develop branch
+# If there were any new commits, rebase your master branch
 git checkout newfeature
-git rebase develop
+git rebase master
 ```
 
 ::: warning
-Make sure to check if your branch is up to date with the `develop` branch of upstream. An outdated branch makes it near impossible for the maintainers of Directus to check and review the pull request and will most likely result in a delayed merge.
+Make sure to check if your branch is up to date with the `master` branch of upstream. An outdated branch makes it near impossible for the maintainers of Directus to check and review the pull request and will most likely result in a delayed merge.
 :::
 
 Once you've commited and pushed all the changes on your branch to your fork on GitHub, head over to GitHub, select your branch and hit the pull request button.
