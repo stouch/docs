@@ -85,6 +85,6 @@ While you can technically use the `root` MySQL user for Directus, we strongly re
 
 To learn how to do this, we recommend the following article: [How To Create a New User and Grant Permissions in MySQL](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql).
 
-## Step 6: Open Directus and follow the installation steps
+## Step 6: Install your first project
 
 Open Directus in the browser. It should take you straight to the installation wizard. If you were following along with the steps above, Directus will be located at `http://<ip-address>/`.
