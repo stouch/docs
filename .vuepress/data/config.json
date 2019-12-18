@@ -1,0 +1,556 @@
+[
+  {
+    "id": "directus",
+    "path": [
+      "directus"
+    ],
+    "variables": [
+      {
+        "name": "env",
+        "type": "string",
+        "value": "production"
+      },
+      {
+        "name": "tableBlacklist",
+        "type": "array",
+        "value": []
+      },
+      {
+        "name": "ext",
+        "type": "array",
+        "value": []
+      }
+    ]
+  },
+  {
+    "id": "directus.logger",
+    "path": [
+      "directus",
+      "logger"
+    ],
+    "variables": [
+      {
+        "name": "path",
+        "type": "string",
+        "value": "<dynamic>"
+      }
+    ]
+  },
+  {
+    "id": "directus.database",
+    "path": [
+      "directus",
+      "database"
+    ],
+    "variables": [
+      {
+        "name": "type",
+        "type": "string",
+        "value": "mysql"
+      },
+      {
+        "name": "host",
+        "type": "string",
+        "value": "localhost"
+      },
+      {
+        "name": "port",
+        "type": "integer",
+        "value": 3306
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "value": "directus"
+      },
+      {
+        "name": "username",
+        "type": "string",
+        "value": "root"
+      },
+      {
+        "name": "password",
+        "type": "string",
+        "value": "root"
+      },
+      {
+        "name": "engine",
+        "type": "string",
+        "value": "InnoDB"
+      },
+      {
+        "name": "charset",
+        "type": "string",
+        "value": "utf8mb4"
+      },
+      {
+        "name": "socket",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "driver_options",
+        "type": "array",
+        "value": []
+      }
+    ]
+  },
+  {
+    "id": "directus.cache",
+    "path": [
+      "directus",
+      "cache"
+    ],
+    "variables": [
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "response_ttl",
+        "type": "integer",
+        "value": 3600
+      }
+    ]
+  },
+  {
+    "id": "directus.cache.pool",
+    "path": [
+      "directus",
+      "cache",
+      "pool"
+    ],
+    "variables": [
+      {
+        "name": "adapter",
+        "type": "string",
+        "value": "filesystem"
+      },
+      {
+        "name": "path",
+        "type": "string",
+        "value": "../cache/"
+      },
+      {
+        "name": "host",
+        "type": "string",
+        "value": "localhost"
+      },
+      {
+        "name": "port",
+        "type": "integer",
+        "value": 6379
+      }
+    ]
+  },
+  {
+    "id": "directus.storage",
+    "path": [
+      "directus",
+      "storage"
+    ],
+    "variables": [
+      {
+        "name": "adapter",
+        "type": "string",
+        "value": "local"
+      },
+      {
+        "name": "root",
+        "type": "string",
+        "value": "public/uploads/_/originals"
+      },
+      {
+        "name": "root_url",
+        "type": "string",
+        "value": "/uploads/_/originals"
+      },
+      {
+        "name": "thumb_root",
+        "type": "string",
+        "value": "public/uploads/_/generated"
+      },
+      {
+        "name": "proxy_downloads",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "key",
+        "type": "string",
+        "value": "s3-key"
+      },
+      {
+        "name": "secret",
+        "type": "string",
+        "value": "s3-secret"
+      },
+      {
+        "name": "region",
+        "type": "string",
+        "value": "s3-region"
+      },
+      {
+        "name": "version",
+        "type": "string",
+        "value": "s3-version"
+      },
+      {
+        "name": "bucket",
+        "type": "string",
+        "value": "s3-bucket"
+      },
+      {
+        "name": "endpoint",
+        "type": "string",
+        "value": "s3-endpoint"
+      },
+      {
+        "name": "OSS_ACCESS_ID",
+        "type": "string",
+        "value": "oss-access-id"
+      },
+      {
+        "name": "OSS_ACCESS_KEY",
+        "type": "string",
+        "value": "oss-access-secret"
+      },
+      {
+        "name": "OSS_BUCKET",
+        "type": "string",
+        "value": "oss-bucket"
+      },
+      {
+        "name": "OSS_ENDPOINT",
+        "type": "string",
+        "value": "oss-endpoint"
+      }
+    ]
+  },
+  {
+    "id": "directus.storage.options",
+    "path": [
+      "directus",
+      "storage",
+      "options"
+    ],
+    "variables": [
+      {
+        "name": "ACL",
+        "type": "string",
+        "value": "public-read"
+      },
+      {
+        "name": "Cache-Control",
+        "type": "string",
+        "value": "max-age=604800"
+      }
+    ]
+  },
+  {
+    "id": "directus.mail.default",
+    "path": [
+      "directus",
+      "mail",
+      "default"
+    ],
+    "variables": [
+      {
+        "name": "transport",
+        "type": "string",
+        "value": "sendmail"
+      },
+      {
+        "name": "from",
+        "type": "string",
+        "value": "admin@example.com"
+      },
+      {
+        "name": "host",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "port",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "username",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "password",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "encryption",
+        "type": "string",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "directus.cors",
+    "path": [
+      "directus",
+      "cors"
+    ],
+    "variables": [
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "value": true
+      },
+      {
+        "name": "origin",
+        "type": "array",
+        "value": [
+          "*"
+        ]
+      },
+      {
+        "name": "methods",
+        "type": "array",
+        "value": [
+          "GET",
+          "POST",
+          "PUT",
+          "PATCH",
+          "DELETE",
+          "HEAD"
+        ]
+      },
+      {
+        "name": "headers",
+        "type": "array",
+        "value": []
+      },
+      {
+        "name": "exposed_headers",
+        "type": "array",
+        "value": []
+      },
+      {
+        "name": "max_age",
+        "type": "integer",
+        "value": null
+      },
+      {
+        "name": "credentials",
+        "type": "boolean",
+        "value": false
+      }
+    ]
+  },
+  {
+    "id": "directus.rate_limit",
+    "path": [
+      "directus",
+      "rate_limit"
+    ],
+    "variables": [
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "limit",
+        "type": "integer",
+        "value": 100
+      },
+      {
+        "name": "interval",
+        "type": "integer",
+        "value": 60
+      },
+      {
+        "name": "adapter",
+        "type": "string",
+        "value": "redis"
+      },
+      {
+        "name": "host",
+        "type": "string",
+        "value": "127.0.0.1"
+      },
+      {
+        "name": "port",
+        "type": "integer",
+        "value": 6379
+      },
+      {
+        "name": "timeout",
+        "type": "integer",
+        "value": 10
+      }
+    ]
+  },
+  {
+    "id": "directus.hooks",
+    "path": [
+      "directus",
+      "hooks"
+    ],
+    "variables": [
+      {
+        "name": "actions",
+        "type": "array",
+        "value": []
+      },
+      {
+        "name": "filters",
+        "type": "array",
+        "value": []
+      }
+    ]
+  },
+  {
+    "id": "directus.auth",
+    "path": [
+      "directus",
+      "auth"
+    ],
+    "variables": [
+      {
+        "name": "secret_key",
+        "type": "string",
+        "value": "<type-a-secret-authentication-key-string>"
+      },
+      {
+        "name": "public_key",
+        "type": "string",
+        "value": "<type-a-public-authentication-key-string>"
+      }
+    ]
+  },
+  {
+    "id": "directus.auth.social_providers.okta",
+    "path": [
+      "directus",
+      "auth",
+      "social_providers",
+      "okta"
+    ],
+    "variables": [
+      {
+        "name": "client_id",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "client_secret",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "base_url",
+        "type": "string",
+        "value": "https://dev-000000.oktapreview.com/oauth2/default"
+      }
+    ]
+  },
+  {
+    "id": "directus.auth.social_providers.github",
+    "path": [
+      "directus",
+      "auth",
+      "social_providers",
+      "github"
+    ],
+    "variables": [
+      {
+        "name": "client_id",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "client_secret",
+        "type": "string",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "directus.auth.social_providers.facebook",
+    "path": [
+      "directus",
+      "auth",
+      "social_providers",
+      "facebook"
+    ],
+    "variables": [
+      {
+        "name": "client_id",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "client_secret",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "graph_api_version",
+        "type": "string",
+        "value": "v2.8"
+      }
+    ]
+  },
+  {
+    "id": "directus.auth.social_providers.google",
+    "path": [
+      "directus",
+      "auth",
+      "social_providers",
+      "google"
+    ],
+    "variables": [
+      {
+        "name": "client_id",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "client_secret",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "hosted_domain",
+        "type": "string",
+        "value": "*"
+      },
+      {
+        "name": "use_oidc_mode",
+        "type": "boolean",
+        "value": true
+      }
+    ]
+  },
+  {
+    "id": "directus.auth.social_providers.twitter",
+    "path": [
+      "directus",
+      "auth",
+      "social_providers",
+      "twitter"
+    ],
+    "variables": [
+      {
+        "name": "identifier",
+        "type": "string",
+        "value": ""
+      },
+      {
+        "name": "secret",
+        "type": "string",
+        "value": ""
+      }
+    ]
+  }
+]
