@@ -10,7 +10,7 @@ If you're having difficulty getting Directus up-and-running, this setup checklis
 **This checklist applies to the OS-level requirements for your Directus server**. If you are installing Directus using any of the other installation methods outlined [here](/getting-started/installation.html#setup), you will need to examine your container image (or other system configuration) to ensure these requirements are met.
 :::
 
-1. **Does your server meet the [minimum requirements](/advanced/requirements.html)?**
+1. **Does your server meet the [minimum requirements](/installation/requirements.html)?**
 
     - Apache 2
     - PHP 7.2+
