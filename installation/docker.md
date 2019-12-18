@@ -13,40 +13,31 @@ version: "3"
 services:
   mysql:
     image: mysql:5.7
+
     environment:
       MYSQL_DATABASE: "directus"
       MYSQL_USER: "directus"
       MYSQL_PASSWORD: "directus"
       MYSQL_ROOT_PASSWORD: "directus"
+
     ports:
-      - 3306:3306
+      - "3306:3306"
 
   directus:
     image: directus/directus:v8-apache
+
     ports:
       - "8080:80"
+
     environment:
       DIRECTUS_APP_ENV: "production"
-
       DIRECTUS_AUTH_PUBLICKEY: "some random secret"
       DIRECTUS_AUTH_SECRETKEY: "another random secret"
-
       DIRECTUS_DATABASE_HOST: "mysql"
       DIRECTUS_DATABASE_PORT: "3306"
       DIRECTUS_DATABASE_NAME: "directus"
       DIRECTUS_DATABASE_USERNAME: "directus"
       DIRECTUS_DATABASE_PASSWORD: "directus"
-
-      # We recommend using an external file store when running Directus through 
-      # Docker in production, but it's not required for Directus to work
-      # DIRECTUS_STORAGE_ADAPTER: "s3"
-      # DIRECTUS_STORAGE_ROOT: "/images/"
-      # DIRECTUS_STORAGE_ROOTURL: "http://cdn.localtest.me/images"
-      # DIRECTUS_STORAGE_THUMBROOT: "/images/thumbs/"
-      # DIRECTUS_STORAGE_KEY: "storage_key"
-      # DIRECTUS_STORAGE_SECRET: "storage_secret"
-      # DIRECTUS_STORAGE_REGION: "us-east-1"
-      # DIRECTUS_STORAGE_BUCKET: "cdn.localtest.me"
 
     volumes:
       - ./data/config:/var/directus/config

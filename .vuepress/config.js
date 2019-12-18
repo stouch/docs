@@ -2,7 +2,7 @@ module.exports = {
   base: "/",
   title: "Directus Docs",
   description:
-    "The All-New Directus 7. Future-Proof Headless CMS for Managing Custom Database Content.",
+    "Directus 8. Future Proof Headless CMS for Managing Custom Database Content.",
   ga: "UA-24637628-7",
   plugins: ["@vuepress/medium-zoom"],
   head: [
