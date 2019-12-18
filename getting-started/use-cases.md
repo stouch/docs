@@ -28,7 +28,7 @@ Smart watches, fitness trackers, and GPS bracelets all typically store data in t
 
 ## Internal Tools
 
-rhaps you just need an internal productivity tool that doesn't connect anywhere. Project management software, to-do lists, inventory systems, time trackers, note taking, etc. Directus is a flexible alternative to spreadsheets and proprietary monthly services.
+Perhaps you just need an internal productivity tool that doesn't connect anywhere. Project management software, to-do lists, inventory systems, time trackers, note taking, etc. Directus is a flexible alternative to spreadsheets and proprietary monthly services.
 
 ## Combined Systems
 
