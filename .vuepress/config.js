@@ -72,7 +72,7 @@ module.exports = {
           ["/getting-started/concepts", "Concepts"],
           ["/getting-started/contributing", "Contributing"],
           ["/getting-started/supporting-directus", "Supporting Directus"],
-          ["/getting-started/setup-checklist", "Setup Checklist"]
+          ["/getting-started/troubleshooting", "Troubleshooting"]
         ]
       },
       {
@@ -90,6 +90,7 @@ module.exports = {
           "/guides/files",
           "/guides/interfaces",
           ["/guides/i18n", "Internationalization"],
+          ["/guides/js-sdk", "JavaScript SDK"],
           "/guides/permissions",
           "/guides/projects",
           "/guides/relationships",
@@ -103,11 +104,6 @@ module.exports = {
         title: "🚀 API Reference",
         collapsable: true,
         children: [["/api/reference", "Reference"]]
-      },
-      {
-        title: "⚡️ SDKs",
-        collapsable: true,
-        children: [["/sdk/js", "JavaScript"]]
       },
       {
         title: "🦄 Extensions",
@@ -132,14 +128,6 @@ module.exports = {
           ['/advanced/server-setup', 'Server Setup'],
           ['/advanced/api/configuration', 'API Configuration'],
           ['/advanced/api/data', 'Direct Data Access']
-        ]
-      },
-      {
-        title: "💬 Help & Support",
-        collapsable: true,
-        children: [
-          ['/help/questions', 'Frequently Asked Questions'],
-          ['/help/troubleshooting', 'Troubleshooting'],
         ]
       }
     ]

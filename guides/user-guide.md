@@ -263,7 +263,7 @@ Notice that some fields may not require translating (eg: Publish Date); these ar
 
 ### Deleting
 
-The red Delete button ("×") is located in the header. Clicking this button will have you confirm that you want to irreversibly delete this item. Once deleted you will be returned to the Items page.
+The red "Delete" (trash can icon) button is located in the header. Clicking this button will have you confirm that you want to irreversibly delete this item. Once deleted you will be returned to the Items page.
 
 ### Activity & Revisions
 
