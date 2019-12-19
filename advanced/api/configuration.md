@@ -26,29 +26,13 @@ Create a copy of [`config/_example.php`](https://github.com/directus/api/blob/ma
 
 Next, update the `database` values with your own:
 
-```php
-'database' => [
-    'type' => 'mysql',
-    'host' => 'localhost',
-    'port' => 3306,
-    'name' => 'directus_test',
-    'username' => 'root',
-    'password' => 'root',
-    'engine' => 'InnoDB',
-    'charset' => 'utf8mb4'
-]
-```
+<config group="directus.database" v-bind:env="false" v-bind:json="false" />
 
 ### Auth Keys
 
 These keys can be anything, but we recommend a “strong” and unique value. They are unique identifiers that ensure your auth tokens are only able to be used within this project.
 
-```
-'auth' => [
-  'secret_key' => '<secret-authentication-key>',
-  'public_key' => '<public-authentication-key>',
-  'social_providers' => [ ... ]
-```
+<config group="directus.auth" v-bind:env="false" v-bind:json="false" />
 
 ### Boilerplate System Database
 
