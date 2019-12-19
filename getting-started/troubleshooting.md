@@ -10,7 +10,7 @@ If you're having difficulty getting Directus up-and-running, this setup checklis
 **This checklist applies to the OS-level requirements for your Directus server**. If you are installing Directus using any of the other installation methods outlined [here](/getting-started/installation.html#setup), you will need to examine your container image (or other system configuration) to ensure these requirements are met.
 :::
 
-1. **Does your server meet the [minimum requirements](/installation/requirements.html)?**
+1. **Does your server meet the minimum requirements**
 
     - Apache 2
     - PHP 7.2+
@@ -26,7 +26,7 @@ If you're having difficulty getting Directus up-and-running, this setup checklis
     - `mbstring`
     - `xml`
 
-3. **Is `mod_rewrite` enabled for `.htaccess` files?** — [DigitalOcean Guide](https://www.digitalocean.com/community/tutorials/how-to-set-up-mod_rewrite#Section%202)
+3. **Is `mod_rewrite` enabled? Do `.htaccess` files work?** — [DigitalOcean Guide](https://www.digitalocean.com/community/tutorials/how-to-set-up-mod_rewrite#Section%202)
 
 4. **Is the root directory of the Directus API set to the `/public` directory?**
 
@@ -40,7 +40,7 @@ If you're having difficulty getting Directus up-and-running, this setup checklis
     # www-data:www-data means the user AND group owners will be set to www-data i.e. <user>:<group>
     #
     # /var/www/api is our example directory
-    sudo chown -R www-data:www-data /var/www/api
+    sudo chown -R www-data:www-data /var/www/directus
     ```
 
 6. **Do the following folders have write permission?**
@@ -50,7 +50,7 @@ If you're having difficulty getting Directus up-and-running, this setup checklis
 
 7. **Are you using the [latest release of Directus](https://github.com/directus/directus/releases)?**
 
-8. **Did you install or create the API configuration file?**
+8. **Did you install or create the API configuration file manually?**
 
 9. **Did you get `pong` response from the `/server/ping` server endpoint?**
 

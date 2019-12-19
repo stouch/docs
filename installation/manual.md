@@ -19,8 +19,6 @@ Directus requires PHP and MySQL to run properly. That means that a wide variety 
 | MySQL    | 5.7             |
 | PHP      | 7.2             |
 
-Directus also requires a couple commonly used PHP extensions. These are installed by default on most servers. For a comprehensive list of all specific requirements, see [the requirements page](/installation/requirements).
-
 ## Step 2: Download a copy of Directus
 
 Head over to [the releases page of Directus](https://github.com/directus/directus/releases) and download a copy of the source code by clicking "Source code (zip)" under Assets.
