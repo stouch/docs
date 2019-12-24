@@ -129,6 +129,14 @@ module.exports = {
           ['/advanced/api/configuration', 'API Configuration'],
           ['/advanced/api/data', 'Direct Data Access']
         ]
+      },
+      {
+        title: "☁️ Directus Cloud",
+        collapsable: true,
+        children: [
+          ['/cloud/overview', 'Overview'],
+          ['/cloud/user-guide', 'User Guide']
+        ]
       }
     ]
   }
