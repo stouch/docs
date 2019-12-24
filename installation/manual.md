@@ -16,8 +16,16 @@ Directus requires PHP and MySQL to run properly. That means that a wide variety 
 |----------|-----------------|
 | Linux    | Ubuntu 18.04    |
 | Apache   | 2.4             |
-| MySQL    | 5.7             |
-| PHP      | 7.2             |
+| MySQL    | 5.7+            |
+| PHP      | 7.2+            |
+
+::: tip PHP Extensions
+The following PHP extensions (typically enabled by default) are also required: `pdo`, `mysql`, `curl`, `gd`, `fileinfo`, `mbstring`, and `xml`.
+:::
+
+::: tip MariaDB
+While not officially supported, users have reported success installing Directus on MariaDB 10.2+.
+:::
 
 ## Step 2: Download a copy of Directus
 
@@ -100,3 +108,7 @@ Most shared hosts serve whatever is in your folder structure. That means that Di
 #### Private files might be publicly accessible
 
 Normally, we'd instruct you to set the document root to the `public` folder of Directus. This makes sure files that are meant to stay private will never be accessible over the internet. There is no such guarantee when using a shared host with a different document root. Please make sure to prevent unauthorized access to the `config` and `logs` folder in whatever way is possible through your shared host.
+
+::: warning Troubleshooting
+If you run into any issues with the above steps, please follow our [troubleshooting guide](/getting-started/troubleshooting.md).
+:::

@@ -1,6 +1,6 @@
 # Installing using Git
 
-We'll guide you through setting up a fresh installation of Directus using Git. 
+We'll guide you through setting up a fresh installation of Directus using Git.
 
 [[toc]]
 
@@ -12,8 +12,16 @@ Directus requires PHP and MySQL to run properly. That means that a wide variety 
 |----------|-----------------|
 | Linux    | Ubuntu 18.04    |
 | Apache   | 2.4             |
-| MySQL    | 5.7             |
-| PHP      | 7.2             |
+| MySQL    | 5.7+            |
+| PHP      | 7.2+            |
+
+::: tip PHP Extensions
+The following PHP extensions (typically enabled by default) are also required: `pdo`, `mysql`, `curl`, `gd`, `fileinfo`, `mbstring`, and `xml`.
+:::
+
+::: tip MariaDB
+While not officially supported, users have reported success installing Directus on MariaDB 10.2+.
+:::
 
 ## Step 2: Clone Directus
 
@@ -37,7 +45,7 @@ Run the following command:
 a2enmod rewrite
 ```
 
-### Point Apache to Directus' public folder
+### Point Apache to the Directus public folder
 
 Make sure the `DocumentRoot` in your Apache configration points to the `public` folder in Directus, located at `/var/www/directus/public`. You can use the following Apache config as a starting point:
 
@@ -67,9 +75,9 @@ On most servers, the default Apache configuration file is located at `/etc/apach
 Don't forget to restart Apache after making any changes to its configuration!
 :::
 
-## Step 4: Set read / write permissions
+## Step 4: Set read and write permissions
 
-Directus needs to be able to write to a certain number of places, mainly the `logs`, `public`, and `config` directories. Make sure that your PHP user is able to read and write to these locations.
+Directus needs write access to the `logs`, `public`, and `config` directories. Make sure that your PHP user is able to read and write to these locations.
 
 On most LAMP stacks, you can change the owner of the files to `www-data` to ensure the correct permissions are met:
 
@@ -86,3 +94,7 @@ To learn how to do this, we recommend the following article: [How To Create a Ne
 ## Step 6: Install your first project
 
 Open Directus in the browser. It should take you straight to the installation wizard. If you were following along with the steps above, Directus will be located at `http://<ip-address>/`.
+
+::: warning Troubleshooting
+If you run into any issues with the above steps, please follow our [troubleshooting guide](/getting-started/troubleshooting.md).
+:::
