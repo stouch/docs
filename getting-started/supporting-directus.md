@@ -8,11 +8,11 @@ Our servers and full-time staff all cost money. Far more money than we generate 
 
 ### Memberships
 
-We accept memberships through our Patreon account. These monthly donations are the ideal financial contribution since  they're a bit more dependable and we can roughly predict the monthly amount. To become a member/sponsor, please visit our [Patreon page](https://www.patreon.com/directus) or [GitHub Sponsors page](https://github.com/sponsors/directus).
+We accept memberships through GitHub Sponsors. These monthly donations are the ideal financial contribution since  they're a bit more dependable and we can roughly predict the monthly amount. To become a sponsor, please visit our [GitHub Sponsors page](https://github.com/sponsors/directus).
 
 ### One-Time Donations
 
-Unfortunately, Patreon [doesn't support one-time payments](https://patreon.zendesk.com/hc/en-us/articles/204606215-Can-I-make-a-one-time-payment). Instead, you can use our [PayPal account](https://paypal.me/supportdirectus) to send a single financial donation.
+Unfortunately, GitHub Sponsors doesn't support one-time payments. Instead, you can use our [PayPal account](https://paypal.me/supportdirectus) to send a single financial donation.
 
 ### Merch
 
