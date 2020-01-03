@@ -193,6 +193,7 @@ client.login({
   password: "password",
   mode: "cookie"
 });
+```
 
 :::tip
 You don't have to provide a persist storage adapter when using cookies. The API will manage the cookie and its expiration.
