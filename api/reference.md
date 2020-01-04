@@ -284,11 +284,11 @@ POST /[project]/auth/refresh
 
 #### Body
 
-A valid token
+A valid token (the format JWT xxx.xxx.xxx (two dots))
 
 ```json
 {
-    "token": "123abc456def"
+      "token": "eyJhbGciOiJIUzI1NiIs.eyJjb250ZW50IjoiUml.REF714QSMmNj47qT_"
 }
 ```
 
