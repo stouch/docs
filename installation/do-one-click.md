@@ -23,3 +23,7 @@ When you login for the first time, the Droplet will display some important infor
 ## Step 5: Install your first project
 
 Open your new Directus installation in the browser. It will take you straight to the installation wizard for your first project. Use the credentials you were given in the previous step to continue.
+
+::: tip Enabling HTTPS
+The DigitalOcean One-Click sets you up with an installation of Apache, which means you can use Certbot to automatically configure an SSL certificate. Follow this tutorial to set this up: [How To Secure Apache with Let's Encrypt on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-18-04)
+:::
