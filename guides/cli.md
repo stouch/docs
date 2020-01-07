@@ -42,7 +42,7 @@ This command will overwrite any existing default configuration file at `config.a
 :::
 
 ```bash
-php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pass> -e <directus_email> -s <db_unix_socket>
+php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pass> -e <directus_email> -s <db_unix_socket> -k <project-key>
 ```
 
 | Option     | Description                                                                      |
@@ -56,20 +56,20 @@ php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pa
 | `e`        | (Optional) The Directus email that will be used as sender in the mailing process |
 | `s`        | Database unix socket                                                             |
 | `c`        | Enable/Disable CORS                                                              |
-| `N`        | Unique Project's name                                                            |
+| `k`        | Unique Project's key                                                             |
 | `timezone` | API Server default timezone                                                      |
 | `f`        | Force file overwritten                                                           |
 
 #### Example: http://example.local
 
 ```bash
-php bin/directus install:config -h localhost -n directus -u root -p pass
+php bin/directus install:config -h localhost -k directus -u root -p pass
 ```
 
 #### Example: http://example.local/directus
 
 ```bash
-php bin/directus install:config -h localhost -n directus -u root -p pass -d directus
+php bin/directus install:config -h localhost -k directus -u root -p pass -d directus
 ```
 
 ### Populate the Database Schema:
@@ -95,7 +95,7 @@ php bin/directus install:install -e <admin_email> -p <admin_password> -t <site_n
 | `T`        | Admin Static Auth Token                                      |
 | `t`        | Project title                                                |
 | `a`        | Project's Application URL                                    |
-| `N`        | Unique Project's name                                        |
+| `k`        | Unique Project's name                                        |
 | `timezone` | Admin timezone                                               |
 | `locale`   | Admin locale                                                 |
 | `f`        | Recreate Directus core tables. Also remove all Directus data |
@@ -113,7 +113,7 @@ Includes commands to manage Directus users
 ### Change User Password:
 
 ```bash
-php bin/directus user:password -e <user_email> -p <new_password> -N <project_name>
+php bin/directus user:password -e <user_email> -p <new_password> -k <project_name>
 ```
 
 - `user_email` - The user's email
@@ -123,7 +123,7 @@ php bin/directus user:password -e <user_email> -p <new_password> -N <project_nam
 #### Example
 
 ```bash
-php bin/directus user:password -e admin@directus.local -p newpassword -N directus
+php bin/directus user:password -e admin@directus.local -p newpassword -k directus
 ```
 
 ## Database Module
@@ -141,14 +141,12 @@ Always backup your database before running the database module to prevent data l
 ### Upgrade Directus Schema
 
 ```
-$ bin/directus db:upgrade
-```
-
-The command above will upgrade the default project database, to update an specific project the option `N` can be used.
-
-```
 $ bin/directus db:upgrade -N <project-name>
 ```
+
+:::tip
+Don't forget to provide the project key when updating the database
+:::
 
 ## Log Module
 

@@ -14,14 +14,14 @@ If you install a custom interface, like a "Seating Chart", you'll want that inte
 
 * [Interfaces](./interfaces.md) — Interfaces customize how a field's presentation. For example a `STRING` field type might be shown as a text-input, dropdown, Map, WYSIWYG, or Color Picker. And on the Item Browse page you may want a `BOOLEAN` shown as a `✓` or `×` instead of `true` or `false`.
 * [Layouts](./layouts.md) — Layouts are custom designs for the Item Browse page. You can set the layout to different optins based on the data you are viewing. For example you can use the default Listing view for raw data, the Card view for images, or a Calendar view when browsing items by date.
-* [Pages](./pages.md) — Pages are a way to add full-featured modules to Directus. You can build page modules for: custom dashboards, reports, point-of-sale systems, or anything else. Each page is protected within the auth gateway and can easily access project data and global variables.
+* [Modules](./modules.md) — Pages are a way to add full-featured modules to Directus. You can build module extensions for: custom dashboards, reports, point-of-sale systems, or anything else. Each module is protected within the auth gateway and can easily access project data and global variables.
 * [Hooks](./hooks.md) — Directus provides event hooks for all actions performed within the App or API. For example, you can run code every time an item is edited within a specific collection. We've also included an example Web Hook which pushes an HTTP callback whenever certain events occur.
 * [Custom Endpoints](./custom-endpoints.md) — The Directus API gives you comprehensive access to all content in your database dynamically, but you can add additional endpoints as needed. You can also use API Filters to augment the data returned by our core endpoints.
 * [Storage Adapters](./storage-adapters.md) — Storage Adapters allow you to save Directus files anywhere. The default storage adapter is the API server's filesystem, but Directus includes adapters for AWS-S3 and other popular services. Or you can create custom storage adapters to store your assets elsewhere.
 * [Auth Providers](./auth-providers.md) — Directus offers built-in authentication using securely hashed passwords. Alternatively, you can enable any of our Single Sign-On (SSO) services or create your own adapter for custom authentication. Directus also supports SCIM for external user management.
 
 ::: tip Disabled Extensions
-You can include an extension in your project but disable it from being used by prepending its container directory with an underscore (`_`). For example, the demo Page is included in the API codebase but is disabled by default: `api/extensions/core/pages/_demo/`
+You can include an extension in your project but disable it from being used by prepending its container directory with an underscore (`_`). For example, the demo Page is included in the API codebase but is disabled by default: `api/extensions/core/modules/_demo/`
 :::
 
 ## Customizing the App

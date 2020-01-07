@@ -13,7 +13,7 @@ In order to work on the API, you'll need to install the source version locally. 
 * MySQL 5.7+
     * Database (empty or existing)
     * Database User (with access to database)
-* PHP 7.1+
+* PHP 7.2+
     * `pdo` + `mysql`
     * `curl`
     * `gd`
@@ -24,9 +24,6 @@ In order to work on the API, you'll need to install the source version locally. 
 * [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to fetch the source code from GitHub
 * [Composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) to install dependencies
 
-:::warning Important
-[Click here to learn more about these system requirements, neccesary permissions, and other important and server-specific prerequisites.](/advanced/requirements.md)
-:::
 
 ### Setup Steps
 

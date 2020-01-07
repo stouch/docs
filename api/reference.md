@@ -8,15 +8,13 @@ sidebarDepth: 2
 
 The Directus API is a quick and easy way to add a RESTful API layer to a new or existing SQL database. It perfectly mirrors the database architecture which allows for flexible content modeling and dynamic endpoints even when changing the schema or data directly. Below is a comprehensive reference of each endpoint and parameter alongside helpful examples that showcase typical request and response formats.
 
-[Get the latest version of the Directus API here](https://github.com/directus/api/releases)
-
 ### Versioning
 
 The Directus API uses [SemVer](https://semver.org/) for version labeling within the repo and for files which mention a specific version (eg: `package.json`). The API will _not_ include the version in the URL because the API is "versionless". Being versionless means that existing API behavior will not be removed or changed, only new features and enhancements will be added. Therefore, no breaking changes will ever be introduced and you can safely keep your APIs up-to-date.
 
 ### Project Prefix
 
-All endpoints are prefixed with a project key based on the configuration file name. The API will attempt to find a configuration file that matches the provided project key and use its settings. The underscore (`_`) is reserved as the _default_ project key.
+All endpoints are prefixed with a project key based on the configuration file name. The API will attempt to find a configuration file that matches the provided project key and use its settings.
 
 Below are few examples of API requests when your API is located in the root directory:
 
@@ -24,23 +22,16 @@ Below are few examples of API requests when your API is located in the root dire
 # API
 https://example.com/server/ping
 
-# Default Project — uses the default config file: api.php
-https://example.com/_/collections
-
-# Custom Project — uses "prod" config file: api.prod.php
+# Custom Project — uses "prod" config file: prod.php
 https://example.com/prod/collections
 ```
 
 ::: tip App Location
-For the combined build the Directus App would be located at: `https://example.com/admin`
+The Directus App is located at: `https://example.com/admin`
 :::
 
 ::: tip Project Config File
-The naming format of the configuration file is `api.<project-key>.php`
-:::
-
-::: warning Default Config File
-A default API project (`api.php`) is required for the API to function properly.
+The naming format of the configuration file is `<project-key>.php`
 :::
 
 ### Response Format
@@ -255,9 +246,13 @@ curl https://example.com/api/?access_token=Py8RumuLD.7HE5j.uFrOR5
 curl https://example.com/api/?access_token=staticToken
 ```
 
-### Get Auth Token
+### Cookies
 
-Gets a token after validating the Directus user's credentials.
+Next to JWTs, the API also supports cookie based authentication. This might be a good option if you're authenticating from a website front-end, but don't have any secure way to store the tokens. Authenticating using the cookie mode (see below) will cause the API to set a cookie instead of returning a token.
+
+### Authenticate
+
+Authenticate the provided user credentials and return either a JWT string or set a cookie.
 
 ```http
 POST /[project]/auth/authenticate
@@ -274,59 +269,14 @@ The users credentials.
 }
 ```
 
-::: warning
-The access token that is returned through this endpoint must be used with any subsequent requests except for endpoints that don’t require auth.
+::: tip
+Add `"mode": "cookie"` to the JSON above if you want to use the cookie based authentication flow.
 :::
 
-#### Protected Endpoints
-
-| Endpoint                         | Protected
-| -------------------------------- | -----------------------
-| `/[project]/`                    | **Yes**
-| `/[project]/activity`            | **Yes**
-| `/[project]/auth`                | No
-| `/[project]/collections`         | **Yes**
-| `/[project]/collection_presets`  | **Yes**
-| `/[project]/custom`              | No
-| `/[project]/fields`              | **Yes**
-| `/[project]/files`               | **Yes**
-| `/[project]/items`               | **Yes**
-| `/[project]/interfaces`          | **Yes**
-| `/[project]/mail`                | **Yes**
-| `/[project]/pages`               | **Yes**
-| `/[project]/permissions`         | **Yes**
-| `/[project]/relations`           | **Yes**
-| `/[project]/revisions`           | **Yes**
-| `/[project]/roles`               | **Yes**
-| `/[project]/scim/v2`             | **Yes**
-| `/[project]/settings`            | **Yes**
-| `/[project]/users`               | **Yes**
-| `/[project]/utils`               | **Yes**
-| `/`                              | **Yes**
-| `/projects`                      | No
-| `/interfaces`                    | **Yes**
-| `/layouts`                       | **Yes**
-| `/pages`                         | **Yes**
-| `/server/ping`                   | No
-| `/types`                         | **Yes**
-
-The protected endpoints that don't start with `/[project]`, requires the user to send the project name via HTTP header or query string when using static tokens. JWT tokens already has this information in their payloads.
-
-#### Project via Query String
-
-```
-curl https://example.com/api/types?access_token=staticToken&project=_
-```
-
-#### Project via Header
-
-```
-curl -H "Authorization: Bearer staticToken" -H "X-Directus-Project: _" https://example.com/api/
-```
 
 ### Refresh Auth Token
 
-Gets a new fresh token using a valid JWT auth token.
+Gets a new JWT using a valid JWT auth token.
 
 ```http
 POST /[project]/auth/refresh
@@ -341,10 +291,6 @@ A valid token
     "token": "123abc456def"
 }
 ```
-
-::: warning
-The access token that is returned through this endpoint must be used with any subsequent requests except for endpoints that don’t require authentication.
-:::
 
 ### Password Reset Request
 
@@ -1879,7 +1825,7 @@ Deleting a field removes the actual column and any data therein from the databas
 
 ### Files
 
-These endpoints are used for uploading, updating, and deleting files and virtual folders.
+These endpoints are used for uploading, updating, and deleting files.
 
 #### Upload File
 
@@ -1890,7 +1836,7 @@ POST /[project]/files
 ```
 
 ::: tip NOTE
-All uploads except when using URLs requires the `filename` property.
+All uploads except when using URLs require the `filename_disk` and `filename_download` properties.
 :::
 
 There are different ways to upload a file:
@@ -1901,7 +1847,8 @@ Using passing the base64 file contents to the `data` field.
 
 ```json
 {
-  "filename": "image.jpg",
+  "filename_disk": "image.jpg",
+  "filename_download": "image.jpg",
   "data": "<base64-content>"
 }
 ```
@@ -2083,7 +2030,7 @@ These endpoints are used for creating, reading, updating, and deleting virtual f
 Creates a new virtual folder.
 
 ```http
-POST /[project]/files/folders
+POST /[project]/folders
 ```
 
 ```json
@@ -2098,7 +2045,7 @@ POST /[project]/files/folders
 Returns a list of virtual folders.
 
 ```http
-GET /[project]/files/folders
+GET /[project]/folders
 ```
 
 ##### Supported Query Parameters
@@ -2120,8 +2067,8 @@ GET /[project]/files/folders
 Returns the details of one or more virtual folders.
 
 ```http
-GET /[project]/files/folders/[id]
-GET /[project]/files/folders/[id1],[id2],[id3],...
+GET /[project]/folders/[id]
+GET /[project]/folders/[id1],[id2],[id3],...
 ```
 
 ##### Supported Query Parameters
@@ -2136,7 +2083,7 @@ GET /[project]/files/folders/[id1],[id2],[id3],...
 Updates the details of a given virtual folder.
 
 ```http
-PATCH /[project]/files/folders/[id]
+PATCH /[project]/folders/[id]
 ```
 
 ```json
@@ -3046,7 +2993,7 @@ These endpoints search for different types of enabled extensions and include the
 ```http
 GET /interfaces
 GET /layouts
-GET /pages
+GET /modules
 ```
 
 ### Get Custom Endpoint
@@ -3139,17 +3086,21 @@ An example would be if `upload_max_size` has been increased only for a single pr
 }
 ```
 
-### Update
+### List Projects
 
-Updates the project database.
+List all the available (public) projects in the API.
 
 ```http
-POST /[project]/update
+GET /projects
 ```
 
 #### Response
 
-Empty response when successful.
+```json
+{
+  "data": ["my-project", "my-other-project"]
+}
+```
 
 ### Create Project
 
@@ -3381,27 +3332,28 @@ A list of all system objects expected or returned by Directus endpoints.
 
 ### File Object
 
-| Key           | Type               | Description          |
-|---------------|--------------------|----------------------|
-| `id`          | `integer`          |                      |
-| `storage`     | `string`           |                      |
-| `filename`    | `string`           |                      |
-| `title`       | `string`           |                      |
-| `type`        | `string`           |                      |
-| `uploaded_by` | `integer`, `User`  | The ID of the User   |
-| `uploaded_on` | `timestamp`        |                      |
-| `charset`     | `string`           |                      |
-| `filesize`    | `integer`          |                      |
-| `width`       | `integer`          |                      |
-| `height`      | `integer`          |                      |
-| `duration`    | `integer`          |                      |
-| `embed`       | `string`           |                      |
-| `folder`      | `string`, `Folder` | The ID of the Folder |
-| `description` | `string`           |                      |
-| `location`    | `string`           |                      |
-| `tags`        | `array`, `string`  |                      |
-| `metadata`    | `json`             |                      |
-| `data`        | `json`             |                      |
+| Key                 | Type               | Description                                  |
+|---------------------|--------------------|----------------------------------------------|
+| `id`                | `integer`          |                                              |
+| `storage`           | `string`           |                                              |
+| `filename_disk`     | `string`           | The source filename                          |
+| `filename_download` | `string`           | The filename proposed to the download client |
+| `title`             | `string`           |                                              |
+| `type`              | `string`           |                                              |
+| `uploaded_by`       | `integer`, `User`  | The ID of the User                           |
+| `uploaded_on`       | `timestamp`        |                                              |
+| `charset`           | `string`           |                                              |
+| `filesize`          | `integer`          |                                              |
+| `width`             | `integer`          |                                              |
+| `height`            | `integer`          |                                              |
+| `duration`          | `integer`          |                                              |
+| `embed`             | `string`           |                                              |
+| `folder`            | `string`, `Folder` | The ID of the Folder                         |
+| `description`       | `string`           |                                              |
+| `location`          | `string`           |                                              |
+| `tags`              | `array`, `string`  |                                              |
+| `metadata`          | `json`             |                                              |
+| `data`              | `json`             |                                              |
 
 ### Folder Object
 
