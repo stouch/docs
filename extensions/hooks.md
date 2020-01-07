@@ -40,7 +40,7 @@ return [
 ];
 ```
 
-#### Below is the list of action hook
+#### Below is the list of action hooks
 
 | Action Hook                          | Parameters                |
 | ------------------------------------ | ------------------------- |
