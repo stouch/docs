@@ -284,7 +284,7 @@ POST /[project]/auth/refresh
 
 #### Body
 
-A valid token (the format JWT xxx.xxx.xxx (two dots))
+A valid token (you can recognize a JWT by its format: `xxx.xxx.xxx` (two dots))
 
 ```json
 {
