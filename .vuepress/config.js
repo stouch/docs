@@ -123,7 +123,7 @@ module.exports = {
         title: "🐋 Docker",
         collapsable: true,
         children: [
-          ['/docker/docker', 'Overview'],
+          ['/docker/overview', 'Overview'],
           ['/docker/environment', 'Environment Variables'],
           ['/docker/faq', 'FAQ'],
         ]
