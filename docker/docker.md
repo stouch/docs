@@ -32,7 +32,7 @@ At this moment, we officially support only `apache` images, but we'll expand to 
 
 ### Versions
 
-For each release, we publish several different tags to allow version pinning of directus. For example, whenever we make an `apache` release containing directus `vX.Y.Z`, three tags will be pushed to Docker Hub.
+For each release, we publish several different tags to allow version pinning of Directus. For example, whenever we make an `apache` release containing Directus `vX.Y.Z`, three tags will be pushed to Docker Hub.
 
 - `directus/directus:vX-apache`
 - `directus/directus:vX.Y-apache`
