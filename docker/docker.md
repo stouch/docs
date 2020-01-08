@@ -42,7 +42,7 @@ These images will receive updates whenever a new release is made. You can update
 
 ## Ports
 
-A directus container will currently listen on port `80`.
+A Directus container will currently listen on port `80`.
 
 ## SSL 
 
