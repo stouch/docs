@@ -1,6 +1,6 @@
 # Installing using Docker
 
-If you're already familiar with Docker, you are probably looking for our official docker images over [Docker Hub](https://hub.docker.com/r/directus/directus). We have a more detailed information about our docker images on [our docker documentation page](/docker/docker.md).
+If you're already familiar with Docker, you are probably looking for our official docker images over [Docker Hub](https://hub.docker.com/r/directus/directus). We have more detailed information about our docker images on [our docker documentation page](/docker/docker.md).
 
 # Quick Start 
 
