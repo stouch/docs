@@ -50,7 +50,7 @@ The current container images don't provide SSL support out of the box. In order 
 
 ## Volumes
 
-The directus image has some volumes that you might want to mount in order to keep your file uploads or configurations on disk.
+The Directus image has some volumes that you might want to mount in order to keep your file uploads or configurations on disk.
 
 ### Configuration files
 
