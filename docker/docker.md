@@ -56,6 +56,10 @@ The Directus image has some volumes that you might want to mount in order to kee
 
 The configuration directory lives in `/var/directus/config`. You can mount it in case you're configuring your container through files instead of environment variables.
 
+::: tip
+You don't have to worry about this when you're using environment variables to configure Directus projects.
+:::
+
 ### Uploads
 
 The uploads directory lives in `/var/directus/public/uploads`. You can mount it to keep your uploads safe.
