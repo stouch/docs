@@ -120,6 +120,15 @@ module.exports = {
         ]
       },
       {
+        title: "🐋 Docker",
+        collapsable: true,
+        children: [
+          ['/docker/docker', 'Overview'],
+          ['/docker/environment', 'Environment Variables'],
+          ['/docker/faq', 'FAQ'],
+        ]
+      },
+      {
         title: "🚧 Advanced",
         collapsable: true,
         children: [
