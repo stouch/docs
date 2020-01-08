@@ -46,7 +46,7 @@ A Directus container will currently listen on port `80`.
 
 ## SSL 
 
-The current container images doesn't provide SSL support out of the box. In order to do this, you can use a reverse proxy that has support for it in front of the directus container, for example [Traefik](https://docs.traefik.io/https/overview/), [Caddy](https://caddyserver.com/docs/automatic-https) or even an external one like [Cloudflare](https://cloudflare.com).
+The current container images don't provide SSL support out of the box. In order to do this, you can use a reverse proxy in front of the Directus container, like [Traefik](https://docs.traefik.io/https/overview/), [Caddy](https://caddyserver.com/docs/automatic-https) or an external one like [Cloudflare](https://cloudflare.com).
 
 ## Volumes
 
