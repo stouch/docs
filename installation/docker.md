@@ -10,7 +10,7 @@ If you're already familiar with Docker, you are probably looking for our officia
 
 ## Step 1: Create a `docker-compose.yaml` file
 
-This docker-compose defines our database and directus service and links them.
+This docker-compose defines our database and Directus service and links them.
 
 ```yaml
 version: "3"
