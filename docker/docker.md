@@ -65,7 +65,7 @@ You don't have to worry about this when you're using environment variables to co
 The uploads directory lives in `/var/directus/public/uploads`. You can mount it to keep your uploads safe.
 
 ::: tip S3 Storage
-To make your installation truly cloud-native, we strongly recommend using a [S3-compatible server for storage](/docker/environment#storage). This makes file storage more reliable in case you're using a cloud solution and it's easier to manage.
+To make your installation truly cloud-native, we highly recommend using a [S3-compatible server for storage](/docker/environment#storage).
 :::
 
 ## Examples
