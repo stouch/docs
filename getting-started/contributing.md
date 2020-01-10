@@ -18,7 +18,7 @@ An admin GUI for managing Directus API instances. It allows _humans_ to interact
 
 A readonly combined build of the API and App. There is no unique code here, it is simply a convenient way to install the Directus API, App, and all dependencies.
 
-### [directus/docs](https://github.com/directus/directus)
+### [directus/docs](https://github.com/directus/docs)
 
 This is what you're looking at right now. It stores all of the Documentation for Directus in markdown files that are easily editable by the community. [Our web Docs](https://docs.directus.io/) are automatically generated from these files using [VuePress](https://vuepress.vuejs.org/).
 
