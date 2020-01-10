@@ -26,10 +26,6 @@
 		border-top: 1px solid #eee;
 		font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 		font-size: 0.8rem;
-
-		&:first-of-type {
-			margin-top: 0;
-		}
 	}
 
 	code {

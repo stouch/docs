@@ -127,6 +127,13 @@ The project of which you want to retrieve the data.
 
 <def-list>
 <QueryParam param="fields" />
+<QueryParam param="limit" />
+<QueryParam param="meta" />
+<QueryParam param="offset" />
+<QueryParam param="single" />
+<QueryParam param="sort" />
+<QueryParam param="filter" />
+<QueryParam param="q" />
 </def-list>
 
 ### Returns
@@ -198,7 +205,10 @@ The unique identifier of the activity action.
 
 ### Query
 
-<query-params :supports="['fields', 'meta']" />
+<def-list>
+<QueryParam param="fields" />
+<QueryParam param="meta" />
+</def-list>
 
 ### Returns
 
@@ -276,7 +286,9 @@ The comment to post on the item.
 
 ### Query
 
-<query-params :supports="['meta']" />
+<def-list>
+<QueryParam param="meta" />
+</def-list>
 
 ### Returns
 
@@ -362,7 +374,9 @@ The updated comment text.
 
 ### Query
 
-<query-params :supports="['meta']" />
+<def-list>
+<QueryParam param="meta" />
+</def-list>
 
 ### Returns
 
