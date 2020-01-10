@@ -200,6 +200,31 @@ DELETE /:project/collection_presets/:id
 </info-box>
 </two-up>
 
+### Extensions
+
+<two-up>
+
+::: slot left
+Directus can easily be extended through the addition of several types of extensions, including layouts, interfaces, and modules.
+
+[Open activity reference](/api/activity.html)
+:::
+
+<info-box title="Endpoints" slot="right">
+
+```http
+   GET /interfaces
+   GET /layouts
+   GET /modules
+  POST /:project/custom/:endpoint
+   GET /:project/custom/:endpoint
+ PATCH /:project/custom/:endpoint
+DELETE /:project/custom/:endpoint
+```
+
+</info-box>
+</two-up>
+
 ### Folders
 
 <two-up>
@@ -223,12 +248,50 @@ DELETE /:project/folders/:id
 </info-box>
 </two-up>
 
+### GraphQL
+
+<two-up>
+
+::: slot left
+GraphQL provides a complete description of the data in your API, giving you the power to ask for exactly what you need, and nothing more.
+
+[Open GraphQL reference](/api/GraphQL.html)
+:::
+
+<info-box title="Endpoints" slot="right">
+
+```http
+  POST /:project/gql
+```
+
+</info-box>
+</two-up>
+
+### Mail
+
+<two-up>
+
+::: slot left
+Send electronic mail through the electronic post.
+
+[Open mail reference](/api/mail.html)
+:::
+
+<info-box title="Endpoints" slot="right">
+
+```http
+  POST /:project/mail
+```
+
+</info-box>
+</two-up>
+
 ### Permissions
 
 <two-up>
 
 ::: slot left
-Folders don't do anything yet, but will be used in the (near) future to be able to group files.
+Permissions control who has access to what and when.
 
 [Open permissions reference](/api/permissions.html)
 :::
@@ -248,14 +311,36 @@ DELETE /:project/permissions/:id
 </info-box>
 </two-up>
 
+### Projects
+
+<two-up>
+
+::: slot left
+Projects are the individual tenants of the platform. Each project has its own database and data.
+
+[Open projects reference](/api/projects.html)
+:::
+
+<info-box title="Endpoints" slot="right">
+
+```http
+   GET /:project
+   GET /projects
+  POST /projects
+DELETE /projects/:project
+```
+
+</info-box>
+</two-up>
+
 ### Relations
 
 <two-up>
 
 ::: slot left
-Folders don't do anything yet, but will be used in the (near) future to be able to group files.
+What data is linked to what other data. Allows you to assign authors to articles, products to sales, and whatever other structures you can think of.
 
-[Open permissions reference](/api/permissions.html)
+[Open relations reference](/api/relations.html)
 :::
 
 <info-box title="Endpoints" slot="right">
@@ -307,11 +392,131 @@ Roles are groups of users that share permissions.
 <info-box title="Endpoints" slot="right">
 
 ```http
-  POST /:project/relations
-   GET /:project/relations
-   GET /:project/relations/:id
- PATCH /:project/relations/:id
-DELETE /:project/relations/:id
+  POST /:project/roles
+   GET /:project/roles
+   GET /:project/roles/:id
+ PATCH /:project/roles/:id
+DELETE /:project/roles/:id
+```
+
+</info-box>
+</two-up>
+
+### Server
+
+<two-up>
+
+::: slot left
+Access to where Directus runs. Allows you to make sure your server has everything needed to run the platform, and check what kind of latency we're dealing with.
+
+[Open server reference](/api/server.html)
+:::
+
+<info-box title="Endpoints" slot="right">
+
+```http
+   GET /server/info
+   GET /server/ping
+```
+
+</info-box>
+</two-up>
+
+### SCIM
+
+<two-up>
+
+::: slot left
+Directus partially supports Version 2 of System for Cross-domain Identity Management (SCIM). It is an open standard that allows for the exchange of user information between systems, therefore allowing users to be externally managed using the endpoints described below.
+
+[Open SCIM reference](/api/scim.html)
+:::
+
+<info-box title="Endpoints" slot="right">
+
+```http
+  POST /:project/scim/v2/Users
+   GET /:project/scim/v2/Users
+   GET /:project/scim/v2/Users/:id
+ PATCH /:project/scim/v2/Users/:id
+   GET /:project/scim/v2/Groups
+   GET /:project/scim/v2/Groups/:id
+ PATCH /:project/scim/v2/Groups/:id
+DELETE /:project/scim/v2/Groups/:id
+```
+
+</info-box>
+</two-up>
+
+### Settings
+
+<two-up>
+
+::: slot left
+Settings control the way the platform works and acts.
+
+[Open settings reference](/api/settings.html)
+:::
+
+<info-box title="Endpoints" slot="right">
+
+```http
+  POST /:project/settings
+   GET /:project/settings
+   GET /:project/settings/:id
+ PATCH /:project/settings/:id
+DELETE /:project/settings/:id
+```
+
+</info-box>
+</two-up>
+
+### Users
+
+<two-up>
+
+::: slot left
+Users are what gives you access to the data. 
+
+[Open users reference](/api/users.html)
+:::
+
+<info-box title="Endpoints" slot="right">
+
+```http
+  POST /:project/users
+   GET /:project/users
+   GET /:project/users/:id
+   GET /:project/users/me
+ PATCH /:project/users/:id
+DELETE /:project/users/:id
+  POST /:project/users/invite
+  POST /:project/users/invite/:token
+  POST /:project/users/tracking/page
+   GET /:project/users/:id/revisions
+   GET /:project/users/:id/revisions/:offset
+```
+
+</info-box>
+</two-up>
+
+### Utilities
+
+<two-up>
+
+::: slot left
+Directus comes with various utility endpoints you can use to simplify your development flow.
+
+[Open utilities reference](/api/utilities.html)
+:::
+
+<info-box title="Endpoints" slot="right">
+
+```http
+  POST /:project/utils/hash
+  POST /:project/utils/hash/match
+  POST /:project/utils/random/string
+  POST /:project/utils/2fa_secret
 ```
 
 </info-box>

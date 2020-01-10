@@ -120,7 +120,7 @@ module.exports = {
         ]
       },
       {
-        title: "🐋 Docker",
+        title: "🐳 Docker",
         collapsable: true,
         children: [
           ['/docker/overview', 'Overview'],
@@ -129,7 +129,7 @@ module.exports = {
         ]
       },
       {
-        title: "🚧 Advanced",
+        title: "⚡️ Advanced",
         collapsable: true,
         children: [
           ['/advanced/other-install-methods', 'Other Install Methods'],
