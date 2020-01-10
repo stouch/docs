@@ -114,7 +114,7 @@ When and if the comment was (soft-)deleted.
 ::: slot left
 Returns a list of activity actions.
 
-### Attributes
+### Parameters
 
 <def-list>
 
@@ -123,7 +123,7 @@ The project of which you want to retrieve the data.
 
 </def-list>
 
-### Params
+### Query
 
 <query-params :supports="['fields', 'limit', 'meta', 'offset', 'single', 'sort', 'filter', 'q']" />
 
@@ -182,7 +182,7 @@ GET /:project/activity
 ::: slot left
 Retrieves the details of an existing activity action. Provide the primary key of the activity action and Directus will return the corresponding information.
 
-### Params
+### Parameters
 
 <def-list>
 
@@ -248,7 +248,7 @@ GET /:project/activity/:id
 ::: slot left
 Creates a new comment.
 
-### Params
+### Parameters
 
 <def-list>
 
@@ -337,7 +337,7 @@ Returns the activity action of the created comment.
 ::: slot left
 Update the content of an existing comment.
 
-### Params
+### Parameters
 
 <def-list>
 
@@ -421,7 +421,7 @@ Returns the activity action of the updated comment.
 ::: slot left
 Delete an existing comment. Deleted comments can not be retrieved.
 
-### Params
+### Parameters
 
 <def-list>
 
