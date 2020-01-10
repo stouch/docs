@@ -26,4 +26,12 @@
 	}
 }
 
+.left ::v-deep h3 {
+	margin-top: 2em;
+}
+
+.right ::v-deep .sticky {
+	position: sticky;
+	top: 5rem;
+}
 </style>

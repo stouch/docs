@@ -89,7 +89,7 @@ Items are individual pieces of data in your database. They can be anything, from
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/items/:collection
    GET /:project/items/:collection
    GET /:project/items/:collection/:id
@@ -115,7 +115,7 @@ Files can be saved in any given location. Directus has a powerful assets endpoin
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/files
    GET /:project/files
    GET /:project/files/:id
@@ -141,7 +141,7 @@ All events that happen within Directus are tracked and stored in the activities 
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
    GET /:project/activity
    GET /:project/activity/:id
   POST /:project/activity/comment
@@ -166,7 +166,7 @@ Changes to collections will alter the schema of the database.
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/collections
    GET /:project/collections
    GET /:project/collections/:collection
@@ -189,7 +189,7 @@ Collection presets hold the preferences of individual users of the platform. Thi
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/collection_presets
    GET /:project/collection_presets
    GET /:project/collection_presets/:id
@@ -212,7 +212,7 @@ Directus can easily be extended through the addition of several types of extensi
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
    GET /interfaces
    GET /layouts
    GET /modules
@@ -237,7 +237,7 @@ Folders don't do anything yet, but will be used in the (near) future to be able 
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/folders
    GET /:project/folders
    GET /:project/folders/:id
@@ -260,7 +260,7 @@ GraphQL provides a complete description of the data in your API, giving you the 
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/gql
 ```
 
@@ -279,7 +279,7 @@ Send electronic mail through the electronic post.
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/mail
 ```
 
@@ -298,7 +298,7 @@ Permissions control who has access to what and when.
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/permissions
    GET /:project/permissions
    GET /:project/permissions/:id
@@ -323,7 +323,7 @@ Projects are the individual tenants of the platform. Each project has its own da
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
    GET /:project
    GET /projects
   POST /projects
@@ -345,7 +345,7 @@ What data is linked to what other data. Allows you to assign authors to articles
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/relations
    GET /:project/relations
    GET /:project/relations/:id
@@ -368,7 +368,7 @@ Revisions are individual changes to items made. Directus keeps track of changes 
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/relations
    GET /:project/relations
    GET /:project/relations/:id
@@ -391,7 +391,7 @@ Roles are groups of users that share permissions.
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/roles
    GET /:project/roles
    GET /:project/roles/:id
@@ -414,7 +414,7 @@ Access to where Directus runs. Allows you to make sure your server has everythin
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
    GET /server/info
    GET /server/ping
 ```
@@ -434,7 +434,7 @@ Directus partially supports Version 2 of System for Cross-domain Identity Manage
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/scim/v2/Users
    GET /:project/scim/v2/Users
    GET /:project/scim/v2/Users/:id
@@ -460,7 +460,7 @@ Settings control the way the platform works and acts.
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/settings
    GET /:project/settings
    GET /:project/settings/:id
@@ -483,7 +483,7 @@ Users are what gives you access to the data.
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/users
    GET /:project/users
    GET /:project/users/:id
@@ -512,7 +512,7 @@ Directus comes with various utility endpoints you can use to simplify your devel
 
 <info-box title="Endpoints" slot="right">
 
-```http
+```endpoints
   POST /:project/utils/hash
   POST /:project/utils/hash/match
   POST /:project/utils/random/string
