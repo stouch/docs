@@ -54,7 +54,6 @@ module.exports = {
     docsDir: "",
     editLinks: true,
     serviceWorker: true,
-    hiddenLinks: ["/api/reference.html"],
     nav: [
       { text: "Website", link: "https://directus.io" },
       { text: "Cloud", link: "https://directus.cloud" },
@@ -103,7 +102,10 @@ module.exports = {
       {
         title: "🚀 API Reference",
         collapsable: true,
-        children: [["/api/reference", "Reference"]]
+        children: [
+          ["/api/reference", "Introduction"],
+          ["/api/activity", "Activity"]
+        ]
       },
       {
         title: "🦄 Extensions",

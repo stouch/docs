@@ -26,7 +26,7 @@
   "homepage": "https://github.com/directus/docs#readme",
   "devDependencies": {
     "node-sass": "^4.13.0",
-    "sass-loader": "^8.0.0"
+    "sass-loader": "^8.0.1"
   },
   "dependencies": {
     "@vuepress/plugin-medium-zoom": "^1.1.0",

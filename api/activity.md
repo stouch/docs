@@ -125,7 +125,9 @@ The project of which you want to retrieve the data.
 
 ### Query
 
-<query-params :supports="['fields', 'limit', 'meta', 'offset', 'single', 'sort', 'filter', 'q']" />
+<def-list>
+<QueryParam param="fields" />
+</def-list>
 
 ### Returns
 

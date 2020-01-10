@@ -5,8 +5,6 @@ pageClass: page-reference
 
 # API Reference
 
-## Introduction
-
 <two-up>
 
 ::: slot left
