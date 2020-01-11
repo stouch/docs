@@ -113,7 +113,8 @@ module.exports = {
         children: [
           ["/api/reference", "Introduction"],
           ["/api/activity", "Activity"],
-          ["/api/collections", "Collections"]
+          ["/api/collections", "Collections"],
+          ["/api/collection-presets", "Collection Presets"],
         ]
       },
       {

@@ -37,47 +37,36 @@ DELETE /:project/activity/comment/:id
 <def-list>
 
 #### id <def-type>integer</def-type>
-
 Unique identifier for the object.
 
 #### action <def-type>string</def-type>
-
 Action that was performed. One of `authenticate`, `comment`, `upload`, `create`, `update`, `delete`, `soft-delete`, `revert`.
 
 #### action_by <def-type>integer</def-type>
-
 Unique identifier of the user account who caused this action.
 
 #### action_on <def-type>string (datetime)</def-type>
-
 When the action happened.
 
 #### ip <def-type>string</def-type>
-
 The IP address of the user at the time the action took place.
 
 #### user_agent <def-type>string</def-type>
-
 User agent string of the browser the user used when the action took place.
 
 #### collection <def-type>string</def-type>
-
 Collection identifier in which the item resides.
 
 #### item <def-type>string</def-type>
-
 Unique identifier for the item the action applied to. This is always a string, even for integer primary keys.
 
 #### edited_on <def-type>string (datetime)</def-type>
-
 When the action record was edited. This currently only applies to comments, as activity records can't be modified.
 
 #### comment <def-type>string</def-type>
-
 User comment. This will store the comments that show up in the right sidebar of the item edit page in the admin app.
 
 #### comment_deleted_on <def-type>string (datetime)</def-type>
-
 When and if the comment was (soft-)deleted.
 
 </def-list>
@@ -118,8 +107,7 @@ Returns a list of activity actions.
 
 <def-list>
 
-#### project <def-type alert>required</def-type>
-The project of which you want to retrieve the data.
+!!! include params/project.md !!!
 
 </def-list>
 
@@ -127,14 +115,14 @@ The project of which you want to retrieve the data.
 
 <def-list>
 
-!!! include params/fields.md !!!
-!!! include params/limit.md !!!
-!!! include params/meta.md !!!
-!!! include params/offset.md !!!
-!!! include params/single.md !!!
-!!! include params/sort.md !!!
-!!! include params/filter.md !!!
-!!! include params/q.md !!!
+!!! include query/fields.md !!!
+!!! include query/limit.md !!!
+!!! include query/meta.md !!!
+!!! include query/offset.md !!!
+!!! include query/single.md !!!
+!!! include query/sort.md !!!
+!!! include query/filter.md !!!
+!!! include query/q.md !!!
 
 </def-list>
 
@@ -197,11 +185,8 @@ Retrieves the details of an existing activity action. Provide the primary key of
 
 <def-list>
 
-#### project <def-type alert>required</def-type>
-The project of which you want to retrieve the activity action.
-
-#### id <def-type alert>required</def-type>
-The unique identifier of the activity action.
+!!! include params/project.md !!!
+!!! include params/id.md !!!
 
 </def-list>
 
@@ -209,8 +194,8 @@ The unique identifier of the activity action.
 
 <def-list>
 
-!!! include params/fields.md !!!
-!!! include params/meta.md !!!
+!!! include query/fields.md !!!
+!!! include query/meta.md !!!
 
 </def-list>
 
@@ -268,8 +253,7 @@ Creates a new comment.
 
 <def-list>
 
-#### project <def-type alert>required</def-type>
-The project of which you want to retrieve the activity action.
+!!! include params/project.md !!!
 
 </def-list>
 
@@ -292,7 +276,7 @@ The comment to post on the item.
 
 <def-list>
 
-!!! include params/meta.md !!!
+!!! include query/meta.md !!!
 
 </def-list>
 
@@ -361,11 +345,8 @@ Update the content of an existing comment.
 
 <def-list>
 
-#### project <def-type alert>required</def-type>
-The project of which you want to retrieve the activity action.
-
-#### id <def-type alert>required</def-type>
-The unique identifier of the comment you want to update.
+!!! include params/project.md !!!
+!!! include params/id.md !!!
 
 </def-list>
 
@@ -382,7 +363,7 @@ The updated comment text.
 
 <def-list>
 
-!!! include params/meta.md !!!
+!!! include query/meta.md !!!
 
 </def-list>
 
@@ -449,11 +430,8 @@ Delete an existing comment. Deleted comments can not be retrieved.
 
 <def-list>
 
-#### project <def-type alert>required</def-type>
-The project of which you want to retrieve the activity action.
-
-#### id <def-type alert>required</def-type>
-The unique identifier of the comment you want to update.
+!!! include params/project.md !!!
+!!! include params/id.md !!!
 
 </def-list>
 

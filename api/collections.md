@@ -74,7 +74,7 @@ Key value pairs of how to show this collection's name in different languages in 
 
 :::
 
-<info-box title="Activity object" slot="right" class="sticky">
+<info-box title="Collection object" slot="right" class="sticky">
 
 ```json
 {
@@ -108,8 +108,7 @@ Returns a list of the collections available in the project.
 
 <def-list>
 
-#### project <def-type alert>required</def-type>
-The project of which you want to retrieve the data.
+!!! include params/project.md !!!
 
 </def-list>
 
@@ -117,9 +116,9 @@ The project of which you want to retrieve the data.
 
 <def-list>
 
-!!! include params/offset.md !!!
-!!! include params/single.md !!!
-!!! include params/meta.md !!!
+!!! include query/offset.md !!!
+!!! include query/single.md !!!
+!!! include query/meta.md !!!
 
 </def-list>
 
@@ -181,8 +180,7 @@ Retrieves the details of a single collection.
 
 <def-list>
 
-#### project <def-type alert>required</def-type>
-The project of which you want to retrieve the collection.
+!!! include params/project.md !!!
 
 #### collection <def-type alert>required</def-type>
 The unique name of the collection.
@@ -193,7 +191,7 @@ The unique name of the collection.
 
 <def-list>
 
-!!! include params/meta.md !!!
+!!! include query/meta.md !!!
 
 </def-list>
 
@@ -251,8 +249,7 @@ Create a new collection in Directus.
 
 <def-list>
 
-#### project <def-type alert>required</def-type>
-The project in which you want to create the new collection.
+!!! include params/project.md !!!
 
 </def-list>
 
@@ -304,7 +301,7 @@ Key value pairs of how to show this collection's name in different languages in 
 
 <def-list>
 
-!!! include params/meta.md !!!
+!!! include query/meta.md !!!
 
 </def-list>
 
@@ -382,8 +379,7 @@ You can't update a collection's name.
 
 <def-list>
 
-#### project <def-type alert>required</def-type>
-The project in which you want to update the collection.
+!!! include params/project.md !!!
 
 #### collection <def-type alert>required</def-type>
 The collection you want to update.
@@ -424,7 +420,7 @@ Key value pairs of how to show this collection's name in different languages in 
 
 <def-list>
 
-!!! include params/meta.md !!!
+!!! include query/meta.md !!!
 
 </def-list>
 
@@ -439,7 +435,7 @@ Returns the collection object for the updated collection.
 <info-box title="Endpoint">
 
 ```endpoints
-  POST /:project/collections/:collection
+ PATCH /:project/collections/:collection
 ```
 
 </info-box>
@@ -491,8 +487,7 @@ This will delete the whole collection, including the items within. Proceed with 
 
 <def-list>
 
-#### project <def-type alert>required</def-type>
-The project in which you want to delete the collection.
+!!! include params/project.md !!!
 
 #### collection <def-type alert>required</def-type>
 The collection you want to delete.

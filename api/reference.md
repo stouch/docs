@@ -165,9 +165,9 @@ Changes to collections will alter the schema of the database.
 <info-box title="Endpoints" slot="right">
 
 ```endpoints
-  POST /:project/collections
    GET /:project/collections
    GET /:project/collections/:collection
+  POST /:project/collections
  PATCH /:project/collections/:collection
 DELETE /:project/collections/:collection
 ```
@@ -175,7 +175,7 @@ DELETE /:project/collections/:collection
 </info-box>
 </two-up>
 
-### Collection presets
+### Collection Presets
 
 <two-up>
 
@@ -188,9 +188,9 @@ Collection presets hold the preferences of individual users of the platform. Thi
 <info-box title="Endpoints" slot="right">
 
 ```endpoints
-  POST /:project/collection_presets
    GET /:project/collection_presets
    GET /:project/collection_presets/:id
+  POST /:project/collection_presets
  PATCH /:project/collection_presets/:id
 DELETE /:project/collection_presets/:id
 ```
