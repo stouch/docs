@@ -126,14 +126,16 @@ The project of which you want to retrieve the data.
 ### Query
 
 <def-list>
-<QueryParam param="fields" />
-<QueryParam param="limit" />
-<QueryParam param="meta" />
-<QueryParam param="offset" />
-<QueryParam param="single" />
-<QueryParam param="sort" />
-<QueryParam param="filter" />
-<QueryParam param="q" />
+
+!!! include params/fields.md !!!
+!!! include params/limit.md !!!
+!!! include params/meta.md !!!
+!!! include params/offset.md !!!
+!!! include params/single.md !!!
+!!! include params/sort.md !!!
+!!! include params/filter.md !!!
+!!! include params/q.md !!!
+
 </def-list>
 
 ### Returns
@@ -206,8 +208,10 @@ The unique identifier of the activity action.
 ### Query
 
 <def-list>
-<QueryParam param="fields" />
-<QueryParam param="meta" />
+
+!!! include params/fields.md !!!
+!!! include params/meta.md !!!
+
 </def-list>
 
 ### Returns
@@ -287,7 +291,9 @@ The comment to post on the item.
 ### Query
 
 <def-list>
-<QueryParam param="meta" />
+
+!!! include params/meta.md !!!
+
 </def-list>
 
 ### Returns
@@ -375,7 +381,9 @@ The updated comment text.
 ### Query
 
 <def-list>
-<QueryParam param="meta" />
+
+!!! include params/meta.md !!!
+
 </def-list>
 
 ### Returns

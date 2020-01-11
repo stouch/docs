@@ -5,6 +5,14 @@ module.exports = {
     "Directus 8. Future Proof Headless CMS for Managing Custom Database Content.",
   ga: "UA-24637628-7",
   plugins: ["@vuepress/medium-zoom"],
+  markdown: {
+    extendMarkdown(md) {
+      md.use(require('markdown-it-include'), {
+        root: '_includes',
+        includeRe: /\!{3}\s*include\s*(.+?)\s*\!{3}/i
+      });
+    }
+  },
   head: [
     ["link", { rel: "manifest", href: "/site.webmanifest" }],
     [
@@ -104,7 +112,8 @@ module.exports = {
         collapsable: true,
         children: [
           ["/api/reference", "Introduction"],
-          ["/api/activity", "Activity"]
+          ["/api/activity", "Activity"],
+          ["/api/collections", "Collections"]
         ]
       },
       {
