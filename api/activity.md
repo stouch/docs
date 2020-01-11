@@ -8,8 +8,6 @@ pageClass: page-reference
 
 ::: slot left
 All events that happen within Directus are tracked and stored in the activities collection. This gives you full accountability over everything that happens.
-
-[Open activity reference](/api/activity.html)
 :::
 
 <info-box title="Endpoints" slot="right">

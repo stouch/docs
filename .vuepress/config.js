@@ -115,6 +115,8 @@ module.exports = {
           ["/api/activity", "Activity"],
           ["/api/collections", "Collections"],
           ["/api/collection-presets", "Collection Presets"],
+          ["/api/extensions", "Extensions"],
+          ["/api/folders", "Folders"],
         ]
       },
       {

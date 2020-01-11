@@ -8,8 +8,6 @@ pageClass: page-reference
 
 ::: slot left
 Collection presets hold the preferences of individual users of the platform. This allows Directus to show and maintain custom item listings for users of the app.
-
-[Open collection presets reference](/api/collection-presets.html)
 :::
 
 <info-box title="Endpoints" slot="right">
@@ -236,7 +234,7 @@ Retrieve a single collection preset by unique identifier.
 
 ### Returns
 
-Returns the collection preset object of the record that was just created.
+Returns the collection preset object for the given unique identifier.
 
 </template>
 
@@ -358,7 +356,7 @@ Key value pair of language-translation. Can be used to translate the bookmark ti
 
 ### Returns
 
-Returns a collection preset object if the record exists for the given unique identifier.
+Returns the collection preset object for the collection preset that was just created.
 
 </template>
 

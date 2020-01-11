@@ -205,7 +205,7 @@ DELETE /:project/collection_presets/:id
 ::: slot left
 Directus can easily be extended through the addition of several types of extensions, including layouts, interfaces, and modules.
 
-[Open activity reference](/api/activity.html)
+[Open extensions reference](/api/extensions.html)
 :::
 
 <info-box title="Endpoints" slot="right">
@@ -214,10 +214,6 @@ Directus can easily be extended through the addition of several types of extensi
    GET /interfaces
    GET /layouts
    GET /modules
-  POST /:project/custom/:endpoint
-   GET /:project/custom/:endpoint
- PATCH /:project/custom/:endpoint
-DELETE /:project/custom/:endpoint
 ```
 
 </info-box>
@@ -236,9 +232,9 @@ Folders don't do anything yet, but will be used in the (near) future to be able 
 <info-box title="Endpoints" slot="right">
 
 ```endpoints
-  POST /:project/folders
    GET /:project/folders
    GET /:project/folders/:id
+  POST /:project/folders
  PATCH /:project/folders/:id
 DELETE /:project/folders/:id
 ```

@@ -10,8 +10,6 @@ pageClass: page-reference
 Collections are the individual collections of items, similar to tables in a database.
 
 Changes to collections will alter the schema of the database.
-
-[Open collections reference](/api/collections.html)
 :::
 
 <info-box title="Endpoints" slot="right">
