@@ -117,6 +117,7 @@ module.exports = {
           ["/api/collection-presets", "Collection Presets"],
           ["/api/extensions", "Extensions"],
           ["/api/folders", "Folders"],
+          ["/api/graphql", "GraphQL"],
         ]
       },
       {
