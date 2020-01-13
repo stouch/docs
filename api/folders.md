@@ -27,6 +27,8 @@ DELETE /:project/folders/:id
 
 ## The Folder Object
 
+### Attributes
+
 <two-up>
 <template slot="left">
 <def-list>

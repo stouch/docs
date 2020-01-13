@@ -340,9 +340,9 @@ What data is linked to what other data. Allows you to assign authors to articles
 <info-box title="Endpoints" slot="right">
 
 ```endpoints
-  POST /:project/relations
    GET /:project/relations
    GET /:project/relations/:id
+  POST /:project/relations
  PATCH /:project/relations/:id
 DELETE /:project/relations/:id
 ```
@@ -363,11 +363,8 @@ Revisions are individual changes to items made. Directus keeps track of changes 
 <info-box title="Endpoints" slot="right">
 
 ```endpoints
-  POST /:project/relations
-   GET /:project/relations
-   GET /:project/relations/:id
- PATCH /:project/relations/:id
-DELETE /:project/relations/:id
+   GET /:project/revisions
+   GET /:project/revisions/:id
 ```
 
 </info-box>
@@ -386,9 +383,9 @@ Roles are groups of users that share permissions.
 <info-box title="Endpoints" slot="right">
 
 ```endpoints
-  POST /:project/roles
    GET /:project/roles
    GET /:project/roles/:id
+  POST /:project/roles
  PATCH /:project/roles/:id
 DELETE /:project/roles/:id
 ```
@@ -455,9 +452,9 @@ Settings control the way the platform works and acts.
 <info-box title="Endpoints" slot="right">
 
 ```endpoints
-  POST /:project/settings
    GET /:project/settings
    GET /:project/settings/:id
+  POST /:project/settings
  PATCH /:project/settings/:id
 DELETE /:project/settings/:id
 ```
@@ -478,10 +475,10 @@ Users are what gives you access to the data.
 <info-box title="Endpoints" slot="right">
 
 ```endpoints
-  POST /:project/users
    GET /:project/users
    GET /:project/users/:id
    GET /:project/users/me
+  POST /:project/users
  PATCH /:project/users/:id
 DELETE /:project/users/:id
   POST /:project/users/invite
