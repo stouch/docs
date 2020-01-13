@@ -118,6 +118,7 @@ module.exports = {
           ["/api/extensions", "Extensions"],
           ["/api/folders", "Folders"],
           ["/api/graphql", "GraphQL"],
+          ["/api/mail", "Mail"],
         ]
       },
       {
