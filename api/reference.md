@@ -293,11 +293,11 @@ Permissions control who has access to what and when.
 <info-box title="Endpoints" slot="right">
 
 ```endpoints
-  POST /:project/permissions
    GET /:project/permissions
    GET /:project/permissions/:id
    GET /:project/permissions/me
    GET /:project/permissions/me/:collection
+  POST /:project/permissions
  PATCH /:project/permissions/:id
 DELETE /:project/permissions/:id
 ```
@@ -319,9 +319,9 @@ Projects are the individual tenants of the platform. Each project has its own da
 
 ```endpoints
    GET /:project
-   GET /projects
-  POST /projects
-DELETE /projects/:project
+   GET /server/projects
+  POST /server/projects
+DELETE /server/projects/:project
 ```
 
 </info-box>

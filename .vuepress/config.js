@@ -119,6 +119,15 @@ module.exports = {
           ["/api/folders", "Folders"],
           ["/api/graphql", "GraphQL"],
           ["/api/mail", "Mail"],
+          ["/api/permissions", "Permissions"],
+          ["/api/projects", "Projects"],
+          ["/api/relations", "Relations"],
+          ["/api/revisions", "Revisions"],
+          ["/api/roles", "Roles"],
+          ["/api/server", "Server"],
+          ["/api/settings", "Settings"],
+          ["/api/users", "Users"],
+          ["/api/utilities", "Utilities"]
         ]
       },
       {

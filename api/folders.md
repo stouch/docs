@@ -325,7 +325,7 @@ Returns the folder object for the folder that was just updated.
 
 ```json
 {
-  "parent_foldre": 3
+  "parent_folder": 3
 }
 ```
 
