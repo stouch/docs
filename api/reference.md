@@ -393,26 +393,6 @@ DELETE /:project/roles/:id
 </info-box>
 </two-up>
 
-### Server
-
-<two-up>
-
-::: slot left
-Access to where Directus runs. Allows you to make sure your server has everything needed to run the platform, and check what kind of latency we're dealing with.
-
-[Open server reference](/api/server.html)
-:::
-
-<info-box title="Endpoints" slot="right">
-
-```endpoints
-   GET /server/info
-   GET /server/ping
-```
-
-</info-box>
-</two-up>
-
 ### SCIM
 
 <two-up>
@@ -434,6 +414,26 @@ Directus partially supports Version 2 of System for Cross-domain Identity Manage
    GET /:project/scim/v2/Groups/:id
  PATCH /:project/scim/v2/Groups/:id
 DELETE /:project/scim/v2/Groups/:id
+```
+
+</info-box>
+</two-up>
+
+### Server
+
+<two-up>
+
+::: slot left
+Access to where Directus runs. Allows you to make sure your server has everything needed to run the platform, and check what kind of latency we're dealing with.
+
+[Open server reference](/api/server.html)
+:::
+
+<info-box title="Endpoints" slot="right">
+
+```endpoints
+   GET /server/info
+   GET /server/ping
 ```
 
 </info-box>

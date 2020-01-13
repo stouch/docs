@@ -124,6 +124,7 @@ module.exports = {
           ["/api/relations", "Relations"],
           ["/api/revisions", "Revisions"],
           ["/api/roles", "Roles"],
+          ["/api/scim", "SCIM"],
           ["/api/server", "Server"],
           ["/api/settings", "Settings"],
           ["/api/users", "Users"],
