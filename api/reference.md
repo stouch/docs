@@ -483,7 +483,7 @@ Users are what gives you access to the data.
 DELETE /:project/users/:id
   POST /:project/users/invite
   POST /:project/users/invite/:token
-  POST /:project/users/tracking/page
+ PATCH /:project/users/:id/tracking/page
    GET /:project/users/:id/revisions
    GET /:project/users/:id/revisions/:offset
 ```
@@ -507,7 +507,7 @@ Directus comes with various utility endpoints you can use to simplify your devel
   POST /:project/utils/hash
   POST /:project/utils/hash/match
   POST /:project/utils/random/string
-  POST /:project/utils/2fa_secret
+   GET /:project/utils/2fa_secret
 ```
 
 </info-box>

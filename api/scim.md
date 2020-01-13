@@ -609,7 +609,7 @@ No query parameters available.
 
 ### Returns
 
-Returns the folder object for the folder that was just created.
+Returns the SCIM Group for the SCIM Group that was just created.
 
 </template>
 
@@ -618,7 +618,7 @@ Returns the folder object for the folder that was just created.
 <info-box title="Endpoint">
 
 ```endpoints
-  POST /:project/folders
+  POST /:project/scim/v2/Groups/:id
 ```
 
 </info-box>

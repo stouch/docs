@@ -31,7 +31,7 @@ Revisions are individual changes to items made. Directus keeps track of changes 
 <def-list>
 
 #### id <def-type>integer</def-type>
-Unique identifier for the folder.
+Unique identifier for the revision.
 
 #### activity <def-type>integer</def-type>
 Unique identifier for the [activity](/api/activity) record.
@@ -60,7 +60,7 @@ If the current item was updated relationally, this shows if the parent item was 
 </def-list>
 </template>
 
-<info-box title="Folder Object" slot="right" class="sticky">
+<info-box title="Revision Object" slot="right" class="sticky">
 
 ```json
 {

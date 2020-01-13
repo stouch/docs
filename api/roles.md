@@ -60,7 +60,7 @@ Whether or not this role enforces the use of 2FA.
 </def-list>
 </template>
 
-<info-box title="Folder Object" slot="right" class="sticky">
+<info-box title="Role Object" slot="right" class="sticky">
 
 ```json
 {
@@ -272,7 +272,7 @@ Whether or not this role enforces the use of 2FA.
 
 ### Returns
 
-Returns the folder object for the folder that was just created.
+Returns the role object for the role that was just created.
 
 </template>
 
@@ -374,7 +374,7 @@ Whether or not this role enforces the use of 2FA.
 
 ### Returns
 
-Returns the folder object for the folder that was just updated.
+Returns the role object for the role that was just updated.
 
 </template>
 

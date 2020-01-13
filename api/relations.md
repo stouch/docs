@@ -32,7 +32,7 @@ DELETE /:project/relations/:id
 <def-list>
 
 #### id <def-type>integer</def-type>
-Unique identifier for the folder.
+Unique identifier for the relation.
 
 #### collection_many <def-type>string</def-type>
 Collection that has the field that holds the foreign key.
@@ -52,7 +52,7 @@ Field on the junction table that holds the primary key of the related collection
 </def-list>
 </template>
 
-<info-box title="Folder Object" slot="right" class="sticky">
+<info-box title="Relation Object" slot="right" class="sticky">
 
 ```json
 {
@@ -422,7 +422,7 @@ Returns an empty body with HTTP status 204
 <info-box title="Endpoint">
 
 ```endpoints
-DELETE /:project/folders/:id
+DELETE /:project/relations/:id
 ```
 
 </info-box>

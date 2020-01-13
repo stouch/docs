@@ -34,7 +34,7 @@ DELETE /:project/permissions/:id
 <def-list>
 
 #### id <def-type>integer</def-type>
-Unique identifier for the folder.
+Unique identifier for the permission.
 
 #### collection <def-type>string</def-type>
 What collection this permission applies to.
@@ -75,7 +75,7 @@ Explicitly denies specific statuses to be used.
 </def-list>
 </template>
 
-<info-box title="Folder Object" slot="right" class="sticky">
+<info-box title="Permission Object" slot="right" class="sticky">
 
 ```json
 {
@@ -457,7 +457,7 @@ Explicitly denies specific statuses to be used.
 
 ### Returns
 
-Returns the permissions object for the folder that was just created.
+Returns the permissions object for the permission that was just created.
 
 </template>
 
@@ -665,7 +665,7 @@ Returns an empty body with HTTP status 204
 <info-box title="Endpoint">
 
 ```endpoints
-DELETE /:project/folders/:id
+DELETE /:project/permissions/:id
 ```
 
 </info-box>
