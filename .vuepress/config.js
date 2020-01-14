@@ -5,6 +5,14 @@ module.exports = {
     "Directus 8. Future Proof Headless CMS for Managing Custom Database Content.",
   ga: "UA-24637628-7",
   plugins: ["@vuepress/medium-zoom"],
+  markdown: {
+    extendMarkdown(md) {
+      md.use(require('markdown-it-include'), {
+        root: '_includes',
+        includeRe: /\!{3}\s*include\s*(.+?)\s*\!{3}/i
+      });
+    }
+  },
   head: [
     ["link", { rel: "manifest", href: "/site.webmanifest" }],
     [
@@ -54,7 +62,6 @@ module.exports = {
     docsDir: "",
     editLinks: true,
     serviceWorker: true,
-    hiddenLinks: ["/api/reference.html"],
     nav: [
       { text: "Website", link: "https://directus.io" },
       { text: "Cloud", link: "https://directus.cloud" },
@@ -103,7 +110,30 @@ module.exports = {
       {
         title: "🚀 API Reference",
         collapsable: true,
-        children: [["/api/reference", "Reference"]]
+        children: [
+          ["/api/reference", "Introduction"],
+          ["/api/authentication", "Authentication"],
+          ["/api/items", "Items"],
+          ["/api/files", "Files"],
+          ["/api/activity", "Activity"],
+          ["/api/collections", "Collections"],
+          ["/api/collection-presets", "Collection Presets"],
+          ["/api/extensions", "Extensions"],
+          ["/api/fields", "Fields"],
+          ["/api/folders", "Folders"],
+          ["/api/graphql", "GraphQL"],
+          ["/api/mail", "Mail"],
+          ["/api/permissions", "Permissions"],
+          ["/api/projects", "Projects"],
+          ["/api/relations", "Relations"],
+          ["/api/revisions", "Revisions"],
+          ["/api/roles", "Roles"],
+          ["/api/scim", "SCIM"],
+          ["/api/server", "Server"],
+          ["/api/settings", "Settings"],
+          ["/api/users", "Users"],
+          ["/api/utilities", "Utilities"]
+        ]
       },
       {
         title: "🦄 Extensions",
@@ -120,7 +150,7 @@ module.exports = {
         ]
       },
       {
-        title: "🐋 Docker",
+        title: "🐳 Docker",
         collapsable: true,
         children: [
           ['/docker/overview', 'Overview'],
@@ -129,7 +159,7 @@ module.exports = {
         ]
       },
       {
-        title: "🚧 Advanced",
+        title: "⚡️ Advanced",
         collapsable: true,
         children: [
           ['/advanced/other-install-methods', 'Other Install Methods'],
