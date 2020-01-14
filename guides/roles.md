@@ -26,51 +26,13 @@ This is for internal use only. It helps your administrators understand the purpo
 
 A CSV of IP addresses that are allowed to connect to the API. This can be used to limit access to specific offices, for example.
 
-### Nav Override
+### Module Listing
 
-You can override the main navigation for a role's users. This allows you to rearrange links, curate pages, add external links, and create custom groupings. Below are details on how to configure this option.
+Allows you to control what modules show up in the left sidebar of the Directus admin app.
 
-Sections contain two fields: `title` and `links`. Instead of `links`, you can also provide a special `include` key that can have the value of `collections`, `bookmarks`, or `extensions`. This will use the 'regular' menu sections instead of relying on pure custom ones. They're acting as variables as it were.
+### Collection Listing
 
-#### Individual links have the following properties:
-
-* `name` — Name that is displayed in the nav list
-* `path` — Where to link to, supports https
-* `icon` — Material Design icon name
-* `color` — Directus Color Variable (`success`, `danger`, etc)
-
-#### Example
-
-```json
-[
-    {
-        "title": "$t:collections",
-        "include": "collections"
-    },
-    {
-        "title": "$t:bookmarks",
-        "include": "bookmarks"
-    },
-    {
-        "title": "$t:extensions",
-        "include": "extensions"
-    },
-    {
-        "title": "Custom Links",
-        "links": [
-            {
-                "name": "RANGER Studio",
-                "path": "https://rangerstudio.com",
-                "icon": "star"
-            },
-            {
-                "name": "Movies",
-                "path": "/collections/movies"
-            }
-        ]
-    }
-]
-```
+Allows you to control what collections show up in the nav sidebar of the Directus admin app.
 
 ### Permissions
 
