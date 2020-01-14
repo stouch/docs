@@ -4,7 +4,7 @@
 
 ## CSS Variables
 
-To keep things standardized across many extensions, we have a global set of CSS variables that are available within the App. Whenever possible, these variables should be used. All the variables in use by the Directus App can be found in [the variables.scss file](https://github.com/directus/app/blob/develop/src/design/_variables.scss).
+To keep things standardized across many extensions, we have a global set of CSS variables that are available within the App. Whenever possible, these variables should be used. All the variables in use by the Directus App can be found in [the variables.scss file](https://github.com/directus/app/blob/b43f9e56e3d1e3a47c7a4d201bb8a542c0a6cf44/src/design/_variables.scss).
 
 ## Breakpoints
 
