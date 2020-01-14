@@ -27,3 +27,7 @@ Open your new Directus installation in the browser. It will take you straight to
 ::: tip Enabling HTTPS
 The DigitalOcean One-Click sets you up with an installation of Apache, which means you can use Certbot to automatically configure an SSL certificate. Follow this tutorial to set this up: [How To Secure Apache with Let's Encrypt on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-18-04)
 :::
+
+::: tip Updating
+The one-click sets you up with a Git based installation. See [the git instructions](/installation/git) for more information on how to update to the latest version of Directus.
+:::
