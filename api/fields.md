@@ -96,7 +96,7 @@ Prevents the user from editing the value in the field.
 Width of the field on the edit form. One of `half`, `half-left`, `half-right`, `full`, `fill`.
 
 #### validation <def-type>regex</def-type>
-User provided regex that will be used in the API to validate incoming values.
+User provided regex that will be used in the API to validate incoming values. It uses the PHP flavor of RegEX.
 
 #### group <def-type>integer</def-type>
 What field group this field is part of.
