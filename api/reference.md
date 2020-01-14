@@ -73,9 +73,28 @@ To learn more, checkout [the authentication reference](/api/authentication).
 ```endpoints
   POST /:project/auth/authenticate
   POST /:project/auth/refresh
+  POST /:project/auth/password/request
+  POST /:project/auth/password/reset
+   GET /:project/auth/sso
+   GET /:project/auth/sso/:provider
+   GET /:project/auth/sso/:provider/callback
 ```
 
 </info-box>
+</two-up>
+
+---
+
+## Errors
+
+<two-up>
+
+::: slot left
+Directus relies on standard HTTP status code to indicate the status of a request. Next to that, the API uses numeric codes to avoid the need for translated error messages based on locale. The error property is only present when an error has occurred.
+
+[Click here for the full list of error codes.](/api/errors)
+:::
+
 </two-up>
 
 ---
@@ -95,9 +114,9 @@ Items are individual pieces of data in your database. They can be anything, from
 <info-box title="Endpoints" slot="right">
 
 ```endpoints
-  POST /:project/items/:collection
    GET /:project/items/:collection
    GET /:project/items/:collection/:id
+  POST /:project/items/:collection
  PATCH /:project/items/:collection/:id
 DELETE /:project/items/:collection/:id
    GET /:project/items/:collection/:id/revisions
@@ -121,9 +140,9 @@ Files can be saved in any given location. Directus has a powerful assets endpoin
 <info-box title="Endpoints" slot="right">
 
 ```endpoints
-  POST /:project/files
    GET /:project/files
    GET /:project/files/:id
+  POST /:project/files
  PATCH /:project/files/:id
 DELETE /:project/files/:id
    GET /:project/files/:id/revisions
@@ -221,6 +240,30 @@ Directus can easily be extended through the addition of several types of extensi
    GET /interfaces
    GET /layouts
    GET /modules
+```
+
+</info-box>
+</two-up>
+
+### Fields
+
+<two-up>
+
+::: slot left
+Fields are individual pieces of content within an item. They are mapped to columns in the database.
+
+[Open field reference](/api/fields.html)
+:::
+
+<info-box title="Endpoints" slot="right">
+
+```endpoints
+   GET /:project/fields
+   GET /:project/fields/:collection
+   GET /:project/fields/:collection/:field
+  POST /:project/fields/:collection
+ PATCH /:project/fields/:collection/:field
+DELETE /:project/fields/:collection/:field
 ```
 
 </info-box>

@@ -164,7 +164,6 @@ List the users.
 !!! include query/filter.md !!!
 !!! include query/q.md !!!
 !!! include query/meta.md !!!
-!!! include query/meta.md !!!
 
 </def-list>
 
