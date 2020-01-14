@@ -186,7 +186,9 @@ if (in_array($collectionName, SchemaManager::getSystemCollections())) {
 
 ## Web Hooks
 
-It is easy to create Web Hooks in Directus. Simply include an HTTP POST that includes the desired data within the event. We've included a [disabled example](https://github.com/directus/api/tree/master/public/extensions/custom/hooks/_webhook) in the codebase to help you get started.
+Directus natively supports webhooks. They can be configured from the Settings panel of the admin app. If those hooks aren't flexible enough, you can use API Hooks to create your own:
+
+Simply include an HTTP POST that includes the desired data within the event. We've included a [disabled example](https://github.com/directus/api/blob/76413ea8f5b3bf7e90f84a76858ab18c7fc0db67/public/extensions/custom/hooks/_webhook/hooks.php) in the codebase to help you get started.
 
 ```php
 <?php
@@ -284,45 +286,5 @@ return [
       }
     }
   ]
-];
-```
-
-## Webhooks
-
-Webhooks allow you to send an HTTP request when a specific event occurs. Creating a webhook in Directus is done by creating a custom hook (see above) that makes an HTTP request.
-
-The example below sends a `POST` request to `http://example.com/alert` every time an article is created, using the following payload:
-
-```json
-{
-  "type": "article",
-  "data": {
-    "title": "new article",
-    "body": "this is a new article"
-  }
-}
-```
-
-```php
-<?php
-
-return [
-    'actions' => [
-        // Send an alert when a article is created
-        'collection.insert.articles' => function ($collectionName, array $data) {
-            $client = new \GuzzleHttp\Client([
-                'base_uri' => 'http://example.com'
-            ]);
-
-            $data = [
-                'type' => 'article',
-                'data' => $data
-            ];
-
-            $response = $client->request('POST', '/alert', [
-                'json' => $data
-            ]);
-        }
-    ]
 ];
 ```
