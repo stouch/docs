@@ -62,7 +62,7 @@ The header bar contains a breadcrumb highlighting where you currently are within
 
 ### Navigation Sidebar
 
-The navigation sidebar contains links to your collections, bookmarks, and extensions. This sidebar is accessible from all pages in the system.
+The navigation sidebar contains links to your collections, bookmarks, and extensions. This sidebar is accessible from all modules in the system.
 
 #### Logo & Loading Indicator
 
@@ -263,7 +263,7 @@ Notice that some fields may not require translating (eg: Publish Date); these ar
 
 ### Deleting
 
-The red Delete button ("×") is located in the header. Clicking this button will have you confirm that you want to irreversibly delete this item. Once deleted you will be returned to the Items page.
+The red "Delete" (trash can icon) button is located in the header. Clicking this button will have you confirm that you want to irreversibly delete this item. Once deleted you will be returned to the Items page.
 
 ### Activity & Revisions
 

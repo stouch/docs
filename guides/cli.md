@@ -4,14 +4,14 @@
 
 ## Commands List
 
-| Name                                                  | Description
-| ----------------------------------------------------- | -----------------------------
-| [`install:config`](#configure-directus)               | Create a configuration file
-| [`install:database`](#populate-the-database-schema)   | Create the default tables and data
-| [`install:install`](#install-initial-configurations)  | Create initial configuration data
-| [`db:upgrade`](#upgrade-directus-schema)              | Upgrade the Database Schema
-| [`user:password`](#change-user-password)              | Change a user password
-| [`log:prune`](#prune-old-log-files)                   | Remove old logs files
+| Name                                                 | Description                        |
+| ---------------------------------------------------- | ---------------------------------- |
+| [`install:config`](#configure-directus)              | Create a configuration file        |
+| [`install:database`](#populate-the-database-schema)  | Create the default tables and data |
+| [`install:install`](#install-initial-configurations) | Create initial configuration data  |
+| [`db:upgrade`](#upgrade-directus-schema)             | Upgrade the Database Schema        |
+| [`user:password`](#change-user-password)             | Change a user password             |
+| [`log:prune`](#prune-old-log-files)                  | Remove old logs files              |
 
 ## Help
 
@@ -70,7 +70,7 @@ php bin/directus install:config -h localhost -n directus -u root -p pass -a supe
 #### Example: http://example.local/directus
 
 ```bash
-php bin/directus install:config -h localhost -n directus -u root -p pass -d directus
+php bin/directus install:config -h localhost -k directus -u root -p pass -d directus
 ```
 
 ### Populate the Database Schema:
@@ -89,17 +89,17 @@ Create the default admin user and the site's default settings.
 php bin/directus install:install -e <admin_email> -p <admin_password> -t <site_name>
 ```
 
-| Option         | Description
-| -------------- | -----------------------------
-| `e`            | Admin email
-| `p`            | Admin password
-| `T`            | Admin Static Auth Token
-| `t`            | Project title
-| `a`            | Project's Application URL
-| `N`            | Unique Project's name
-| `timezone`     | Admin timezone
-| `locale`       | Admin locale
-| `f`            | Recreate Directus core tables. Also remove all Directus data
+| Option     | Description                                                  |
+| ---------- | ------------------------------------------------------------ |
+| `e`        | Admin email                                                  |
+| `p`        | Admin password                                               |
+| `T`        | Admin Static Auth Token                                      |
+| `t`        | Project title                                                |
+| `a`        | Project's Application URL                                    |
+| `k`        | Unique Project's name                                        |
+| `timezone` | Admin timezone                                               |
+| `locale`   | Admin locale                                                 |
+| `f`        | Recreate Directus core tables. Also remove all Directus data |
 
 #### Example
 
@@ -114,16 +114,17 @@ Includes commands to manage Directus users
 ### Change User Password:
 
 ```bash
-php bin/directus user:password -e <user_email> -p <new_password>
+php bin/directus user:password -e <user_email> -p <new_password> -k <project_name>
 ```
 
-* `user_email` - The user's email
-* `new_password` - The user's new password
+- `user_email` - The user's email
+- `new_password` - The user's new password
+- `project_name` - The project name
 
 #### Example
 
 ```bash
-php bin/directus user:password -e admin@directus.local -p newpassword
+php bin/directus user:password -e admin@directus.local -p newpassword -k directus
 ```
 
 ## Database Module
@@ -141,14 +142,12 @@ Always backup your database before running the database module to prevent data l
 ### Upgrade Directus Schema
 
 ```
-$ bin/directus db:upgrade
-```
-
-The command above will upgrade the default project database, to update an specific project the option `N` can be used.
-
-```
 $ bin/directus db:upgrade -N <project-name>
 ```
+
+:::tip
+Don't forget to provide the project key when updating the database
+:::
 
 ## Log Module
 
@@ -166,14 +165,14 @@ Removes all the logs that were last modified `<days>` ago. it uses [`filemtime`]
 You can setup a cronjob to clean old files at a set frequency
 :::
 
-
 ## Maintenance Module
 
-Enables/disables the maintenance mode. When maintenance mode is "on" the api returns all requests with `503 Service Unavailable` and a appropriate error message ([see Error Codes](../api/reference.md)). 
+Enables/disables the maintenance mode. When maintenance mode is "on" the api returns all requests with `503 Service Unavailable` and a appropriate error message ([see Error Codes](../api/reference.md)).
 
 `maintenance:status` tells you if maintenance mode is currently "on" or "off".
 
 ### Usage:
+
 ```bash
 php bin/directus maintenance:on
 php bin/directus maintenance:off

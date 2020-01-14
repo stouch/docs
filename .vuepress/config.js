@@ -2,9 +2,17 @@ module.exports = {
   base: "/",
   title: "Directus Docs",
   description:
-    "The All-New Directus 7. Future-Proof Headless CMS for Managing Custom Database Content.",
+    "Directus 8. Future Proof Headless CMS for Managing Custom Database Content.",
   ga: "UA-24637628-7",
   plugins: ["@vuepress/medium-zoom"],
+  markdown: {
+    extendMarkdown(md) {
+      md.use(require('markdown-it-include'), {
+        root: '_includes',
+        includeRe: /\!{3}\s*include\s*(.+?)\s*\!{3}/i
+      });
+    }
+  },
   head: [
     ["link", { rel: "manifest", href: "/site.webmanifest" }],
     [
@@ -54,7 +62,6 @@ module.exports = {
     docsDir: "",
     editLinks: true,
     serviceWorker: true,
-    hiddenLinks: ["/api/reference.html"],
     nav: [
       { text: "Website", link: "https://directus.io" },
       { text: "Cloud", link: "https://directus.cloud" },
@@ -72,7 +79,7 @@ module.exports = {
           ["/getting-started/concepts", "Concepts"],
           ["/getting-started/contributing", "Contributing"],
           ["/getting-started/supporting-directus", "Supporting Directus"],
-          ["/getting-started/setup-checklist", "Setup Checklist"]
+          ["/getting-started/troubleshooting", "Troubleshooting"]
         ]
       },
       {
@@ -81,35 +88,52 @@ module.exports = {
         children: [
           "/guides/user-guide",
           "/guides/accountability",
-          "/guides/auth",
+          "/guides/authentication",
           "/guides/cli",
           "/guides/collections",
           "/guides/database",
           "/guides/fields",
           "/guides/field-types",
+          "/guides/files",
           "/guides/interfaces",
           ["/guides/i18n", "Internationalization"],
+          ["/guides/js-sdk", "JavaScript SDK"],
           "/guides/permissions",
           "/guides/projects",
           "/guides/relationships",
           "/guides/roles",
-          "/guides/settings",
-          "/guides/sso",
           "/guides/status",
           ["/guides/style-guide", "Style Guide"],
-          "/guides/thumbnailer",
           "/guides/upgrading"
         ]
       },
       {
         title: "🚀 API Reference",
         collapsable: true,
-        children: [["/api/reference", "Reference"]]
-      },
-      {
-        title: "⚡️ SDKs",
-        collapsable: true,
-        children: [["/sdk/js", "Javascript"]]
+        children: [
+          ["/api/reference", "Introduction"],
+          ["/api/authentication", "Authentication"],
+          ["/api/items", "Items"],
+          ["/api/files", "Files"],
+          ["/api/activity", "Activity"],
+          ["/api/collections", "Collections"],
+          ["/api/collection-presets", "Collection Presets"],
+          ["/api/extensions", "Extensions"],
+          ["/api/fields", "Fields"],
+          ["/api/folders", "Folders"],
+          ["/api/graphql", "GraphQL"],
+          ["/api/mail", "Mail"],
+          ["/api/permissions", "Permissions"],
+          ["/api/projects", "Projects"],
+          ["/api/relations", "Relations"],
+          ["/api/revisions", "Revisions"],
+          ["/api/roles", "Roles"],
+          ["/api/scim", "SCIM"],
+          ["/api/server", "Server"],
+          ["/api/settings", "Settings"],
+          ["/api/users", "Users"],
+          ["/api/utilities", "Utilities"]
+        ]
       },
       {
         title: "🦄 Extensions",
@@ -121,33 +145,36 @@ module.exports = {
           "/extensions/hooks",
           "/extensions/interfaces",
           "/extensions/layouts",
-          "/extensions/pages",
+          "/extensions/modules",
           "/extensions/storage-adapters"
         ]
       },
       {
-        title: "🚧 Advanced",
+        title: "🐳 Docker",
         collapsable: true,
         children: [
-          ['/advanced/app/standalone', 'Standalone Application'],
-          ['/advanced/api/standalone', 'Standalone API'],
-          ['/advanced/other-install-methods', 'Other Install Methods'],
-          ['/advanced/source', 'Local Dev Environment'],
-          ['/advanced/server-setup', 'Server Setup'],
-          ['/advanced/app/configuration', 'Application Configuration'],
-          ['/advanced/app/helpers', 'Application Helpers'],
-          ['/advanced/api/configuration', 'API Configuration'],
-          ['/advanced/api/codebase', 'API Codebase'],
-          ['/advanced/api/data', 'Direct Data Access'],
-          // ['/advanced/deploying-versions', 'Deploying Versions'],
+          ['/docker/overview', 'Overview'],
+          ['/docker/environment', 'Environment Variables'],
+          ['/docker/faq', 'FAQ'],
         ]
       },
       {
-        title: "💬 Help & Support",
+        title: "⚡️ Advanced",
         collapsable: true,
         children: [
-          ['/help/questions', 'Frequently Asked Questions'],
-          ['/help/troubleshooting', 'Troubleshooting'],
+          ['/advanced/other-install-methods', 'Other Install Methods'],
+          ['/advanced/source', 'Local Dev Environment'],
+          ['/advanced/server-setup', 'Server Setup'],
+          ['/advanced/api/configuration', 'API Configuration'],
+          ['/advanced/api/data', 'Direct Data Access']
+        ]
+      },
+      {
+        title: "☁️ Directus Cloud",
+        collapsable: true,
+        children: [
+          ['/cloud/overview', 'Overview'],
+          ['/cloud/user-guide', 'User Guide']
         ]
       }
     ]

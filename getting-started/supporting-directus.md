@@ -8,23 +8,23 @@ Our servers and full-time staff all cost money. Far more money than we generate 
 
 ### Memberships
 
-We accept memberships through our Patreon account. These monthly donations are the ideal financial contribution since  they're a bit more dependable and we can roughly predict the monthly amount. To become a member/sponsor, please visit our [Patreon page](https://www.patreon.com/directus) or [GitHub Sponsors page](https://github.com/sponsors/directus).
+We accept memberships through GitHub Sponsors. These monthly donations are the ideal financial contribution since  they're a bit more dependable and we can roughly predict the monthly amount. To become a sponsor, please visit our [GitHub Sponsors page](https://github.com/sponsors/directus).
 
 ### One-Time Donations
 
-Unfortunately, Patreon [doesn't support one-time payments](https://patreon.zendesk.com/hc/en-us/articles/204606215-Can-I-make-a-one-time-payment). Instead, you can use our [PayPal account](https://paypal.me/supportdirectus) to send a single financial donation.
+Unfortunately, GitHub Sponsors doesn't support one-time payments. Instead, you can use our [PayPal account](https://paypal.me/supportdirectus) to send a single financial donation.
 
 ### Merch
 
 Our merchandise is a great way to support Directus – you get a shirt and we get some financial support and free advertising. We don't have an online store, but if you make a financial donation using the above methods we'd be happy to send you stuff. Just be sure to message us with sizing/shipping details. T-Shirts and bags require a minimum donation of $25 to cover shipping within the US, or $50 if shipping internationally. Sweatshirts and other premium merch is reserved for partners, sponsors, and our Core team of contributors.
 
-### Commissions
+### Commissioned Features
 
 Another great way to get something back for your financial support (other than our amazing software) is to commission a new Directus feature. If you need an interface, layout, or other custom feature – just [reach out to our parent company](mailto:contact@rngr.org?subject=Directus+Commission+Inquiry) to design and build it for you. If it can be merged into our Core codebase then it even benefits the entire community!
 
 ### Sponsored Bugs
 
-Is that pesky bug not getting solved fast enough for your needs? We triage all of our reported bugs ([App](https://github.com/directus/app/projects/17) and [API](https://github.com/directus/api/projects/17)) based on priority and how long the fix is estimated to take. If you need a bug fixed sooner you can reach out to us about "sponsoring" it. We provide an cost estimate for subsidizing a more expeditious resolution.
+Is that bug not getting solved fast enough for your needs? We triage all of our reported bugs ([App](https://github.com/directus/app/projects/17) and [API](https://github.com/directus/api/projects/17)) based on priority and how long the fix is estimated to take. If you need a bug fixed sooner you can reach out to us about "sponsoring" it. We provide an cost estimate for subsidizing a more expeditious resolution.
 
 ### Premium Support
 

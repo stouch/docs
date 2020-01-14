@@ -9,7 +9,7 @@ Hooks are created as functions that are triggered when certain events happen, fo
 
 return [
   'actions' => [
-    'item.create.articles' => function ($collectionName, $data) {
+    'item.create.articles' => function ($data) {
       $content = 'New article was created with the title: ' . $data['title'];
       notify('admin@example.com', 'New Article', $content);
     }
@@ -40,6 +40,17 @@ return [
 ];
 ```
 
+#### Below is the list of action hooks
+
+| Action Hook                          | Parameters                |
+| ------------------------------------ | ------------------------- |
+| `item.create:before`                 | `($collectionName,$data)` |
+| `item.create`                        | `($collectionName,$data)` |
+| `item.create:after`                  | `($collectionName,$data)` |
+| `item.create.collection_name:before` | `($data)`                 |
+| `item.create.collection_name`        | `($data)`                 |
+| `item.create.collection_name:after`  | `($data)`                 |
+
 ### Multiple Files
 
 Sometimes, you might want to split up your hook into multiple files in order to make your main Hook smaller, or to introduce external libraries into the Hook. In order to do this, you can create a folder instead of a single PHP file that contains the file you need.
@@ -54,9 +65,9 @@ becomes
 /public/extensions/custom/hooks/send-email/hooks.php
 ```
 
-### Pages, Layouts, and Interfaces
+### Modules, Layouts, and Interfaces
 
-If you're creating a custom Page, Layout, or Interface, you might want to add additional custom Hooks in order to process data send or retrieved for the extension. Pages, Interfaces, and Layouts support their own Hooks by adding a `hooks.php` file to the extension folder. The format is the same as a regular Hook.
+If you're creating a custom Module, Layout, or Interface, you might want to add additional custom Hooks in order to process data send or retrieved for the extension. Modules, Interfaces, and Layouts support their own Hooks by adding a `hooks.php` file to the extension folder. The format is the same as a regular Hook.
 
 ## Reference
 
@@ -64,25 +75,25 @@ If you're creating a custom Page, Layout, or Interface, you might want to add ad
 
 Action Hooks execute a piece of code _without_ altering the data being passed through it. For example, an Action Hook might send an email to a user when an new article is created. Below is a listing of actions that fire an event.
 
-Name                              | Description
---------------------------------- | ------------
-`application.boot`                | Before all endpoints are set. The app object is passed.
-`application.error`               | An app exception has been thrown. The exception object is passed.
-`auth.request:credentials`        | User requested token via credentials. The user object is passed.
-`auth.success`                    | User authenticated successfully. The user object is passed.
-`auth.fail`                       | User authentication failed. Exception object is passed.
-`collection.create`               | Collection is created. Collection's name passed. Supports `:before` and `:after` (default)
-`collection.update`               | Collection is updated. Collection's name passed. Supports `:before` and `:after` (default)
-`collection.delete`               | Collection is deleted. Collection's name passed. Supports `:before` and `:after` (default)
-`field.create`                    | Field is created. You can also limit to a specific collection with `field.create.[collection-name]`. Collection's name (_When not specific to a collection_), Field's name and new data passed. Supports `:before` and `:after` (default)
-`field.update`                    | Field is updated. You can also limit to a specific collection with `field.update.[collection-name]`. Collection's name (_When not specific to a collection_), Field's name and data passed. Supports `:before` and `:after` (default)
-`field.delete`                    | Field is deleted. You can also limit to a specific collection with `field.delete.[collection-name]`. Collection's name (_When not specific to a collection_), Field's name passed. Supports `:before` and `:after` (default)
-`item.create`                     | Item is created. You can also limit to a specific collection using `item.create.[collection-name]`. Item data passed. Supports `:before` and `:after` (default)
-`item.read`                       | Item is read. You can also limit to a specific collection using `item.read.[collection-name]`. Item data passed. Supports `:before` and `:after` (default)
-`item.update`                     | Item is updated. You can also limit to a specific collection using `item.update.[collection-name]`. Item data passed. Supports `:before` and `:after` (default)
-`item.delete`                     | Item is deleted. You can also limit to a specific collection using `item.delete.[collection-name]`. Item data passed. Supports `:before` and `:after` (default)
-`file.save`                       | File is saved. File data passed. Supports `:before` and `:after` (default)
-`file.delete`                     | File is deleted. File data passed. Supports `:before` and `:after` (default)
+| Name                       | Description                                                                                                                                                                                                                               |
+| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `application.boot`         | Before all endpoints are set. The app object is passed.                                                                                                                                                                                   |
+| `application.error`        | An app exception has been thrown. The exception object is passed.                                                                                                                                                                         |
+| `auth.request:credentials` | User requested token via credentials. The user object is passed.                                                                                                                                                                          |
+| `auth.success`             | User authenticated successfully. The user object is passed.                                                                                                                                                                               |
+| `auth.fail`                | User authentication failed. Exception object is passed.                                                                                                                                                                                   |
+| `collection.create`        | Collection is created. Collection's name passed. Supports `:before` and `:after` (default)                                                                                                                                                |
+| `collection.update`        | Collection is updated. Collection's name passed. Supports `:before` and `:after` (default)                                                                                                                                                |
+| `collection.delete`        | Collection is deleted. Collection's name passed. Supports `:before` and `:after` (default)                                                                                                                                                |
+| `field.create`             | Field is created. You can also limit to a specific collection with `field.create.[collection-name]`. Collection's name (_When not specific to a collection_), Field's name and new data passed. Supports `:before` and `:after` (default) |
+| `field.update`             | Field is updated. You can also limit to a specific collection with `field.update.[collection-name]`. Collection's name (_When not specific to a collection_), Field's name and data passed. Supports `:before` and `:after` (default)     |
+| `field.delete`             | Field is deleted. You can also limit to a specific collection with `field.delete.[collection-name]`. Collection's name (_When not specific to a collection_), Field's name passed. Supports `:before` and `:after` (default)              |
+| `item.create`              | Item is created. You can also limit to a specific collection using `item.create.[collection-name]`. Item data passed. Supports `:before` and `:after` (default)                                                                           |
+| `item.read`                | Item is read. You can also limit to a specific collection using `item.read.[collection-name]`. Item data passed. Supports `:before` and `:after` (default)                                                                                |
+| `item.update`              | Item is updated. You can also limit to a specific collection using `item.update.[collection-name]`. Item data passed. Supports `:before` and `:after` (default)                                                                           |
+| `item.delete`              | Item is deleted. You can also limit to a specific collection using `item.delete.[collection-name]`. Item data passed. Supports `:before` and `:after` (default)                                                                           |
+| `file.save`                | File is saved. File data passed. Supports `:before` and `:after` (default)                                                                                                                                                                |
+| `file.delete`              | File is deleted. File data passed. Supports `:before` and `:after` (default)                                                                                                                                                              |
 
 :::tip Before or After Event
 By default, the Hooks above occur _after_ an event has happened. You can append `:before` or `:after` to the end to explicitly specify when the Hook should fire.
@@ -97,7 +108,7 @@ In this example we'll notify an email address every time a new article is create
 
 return [
   'actions' => [
-    'item.create.articles' => function ($collectionName, $data) {
+    'item.create.articles' => function ($data) {
       $content = 'New article was created with the title: ' . $data['title'];
       notify('admin@example.com', 'New Article', $content);
     }
@@ -109,13 +120,13 @@ return [
 
 Filter Hooks are similar to Actions but alter the data that passes through it. For example a Filter Hook might set a UUID for a new article before it is stored in the database.
 
-Name                                 | Description
------------------------------------- | ------------
-`item.create:before`                 | Item is created. You can also limit to a specific collection using `item.create.[collection-name]:before`. Supports `:before` (has to be set explicitly)
-`item.read`                          | Item is read. You can also limit to a specific collection using `item.read.[collection-name]`. Supports `:after` (default)
-`item.update:before`                 | Item is updated. You can also limit to a specific collection using `item.update.[collection-name]:before`. Supports `:before` (has to be set explicitly)
-`response`                           | Before adding the content into the HTTP response body.  You can also limit to a specific collection using `response.[collection-name]`.
-`response.[method]`                  | Same as `response` but only executes for a specific http method, such as `GET, POST, DELETE, PATCH, PUT, OPTIONS`. You can also limit to a specific collection using `response.[method].[collection-name]`.
+| Name                 | Description                                                                                                                                                                                                 |
+| -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `item.create:before` | Item is created. You can also limit to a specific collection using `item.create.[collection-name]:before`. Supports `:before` (has to be set explicitly)                                                    |
+| `item.read`          | Item is read. You can also limit to a specific collection using `item.read.[collection-name]`. Supports `:after` (default)                                                                                  |
+| `item.update:before` | Item is updated. You can also limit to a specific collection using `item.update.[collection-name]:before`. Supports `:before` (has to be set explicitly)                                                    |
+| `response`           | Before adding the content into the HTTP response body. You can also limit to a specific collection using `response.[collection-name]`.                                                                      |
+| `response.[method]`  | Same as `response` but only executes for a specific http method, such as `GET, POST, DELETE, PATCH, PUT, OPTIONS`. You can also limit to a specific collection using `response.[method].[collection-name]`. |
 
 #### Example
 
@@ -137,17 +148,17 @@ return [
 
 #### Useful Methods when working with the Payload
 
-Name                    | Description
------------------------ | ------------
-`getData()`             | Get the payload data
-`attribute($key)`       | Get an attribute key. eg: `$payload->attribute('collection_name')`
-`get($key)`             | Get an element by its key
-`set($key, $value)`     | Set or update new value into the given key
-`has($key)`             | Check whether or not the payload data has the given key set
-`remove($key)`          | Remove an element with the given key
-`isEmpty()`             | Check whether the payload data is empty
-`replace($newDataArray)`| Replace the payload data with a new data array
-`clear()`               | Remove all data from the payload
+| Name                     | Description                                                        |
+| ------------------------ | ------------------------------------------------------------------ |
+| `getData()`              | Get the payload data                                               |
+| `attribute($key)`        | Get an attribute key. eg: `$payload->attribute('collection_name')` |
+| `get($key)`              | Get an element by its key                                          |
+| `set($key, $value)`      | Set or update new value into the given key                         |
+| `has($key)`              | Check whether or not the payload data has the given key set        |
+| `remove($key)`           | Remove an element with the given key                               |
+| `isEmpty()`              | Check whether the payload data is empty                            |
+| `replace($newDataArray)` | Replace the payload data with a new data array                     |
+| `clear()`                | Remove all data from the payload                                   |
 
 :::tip Dot Notation
 `get()` and `has()` method can use dot-notation to access child elements. eg: `get('data.email')`.
@@ -170,8 +181,8 @@ if (in_array($collectionName, SchemaManager::getSystemCollections())) {
     return $payload;
 }
 ```
-:::
 
+:::
 
 ## Web Hooks
 

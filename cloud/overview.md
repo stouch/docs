@@ -1,155 +1,112 @@
-# Directus Cloud
+# Directus Cloud Overview
 
-> Directus Cloud is our paid content-as-a-service (CaaS) platform. It offers quick setup, auto-updates, a global CDN, and premium support.
+### Directus Cloud is the easiest way to get started with Directus. It allows you to spin up new projects in seconds, and keeps those project safe and up-to-date. This page will give an overview of the features that make our Cloud platform an ideal choice for your project.
 
-## Private Beta
+<br>
+<br>
 
-Currenty Directus Cloud is in an invite-only private beta. Below are some use resources for getting started.
+## Dashboard Components
 
-## Platform Overview
+* **Accounts** gives you free access to the Directus Cloud Dashboard
+* **Teams** allow you to organize, share, and consolidate billing for your projects
+* **Projects** are instances of Directus, organized by team, with pricing defined by its tier
+* **Tiers** define your project's service fee and are selected based on expected usage
 
-Directus Cloud has three main levels:
+## Easy Installation
 
-* *Accounts* — Individual Cloud access tied to an email address. (Free)
-* *Teams* — A group of accounts with one owner used for consolidated billing. (Free)
-* *Projects* — An instance of Directus attached to a Team. (Paid. Cost based on chosen plan.)
+Each instance of Directus, called a "project", is comprised of a database, file storage, and a configuration file. You can [Create a New Project](/cloud/user-guide.md#create-a-project) directly from your Cloud Dashboard in a matter of seconds, making it the easiest way to get started with Directus.
 
-## Dashboard
+Once installation is complete, you can immediately login with your admin credentials to [Access the Project](/cloud/user-guide.md#access-a-project).
 
-When you log-in to Directus Cloud you will be taken to the Dashbaord. This page will give you a bird's eye view over all your teams and projects.
+## The Full Directus Suite
 
-### Directus Version
+Cloud projects give you complete access to the entire Directus Suite. We do not artificailly "lock" any core features or limit usage based on your tier†. Every project gets access to the following:
 
-You'll never need to worry about keeping Directus up-to-date on Directus Cloud, we automatically update the entire service each week. We intentionally keep the Cloud API 1-2 releases behind the OSS version (except for security patches) to avoid pushing any issues to our paying customers. This way, we're able to collect feedback from hundreds-of-thousands of open-source community members and identify/resolve bugs before they reach Cloud. You can see the current version in the header of the Dashboard.
+* Unlimited Locales
+* Unlimited Roles
+* Unlimited Users†
+* Unlimited Collections†
+* Unlimited Items†
+* Unlimited Files
+* Unlimited Thumbnails
+* Full REST & GraphQL API
 
-### System Status
+_† May incur overage fees based on usage and tier._
 
-The current Directus Cloud system status is always visible at the top of the dashboard's header. Additionally, all customers will recieve emails reports for outages and resolution.
+::: tip Overages, Technical Limits & Fair Usage
+To ensure you always have full read/write access to your data, no hard limits are imposed for Cloud projects. However it is important to note that you may incur overage fees depending on your usage.
 
-## Accounts
-
-Directus Cloud accounts are how individuals access the platform. Accounts are free and tied to your email address.
-
-### Requesting Access
-
-Reach out to one of our Core Team members on the [Directus Community Slack](https://directus.chat).
-
-### Logging In
-
-Visit the [beta login page](https://staging.directus.cloud/login) and authenticate with your email and the temporary password given to you by the Core Team.
-
-### Managing Your Account
-
-Clicking on the User Menu (top-right) will open your Account page. Here you can view Account Activity, Pending Team Invites, and Account Settings.
-
-#### Account Activity
-
-Lists all Directus Cloud API activity for your account.
-
-#### Team Invites
-
-Lists any pending Team invites and allows you to accept or reject them.
-
-#### Account Settings
-
-Basic control for your Directus Cloud Account. There are a few sections:
-
-* *Email* — You can _not_ change your account's email address as of now.
-* *Name* — You can change your name at any point, this is only used to reference you.
-* *Password* — This is only used to login to the Directus Cloud Dashboard, not your Directus Projects.
-
-##### Destroying your Account
-
-Directus has no long-term contracts or commitments, so you can cancel your account at any time. However if you are the owner of any teams you must first destroy them or trasnfer them to a new owner.
-
-## Teams
-
-Teams help organize projects, provide consolidated billing, and allow multiple accounts to have access to the same projects.
-
-### Creating Teams
-
-Simply click the "Create Team" button on the dashbaord homepage and enter a name for your Team. This name is only for reference and can be anything.
-
-### Managing Teams
-
-Clicking on the team's header will open its detail page. Here you can view Team Billing, Members, and Team Settings.
-
-#### Team Billing
-
-This pane shows your total balance/credit, payment methods, and billing history.
-
-##### Adding Payment Methods
-
-Usage during the private beta will _not_ be billed. To avoid getting charged you can use a [testing credit card](https://stripe.com/docs/testing#cards):
-
-* *Card Number* — `4242-4242-4242-4242`
-* *Card Expiration* — _Anything in the future_
-* *Card CVC* — _Any three digits_
-
-#### Team Members
-
-Here you can see the current members of the team, remove/invite members, and change team ownership.
-
-#### Team Settings
-
-Basic control for your Directus Cloud Team. There are a few sections:
-
-* *Name* — You can change your name at any point, this is only used to label your team in the dashboard.
-
-##### Destroying a Team
-
-You can destroy teams at any time, however you must first destroy all of the team's projects.
-
-## Projects
-
-These are the actual Directus API instances. Each is billed based on the monthly cost of its plan, as well as any plan limit overages.
-
-### Creating Projects
-
-It only takes a few seconds to spin up a new project, simply click on the "Create New Project" button within a Team. Then just give the project a name (you can change this at any point), and choose a monthly plan.
-
-:::tip
-Even if you are using a free plan the parent team must have a Payment Method added to cover any potential overage costs.
+All projects are subject to our [Technical Limits Policy](https://directus.io/technical-limits.html) and [Fair Usage Policy](https://directus.io/fair-usage.html).
 :::
 
-#### Managing Projects
+## Automatic Updates
 
-Clicking on a Project from the Cloud Dashboard will open its detail page. Here you can find: Access, Usage, Resize Options, and Project Settings.
+Our core team is always hard at work improving the Directus Core suite, with new versions being released every week or so. Our Cloud platform automatically keeps your projects up-to-date with the most recent version, so you get access to the latest features, fixes, and optimizations. No more tedious maintenance or running manual database migrations.
 
-##### Project Access
-
-Once created, you can immediately log-in to it using the [Directus App](https://next.directus.app). Clicking "Launch Directus" will take you to the App and pre-fill your API URL.
-
-:::tip
-Remember that your Project Users are different from your Directus Cloud Account!
+::: tip Current Version
+You can confirm the version of your projects in the header of the Cloud Dashboard.
 :::
 
-This pane also includes a list of all Project Users and gives easy access to generate/remove their API Static Access Tokens.
+## Uptime & Monitoring
 
-##### Project Usage
+Directus Cloud is built upon a robust auto-scaling architecture that ensures your projects are always blazingly fast. We also have 24/7 system monitoring to detect anomalies before they become issues, so we can maximize your service uptime.
 
-This pane shows your billing period as well as information on your project's plan usage and limits.
+::: tip System Status
+You can always check our [System Status](https://status.directus.io/) page to check for service issues or verify uptime. You can also use this page to report incidents, browse past issues, or review the 30-day uptime history.
+:::
 
-* *API Requests* — Total API request count for this billing period
-* *Bandwidth* — Total API bandwidth for this billing period
-* *Users* — Total number of users in this project
-* *Collections* — Total number of collections in this project
-* *Items* — Total number of items in this project
+## No Vendor Lock-In
 
-##### Resizing a Project
+You are never locked-in to our Directus Cloud platform... or even Directus in general. All your data is stored in pure SQL within a database architecture that you define, so you have the freedom of complete data portability. If you would like to discuss moving from self-hosted to Cloud, or vice versa, please [contact our support specialists](https://dashboard.directus.cloud/?chat=open).
 
-At any point you can change your Project's plan by resizing it. Choosing an appropriate plan is a good way to avoid more expensive overage costs.
+## Automatic Backups
 
-##### Project Settings
+Our Cloud platform keeps your data safe, with redundant backups of all data. Project databases are individually backed-up each hour (24h retention), and our entire database server is backed up nightly (31d retention). We also keep off-site backups of all project config files, and project asset storage.
 
-Basic control for your Project. There are a few sections:
+::: tip Requesting a Backup
+If you would like access to a project database backup, please contact us via our [chat service](https://dashboard.directus.cloud/?chat=open).
+:::
 
-* *Name* — You can change your name at any point, this is only used to label your project in the dashboard.
+## Storage & CDN
 
-##### Destroying a Project
+Content Delivery Network
 
-This action is permanent and can not be undone. All data, files, and users associated with this project will be destroyed. You must type the project's name to confirm your intention to delete it.
+## Teams & Roles
 
-## Limitations
+Teams are a great way to keep your projects organized... and they're free to create. [Create a Team](/cloud/user-guide.md#create-a-team) to group projects by client, company, purpose, payment method, or anything else. Once created, you (the owner) can invite any number of other Directus Cloud Accounts to become members (admins).
 
-If your beta project's usage exceeds the [fair usage limits](https://directus.io/fair-usage.html) we may cancel your beta access. Directus Cloud Beta should not be used in production, we reserve the right to suspend or destroy your account, team, or projects at any time.
+Teams are also useful because they allow for consolidated billing across multiple projects. You can enter a team's payment method once, and then quickly create projects as needed.
+
+## On-Demand vs Enterprise
+
+**On-demand Tiers** are the easiest way to get started with Directus and include all of the features listed on this page above. There are three on-demand tiers, each covering some of the most typical project sizes:
+
+* **Basic** — Test things out with 10 collections & 5,000 items
+* **Standard** — Our most common size, with 25 collections and 10,000 items
+* **Professional** — Max out your project with 50 collections and 25,000 items
+
+**Enterprise Tiers** allow the most flexibility, and are custom tailored to your specific needs. If your project requires larger limits or any of the custom options listed below, you can [chat](https://directus.io/?chat=open) or [email](info@directus.io?subject=I'd+like+to+learn+more+about+Directus+Cloud+Enterprise) our sales staff to discuss moving to an Enterprise tier.
+
+* **App and API Whitelabeling**
+* **Premium Support & SLAs**
+* **Custom Usage Limits**
+* **Dedicated Hardware**
+* **Remote Database Access**
+* **Bulk Discounts**
+
+**Self-Hosting Directus** is an excellent option for organizations that don't allow their data to be stored third-party services or non-profits with no software budget. However self-hosted instances use our open-source license (GPLv3) and therefore:
+
+* **Are responsible for purchasing their own server and asset storage**
+* **Are responsible for upgrading and maintaining their own software**
+* **Do not get any standard or premium support — only [community support](https://directus.chat)**
+
+## Extensions & Custom Code
+
+It is important to note that while our on-demand Cloud infrastructure is very performant and flexible, you will not have direct access to modify or extend the Directus codebase. This means that you will not be able to take advantage of some of the extensibility options built-in to the Directus Suite, including:
+
+* Database Import / Export
+    * You _can_ request full database exports of your Cloud projects, and we'll work with you (within reason) to import data from existing or self-hosted Directus installs.
+* Custom Extensions, such as Interfaces
+    * Some Enterprise tiers may allow for this
+* Custom Admin App Styling (through CSS)
+    * Some Enterprise tiers may allow for this

@@ -30,10 +30,6 @@ tar -xzf master.tar.gz
 
 If you don't have access to the command line then you'll need to decompress the files on your local computer before uploading to the remote server, though this will take _much_ longer.
 
-## Standalone
-
-If you prefer, you can choose to only [install the Directus API](/advanced/api/standalone.md), or only [install the Directus App](/advanced/app/standalone.md). This is useful for multitenancy, such as when you need many instances of the API but only one App to manage them all.
-
 ## Source
 
 If you would like to extend or make contributions to the core codebase then you can [install Directus from Source](/advanced/source.md). This process involves more steps, so we recommend using the combined build for normal usage.
