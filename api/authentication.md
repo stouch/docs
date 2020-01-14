@@ -1,0 +1,6 @@
+---
+pageClass: page-reference
+---
+
+# Authentication
+

@@ -53,22 +53,29 @@ When installing Directus for the first time, you'll be asked to provide a projec
 
 <two-up>
 
-::: slot left
+<template slot="left">
+
 By default, all data in the system is off limits for unauthenticated users. To gain access to protected data, you must include an access token with every request.
 
-To make data publicly accessible, you can use [the public role](#).
-:::
+You pass the token in either the Authorization header, or a query parameter:
 
-::: slot right
-Token types:
-* Session Token
-* Static Token
+```
+Authorization: bearer t0k3n
+?access_token=t0k3n
+```
 
-Passing the token:
-* Query Parameter
-* Authorization Header
-:::
+To learn more, checkout [the authentication reference](/api/authentication).
 
+</template>
+
+<info-box slot="right" title="Endpoints">
+
+```endpoints
+  POST /:project/auth/authenticate
+  POST /:project/auth/refresh
+```
+
+</info-box>
 </two-up>
 
 ---
