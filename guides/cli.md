@@ -42,28 +42,29 @@ This command will overwrite any existing default configuration file at `config.a
 :::
 
 ```bash
-php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pass> -e <directus_email> -s <db_unix_socket> -k <project-key>
+php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pass> -e <directus_email> -s <db_unix_socket>
 ```
 
-| Option     | Description                                                                      |
-| ---------- | -------------------------------------------------------------------------------- |
-| `t`        | Database type. (**Only `mysql` supported**)                                      |
-| `h`        | Database host                                                                    |
-| `P`        | Database port                                                                    |
-| `n`        | Database name (it must already exist)                                            |
-| `u`        | Database user's name                                                             |
-| `p`        | Database user's password                                                         |
-| `e`        | (Optional) The Directus email that will be used as sender in the mailing process |
-| `s`        | Database unix socket                                                             |
-| `c`        | Enable/Disable CORS                                                              |
-| `k`        | Unique Project's key                                                             |
-| `timezone` | API Server default timezone                                                      |
-| `f`        | Force file overwritten                                                           |
+| Option         | Description
+| -------------- | -----------------------------
+| `t`            | Database type. (**Only `mysql` supported**)
+| `h`            | Database host
+| `P`            | Database port
+| `n`            | Database name (it must already exist)
+| `u`            | Database user's name
+| `p`            | Database user's password
+| `e`            | (Optional) The Directus email that will be used as sender in the mailing process
+| `s`            | Database unix socket
+| `a`            | Super Admin Token
+| `c`            | Enable/Disable CORS
+| `N`            | Unique Project's name
+| `timezone`     | API Server default timezone
+| `f`            | Force file overwritten
 
 #### Example: http://example.local
 
 ```bash
-php bin/directus install:config -h localhost -k directus -u root -p pass
+php bin/directus install:config -h localhost -n directus -u root -p pass -a super_admin_token
 ```
 
 #### Example: http://example.local/directus
