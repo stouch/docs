@@ -1,2 +1,2 @@
 #### meta <def-type>optional</def-type>
-What metadata to return in the response. [Learn more](/api/params/meta.html)
+What metadata to return in the response. [Learn more](/api/query/meta.html)
