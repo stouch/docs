@@ -28,7 +28,9 @@ GraphQL provides a complete description of the data in your API, giving you the 
 
 The Directus REST API offers the same powerful and granular options as GraphQL. However, some users may want to use the specific GraphQL specification for requests and responses. For that reason, Directus offers a GraphQL endpoint as a wrapper of the REST API.
 
-The GraphQL endpoint can only be used with admin accounts. An admin access token needs to be passed in the `access_token` query parameter.
+::: warning Admin Role Only
+Due to the complexity of handling permissions, as of now the GraphQL endpoint can only be used with Admin role accounts. An admin access token needs to be passed in the `access_token` query parameter.
+:::
 
 </template>
 
