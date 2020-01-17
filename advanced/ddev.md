@@ -30,7 +30,7 @@ ddev describe
 ```
 
 
-## APP
+## App
 
 * Clone the app repo.
 ```bash
