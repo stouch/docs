@@ -40,7 +40,7 @@ git clone git@github.com:directus/app.git
 ```
 * Set the API_URL environment variable to point at the local ddev service URL and start the project.
 ```bash
-set API_URL=http://localhost:8080/admin
+set API_URL=http://<ddev-project>.ddev.site/
 ```
 ```bash
 npm run dev
