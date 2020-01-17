@@ -11,7 +11,7 @@ git clone https://github.com/directus/api.git
 OR
 git clone git@github.com:directus/api.git
 ```
-* Run ddev config in the api folder and set the `Docroot` to `public` and project type to `php`.
+* Run ddev config in the API folder and set the `Docroot` to `public` and project type to `php`.
 ```bash
 ddev config
 ```
