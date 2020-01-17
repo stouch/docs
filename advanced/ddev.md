@@ -47,7 +47,7 @@ npm run dev
 ```
 * You'll be prompted to create a new project. Use the following database connection. database=db, port=3306, user=db, password=db.
 
-That's it. You will login to a freshly created directus project. 
+That's it. You will login to a freshly created Directus project. 
 
 **Tip**: ddev allows [PHP Step Debugging](https://ddev.readthedocs.io/en/stable/users/step-debugging/). You can enable it temporarily to avoid performance problems. 
 
