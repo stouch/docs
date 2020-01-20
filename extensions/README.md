@@ -4,11 +4,7 @@
 
 ## Architecture Explanation
 
-Despite being an App resource, Directus extensions are actually stored in the API codebase/repository. This seems counter-intuitive, but is neccesary because the Directus App supports multitenancy (you can connect to multiple APIs from one App).
-
-If you install a custom interface, like a "Seating Chart", you'll want that interface to be available within your project no matter which App you connect through. Because of this, we store all _custom_ extensions in the API Instance, and to keep things organized, we decided to also serve all _core_ extensions from the same place.
-
-[Learn more about the Extension Architecture](./architecture.md)
+Despite being an App resource, Directus custom extensions are actually stored in the API codebase/repository. This seems counter-intuitive, but is neccesary because it allows installing extensions without having to build the application from source. It also allows us to do over-the-air installations of extensions in the future.
 
 ## Extension Types
 
