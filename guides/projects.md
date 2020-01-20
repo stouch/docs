@@ -34,3 +34,19 @@ Since Directus is multitenant, you need a way to link to specific projects. This
 ```
 https://example.com/admin/#/login?project=my-project
 ```
+
+## Private projects
+
+You might not want to share the existence of the project with the outside world. In that case, you can make a project private by prepending the configuration filename with `private.`. This will hide the project name from the project switcher, and prevents the project name from being returned by the `GET /server/projects` endpoint. User's can still login to this project by using the `project` query parameter mentioned above.
+
+### Example
+
+```
+// Before
+
+/config/my-project.php
+
+// After
+
+/config/private.my-project.php
+```
