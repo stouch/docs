@@ -285,7 +285,7 @@ The file library is an annex of all files added to Directus. Files may be added 
 
 Directus also supports multiple [storage adapters](../extensions/storage-adapters.md), so you may have the option to save files to different locations.
 
-There's also an automatic [thumbnailer](./thumbnailer.md) included, so you can easily save your original files at different sizes. Allowed thumbnail sizes are setup by your administrator.
+There's also an automatic [thumbnailer](./files.md) included, so you can easily save your original files at different sizes. Allowed thumbnail sizes are setup by your administrator.
 
 By default the File Library displays as a Card layout with thumbnails, but you can change this in the [Info Sidebar](#info-sidebar).
 

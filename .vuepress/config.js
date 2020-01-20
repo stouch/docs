@@ -115,6 +115,7 @@ module.exports = {
           ["/api/authentication", "Authentication"],
           ["/api/items", "Items"],
           ["/api/files", "Files"],
+          ["/api/assets", "Assets (Thumbnails)"],
           ["/api/activity", "Activity"],
           ["/api/collections", "Collections"],
           ["/api/collection-presets", "Collection Presets"],
