@@ -51,8 +51,12 @@ Directus supports the standard Create, Read, Update, and Delete (CRUD) permissio
 The `mine` and `role` permission options are only available when the parent collection contains a `created_by` field type. See below for setup.
 :::
 
-::: tip
+::: tip Shortcuts
 Hover over of each row to access an "All/None" shortcut per collection, or click the column header to toggle that permission for all collections.
+:::
+
+::: warning System Permissions
+There is a "Directus System Collections" toggle at the bottom of the permissions interface that lets you manage permissions for `directus_files`, `directus_users`, and other system collections. This is important if you are trying to enable access to relational Files or Users.
 :::
 
 ### Accountability
