@@ -1,8 +1,16 @@
 # Database
 
-> The Database is the container for your entire Directus project. It is kind of like a very powerful spreadsheet.
+> The Database is the container for your entire Directus project. It's kind of like a very powerful spreadsheet.
 
 ## Database Mirroring
+
+Instead of creating a proprietary one-size-fits-all data architecture to store your content, Directus "mirrors" whatever is in your actual SQL database. Think of it like a database client (eg: phpMyAdmin, Sequel Pro, etc) only safe and intutiive enough for non-technical users. This makes it an ideal solution for projects that would like:
+
+* A pure/custom database model that fits their needs
+* Significant performance optimizations and indexing
+* Data transparency, portability, and security
+* The full power of SQL queries via direct database access
+* To use their existing database schema and content
 
 ### What is a relational database?
 
