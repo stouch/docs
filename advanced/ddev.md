@@ -15,14 +15,17 @@ git clone git@github.com:directus/api.git
 ```bash
 ddev config
 ```
-
-* Install composer dependencies.
-```bash
-ddev exec composer install
+* Edit `.ddev/config.yml` to use Apache. 
+```yml
+webserver_type: apache-fpm
 ```
 * Start ddev.
 ```bash
 ddev start
+```
+* Install composer dependencies (done once).
+```bash
+ddev exec composer install
 ```
 * Run the following command in order to get the service and tools details, like `phpmyadmin` and database connection.
 ```bash
@@ -38,14 +41,18 @@ git clone https://github.com/directus/app.git
 OR
 git clone git@github.com:directus/app.git
 ```
+* Install dependencies (might need admin privileges).
+```bash
+npm install
+```
 * Set the API_URL environment variable to point at the local ddev service URL and start the project.
 ```bash
-set API_URL=http://<ddev-project>.ddev.site/
+set API_URL=https://<ddev-project>.ddev.site/
 ```
 ```bash
-npm run dev
+npm run serve
 ```
-* You'll be prompted to create a new project. Use the following database connection. database=db, port=3306, user=db, password=db.
+* You'll be prompted to create a new project. Use the following database connection. **host**=db, **database**=db, **port**=3306, **user**=db, **password**=db.
 
 That's it. You will login to a freshly created Directus project. 
 
