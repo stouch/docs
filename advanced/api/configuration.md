@@ -77,7 +77,7 @@ $ bin/directus install:config -n <database-name> -u <mysql-user> -p <mysql-passw
 | `-p`    | Password for the database connection                                  |
 | `-c`    | Tell to enable or disable CORS (Default: `false`)                     |
 | `-e`    | Email used by the Mailer as From/Sender (Default: `admin@example.com`)|
-| `-N`    | Name of the project (Default: `_`)                                    |
+| `-k`    | Name of the project (Default: `_`)                                    |
 
 ### Boilerplate System Database
 
@@ -99,5 +99,5 @@ $ bin/directus install:install -e <admin-email> -p <admin-password> -t <project-
 | `-p`    | Password of the Directus user (Default: `password`)                   |
 | `-T`    | Token of the Directus user                   |
 | `-t`    | Title of the project (Default: `Directus`)                            |
-| `-N`    | Name of the project (Default: `_`)                                    |
+| `-k`    | Name of the project (Default: `_`)                                    |
 
