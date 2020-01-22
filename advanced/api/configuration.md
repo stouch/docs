@@ -78,6 +78,7 @@ $ bin/directus install:config -n <database-name> -u <mysql-user> -p <mysql-passw
 | `-c`    | Tell to enable or disable CORS (Default: `false`)                     |
 | `-e`    | Email used by the Mailer as From/Sender (Default: `admin@example.com`)|
 | `-k`    | Name of the project (Default: `_`)                                    |
+| `-a`    | Super admin token                                                     |
 
 ### Boilerplate System Database
 
