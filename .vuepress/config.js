@@ -87,6 +87,7 @@ module.exports = {
         collapsable: true,
         children: [
           "/guides/user-guide",
+          "/guides/admin-guide",
           "/guides/accountability",
           "/guides/authentication",
           "/guides/cli",
@@ -104,7 +105,8 @@ module.exports = {
           "/guides/roles",
           "/guides/status",
           ["/guides/style-guide", "Style Guide"],
-          "/guides/upgrading"
+          "/guides/upgrading",
+          "/guides/users"
         ]
       },
       {

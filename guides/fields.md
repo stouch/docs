@@ -2,42 +2,49 @@
 
 > A Field is a specific type of value within a Collection. For example, you might have _Title_, _Body_, _Author_, and _Date Published_ fields within an _Articles_ collection. Each field represents a database column.
 
-## Adding Fields
+## Creating Fields
 
 To get started, go to _Settings > Collections & Fields_, choose the Collection you want to add the field to, then click "New Field".
 
 ### 1. Choose an Interface
 
-Do you want a Toggle? Text Input? Map? Dropdown? Relationship? There are many Core Interfaces available here, with even more Extension Interfaces available. This is always the first step when creating a new field, and dictates the rest of the process.
+Do you want a Toggle? Text Input? Map? Dropdown? Relationship? There are many Core Interfaces available here, with even more Extension Interfaces available. This is always the first step when creating a new field, and dictates the rest of the process. [Learn more about Interfaces](./interfaces.html)
 
-### 2. Set the Schema Options
+### 2. Database Options
 
 Only the "Name" is required for this step, but it's good to familiarize yourself with the other options to get the most out of each field.
 
-* **Name** — The database column name and API field key. Lowercase alphanumeric and underscores.
-* **Display Name** — A formatted preview of how users will see the field name throughout the App.
+* **Name** — The actual column name in the database. Automatically sanitized as you type, with letters converted to lowercase, illegal characters removed, and spaces converted to underscores.
+* **Default Value** — The default value for this field. Used for new items if the field is left blank.
 * **Note** — Optional helper text shown beside the field on the Item Detail page.
+* **Required** — Whether or not this field requires a value.
+* **Readonly** — Whether or not this field's interface can be updated from the item detail page.
 * **Advanced Options**
-  * **Directus Type** — Directus specific type that the interface supports (eg: `string`, `number`).
-  * **Datatype** — Database-specific type to use (eg: `VARCHAR`, `INT`, etc).
+  * **Field Type** — Directus specific type (eg: `string`, `number`). Limited by what the interface supports.
+  * **MySQL Datatype** — Specific database-vendor type used to store data (eg: `VARCHAR`, `INT`).
   * **Length** — Max size of data that can be contained by this field.
-  * **Default** — The default value for this field. Used for new items if the field is left blank.
-  * **Validation** — A RegEx string used to validate the value on save. (eg: `/^[A-Z]+$/` allows only uppercase characters)
-  * **Validation Message** — Custom validation message displayed if the above validation fails
-  * **Required** — Whether or not this field requires a value.
-  * **Readonly** — Whether or not this field's interface is interactive on the item detail page
+  * **Validation** — A RegEx string used to validate the value on save. (eg: `/^[A-Z]+$/`)
+  * **Primary Key** — Whether or not this field is the primary key (PK) of the collection.
   * **Unique** — Whether or not this field's value must be unique within the collection.
   * **Hidden Detail** — Hides the field on the Item Detail page.
   * **Hidden Browse** — Hides the field on the Item Browse page.
-  * **Signed** — "Signed" is used to store negative values, "Unsigned" can only be positive.
+  * **Translation** — Translates the field name into different locales (doesn't change the database/API)
 
 ### 3. Relationship Setup
 
-This step only appears if you selected a relational interface, such as _Many to Many_ or _Translations_. If you're unfamiliar with relationships you can learn how to configure them in our [Relationships Guide](/guides/relationships.md).
+This step only appears if you selected a relational interface, such as _Many to Many_ or _Translations_. [Learn more about Relationships](/guides/relationships.md).
 
 ### 4. Interface Options
 
 Interfaces are highly customizable with options that allow you to tailor them to individual uses. These vary depending on interface complexity, with less-common options hidden within an "Advanced" accordion. In addition to an interface's custom options, _every_ field has a system option for its width. Learn more about this within the Field Layout section below.
+
+## Duplicating Fields
+
+If you are creating multiple fields that are nearly the same, you can choose to duplicate an existing field instead of creating a new one. To do this, click on the context menu on the right side of the field in the listing, and select "Duplicate Field". This will open a modal that lets you choose the name of this new field, and the collection it should belong to.
+
+::: tip
+Duplicating a field does not duplicate its content.
+:::
 
 ## Field Layout
 
@@ -59,8 +66,8 @@ You can also adjust the width of each field within the Directus Item Detail form
 
 ## Deleting Fields
 
-Clicking the "×" icon on the right side of the Fields interface will completely delete the field from the schema as well as all its Item data. You are prompted to confirm this action, however once the field delete is executed the change takes place immediately.
+Click the context menu on the right side of the Fields listing and then select "Delete". This will completely delete the field from the schema as well as any data contained within them. You will only be asked to confirm this action once... then this field and all of its content/config will be permanently deleted.
 
-::: warning
-It is possible to irreverisbly delete massive amounts of data with this feature. Proceed with extreme caution.
+::: danger
+Deleting fields is one of the most dangerous actions you can perform within Directus. It is an irreversible action that can remove vast amounts of data. Please be absolutely sure this is what you want before proceeding.
 :::
