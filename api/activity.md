@@ -375,7 +375,7 @@ Returns the activity action of the updated comment.
 <info-box title="Endpoint">
 
 ```endpoints
-  POST /:project/activity/comment/:id
+ PATCH /:project/activity/comment/:id
 ```
 
 </info-box>
