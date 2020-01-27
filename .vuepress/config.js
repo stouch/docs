@@ -99,6 +99,7 @@ module.exports = {
           "/guides/interfaces",
           ["/guides/i18n", "Internationalization"],
           ["/guides/js-sdk", "JavaScript SDK"],
+          "/guides/layouts",
           "/guides/permissions",
           "/guides/projects",
           "/guides/relationships",
