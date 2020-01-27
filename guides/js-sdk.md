@@ -40,8 +40,8 @@ If you're making API requests from a custom VueJS Directus extension, you can us
 import DirectusSDK from "@directus/sdk-js";
 
 const client = new DirectusSDK({
-  url: "https://demo-api.directus.app/",
-  project: "_",
+  url: "https://api.directus.cloud/",
+  project: "dcABCDEF123456",
   storage: window.localStorage
 });
 ```
@@ -70,8 +70,8 @@ const client = new DirectusSDK();
 
 // This returns a promise - don't try to access any data until this promise resolves
 client.login({
-  url: "https://demo-api.directus.app/",
-  project: "_",
+  url: "https://api.directus.cloud/",
+  project: "dcABCdefHIJklm",
   email: "admin@example.com",
   password: "password"
 });
@@ -87,8 +87,8 @@ You can provide a storage method to persist the token across refreshes and brows
 import DirectusSDK from "@directus/sdk-js";
 
 const client = new DirectusSDK({
-  url: "https://demo-api.directus.app/",
-  project: "_",
+  url: "https://api.directus.cloud/",
+  project: "dcABCdefHIJklm",
   storage: window.localStorage
 });
 ```
@@ -102,8 +102,8 @@ Alternatively, you can connect to the API with a static token (as controlled by 
 import DirectusSDK from "@directus/sdk-js";
 
 const client = new DirectusSDK({
-  url: "https://demo-api.directus.app/",
-  project: "_",
+  url: "https://api.directus.cloud/",
+  project: "dcABCdefHIJklm",
   token: "demo"
 });
 ```
@@ -153,8 +153,8 @@ The credentials object has the following structure:
   password: "password",
 
   // Optional:
-  url: "https://demo-api.directus.app/",
-  project: "_", // Defaults to '_'
+  url: "https://api.directus.cloud/",
+  project: "dcABCdefHIJklm", // Defaults to '_'
   persist: true // Defaults to true
 }
 ```
@@ -176,7 +176,7 @@ client.login({
 Login to a previously defined API URL
 
 ```js
-client.url = "https://demo-api.directus.app/"
+client.url = "https://api.directus.cloud/"
 
 client.login({
   email: "admin@example.com",
