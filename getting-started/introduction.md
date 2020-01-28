@@ -125,7 +125,7 @@ Definitions and other various terms that are exclusive to the Directus Ecosystem
 * **[Note](/guides/fields.html#_2-database-options)** — Descriptive text displayed below a field to help explain, instruct, or give context to App users.
 * **[Project](/guides/projects.html)** — Comprised of a database, config file, and asset storage. Each instance of Directus lets you manage multiple projects, which can be used for different clients or environments.
 * **Schema** — The SQL database's tables, columns, datatypes, defaults, and other architectual information. This does not include any items or content.
-* **Telemetry** — Directus pings a centralized [Telemetry](https://github.com/directus/telemetry) server to check if an upgrade is available. Telemetry also sends optional anonymous metrics used to calculate Directus install count.
+* **[Telemetry](https://github.com/directus/telemetry)** — Directus pings a centralized server to check if an upgrade is available. Telemetry also sends optional anonymous metrics used to calculate Directus install count.
 * **Versionless** — The Directus API is "versionless", which means that new releases will only include fixes and improvements, but no deprecations or breaking changes.
 
 -----
