@@ -6,7 +6,11 @@
 
 **Directus is an open-source suite of software that wraps custom SQL databases with a dynamic API and intuitive Admin App.** It allows both administrators and non-technical users to view and manage the content/data stored in pure SQL databases. It can be used as a headless CMS for managing project content, a database client for modeling and viewing raw data, or as customizable WebApp.
 
-### What is a "headless" CMS?
+:::tip What's in a name?
+Directus ([duh REKT iss](http://audio.pronouncekiwi.com/Salli/Directus)) is latin for: _laid straight, arranged in lines_. The broadest goal of Directus is to present data in a simple, orderly, and intuitive way.
+:::
+
+### What is a "Headless" CMS?
 
 With _traditional_ CMS you choose a design template, throw in some content, and it generates a blog or simple website. However that means that these platforms are limited to websites only, since your designs and content are all jumbled together.
 
@@ -14,11 +18,24 @@ In a "headless" CMS, there are no templates built-in, no design or layout editor
 
 In short: traditional CMS are for small or medium-sized websites, headless CMS can manage content for absolutely anything.
 
-### What is a "database wrapper"?
+### What is "Database Mirroring"?
 
-Our database-wrapper uses the SQL database's schema to dynamically build a set of custom API endpoints based on the custom achitecture. This means you can install it on top of existing databases, tailor actual database tables/columns to specific project requirements, and even build/optimize in the database directly.
+Directus uses the SQL database's schema to dynamically build a set of custom API endpoints based on your custom achitecture. This means you can install it on top of existing databases, tailor actual database tables/columns to specific project requirements, and even build/optimize in the database directly.
 
 Perhaps one of the biggest advantages of using a database-wrapper like ours in your project, is that you always have direct access to your pure and unaltered data. Meaning, you always have the option to bypass our API, SDK, or CMS and connect to your data directly — effectively removing _any_ bottleneck or additional latency.
+
+_Let's take a look at how Directus maps to your database..._
+
+* **[Project](/guides/projects.html)** — A database (and its asset storage)
+* **[Collection](/guides/collections.html)** — A database table
+* **[Field](/guides/fields.html)** — A database column (including its datatype)
+* **[Item](/guides/user-guide.html#items)** — A database record/row
+
+_Additionally, Directus adds several layers for presentation..._
+
+* **[Module](/extensions/modules.html)** — Modular extensions for project sections/pages
+* **[Layout](/guides/layouts.html)** — Modular extensions for displaying collections
+* **[Interface](/guides/interfaces.html)** — Modular extensions for interacting with fields
 
 ## Core Principles
 
@@ -80,6 +97,36 @@ In addition to managing multilingual content, the Directus Admin App itself can 
 ### Directus Marketplace
 
 Coming in 2020, this will be a library of extensions available for Directus. Eventually we plan on opening this up to community submissions and allowing monetization — but initially it will showcase free extensions created by our core team.
+
+## Concept Glossary
+
+Definitions and other various terms that are exclusive to the Directus Ecosystem.
+
+* **[Alias](/guides/fields.html#alias-fields)** — A field that does not actually map to a database column (eg: a O2M field).
+* **Boilerplate** — The base schema and system content included in a fresh/blank copy of Directus.
+* **[Bookmarks](](../guides/user-guide.html#bookmarking))** — A specific view of a collection scoped to a user, role, or project.
+* **Client** — An external application using data managed by Directus (eg: a website, native app, kiosk, etc).
+* **[Collection](/guides/collections.html)** — A grouping of similar items. Each collection represents a table in your database.
+* **Collection Preset** — See "bookmark".
+* **[Database Mirroring](/guides/database.html#database-mirroring)** — Directus pulls its data model dynamically from any custom SQL database.
+* **Datatype** — The vendor-specific SQL database storage type (eg: `VARCHAR`, `BIGINT`)
+* **Display Template** — A Mustache-style string used to format field values. For example: `{{first_name}} {{last_name}}, {{title}}`
+* **Environment** — A flag set in the project config: either `production` or `staging`.
+* **[Extension](/extensions/)** — Extend the core codebase, including: Interfaces, Layouts, Modules, Storage Adapters, etc.
+* **[Field](/guides/fields.html)** — A specific type of data within a Collection. Fields represent a database column (except aliases).
+* **[Field Type](/guides/field-types.html)** — How field data should be stored. These map to database datatypes (eg: `string`, `number`) or other non-standard options that provide additional functionality (eg `o2m`, `translation`).
+* **[Headless CMS](/getting-started/introduction.html#what-is-a-headless-cms)** — Only manages content/assets and makes all data accessible via an API. Unlike traditional/monolithic CMS that commingle in a website's presentation via design templates (the "head").
+* **Instance** — A single installation of Directus, including the API, App, and one or more database projects.
+* **[Interfaces](/guides/interfaces.html)** — Interfaces provide different ways to view or interact with field data. For example, a string field type could have an input, dropdown, radio button, or completely custom/proprietary interface.
+* **[Items](/guides/user-guide.html#items)** — A single record of data within a collection. Each item represents a row within the database.
+* **[Length](/guides/fields.html#_2-database-options)** — The amount/size of data that can be stored in a database column or Directus field.
+* **[Layout](/guides/layouts.html)** — The presentation of data on the Item Browse page. This could be a listing, tiles, calendar, map, chart, or any other way to showcase data.
+* **[Multitenancy](/guides/projects.html#multitenancy)** — Each instance of Directus can manage multiple projects. These can be used to organize properties, environments, projects, or anything else.
+* **[Note](/guides/fields.html#_2-database-options)** — Descriptive text displayed below a field to help explain, instruct, or give context to App users.
+* **[Project](/guides/projects.html)** — Comprised of a database, config file, and asset storage. Each instance of Directus lets you manage multiple projects, which can be used for different clients or environments.
+* **Schema** — The SQL database's tables, columns, datatypes, defaults, and other architectual information. This does not include any items or content.
+* **Telemetry** — Directus pings a centralized [Telemetry](https://github.com/directus/telemetry) server to check if an upgrade is available. Telemetry also sends optional anonymous metrics used to calculate Directus install count.
+* **Versionless** — The Directus API is "versionless", which means that new releases will only include fixes and improvements, but no deprecations or breaking changes.
 
 -----
 

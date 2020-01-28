@@ -76,7 +76,6 @@ module.exports = {
         children: [
           ["/getting-started/introduction", "Introduction"],
           ["/getting-started/installation", "Installation"],
-          ["/getting-started/concepts", "Concepts"],
           ["/getting-started/contributing", "Contributing"],
           ["/getting-started/supporting-directus", "Supporting Directus"],
           ["/getting-started/troubleshooting", "Troubleshooting"]
@@ -100,6 +99,7 @@ module.exports = {
           ["/guides/i18n", "Internationalization"],
           ["/guides/js-sdk", "JavaScript SDK"],
           "/guides/layouts",
+          "/guides/modules",
           "/guides/permissions",
           "/guides/projects",
           "/guides/relationships",
