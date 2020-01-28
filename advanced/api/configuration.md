@@ -12,7 +12,7 @@ Each API instance can manage multiple projects. Each project has its own config,
 
 Projects can be added with new config files, using this naming convention: `config/{my-project}.php`. Each project's config should point to a dedicated database and unique storage paths. Once configured, the API URL will be scoped to the project, eg: `https://api.example.com/my-project/collections`.
 
-### Private / Public projects
+### Private / Public Projects
 
 By default, the API will return all available projects in the API through the `/projects` endpoint. If you would like to prevent a project key from being returned in this endpoint, you can prepend the config file name with `private.` (for example `my-project.php` -> `private.my-project.php`).
 
