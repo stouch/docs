@@ -115,14 +115,23 @@ If your issue really seems like a `bug` (not a configuration problem) then pleas
 
 ### Community Support
 
-Our [Slack Community](https://directus.chat) is great first place to reach out for help. Please keep all questions on the `#support` channel, be considerate, and remember that you are getting free help for a free product.
+[StackOverflow](https://stackoverflow.com/search?q=directus) is great first place to reach out for help. Our community and Core developers often check this platform and answer posts tagged with `directus`.
 
-Another option is to ask questions on [StackOverflow](https://stackoverflow.com/search?q=directus) using the Directus tag. Our community and Core developers often check this platform and answer posts that properly descibe their issue.
+Another option to get help is our [Slack Community](https://directus.chat). Please keep all questions on the `#support` channel, be considerate, and remember that _you are getting free help for a free product_.
 
 ### Standard Support
 
-The Core team offers standard support to our Directus Cloud customers with on-demand projects.
+Our Core team offers standard support to all on-demand tier Directus Cloud customers, as well as some strategic partners.
 
 ### Premium Support
 
-Premium support is available to Enterprise tier Directus Cloud customers, clients of RANGER Studio (our parent agency), and to those that pay for hourly support. If you are interested in discussing paid premium support, please contact us at: [info@directus.io](mailto:info@directus.io).
+Premium support is available to the following:
+
+* [Enterprise tier Directus Cloud customers](https://directus.cloud)
+* [GitHub Sponsors in our "Retainer" tiers](https://github.com/sponsors/directus)
+* [Clients of RANGER Studio (our parent agency)](https://rangerstudio.com/)
+* [Self-Hosted users paying for hourly support](mailto:info@directus.io)
+
+::: tip Getting Premium Support
+Premium support is billed at a rate of **$125/hour** (standard) or **$187.50/hour** (expedited). If you are interested in acquiring premium support, please contact us at: [info@directus.io](mailto:info@directus.io).
+:::
