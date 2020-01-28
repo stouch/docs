@@ -72,7 +72,7 @@ Everytime the application is working on something, such as saving or retrieving 
 
 To switch from the current project to another, click on the project name in the top left. This section also shows you the current connection status with the system. Hovering over the project switcher will show you the exact URL you're currently connected to and the latency (milliseconds of delay) to the server.
 
-#### Collections
+#### Collection Listing
 
 The first group of links shows all of the available collections.
 
