@@ -86,6 +86,10 @@ An easy way to remember which side is which: the "many" is an actual column that
 
 ![O2M + M2O](../img/o2m-m2o.png)
 
+## One-to-One
+
+Directus does not have a specific one-to-one (O2O) relationship type or interface. However a O2O saves data the same way as a M2O (storing a foreign key) — the only difference is how you _enforce_ the cardinality. By default, the M2O allows you to create multiple relationships in one direction, but it can become a O2O by adding an event hook (`item.create:before` and `item.update:before`) or a custom interface that checks/constrains uniqueness.
+
 ## Many-to-Many
 
 A many-to-many (M2M) is a slightly more advanced relationship that allows you to link _any_ items within **Collection A** and **Collection B**. For example, movies can have many genres, and genres can have many movies.
