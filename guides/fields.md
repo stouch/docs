@@ -2,6 +2,10 @@
 
 > A Field is a specific type of value within a Collection. For example, you might have _Title_, _Body_, _Author_, and _Date Published_ fields within an _Articles_ collection. Each field represents a database column.
 
+## Alias Fields
+
+While Directus is built around the principle of "Database Mirroring", not all fields in Directus map directly to an actual database column within their collection. Some relational fields, like one-to-many ([O2M](/guides/relationships.html#one-to-many)) and many-to-many ([M2M](/guides/relationships.html#many-to-many)), represent data that is stored in different collections. Other fields simply don't save data atall, such as a `divider`. All of these are called "alias" fields, to help clarify that they don't have a mirrored database column.
+
 ## Creating Fields
 
 To get started, go to _Settings > Collections & Fields_, choose the Collection you want to add the field to, then click "New Field".
