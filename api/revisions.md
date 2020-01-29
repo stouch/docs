@@ -122,7 +122,7 @@ List the revisions.
 
 ### Returns
 
-Returns an array of revision objects.
+Returns an array of [revision objects](#the-revision-object).
 
 </template>
 
@@ -199,7 +199,7 @@ Retrieve a single revision by unique identifier.
 
 ### Returns
 
-Returns the revision object for the given unique identifier.
+Returns the [revision object](#the-revision-object) for the given unique identifier.
 
 </template>
 

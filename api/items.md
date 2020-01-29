@@ -89,7 +89,7 @@ List the items.
 
 ### Returns
 
-Returns an array of item objects.
+Returns an array of [item objects](#the-item-object).
 
 </template>
 
@@ -156,7 +156,7 @@ Retrieve a single item by unique identifier.
 
 ### Returns
 
-Returns the item object for the given unique identifier.
+Returns the [item object](#the-item-object) for the given unique identifier.
 
 </template>
 
@@ -222,7 +222,7 @@ Based on your specific setup.
 
 ### Returns
 
-Returns the item for the item that was just created.
+Returns the [item object](#the-item-object) for the item that was just created.
 
 </template>
 
@@ -304,7 +304,7 @@ Based on your specific setup.
 
 ### Returns
 
-Returns the item object for the item that was just updated.
+Returns the [item object](#the-item-object) for the item that was just updated.
 
 </template>
 
@@ -423,7 +423,7 @@ List the revisions made to the given item.
 
 ### Returns
 
-Returns an array of [revision](/api/revisions) objects.
+Returns an array of [revision objects](/api/revisions.html#the-revision-object).
 
 </template>
 
@@ -489,7 +489,7 @@ Retrieve a single revision of the item by offset.
 !!! include params/collection.md !!!
 
 #### offset <def-type alert>required</def-type>
-How many revisions to go back in time. 
+How many revisions to go back in time.
 
 </def-list>
 
@@ -504,7 +504,7 @@ How many revisions to go back in time.
 
 ### Returns
 
-Returns the [revision object](/api/revisions) for the given unique identifier.
+Returns the [revision object](/api/revisions.html#the-revision-object) for the given unique identifier.
 
 </template>
 
@@ -587,7 +587,7 @@ No attributes available.
 
 ### Returns
 
-Returns the item in it's new state.
+Returns the [item object](#the-item-object) in its new state.
 
 </template>
 

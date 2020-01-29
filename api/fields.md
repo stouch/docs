@@ -170,7 +170,7 @@ Returns a list of the fields available in the project.
 
 ### Returns
 
-An object with a `data` property that contains an array of available fields. This array also contains the Directus system fields and is never empty.
+An object with a `data` property that contains an array [field objects](#the-field-object) for the available fields. This array also contains the Directus system fields and is never empty.
 :::
 
 <template slot="right">
@@ -254,7 +254,7 @@ Returns a list of the fields available in the given collection.
 
 ### Returns
 
-An object with a `data` property that contains an array of available fields.
+An object with a `data` property that contains an array of [field objects](#the-field-object) for available fields.
 :::
 
 <template slot="right">
@@ -337,7 +337,7 @@ No query parameters available.
 
 ### Returns
 
-Returns a field object.
+Returns a [field object](#the-field-object).
 :::
 
 <template slot="right">
@@ -482,7 +482,7 @@ No query parameters available.
 
 ### Returns
 
-Returns the newly created field.
+Returns a [field object](#the-field-object) for the newly created field.
 
 </template>
 
@@ -648,7 +648,7 @@ Be careful when updating the datatype. You could corrupt the data in the items. 
 No query parameters available.
 
 ### Returns
-Returns the collection object for the updated collection.
+Returns the [field object](#the-field-object) for the updated field.
 
 </template>
 

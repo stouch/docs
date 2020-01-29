@@ -103,7 +103,7 @@ List the relations.
 
 ### Returns
 
-Returns an array of relation objects.
+Returns an array of [relation objects](#the-relation-object).
 
 </template>
 
@@ -169,7 +169,7 @@ Retrieve a single relation by unique identifier.
 
 ### Returns
 
-Returns the relation object for the given unique identifier.
+Returns the [relation object](#the-relation-object) for the given unique identifier.
 
 </template>
 
@@ -252,7 +252,7 @@ Field on the junction table that holds the primary key of the related collection
 
 ### Returns
 
-Returns the relation object for the relation that was just created.
+Returns the [relation object](#the-relation-object) for the relation that was just created.
 
 </template>
 
@@ -349,7 +349,7 @@ Field on the junction table that holds the primary key of the related collection
 
 ### Returns
 
-Returns the relation object for the relation that was just updated.
+Returns the [relation object](#the-relation-object) for the relation that was just updated.
 
 </template>
 

@@ -145,7 +145,7 @@ List the collection presets.
 
 ### Returns
 
-Returns an array of collection preset objects.
+Returns an array of [collection preset objects](#the-collection-preset-object).
 
 </template>
 
@@ -234,7 +234,7 @@ Retrieve a single collection preset by unique identifier.
 
 ### Returns
 
-Returns the collection preset object for the given unique identifier.
+Returns the [collection preset object](#the-collection-preset-object) for the given unique identifier.
 
 </template>
 
@@ -356,7 +356,7 @@ Key value pair of language-translation. Can be used to translate the bookmark ti
 
 ### Returns
 
-Returns the collection preset object for the collection preset that was just created.
+Returns the [collection preset object](#the-collection-preset-object) for the collection preset that was just created.
 
 </template>
 
@@ -482,7 +482,7 @@ Key value pair of language-translation. Can be used to translate the bookmark ti
 
 ### Returns
 
-Collection preset object.
+A [collection preset object](#the-collection-preset-object).
 
 </template>
 

@@ -122,7 +122,7 @@ Returns a list of the collections available in the project.
 
 ### Returns
 
-An object with a `data` property that contains an array of available collections. This array also contains the Directus system collections and is never empty.
+An object with a `data` property that contains an array of available [collection objects](#the-collection-object). This array also contains the Directus system collections and is never empty.
 :::
 
 <template slot="right">
@@ -195,7 +195,7 @@ The unique name of the collection.
 
 ### Returns
 
-Returns a collection object.
+Returns a [collection object](#the-collection-object).
 :::
 
 <template slot="right">
@@ -305,7 +305,7 @@ Key value pairs of how to show this collection's name in different languages in 
 
 ### Returns
 
-Returns the newly created collection.
+Returns the newly created [collection object](#the-collection-object).
 
 </template>
 
@@ -424,7 +424,7 @@ Key value pairs of how to show this collection's name in different languages in 
 
 ### Returns
 
-Returns the collection object for the updated collection.
+Returns the [collection object](#the-collection-object) for the updated collection.
 
 </template>
 

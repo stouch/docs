@@ -113,7 +113,7 @@ List the roles.
 
 ### Returns
 
-Returns an array of role objects.
+Returns an array of [role objects](#the-role-object).
 
 </template>
 
@@ -181,7 +181,7 @@ Retrieve a single role by unique identifier.
 
 ### Returns
 
-Returns the role object for the given unique identifier.
+Returns the [role object](#the-role-object) for the given unique identifier.
 
 </template>
 
@@ -272,7 +272,7 @@ Whether or not this role enforces the use of 2FA.
 
 ### Returns
 
-Returns the role object for the role that was just created.
+Returns the [role object](#the-role-object) for the role that was just created.
 
 </template>
 
@@ -374,7 +374,7 @@ Whether or not this role enforces the use of 2FA.
 
 ### Returns
 
-Returns the role object for the role that was just updated.
+Returns the [role object](#the-role-object) for the role that was just updated.
 
 </template>
 

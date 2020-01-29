@@ -133,7 +133,7 @@ List all permissions.
 
 ### Returns
 
-Returns an array of permission objects.
+Returns an array of [permission objects](#the-permissions-object).
 
 </template>
 
@@ -206,7 +206,7 @@ Retrieve a single permissions object by unique identifier.
 
 ### Returns
 
-Returns the permissions object for the given unique identifier.
+Returns the [permissions object](#the-permissions-object) for the given unique identifier.
 
 </template>
 
@@ -274,7 +274,7 @@ No query parameters available.
 
 ### Returns
 
-Returns an array of permission objects.
+Returns an array of [permission objects](#the-permissions-object).
 
 </template>
 
@@ -348,7 +348,7 @@ No query parameters available.
 
 ### Returns
 
-Returns a permissions object if available.
+Returns a [permissions object](#the-permissions-object) if available.
 
 </template>
 
@@ -397,7 +397,7 @@ Returns a permissions object if available.
 
 Create a new permission.
 
-### Parameters 
+### Parameters
 
 <def-list>
 
@@ -457,7 +457,7 @@ Explicitly denies specific statuses to be used.
 
 ### Returns
 
-Returns the permissions object for the permission that was just created.
+Returns the [permissions object](#the-permissions-object) for the permission that was just created.
 
 </template>
 
@@ -583,7 +583,7 @@ Explicitly denies specific statuses to be used.
 
 ### Returns
 
-Returns the permissions object for the permission that was just updated.
+Returns the [permissions object](#the-permissions-object) for the permission that was just updated.
 
 </template>
 

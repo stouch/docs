@@ -7,7 +7,7 @@ pageClass: page-reference
 <two-up>
 
 ::: slot left
-Users are what gives you access to the data. 
+Users are what gives you access to the data.
 :::
 
 <info-box title="Endpoints" slot="right">
@@ -169,7 +169,7 @@ List the users.
 
 ### Returns
 
-Returns an array of user objects.
+Returns an array of [user objects](#the-user-object).
 
 </template>
 
@@ -249,7 +249,7 @@ Retrieve a single user by unique identifier.
 
 ### Returns
 
-Returns the user object for the given unique identifier.
+Returns the [user object](#the-user-object) for the given unique identifier.
 
 </template>
 
@@ -330,7 +330,7 @@ This endpoint doesn't work for the public role.
 
 ### Returns
 
-Returns the user object for the currently authenticated user.
+Returns the [user object](#the-user-object) for the currently authenticated user.
 
 </template>
 
@@ -468,7 +468,7 @@ Whether or not the user wants to receive notifications per email.
 
 ### Returns
 
-Returns the user object for the user that was just created.
+Returns the [user object](#the-user-object) for the user that was just created.
 
 </template>
 
@@ -621,7 +621,7 @@ Whether or not the user wants to receive notifications per email.
 
 ### Returns
 
-Returns the user object for the user that was just updated.
+Returns the [user object](#the-user-object) for the user that was just updated.
 
 </template>
 
@@ -748,7 +748,7 @@ No query parameters available.
 
 ### Returns
 
-The newly created user object.
+The newly created [user object](#the-user-object).
 
 </template>
 
@@ -838,7 +838,7 @@ No query parameters available.
 
 ### Returns
 
-The activated user.
+The activated [user object](#the-user-object).
 
 </def-list>
 
@@ -921,7 +921,7 @@ No query parameters available.
 
 ### Returns
 
-Returns the user object of the user that was just updated.
+Returns the [user object](#the-user-object) of the user that was just updated.
 
 </template>
 
@@ -1015,7 +1015,7 @@ List the revisions made to the given user.
 
 ### Returns
 
-Returns an array of [revision](/api/revisions) objects.
+Returns an array of [revision](/api/revisions.html#the-revision-object) objects.
 
 </template>
 
@@ -1094,7 +1094,7 @@ Retrieve a single revision of the user by offset.
 !!! include params/project.md !!!
 
 #### offset <def-type alert>required</def-type>
-How many revisions to go back in time. 
+How many revisions to go back in time.
 
 </def-list>
 
@@ -1109,7 +1109,7 @@ How many revisions to go back in time.
 
 ### Returns
 
-Returns the [revision object](/api/revisions) for the given unique identifier.
+Returns the [revision object](/api/revisions.html#the-revision-object) for the given unique identifier.
 
 </template>
 

@@ -93,7 +93,7 @@ List the folders.
 
 ### Returns
 
-Returns an array of folder objects.
+Returns an array of [folder objects](#the-folder-object).
 
 </template>
 
@@ -156,7 +156,7 @@ Retrieve a single folder by unique identifier.
 
 ### Returns
 
-Returns the folder object for the given unique identifier.
+Returns the [folder object](#the-folder-object) for the given unique identifier.
 
 </template>
 
@@ -227,7 +227,7 @@ Unique identifier of the parent folder. This allows for nested folders.
 
 ### Returns
 
-Returns the folder object for the folder that was just created.
+Returns the [folder object](#the-folder-object) for the folder that was just created.
 
 </template>
 
@@ -309,7 +309,7 @@ Unique identifier of the parent folder. This allows for nested folders.
 
 ### Returns
 
-Returns the folder object for the folder that was just updated.
+Returns the [folder object](#the-folder-object) for the folder that was just updated.
 
 </template>
 

@@ -89,7 +89,7 @@ List the settings.
 
 ### Returns
 
-Returns an array of setting objects.
+Returns an array of [setting objects](#the-setting-object).
 
 </template>
 
@@ -151,7 +151,7 @@ Retrieve a single setting by unique identifier.
 
 ### Returns
 
-Returns the setting object for the given unique identifier.
+Returns the [setting object](#the-setting-object) for the given unique identifier.
 
 </template>
 
@@ -221,7 +221,7 @@ Value for the setting
 
 ### Returns
 
-Returns the setting object for the setting that was just created.
+Returns the [setting object](#the-setting-object) for the setting that was just created.
 
 </template>
 
@@ -302,7 +302,7 @@ Value for the setting
 
 ### Returns
 
-Returns the setting object for the setting that was just updated.
+Returns the [setting object](#the-setting-object) for the setting that was just updated.
 
 </template>
 

@@ -126,7 +126,7 @@ Returns a list of activity actions.
 
 ### Returns
 
-An object with a `data` property that contains an array of up to `limit` coupons. If no items are available, `data` will be an empty array.
+An object with a `data` property that contains an array of up to `limit` [activity objects](#the-activity-object). If no items are available, `data` will be an empty array.
 :::
 
 <template slot="right">
@@ -199,7 +199,7 @@ Retrieves the details of an existing activity action. Provide the primary key of
 
 ### Returns
 
-Returns an activity action if a valid identifier was provided.
+Returns an [activity object](#the-activity-object) if a valid identifier was provided.
 :::
 
 <template slot="right">
@@ -280,7 +280,7 @@ The comment to post on the item.
 
 ### Returns
 
-Returns the activity action of the created comment.
+Returns the [activity object](#the-activity-object) of the created comment.
 :::
 
 <template slot="right">
@@ -367,7 +367,7 @@ The updated comment text.
 
 ### Returns
 
-Returns the activity action of the updated comment.
+Returns the [activity object](#the-activity-object) of the updated comment.
 :::
 
 <template slot="right">

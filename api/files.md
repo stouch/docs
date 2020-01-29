@@ -207,7 +207,7 @@ List the files.
 
 ### Returns
 
-Returns an array of file objects.
+Returns an array of [file objects](#the-file-object).
 
 </template>
 
@@ -304,7 +304,7 @@ Retrieve a single file by unique identifier.
 
 ### Returns
 
-Returns the file object for the given unique identifier.
+Returns the [file object](#the-file-object) for the given unique identifier.
 
 </template>
 
@@ -428,7 +428,7 @@ User provided miscellaneous key value pairs that serve as additional metadata fo
 
 ### Returns
 
-Returns the file object for the file that was just uploaded.
+Returns the [file object](#the-file-object) for the file that was just uploaded.
 
 </template>
 
@@ -567,7 +567,7 @@ User provided miscellaneous key value pairs that serve as additional metadata fo
 
 ### Returns
 
-Returns the user object for the user that was just updated.
+Returns the [file object](#the-file-object) for the file that was just updated.
 
 </template>
 
@@ -717,7 +717,7 @@ List the revisions made to the given file.
 
 ### Returns
 
-Returns an array of [revision](/api/revisions) objects.
+Returns an array of [revision objects](/api/revisions.html#the-revision-object).
 
 </template>
 
@@ -812,7 +812,7 @@ Retrieve a single revision of the file by offset.
 !!! include params/collection.md !!!
 
 #### offset <def-type alert>required</def-type>
-How many revisions to go back in time. 
+How many revisions to go back in time.
 
 </def-list>
 
@@ -827,7 +827,7 @@ How many revisions to go back in time.
 
 ### Returns
 
-Returns the [revision object](/api/revisions) for the given unique identifier.
+Returns the [revision object](/api/revisions.html#the-revision-object) for the given unique identifier.
 
 </template>
 
