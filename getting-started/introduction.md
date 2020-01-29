@@ -37,6 +37,16 @@ _Additionally, Directus adds several layers for presentation..._
 * **[Layout](/guides/layouts.html)** — Modular extensions for displaying collections
 * **[Interface](/guides/interfaces.html)** — Modular extensions for interacting with fields
 
+## Choosing an Architecture
+
+Directus is a toolkit that provides many different options for how you can organize your projects, properties, environments, and data. Unlike other platforms, there's no _one right way_ to do things. This freedom can be overwhelming to some developers, so let's cover a few high-level ways to structure things:
+
+* **Instances** (installation-level) have the broadest scope. You can use this to define an App, Team, Client, etc. This is useful if you want to have things running on different servers with altogether different API/App URLs, or if you need to customize/extend the actual Directus source code.
+* **Projects** (database-level) have their own data model and API, with scoped CMS users, asset storage, extensions, and branding. Directus is multitenent, so you can have multiple public/private projects per instance. Often projects are used as environments (eg: staging, prod), or to separate client projects.
+* **Roles** (permission-level) can be used to scope access to Collections and Items (see below).
+* **Collections** (table-level) are a good way to separate content within different data models. You can create different collections, and then broadly enable/disable access to them with Role permissions.
+* **Items** (record-level) can be scoped based on a Role's permissions. This can limit user access within collections using the same data model (eg: only view/edit items created by users within your role).
+
 ## Core Principles
 
 Directus is a simple solution for complex problems. Every aspect of Directus is data-first and guided by the following core principles:
