@@ -8,7 +8,7 @@ module.exports = {
   markdown: {
     extendMarkdown(md) {
       md.use(require('markdown-it-include'), {
-        root: '_includes',
+        root: './.vuepress/_includes',
         includeRe: /\!{3}\s*include\s*(.+?)\s*\!{3}/i
       });
     }
