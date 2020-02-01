@@ -405,11 +405,11 @@ One of `active`, `invited`, `draft`, `suspended`, `deleted`.
 #### role <def-type alert>required</def-type>
 Unique identifier of the role of this user.
 
-#### first_name <def-type>optional</def-type>
+#### first_name <def-type alert>required</def-type>
 First name of the user.
 
-#### last_name <def-type>optional</def-type>
-First name of the user.
+#### last_name <def-type alert>required</def-type>
+Last name of the user.
 
 #### email <def-type alert>required</def-type>
 Unique email address for the user.
