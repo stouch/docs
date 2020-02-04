@@ -61,13 +61,9 @@ composer install --no-dev
 
 On your local server, create a new database to use with the API.
 
-##### Boilerplate SQL
-
-If you'd rather skip the installer (next step), you can simply import the boilerplate schema file from [the included schema.sql file](https://github.com/directus/api/blob/master/src/schema.sql).
-
 ##### Demo SQL
 
-This file comes with the boilerplate schema as well as some dummy collections, fields, data, and Settings. You can [download a demo SQL schema](https://github.com/directus/demo-sql) to skip the API's installation process.
+If you'd rather skip the installer (next step), you can simply import the demo schema file. This file comes with the boilerplate schema as well as some dummy collections, fields, data, and Settings. You can [download a demo SQL schema](https://github.com/directus/demo-sql) to skip the API's installation process.
 
 ::: tip Credentials
 If you are skipping the installer and adding the SQL directly to your database, the default login credentials are:
