@@ -92,6 +92,9 @@ server {
     server_name directus.local;
     
     index index.html index.htm index.nginx-debian.html index.php;
+    
+    # Set max body size to allow large files upload, don't forget the change the php-fpm post_max_size setting as well.
+    client_max_body_size 256M;
 
     # disable_symlinks if_not_owner;
 
