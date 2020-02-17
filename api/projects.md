@@ -306,6 +306,7 @@ Empty payload with status 200 OK
 ```json
 {
   "project": "thumper",
+  "super_admin_token": "very_secret_token",
   "db_name": "db",
   "db_user": "root",
   "db_password": "root",
