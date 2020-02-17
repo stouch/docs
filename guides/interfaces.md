@@ -23,6 +23,7 @@ If you need to tailor an interface to your specific needs, or want something com
 WORK IN PROGRESS — There are a number of interfaces that ship with Directus that cover most use cases out-of-the-box. Below we'll give an overview of each.
 
 ### `button-group`
+<img src="../img/interfaces/button-group.png">
 Selects a single option from a set of options. Options can be presented as text, icons, or both, and can be separated into different groups. Stores value as a `string`.
 
 * `choices` — JSON to define options (label/value) and their grouping
