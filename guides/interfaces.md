@@ -20,7 +20,7 @@ If you need to tailor an interface to your specific needs, or want something com
 
 ## Core Interfaces
 
-WORK IN PROGRESS — There are a number of interfaces that ship with Directus that cover most use cases out-of-the-box. Below we'll give an overview of each.
+There are a number of interfaces that ship with Directus that cover most use cases out-of-the-box. Below we'll give an overview of each.
 
 ### `button-group`
 <img src="../img/interfaces/button-group.png">
