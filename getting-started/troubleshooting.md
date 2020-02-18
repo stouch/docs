@@ -71,7 +71,7 @@ Below are questions that are commonly asked by people working with Directus. If 
 
 ### Why is my relational data/file only returning an ID?
 
-Directus allows you to request specific field data at different depths. You can use the [`fields` parameter](../api/reference.md#fields) to fetch deeper relationships fields (eg: `?fields=*.*.*` for three levels deep) or even specific fields to keep things as performant as possible (eg: `?fields=image.title` for a relational image's title).
+Directus allows you to request specific field data at different depths. You can use the [`fields` parameter](../api/query/fields.html) to fetch deeper relationships fields (eg: `?fields=*.*.*` for three levels deep) or even specific fields to keep things as performant as possible (eg: `?fields=image.title` for a relational image's title).
 
 However you'll also want to ensure that you have the correct read permissions for the related tables you're requesting. By default, Directus keeps all data private by default, so you will need to enable read permission for the tables you're trying to access. If you're making _unauthenticated_ requests that include file data, you'll also need to allow read access to `directus_files` for the `public` role. Be aware, this may allow advanced users to list all files.
 
