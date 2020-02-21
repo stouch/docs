@@ -35,10 +35,10 @@ Includes commands to install and configure Directus.
 
 ### Configure Directus:
 
-Creates the `config.api.php` file.
+Creates the default `config/_.php` file.
 
 :::warning
-This command will overwrite any existing default configuration file at `config.api.php`.
+This command will overwrite any existing default configuration file at `config/_.php`.
 :::
 
 ```bash
@@ -57,28 +57,28 @@ php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pa
 | `s`            | Database unix socket
 | `a`            | Super Admin Token
 | `c`            | Enable/Disable CORS
-| `N`            | Unique Project's name
+| `k`            | Unique Project's name (it must be required when creating new project in existing Directus setup)
 | `timezone`     | API Server default timezone
 | `f`            | Force file overwritten
 
 #### Example: http://example.local
 
 ```bash
-php bin/directus install:config -h localhost -n directus -u root -p pass -a super_admin_token
+php bin/directus install:config -h localhost -n directus -u root -p pass -a super_admin_token -k my-project
 ```
 
 #### Example: http://example.local/directus
 
 ```bash
-php bin/directus install:config -h localhost -k directus -u root -p pass -d directus
+php bin/directus install:config -h localhost -k directus -u root -p pass -n directus
 ```
 
 ### Populate the Database Schema:
 
-Creates all of the Directus Core tables based on the configuration files: `/config/api.php`.
+Creates all of the Directus Core tables based on the configuration files: `/config/{project_name}.php`.
 
 ```bash
-php bin/directus install:database
+php bin/directus install:database -k <project_name>
 ```
 
 ### Install Initial Configurations:
@@ -86,7 +86,7 @@ php bin/directus install:database
 Create the default admin user and the site's default settings.
 
 ```bash
-php bin/directus install:install -e <admin_email> -p <admin_password> -t <site_name>
+php bin/directus install:install -e <admin_email> -p <admin_password> -t <site_name> -k <project_name>
 ```
 
 | Option     | Description                                                  |
@@ -104,7 +104,7 @@ php bin/directus install:install -e <admin_email> -p <admin_password> -t <site_n
 #### Example
 
 ```bash
-php bin/directus install:install -e admin@directus.local -p password -t "Directus Example"
+php bin/directus install:install -e admin@directus.local -p password -t "Directus Example" -k directus
 ```
 
 ## User Module
@@ -132,7 +132,7 @@ php bin/directus user:password -e admin@directus.local -p newpassword -k directu
 Includes commands to manage Directus database schema
 
 :::tip
-This requires that Directus has a valid connection configured in `config/api.php`.
+This requires that Directus has a valid connection configured in `config/{project_name}.php`.
 :::
 
 :::warning
