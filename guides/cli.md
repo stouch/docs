@@ -64,7 +64,7 @@ php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pa
 #### Example: http://example.local
 
 ```bash
-php bin/directus install:config -h localhost -n directus -u root -p pass -a super_admin_token -k directus
+php bin/directus install:config -h localhost -n directus -u root -p pass -a super_admin_token -k my-project
 ```
 
 #### Example: http://example.local/directus
