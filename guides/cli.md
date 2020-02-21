@@ -57,7 +57,7 @@ php bin/directus install:config -h <db_host> -n <db_name> -u <db_user> -p <db_pa
 | `s`            | Database unix socket
 | `a`            | Super Admin Token
 | `c`            | Enable/Disable CORS
-| `k`            | Unique Project's name (it must be required when creating new project in existing diretcus setup)
+| `k`            | Unique Project's name (it must be required when creating new project in existing Directus setup)
 | `timezone`     | API Server default timezone
 | `f`            | Force file overwritten
 
