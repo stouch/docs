@@ -60,10 +60,10 @@ Our core team is always working hard to implement the most highly-requested comm
 
 ### Simple Pull Requests
 
-Before we get into the full-blown "proper" way to do a pull request, let's quickly cover an easier method you can use for _small_ fixes. This way is especailly useful for fixing quick typos in the docs, but is not as safe for code changes since it bypasses validation and linting.
+Before we get into the full-blown "proper" way to do a pull request, let's quickly cover an easier method you can use for _small_ fixes. This way is especially useful for fixing quick typos in the docs, but is not as safe for code changes since it bypasses validation and linting.
 
 1. Sign in to GitHub
-2. Go to the file you want to edit (eg: [this page](https://github.com/directus/docs/blob/master/feature-requests.md))
+2. Go to the file you want to edit (eg: [this page](https://github.com/directus/docs/blob/master/getting-started/contributing.md))
 3. Click the pencil icon to "Edit this file"
 4. Make any changes
 5. Describe and submit your changes within "Propose file change"
