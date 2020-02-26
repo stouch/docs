@@ -166,7 +166,6 @@ module.exports = {
         title: "⚡️ Advanced",
         collapsable: true,
         children: [
-          ['/advanced/other-install-methods', 'Other Install Methods'],
           ['/advanced/source', 'Local Dev Environment'],
           ['/advanced/ddev', 'Local Dev Environment with DDEV'],
           ['/advanced/server-setup', 'Server Setup'],
