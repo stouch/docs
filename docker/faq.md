@@ -22,4 +22,4 @@ We do recommend using tags down to the `patch` level (to receive only hotfixes),
 
 ## I want to use files for configs, what should I do?
 
-Please refer to [disabling environment variables](/docker/docker.md#disabling-environment-variables) for more information.
+Please refer to [disabling environment variables](/docker/overview.md#disabling-environment-variables) for more information.
