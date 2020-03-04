@@ -283,6 +283,9 @@ Request a reset password email to be send.
 #### email <def-type alert>required</def-type>
 Email address of the user you're requesting a reset for.
 
+#### reset_url <def-type>optional</def-type>
+Provide a custom reset url which the link in the Email will lead to. The reset token will be passed as a parameter.
+
 </def-list>
 
 ### Query
@@ -309,7 +312,8 @@ Sends the email. No data is returned.
 
 ```json
 {
-  "email": "admin@example.com"
+  "email": "admin@example.com",
+  "reset_url": "https://mydomain/passwordreset"
 }
 ```
 
