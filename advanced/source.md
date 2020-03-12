@@ -88,7 +88,7 @@ To quickly debug the application you can use [our demo API](https://next.demo-ap
 
 ### Requirements
 
-The application is built with [Vue.js](https://vuejs.org) and heavily relies on [Node.js](https://nodejs.org) to be bundled / transpiled to browser-usable code. In order to work on Directus, you need [Node.js](https://nodejs.org) v8.11.3 or higher (preferably v10.6+).
+The application is built with [Vue.js](https://vuejs.org) and heavily relies on [Node.js](https://nodejs.org) to be bundled / transpiled to browser-usable code. In order to work on Directus, you need [Node.js](https://nodejs.org) v12.x or higher.
 
 The application source code is being hosted in the [directus/app](https://github.com/directus/app) repo on GitHub.
 
@@ -112,26 +112,18 @@ git clone git@github.com:directus/app.git
 If you want to work on your fork of the project, remember to replace `directus` with your GitHub username in the url above.
 :::
 
-#### 2. Install the [npm](https://npmjs.com) dependencies
+#### 2. Install the dependencies using Yarn
 
 ```bash
-npm install
+yarn install
 ```
 
-#### 3. Add a config file
-
-The application makes use of a config file that's found in the `public` folder in the root of the folder. To prevent issues when upgrading the app, we decided to ignore the default version of this config file. We do provide an example that you can duplicate. Move or rename the `/public/config_example.js` file to `/public/config.js` file to your hearts content.
-
-::: tip
-The default config file lets you test the app using the live Directus Demo API. Don't forget to add the address of your local API in order to test it.
-:::
-
-#### 4. Build / run the app
+#### 3. Build / run the app
 
 The production version of the application is a static html file that can be hosted on any static file server. In order to build the app for production, run
 
 ```bash
-npm run build
+yarn build
 ```
 
 To checkout the app itself, you'll need a static file server. Any static file server, like MAMP, local Apache or Caddy, should work. If you don't have a quick server at hand, I recommend using [`http-server`](https://www.npmjs.com/package/http-server).
@@ -139,7 +131,7 @@ To checkout the app itself, you'll need a static file server. Any static file se
 Install `http-server` globally, run
 
 ```bash
-npm install --global http-server
+yarn global add http-server
 ```
 
 When it's installed, you can serve the app by running `http-server` from the `dist` folder that has been created by the `build` command:
@@ -150,5 +142,9 @@ http-server
 ```
 
 ::: tip Development Mode
-If you're actively working on the application, we recommend using the development mode. By using `npm run dev` instead of `npm run build`, the buildchain will launch a local file server and will auto-rebuild the code and auto-refresh the browser on save of a file.
+If you're actively working on the application, we recommend using the development mode. By using `yarn serve` instead of `yarn build`, the buildchain will launch a local file server and will auto-rebuild the code and auto-refresh the browser on save of a file.
+:::
+
+::: tip API Usage
+By default, the `yarn serve` command uses the demo API to connect to. If you want to connect to your local API instance for debugging purposes, set the `API_URL` environment variable before running `yarn serve`.
 :::
