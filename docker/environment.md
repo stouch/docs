@@ -72,7 +72,7 @@
 | Variable                               | Type   | Default Value    |
 | -------------------------------------- | ------ | ---------------- |
 | DIRECTUS_STORAGE_OPTIONS_ACL           | string | "public-read"    |
-| DIRECTUS_STORAGE_OPTIONS_CACHE-CONTROL | string | "max-age=604800" |
+| DIRECTUS_STORAGE_OPTIONS_CACHECONTROL  | string | "max-age=604800" |
 
 ### Mail
 

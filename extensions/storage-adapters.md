@@ -34,7 +34,7 @@ Then simply set the following into your configuration file (by default `config/a
     'region' => 'us-east-1',
     'options' => [
       'ACL' => 'public-read',
-      'Cache-Control' => 'max-age=604800'
+      'CacheControl' => 'max-age=604800'
     ],
     'endpoint' => 's3-endpoint',
     'root' => '/',
