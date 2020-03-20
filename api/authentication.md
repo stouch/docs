@@ -42,6 +42,16 @@ Tokens can be passed in one of three ways:
 Authorization: bearer <token>
 ```
 
+By default, apache servers strip the Authentication header from requests, and blocks directus from seeing it. Adding the option 'CGIPassAuth On' to the directory statement in the site configuration in apache will resolve this.
+```
+<Directory /var/www/directus/public/>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+    CGIPassAuth On
+</Directory>
+```
+
 ### Query Parameter
 
 ```
