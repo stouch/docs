@@ -14,7 +14,7 @@ Projects can be added with new config files, using this naming convention: `conf
 
 ### Private / Public Projects
 
-By default, the API will return all available projects in the API through the `/projects` endpoint. If you would like to prevent a project key from being returned in this endpoint, you can prepend the config file name with `private.` (for example `my-project.php` -> `private.my-project.php`).
+By default, the API will return all available projects in the API through the `/server/projects` endpoint. If you would like to prevent a project key from being returned in this endpoint, you can prepend the config file name with `private.` (for example `my-project.php` -> `private.my-project.php`).
 
 Accessing a private project through the app can be done by linking directly to a scoped page (eg `/#/my-project/collections`) or adding the projects query parameter to the path (eg `/#/login?project=my-project`). This will force the app to try to read the project information from the given project. These methods can also be used to pre-select a project from the dropdown.
 
