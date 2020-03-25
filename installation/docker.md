@@ -45,6 +45,10 @@ services:
       - mysql:mysql
 ```
 
+::: tip  
+For a full overview of all available environment variables, go to [Docker Environment Overview](/docker/environment.html).
+:::
+
 ::: tip
 When using this in production, please make sure to set the database user and password, and the auth public and secret keys to something more secure.
 :::
