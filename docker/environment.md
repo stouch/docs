@@ -76,15 +76,15 @@
 
 ### Mail
 
-| Variable                         | Type   | Default Value       |
-| -------------------------------- | ------ | ------------------- |
-| DIRECTUS_MAIL_DEFAULT_TRANSPORT  | string | "sendmail"          |
-| DIRECTUS_MAIL_DEFAULT_FROM       | string | "admin@example.com" |
-| DIRECTUS_MAIL_DEFAULT_HOST       | string | ""                  |
-| DIRECTUS_MAIL_DEFAULT_PORT       | string | ""                  |
-| DIRECTUS_MAIL_DEFAULT_USERNAME   | string | ""                  |
-| DIRECTUS_MAIL_DEFAULT_PASSWORD   | string | ""                  |
-| DIRECTUS_MAIL_DEFAULT_ENCRYPTION | string | ""                  |
+| Variable                         | Type   | Default Value       | Possible Value |
+| -------------------------------- | ------ | ------------------- | -------------- |
+| DIRECTUS_MAIL_DEFAULT_TRANSPORT  | string | "sendmail"          | "smtp"         |
+| DIRECTUS_MAIL_DEFAULT_FROM       | string | "admin@example.com" |                |
+| DIRECTUS_MAIL_DEFAULT_HOST       | string | ""                  |                |
+| DIRECTUS_MAIL_DEFAULT_PORT       | string | ""                  |                |
+| DIRECTUS_MAIL_DEFAULT_USERNAME   | string | ""                  |                |
+| DIRECTUS_MAIL_DEFAULT_PASSWORD   | string | ""                  |                |
+| DIRECTUS_MAIL_DEFAULT_ENCRYPTION | string | ""                  |                |
 
 ### CORS
 
