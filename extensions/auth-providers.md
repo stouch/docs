@@ -1,6 +1,6 @@
 # Auth Providers
 
-> Directus offers built-in authentication using securely hashed passwords. Alternatively, you can enable any of our Single Sing-On (SSO) services or create your own adapter for custom authentication. Directus also supports SCIM for external user management.
+> Directus offers built-in authentication using securely hashed passwords. Alternatively, you can enable any of our Single Sign-On (SSO) services or create your own adapter for custom authentication. Directus also supports SCIM for external user management.
 
 The auth providers supports OAuth 1.0 and 2.0. The Directus Auth provider is class that creates an OAuth client based on the phpleague [OAuth 1.0](https://github.com/thephpleague/oauth1-client) and [OAuth 2.0](https://github.com/thephpleague/oauth2-client) Client libraries.
 
