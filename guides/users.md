@@ -4,7 +4,7 @@
 
 ## System vs. Custom
 
-The `directus_users` table is required by the platform for authentication and other system logic, but often times developers want to use/extend it to also use it for their own purposes. As of now, you can only add additional fields to this table is directly in the database (not _officially_ supported), but we'll be adding this functionality to the App soon.
+The `directus_users` table is required by the platform for authentication and other system logic, but often times developers want to use/extend it to also use it for their own purposes. As of now, you can only add additional fields to this table directly in the database (not _officially_ supported), but we'll be adding this functionality to the App soon.
 
 ## Creating Users
 
