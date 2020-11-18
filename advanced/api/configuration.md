@@ -13,7 +13,7 @@ Each API instance can manage multiple projects. Each project has its own config,
 Projects can be added with new config files, using this naming convention: `config/{my-project}.php`. Each project's config should point to a dedicated database and unique storage paths. Once configured, the API URL will be scoped to the project, eg: `https://api.example.com/my-project/collections`.
 
 ::: tip
-All the available API options are availble in the ```config/_example.php``` file :
+All the available API options are available in the ```config/_example.php``` file :
 https://github.com/directus/directus/blob/master/config/\_example.php
 :::
 
